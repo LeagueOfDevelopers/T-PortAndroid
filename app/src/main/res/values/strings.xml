@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">T-Port</string>
+    <string name="bottom_item_bonuses">Бонусы</string>
+    <string name="bottom_item_search">Поиск</string>
+    <string name="bottom_item_profile">Профиль</string>
+    <string name="bottom_item_orders">Заказы</string>
+    <string name="text_view_main_search_item_from_place">Откуда</string>
+    <string name="text_view_main_search_item_to_place">Куда</string>
+    <string name="button_text_pick_uo">Подобрать</string>
+    <string name="text_view_main_search_item_when">Когда</string>
+    <string name="text_view_title_item">Популярные направления</string>
+    <string name="image_view_popular_background_description">Фон карточки на главном меню</string>
 </resources>

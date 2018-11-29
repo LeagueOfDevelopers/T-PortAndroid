@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">T-Port</string>
+    <string name="bottom_item_bonuses">Bonuses</string>
+    <string name="bottom_item_search">Search</string>
+    <string name="bottom_item_profile">Profile</string>
+    <string name="bottom_item_orders">Orders</string>
+    <string name="text_view_main_search_item_from_place">From where</string>
+    <string name="text_view_main_search_item_to_place">To where</string>
+    <string name="button_text_pick_uo">Pick up</string>
+    <string name="text_view_main_search_item_when">When</string>
+    <string name="text_view_title_item">Popular trips</string>
+    <string name="image_view_popular_background_description">Background of card main menu</string>
+</resources>

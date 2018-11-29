@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-            android:id="@+id/action_recommendations"
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/app_name"/>
+            android:id="@+id/action_bonuses"
+            android:icon="@drawable/ic_portrait_black_24dp"
+            android:title="@string/bottom_item_bonuses"/>
     <item
-            android:id="@+id/action_favorites"
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/app_name"/>
+            android:id="@+id/action_orders"
+            android:icon="@drawable/ic_portrait_black_24dp"
+            android:title="@string/bottom_item_orders"/>
     <item
-            android:id="@+id/action_foods"
-            android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/app_name"/>
+            android:id="@+id/action_search"
+            android:icon="@drawable/ic_portrait_black_24dp"
+            android:title="@string/bottom_item_search"/>
+    <item
+            android:id="@+id/action_profile"
+            android:icon="@drawable/ic_portrait_black_24dp"
+            android:title="@string/bottom_item_profile"/>
 </menu>
