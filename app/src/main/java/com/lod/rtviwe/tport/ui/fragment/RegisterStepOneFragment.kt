@@ -1,16 +1,15 @@
 package com.lod.rtviwe.tport.ui.fragment
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.transaction
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.ui.activity.MainActivity
 import com.lod.rtviwe.tport.viewmodel.RegisterViewModel
+import com.redmadrobot.inputmask.MaskedTextChangedListener
 import kotlinx.android.synthetic.main.register_step_one_fragment.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+
 
 class RegisterStepOneFragment : BaseFragment() {
 
@@ -38,34 +37,26 @@ class RegisterStepOneFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        edit_text_phone_number.addTextChangedListener(object : TextWatcher {
-
-            override fun onTextChanged(newText: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                try {
-                    enteredPhoneNumber = newText.toString().toLong()
-                } catch (error: NumberFormatException) {
-                    Log.e("RegisterStepTwoFragment", "Wrong phone number input")
-                    edit_text_phone_number.error = getString(R.string.error_wrong_number)
-                }
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun afterTextChanged(p0: Editable?) {}
-        })
-
         button_register_step_one_continue.setOnClickListener {
-            if (edit_text_phone_number.text.toString().length == 11) {
-                activity?.supportFragmentManager?.transaction(allowStateLoss = true) {
-                    replace(R.id.main_container, RegisterStepTwoFragment.newInstance())
-                    MainActivity.currentRegistrationStep = 2
-                    enteredPhoneNumber = edit_text_phone_number.text.toString().toLong()
-                    registerViewModel.sendCodeToPhoneNumber(enteredPhoneNumber)
-                }
-            } else {
-                edit_text_phone_number.error = getString(R.string.error_wrong_number)
+            activity?.supportFragmentManager?.transaction(allowStateLoss = true) {
+                replace(R.id.main_container, RegisterStepTwoFragment.newInstance())
+                MainActivity.currentRegistrationStep = 2
+                enteredPhoneNumber = ("+7$enteredPhoneNumber").toLong()
+                registerViewModel.sendCodeToPhoneNumber(enteredPhoneNumber)
             }
         }
+
+        edit_text_phone_number.hint = MaskedTextChangedListener.installOn(
+            edit_text_phone_number,
+            "+7 ([000]) [000]-[00]-[00]",
+            object : MaskedTextChangedListener.ValueListener {
+                override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
+                    if (extractedValue.isNotEmpty()) {
+                        enteredPhoneNumber = extractedValue.toLong()
+                    }
+                }
+            }).placeholder()
+        edit_text_phone_number.requestFocus()
     }
 
     override fun scrollToTop() {
