@@ -1,9 +1,11 @@
 package com.lod.rtviwe.tport.ui.viewholder
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.model.recyclerview.SearchItem
 import kotlinx.android.extensions.LayoutContainer
@@ -55,6 +57,18 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
         image_button_change.setOnClickListener {
             changeDestinations()
         }
+
+        edit_text_from_place.setOnFocusChangeListener { view, hasFocus ->
+            if (!hasFocus) {
+                hideKeyboard(view)
+            }
+        }
+
+        edit_text_to_place.setOnFocusChangeListener { view, hasFocus ->
+            if (!hasFocus) {
+                hideKeyboard(view)
+            }
+        }
     }
 
     private fun changeDestinations() {
@@ -77,5 +91,11 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
                 item.travelTime = edit_text_data_travel.text.toString()
             }, year, month, day
         ).show()
+    }
+
+    private fun hideKeyboard(view: View) {
+        val inputMethodManager =
+            containerView.context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
