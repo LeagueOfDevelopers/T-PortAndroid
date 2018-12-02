@@ -20,4 +20,5 @@
     <string name="did_get_code_question">Не получили код?</string>
     <string name="button_resend_code">Отправить ещё раз</string>
     <string name="error_wrong_number">Неправильный номер</string>
+    <string name="error_wrong_code">Неправильный код</string>
 </resources>

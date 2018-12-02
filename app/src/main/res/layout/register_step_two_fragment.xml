@@ -45,13 +45,13 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
-                android:maxLength="4"
                 android:inputType="number"
+                android:digits="0123456789 .-"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                tools:text="@tools:sample/us_zipcodes"/>
+                tools:text="@tools:sample/us_zipcodes"
+                style="@style/EditTextCode"/>
 
         <TextView
                 android:id="@+id/text_view_did_get_code"

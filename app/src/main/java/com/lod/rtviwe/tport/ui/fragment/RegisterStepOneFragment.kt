@@ -20,6 +20,8 @@ class RegisterStepOneFragment : BaseFragment() {
         }
 
         var enteredPhoneNumber = 0L
+
+        const val PHONE_NUMBER_LENGTH = 10
     }
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
@@ -38,11 +40,10 @@ class RegisterStepOneFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         button_register_step_one_continue.setOnClickListener {
-            activity?.supportFragmentManager?.transaction(allowStateLoss = true) {
-                replace(R.id.main_container, RegisterStepTwoFragment.newInstance())
-                MainActivity.currentRegistrationStep = 2
-                enteredPhoneNumber = ("+7$enteredPhoneNumber").toLong()
-                registerViewModel.sendCodeToPhoneNumber(enteredPhoneNumber)
+            if (checkPhoneNumber(enteredPhoneNumber)) {
+                setupNextStep()
+            } else {
+                showErrorPhoneNumber()
             }
         }
 
@@ -61,5 +62,20 @@ class RegisterStepOneFragment : BaseFragment() {
 
     override fun scrollToTop() {
 
+    }
+
+    private fun checkPhoneNumber(phoneNumber: Long) = phoneNumber.toString().length == PHONE_NUMBER_LENGTH
+
+    private fun setupNextStep() {
+        activity?.supportFragmentManager?.transaction(allowStateLoss = true) {
+            replace(R.id.main_container, RegisterStepTwoFragment.newInstance())
+            MainActivity.currentRegistrationStep = 2
+            enteredPhoneNumber = ("+7$enteredPhoneNumber").toLong()
+            registerViewModel.sendCodeToPhoneNumber(enteredPhoneNumber)
+        }
+    }
+
+    private fun showErrorPhoneNumber() {
+        edit_text_phone_number.error = getString(R.string.error_wrong_number)
     }
 }
