@@ -62,10 +62,11 @@ class SearchFragment : BaseFragment() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
         outState.putString(STATE_FROM_PLACE, searchAdapter.searchViewHolder?.item?.fromPlace)
         outState.putString(STATE_TO_PLACE, searchAdapter.searchViewHolder?.item?.toPlace)
         outState.putString(STATE_TRAVEL_TIME, searchAdapter.searchViewHolder?.item?.travelTime)
+
+        super.onSaveInstanceState(outState)
     }
 
     override fun scrollToTop() {

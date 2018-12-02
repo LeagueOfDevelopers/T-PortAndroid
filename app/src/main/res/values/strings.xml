@@ -10,4 +10,14 @@
     <string name="text_view_main_search_item_when">Когда</string>
     <string name="text_view_title_item">Популярные направления</string>
     <string name="image_view_popular_background_description">Фон карточки на главном меню</string>
+    <string name="app_bar_next">Следующий</string>
+    <string name="welcome_message">Добро пожаловать!</string>
+    <string name="enter_phone_number">Для того, чтобы начать, введите ваш номер телефона</string>
+    <string name="text_send_code">Мы отправим вам одноразовый код для регистрации</string>
+    <string name="button_continue">Продолжить</string>
+    <string name="hint_phone_number" translatable="false">+7 (999) 001 48 71</string>
+    <string name="text_did_send_code">Мы отправили вам код на номер</string>
+    <string name="did_get_code_question">Не получили код?</string>
+    <string name="button_resend_code">Отправить ещё раз</string>
+    <string name="error_wrong_number">Неправильный номер</string>
 </resources>
