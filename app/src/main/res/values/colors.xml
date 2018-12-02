@@ -6,4 +6,5 @@
     <color name="colorPrimaryRipple">#42FFFFFF</color>
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="colorButtonBackground">#FFFFFF</color>
+    <color name="colorSecondTest">#B2AFB3</color>
 </resources>

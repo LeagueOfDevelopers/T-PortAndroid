@@ -42,4 +42,43 @@
         <item name="android:typeface">sans</item>
     </style>
 
+    <style name="TextViewWelcomeMessage" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TextViewSecond" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorSecondTest</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TextViewPhoneNumber" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="ContinueButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="ResendCodeButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="EditTextPhoneNumber" parent="ThemeOverlay.MaterialComponents.TextInputEditText">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
 </resources>
