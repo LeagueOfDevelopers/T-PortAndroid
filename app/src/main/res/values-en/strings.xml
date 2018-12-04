@@ -4,13 +4,12 @@
     <string name="bottom_item_search">Search</string>
     <string name="bottom_item_profile">Profile</string>
     <string name="bottom_item_orders">Orders</string>
-    <string name="text_view_main_search_item_from_place">From where</string>
-    <string name="text_view_main_search_item_to_place">To where</string>
-    <string name="button_text_pick_uo">Pick up</string>
-    <string name="text_view_main_search_item_when">When</string>
-    <string name="text_view_title_item">Popular trips</string>
-    <string name="image_view_popular_background_description">Background of card main menu</string>
-    <string name="app_bar_next">Next</string>
+    <string name="search_item_from_place">From where</string>
+    <string name="search_item_to_place">To where</string>
+    <string name="button_text_pick_up">Pick up</string>
+    <string name="search_item_travel_data">When</string>
+    <string name="title_item">Popular trips</string>
+    <string name="popular_background_description">Background of card main menu</string>
     <string name="welcome_message">Welcome!</string>
     <string name="enter_phone_number">Enter your phone number to start</string>
     <string name="text_send_code">We will send you code for registration</string>
@@ -20,4 +19,12 @@
     <string name="button_resend_code">Send code again</string>
     <string name="error_wrong_number">Wrong number</string>
     <string name="error_wrong_code">Wrong code</string>
+    <string name="phone">Phone</string>
+    <string name="phone_example">Phone number in format like +7 123 4567890 in case of changes in route</string>
+    <string name="personal_data">Personal data</string>
+    <string name="button_add_passenger">Add passenger</string>
+    <string name="cards">Cards</string>
+    <string name="add_card">Add card</string>
+    <string name="notify_about_discounts">Notify about discounts and promotions</string>
+    <string name="notify_about_order_status">Notify about order\'s status and booking</string>
 </resources>

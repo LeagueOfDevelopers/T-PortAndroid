@@ -21,6 +21,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/tport_logo"
             app:srcCompat="@mipmap/ic_launcher_round"
-            tools:srcCompat="@tools:sample/backgrounds/scenic"/>
+            tools:srcCompat="@tools:sample/backgrounds/scenic"
+            android:contentDescription="@string/image_view_logo_description"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

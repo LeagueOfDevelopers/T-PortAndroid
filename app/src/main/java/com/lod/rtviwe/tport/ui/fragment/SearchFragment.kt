@@ -16,10 +16,6 @@ class SearchFragment : BaseFragment() {
 
     companion object {
 
-        private const val STATE_FROM_PLACE = "FROM_PLACE"
-        private const val STATE_TO_PLACE = "TO_PLACE"
-        private const val STATE_TRAVEL_TIME = "TIME_TRAVEL"
-
         fun newInstance(): SearchFragment {
             return SearchFragment()
         }
@@ -34,19 +30,6 @@ class SearchFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.search_fragment
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-
-        savedInstanceState?.let {
-            if (savedInstanceState.getString(STATE_FROM_PLACE) != null)
-                searchItem.fromPlace = savedInstanceState.getString(STATE_FROM_PLACE)!!.toString()
-            if (savedInstanceState.getString(STATE_TO_PLACE) != null)
-                searchItem.toPlace = savedInstanceState.getString(STATE_TO_PLACE)!!.toString()
-            if (savedInstanceState.getString(STATE_TRAVEL_TIME) != null)
-                searchItem.travelTime = savedInstanceState.getString(STATE_TRAVEL_TIME)!!.toString()
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -59,14 +42,6 @@ class SearchFragment : BaseFragment() {
             adapter = searchAdapter
             layoutManager = searchLayoutManager
         }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString(STATE_FROM_PLACE, searchAdapter.searchViewHolder?.item?.fromPlace)
-        outState.putString(STATE_TO_PLACE, searchAdapter.searchViewHolder?.item?.toPlace)
-        outState.putString(STATE_TRAVEL_TIME, searchAdapter.searchViewHolder?.item?.travelTime)
-
-        super.onSaveInstanceState(outState)
     }
 
     override fun scrollToTop() {

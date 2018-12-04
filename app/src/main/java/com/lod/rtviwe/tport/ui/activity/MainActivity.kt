@@ -19,13 +19,12 @@ class MainActivity : BaseActivity() {
     private val fragmentOrders = OrdersFragment.newInstance()
     private val fragmentSearch = SearchFragment.newInstance()
     private val fragmentProfile = ProfileFragment.newInstance()
-    private val registerStepOneFragment = RegisterStepOneFragment.newInstance()
-    private val registerStepTwoFragment = RegisterStepTwoFragment.newInstance()
-    private val registerStepThreeFragment = RegisterStepThreeFragment.newInstance()
+    private val fragmentRegisterStepOne = RegisterStepOneFragment.newInstance()
+    private val fragmentRegisterStepTwo = RegisterStepTwoFragment.newInstance()
+    private val fragmentRegisterStepThree = RegisterStepThreeFragment.newInstance()
     private var currentFragmentId = R.id.action_search
 
-    private var isUserEntered: Boolean = false
-        get() = false
+    private var isUserEntered = true
 
     override fun getLayout() = R.layout.activity_main
 
@@ -73,7 +72,6 @@ class MainActivity : BaseActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
-
         return true
     }
 
@@ -81,10 +79,6 @@ class MainActivity : BaseActivity() {
         when (currentRegistrationStep) {
             2 -> {
                 currentRegistrationStep = 1
-                setUpCurrentFragment()
-            }
-            3 -> {
-                currentRegistrationStep = 2
                 setUpCurrentFragment()
             }
             else -> super.onBackPressed()
@@ -112,9 +106,11 @@ class MainActivity : BaseActivity() {
                 fragmentProfile
             } else {
                 when (currentRegistrationStep) {
-                    1 -> registerStepOneFragment
-                    2 -> registerStepTwoFragment
-                    3 -> registerStepThreeFragment
+                    // TODO remove it
+                    0 -> fragmentProfile
+                    1 -> fragmentRegisterStepOne
+                    2 -> fragmentRegisterStepTwo
+                    3 -> fragmentRegisterStepThree
                     else -> throw RuntimeException("Unknown registration step")
                 }
             }
