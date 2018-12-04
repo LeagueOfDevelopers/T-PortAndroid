@@ -2,8 +2,8 @@
 <resources>
     <color name="colorPrimary">#1E3CEB</color>
     <color name="colorPrimaryDark">#E0E0E0</color>
+    <color name="colorPrimaryRipple">#421E3CEB</color>
     <color name="colorAccent">#1E3CEB</color>
-    <color name="colorPrimaryRipple">#42FFFFFF</color>
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="colorButtonBackground">#FFFFFF</color>
     <color name="colorSecondTest">#B2AFB3</color>

@@ -1,7 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scroll_view_profile"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+        <TextView
+                android:id="@+id/text_view_profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:gravity="center"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="@tools:sample/full_names"
+                style="@style/TextViewHeader"/>
+
+        <TextView
+                android:id="@+id/text_view_phone_number_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/phone"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_profile_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                style="@style/TextViewSmallHeader"/>
+
+        <TextView
+                android:id="@+id/text_view_phone_number_hint_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_example"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+                android:id="@+id/text_view_personal_data_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/personal_data"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number_hint_label"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                style="@style/TextViewOnProfileSetting"/>
+
+        <View
+                android:id="@+id/divider_personal_data"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_personal_data_label"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+                android:id="@+id/text_view_add_passenger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/button_add_passenger"
+                app:layout_constraintTop_toBottomOf="@+id/divider_personal_data"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                style="@style/TextViewAddNew"/>
+
+        <TextView
+                android:id="@+id/text_view_cards_label"
+                android:text="@string/cards"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="48dp"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_add_passenger"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                style="@style/TextViewOnProfileSetting"/>
+
+        <View
+                android:id="@+id/divider_cards"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_cards_label"
+                app:layout_constraintHorizontal_bias="0.0"/>
+
+        <TextView
+                android:id="@+id/text_view_add_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/add_card"
+                app:layout_constraintTop_toBottomOf="@+id/divider_cards"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                style="@style/TextViewAddNew"/>
+
+        <Switch
+                android:id="@+id/switch_notify_about_discounts"
+                android:text="@string/notify_about_discounts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="48dp"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_add_card"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                style="@style/SwitchSettings"/>
+
+        <Switch
+                android:id="@+id/switch_notify_about_order_status"
+                android:text="@string/notify_about_order_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/switch_notify_about_discounts"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                style="@style/SwitchSettings"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

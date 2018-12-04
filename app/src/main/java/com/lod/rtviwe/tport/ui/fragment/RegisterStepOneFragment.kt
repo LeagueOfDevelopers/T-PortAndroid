@@ -10,7 +10,6 @@ import com.redmadrobot.inputmask.MaskedTextChangedListener
 import kotlinx.android.synthetic.main.register_step_one_fragment.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-
 class RegisterStepOneFragment : BaseFragment() {
 
     companion object {
@@ -61,7 +60,7 @@ class RegisterStepOneFragment : BaseFragment() {
     }
 
     override fun scrollToTop() {
-
+        scroll_view_step_one.smoothScrollTo(0, 0)
     }
 
     private fun checkPhoneNumber(phoneNumber: Long) = phoneNumber.toString().length == PHONE_NUMBER_LENGTH

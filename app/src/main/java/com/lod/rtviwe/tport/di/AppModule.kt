@@ -2,6 +2,7 @@ package com.lod.rtviwe.tport.di
 
 import com.lod.rtviwe.tport.model.recyclerview.SearchItem
 import com.lod.rtviwe.tport.viewmodel.*
+import com.redmadrobot.inputmask.helper.Mask
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
 
@@ -12,4 +13,5 @@ val mainModule = module {
     viewModel<ProfileViewModel>()
     viewModel<RegisterViewModel>()
     single { SearchItem("", "", "") }
+    single { Mask("+7 ([000]) [000]-[00]-[00]") }
 }

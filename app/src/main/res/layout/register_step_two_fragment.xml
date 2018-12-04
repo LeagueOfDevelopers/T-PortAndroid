@@ -3,6 +3,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scroll_view_step_two"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -22,10 +24,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                style="@style/TextViewSecond"/>
+                style="@style/TextViewInformation"/>
 
         <TextView
-                android:id="@+id/text_view_phone_number"
+                android:id="@+id/text_view_register_step_two_phone_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -36,7 +38,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_did_send_code"
                 tools:text="@tools:sample/us_phones"
-                style="@style/TextViewPhoneNumber"/>
+                style="@style/TextViewHeader"/>
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_input_code"
@@ -47,14 +49,14 @@
                 android:layout_marginTop="8dp"
                 android:inputType="number"
                 android:digits="0123456789 .-"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="@tools:sample/us_zipcodes"
                 style="@style/EditTextCode"/>
 
         <TextView
-                android:id="@+id/text_view_did_get_code"
+                android:id="@+id/text_view_did_get_code_question"
                 android:text="@string/did_get_code_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,17 +64,19 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/edit_text_input_code"
                 app:layout_constraintStart_toStartOf="parent"
-                style="@style/TextViewSecond"/>
+                style="@style/TextViewInformation" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_resend_code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/button_resend_code"
-                app:layout_constraintStart_toEndOf="@+id/text_view_did_get_code"
-                app:layout_constraintTop_toTopOf="@+id/text_view_did_get_code"
-                app:layout_constraintBottom_toBottomOf="@+id/text_view_did_get_code"
-                style="@style/ResendCodeButton"/>
+                app:layout_constraintStart_toEndOf="@+id/text_view_did_get_code_question"
+                app:layout_constraintTop_toTopOf="@+id/text_view_did_get_code_question"
+                app:layout_constraintBottom_toBottomOf="@+id/text_view_did_get_code_question"
+                style="@style/ButtonResendCode"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

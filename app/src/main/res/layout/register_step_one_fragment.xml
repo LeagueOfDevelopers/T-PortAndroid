@@ -3,6 +3,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scroll_view_step_one"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -36,7 +38,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                style="@style/TextViewSecond"/>
+                style="@style/TextViewInformation"/>
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_phone_number"
@@ -65,7 +67,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edit_text_phone_number"
                 app:layout_constraintHorizontal_bias="0.0"
-                style="@style/TextViewSecond"/>
+                style="@style/TextViewInformation"/>
 
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_register_step_one_continue"
@@ -78,7 +80,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_view_send_code"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                style="@style/ContinueButton"/>
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                style="@style/ButtonContinue"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

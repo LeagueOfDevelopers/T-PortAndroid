@@ -32,7 +32,7 @@ class SearchViewModel(private val app: Application) : BaseViewModel(app) {
                     listOf(
                         LogoItem(),
                         searchItem,
-                        TitleItem(app.getString(R.string.text_view_title_item))
+                        TitleItem(app.getString(R.string.title_item))
                     )
                 )
             }

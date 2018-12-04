@@ -11,11 +11,11 @@ class ViewHolderPopularItem(override val containerView: View) : RecyclerView.Vie
     LayoutContainer {
 
     fun bind(popularItem: PopularItem) {
-        text_view_popular_trip_name.text = popularItem.name
+        text_view_popular_item_name.text = popularItem.name
 
         Glide.with(containerView.context)
             .load(popularItem.backgroundUrl)
-            .into(image_view_popular_background)
+            .into(image_view_popular_item_background)
 
         card_view_popular_item.setOnClickListener {
 
