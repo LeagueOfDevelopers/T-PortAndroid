@@ -96,12 +96,11 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     override fun onRegisterStepTwoContinue() {
         currentRegistrationStep = 3
-        isUserEntered = true
         setUpCurrentFragment()
     }
 
     override fun onRegisterStepThreeContinue() {
-        currentRegistrationStep = 1
+        currentRegistrationStep = 0
         setUpCurrentFragment()
     }
 
@@ -134,6 +133,8 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
                 ProfileFragment.newInstance()
             } else {
                 when (currentRegistrationStep) {
+                    // TODO remove it
+                    0 -> ProfileFragment.newInstance()
                     1 -> RegisterStepOneFragment.newInstance(phoneNumber)
                     2 -> RegisterStepTwoFragment.newInstance(phoneNumber, code)
                     3 -> RegisterStepThreeFragment.newInstance()
