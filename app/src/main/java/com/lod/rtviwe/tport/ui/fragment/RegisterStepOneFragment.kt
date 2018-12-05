@@ -1,10 +1,12 @@
 package com.lod.rtviwe.tport.ui.fragment
 
+import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import androidx.fragment.app.transaction
+import android.view.ViewGroup
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.ui.activity.MainActivity
+import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepOneListener
 import com.lod.rtviwe.tport.viewmodel.RegisterViewModel
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import kotlinx.android.synthetic.main.register_step_one_fragment.*
@@ -14,32 +16,54 @@ class RegisterStepOneFragment : BaseFragment() {
 
     companion object {
 
-        fun newInstance(): RegisterStepOneFragment {
-            return RegisterStepOneFragment()
+        fun newInstance(phoneNumber: Long): RegisterStepOneFragment {
+            val newArguments = Bundle().apply {
+                putLong(STATE_PHONE_NUMBER, phoneNumber)
+            }
+            return RegisterStepOneFragment().apply {
+                arguments = newArguments
+            }
         }
 
-        var enteredPhoneNumber = 0L
-
+        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STEP_ONE_STATE"
         const val PHONE_NUMBER_LENGTH = 10
     }
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
 
+    private lateinit var listenerStepOne: OnRegisterStepOneListener
+    private var phoneNumber = 0L
+
     override fun getLayout() = R.layout.register_step_one_fragment
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        if (enteredPhoneNumber != 0L) {
-            edit_text_phone_number.setText(enteredPhoneNumber.toString())
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        when (context) {
+            is OnRegisterStepOneListener -> listenerStepOne = context
+            else -> throw ClassCastException("$context does not implements OnRegisterStepOneListener")
+        }
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        arguments?.let {
+            if (it.containsKey(STATE_PHONE_NUMBER)) {
+                phoneNumber = it.getLong(STATE_PHONE_NUMBER)
+            }
         }
 
-        super.onViewStateRestored(savedInstanceState)
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (phoneNumber != 0L) {
+            edit_text_phone_number.setText("$phoneNumber")
+        }
+
         button_register_step_one_continue.setOnClickListener {
-            if (checkPhoneNumber(enteredPhoneNumber)) {
+            if (checkPhoneNumber(phoneNumber)) {
                 setupNextStep()
             } else {
                 showErrorPhoneNumber()
@@ -52,7 +76,8 @@ class RegisterStepOneFragment : BaseFragment() {
             object : MaskedTextChangedListener.ValueListener {
                 override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
                     if (extractedValue.isNotEmpty()) {
-                        enteredPhoneNumber = extractedValue.toLong()
+                        phoneNumber = extractedValue.toLong()
+                        listenerStepOne.savePhoneNumber(phoneNumber)
                     }
                 }
             }).placeholder()
@@ -60,18 +85,14 @@ class RegisterStepOneFragment : BaseFragment() {
     }
 
     override fun scrollToTop() {
-        scroll_view_step_one.smoothScrollTo(0, 0)
+        // scroll_view_step_one.smoothScrollTo(0, 0)
     }
 
     private fun checkPhoneNumber(phoneNumber: Long) = phoneNumber.toString().length == PHONE_NUMBER_LENGTH
 
     private fun setupNextStep() {
-        activity?.supportFragmentManager?.transaction(allowStateLoss = true) {
-            replace(R.id.main_container, RegisterStepTwoFragment.newInstance())
-            MainActivity.currentRegistrationStep = 2
-            enteredPhoneNumber = ("+7$enteredPhoneNumber").toLong()
-            registerViewModel.sendCodeToPhoneNumber(enteredPhoneNumber)
-        }
+        registerViewModel.sendCodeToPhoneNumber(phoneNumber)
+        listenerStepOne.onRegisterStepOneContinue(phoneNumber)
     }
 
     private fun showErrorPhoneNumber() {

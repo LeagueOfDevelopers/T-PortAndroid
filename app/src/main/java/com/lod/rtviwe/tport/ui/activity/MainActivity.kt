@@ -1,30 +1,29 @@
 package com.lod.rtviwe.tport.ui.activity
 
 import android.os.Bundle
-import android.view.Menu
 import androidx.fragment.app.transaction
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.ui.fragment.*
+import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepOneListener
+import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepThreeListener
+import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepTwoListener
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTwoListener, OnRegisterStepThreeListener {
 
     companion object {
 
         private const val STATE_CURRENT_FRAGMENT = "CURRENT_FRAGMENT_ID"
-        var currentRegistrationStep = 1
+        private const val STATE_REGISTRATION_STEP = "CURRENT_REGISTRATION_ID"
+        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STATE"
+        private const val STATE_CODE = "CODE_STATE"
     }
 
-    private val fragmentBonuses = BonusesFragment.newInstance()
-    private val fragmentOrders = OrdersFragment.newInstance()
-    private val fragmentSearch = SearchFragment.newInstance()
-    private val fragmentProfile = ProfileFragment.newInstance()
-    private val fragmentRegisterStepOne = RegisterStepOneFragment.newInstance()
-    private val fragmentRegisterStepTwo = RegisterStepTwoFragment.newInstance()
-    private val fragmentRegisterStepThree = RegisterStepThreeFragment.newInstance()
+    private var currentRegistrationStep = 1
     private var currentFragmentId = R.id.action_search
-
-    private var isUserEntered = true
+    private var isUserEntered = false
+    private var phoneNumber = 0L
+    private var code = 0
 
     override fun getLayout() = R.layout.activity_main
 
@@ -44,30 +43,34 @@ class MainActivity : BaseActivity() {
         }
 
         bottom_navigation.selectedItemId = currentFragmentId
-    }
 
-    override fun onResume() {
-        super.onResume()
-        setUpCurrentFragment()
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-        super.onRestoreInstanceState(savedInstanceState)
-
-        savedInstanceState?.let {
-            currentFragmentId = savedInstanceState.getInt(STATE_CURRENT_FRAGMENT)
+        if (savedInstanceState == null) {
+            setUpCurrentFragment()
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
-        outState?.putInt(STATE_CURRENT_FRAGMENT, currentFragmentId)
+        outState?.apply {
+            putInt(STATE_CURRENT_FRAGMENT, currentFragmentId)
+            putInt(STATE_REGISTRATION_STEP, currentRegistrationStep)
+            putLong(STATE_PHONE_NUMBER, phoneNumber)
+            putInt(STATE_CODE, code)
+        }
 
         super.onSaveInstanceState(outState)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.register_action_bar_menu, menu)
-        return true
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        savedInstanceState?.let {
+            currentFragmentId = savedInstanceState.getInt(STATE_CURRENT_FRAGMENT)
+            currentRegistrationStep = savedInstanceState.getInt(STATE_REGISTRATION_STEP)
+            phoneNumber = savedInstanceState.getLong(STATE_PHONE_NUMBER)
+            code = savedInstanceState.getInt(STATE_CODE)
+
+            setUpCurrentFragment()
+        }
+
+        super.onRestoreInstanceState(savedInstanceState)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -85,6 +88,31 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    override fun onRegisterStepOneContinue(phoneNumber: Long) {
+        this.phoneNumber = ("+7$phoneNumber").toLong()
+        currentRegistrationStep = 2
+        setUpCurrentFragment()
+    }
+
+    override fun onRegisterStepTwoContinue() {
+        currentRegistrationStep = 3
+        isUserEntered = true
+        setUpCurrentFragment()
+    }
+
+    override fun onRegisterStepThreeContinue() {
+        currentRegistrationStep = 1
+        setUpCurrentFragment()
+    }
+
+    override fun savePhoneNumber(phoneNumber: Long) {
+        this.phoneNumber = phoneNumber
+    }
+
+    override fun saveCode(code: Int) {
+        this.code = code
+    }
+
     private fun setUpCurrentFragment() {
         val fragmentToSet = getCurrentFragment()
 
@@ -98,19 +126,17 @@ class MainActivity : BaseActivity() {
     }
 
     private fun getCurrentFragment() = when (currentFragmentId) {
-        R.id.action_bonuses -> fragmentBonuses
-        R.id.action_orders -> fragmentOrders
-        R.id.action_search -> fragmentSearch
+        R.id.action_bonuses -> BonusesFragment.newInstance()
+        R.id.action_orders -> OrdersFragment.newInstance()
+        R.id.action_search -> SearchFragment.newInstance()
         R.id.action_profile -> {
             if (isUserEntered) {
-                fragmentProfile
+                ProfileFragment.newInstance()
             } else {
                 when (currentRegistrationStep) {
-                    // TODO remove it
-                    0 -> fragmentProfile
-                    1 -> fragmentRegisterStepOne
-                    2 -> fragmentRegisterStepTwo
-                    3 -> fragmentRegisterStepThree
+                    1 -> RegisterStepOneFragment.newInstance(phoneNumber)
+                    2 -> RegisterStepTwoFragment.newInstance(phoneNumber, code)
+                    3 -> RegisterStepThreeFragment.newInstance()
                     else -> throw RuntimeException("Unknown registration step")
                 }
             }
