@@ -84,10 +84,6 @@ class RegisterStepOneFragment : BaseFragment() {
         edit_text_phone_number.requestFocus()
     }
 
-    override fun scrollToTop() {
-        // scroll_view_step_one.smoothScrollTo(0, 0)
-    }
-
     private fun checkPhoneNumber(phoneNumber: Long) = phoneNumber.toString().length == PHONE_NUMBER_LENGTH
 
     private fun setupNextStep() {
