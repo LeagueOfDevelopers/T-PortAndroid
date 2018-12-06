@@ -3,7 +3,13 @@ package com.lod.rtviwe.tport.ui.activity
 import android.os.Bundle
 import androidx.fragment.app.transaction
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.ui.fragment.*
+import com.lod.rtviwe.tport.ui.fragment.BonusesFragment
+import com.lod.rtviwe.tport.ui.fragment.OrdersFragment
+import com.lod.rtviwe.tport.ui.fragment.ProfileFragment
+import com.lod.rtviwe.tport.ui.fragment.RegisterStepOneFragment
+import com.lod.rtviwe.tport.ui.fragment.RegisterStepThreeFragment
+import com.lod.rtviwe.tport.ui.fragment.RegisterStepTwoFragment
+import com.lod.rtviwe.tport.ui.fragment.SearchFragment
 import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepOneListener
 import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepThreeListener
 import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepTwoListener

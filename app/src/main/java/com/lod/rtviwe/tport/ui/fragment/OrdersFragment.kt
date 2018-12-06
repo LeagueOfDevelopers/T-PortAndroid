@@ -18,6 +18,5 @@ class OrdersFragment : BaseFragment() {
     override fun getLayout() = R.layout.orders_fragment
 
     override fun scrollToTop() {
-
     }
 }
