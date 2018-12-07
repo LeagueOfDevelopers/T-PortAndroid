@@ -16,8 +16,4 @@ class OrdersFragment : BaseFragment() {
     private val ordersViewModel: OrdersViewModel by viewModel()
 
     override fun getLayout() = R.layout.orders_fragment
-
-    override fun scrollToTop() {
-
-    }
 }

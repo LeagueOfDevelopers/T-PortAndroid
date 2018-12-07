@@ -20,10 +20,6 @@ class ProfileFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.profile_fragment
 
-    override fun scrollToTop() {
-        // scroll_view_profile.smoothScrollTo(0, 0)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

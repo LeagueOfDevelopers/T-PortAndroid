@@ -43,8 +43,4 @@ class SearchFragment : BaseFragment() {
             layoutManager = searchLayoutManager
         }
     }
-
-    override fun scrollToTop() {
-        // searchLayoutManager.smoothScrollToPosition(searchRecyclerView, RecyclerView.State(), 0)
-    }
 }

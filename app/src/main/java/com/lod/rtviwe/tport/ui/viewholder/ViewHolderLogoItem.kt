@@ -9,6 +9,5 @@ class ViewHolderLogoItem(override val containerView: View) : RecyclerView.ViewHo
     LayoutContainer {
 
     fun bind(logoItem: LogoItem) {
-
     }
 }

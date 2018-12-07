@@ -40,10 +40,6 @@ class RegisterStepThreeFragment : BaseFragment() {
         }
     }
 
-    override fun scrollToTop() {
-        // scroll_view_step_three.smoothScrollTo(0, 0)
-    }
-
     private fun setupNextStep() {
         listenerStepThree.onRegisterStepThreeContinue()
     }

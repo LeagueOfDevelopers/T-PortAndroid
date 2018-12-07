@@ -12,7 +12,6 @@ import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.search_item.*
 import java.util.*
 
-
 class ViewHolderSearchItem(override val containerView: View) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 

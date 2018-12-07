@@ -104,10 +104,6 @@ class RegisterStepTwoFragment : BaseFragment() {
         edit_text_input_code.requestFocus()
     }
 
-    override fun scrollToTop() {
-        // scroll_view_step_two.smoothScrollTo(0, 0)
-    }
-
     private fun tryToGetIntFrom(string: String) {
         if (string.isNotEmpty()) {
             code = string.toInt()
