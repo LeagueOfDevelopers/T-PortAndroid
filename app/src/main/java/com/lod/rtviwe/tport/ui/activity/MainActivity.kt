@@ -21,7 +21,6 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     private var currentRegistrationStep = 1
     private var currentFragmentId = R.id.action_search
-    private var isUserEntered = false
     private var phoneNumber = 0L
     private var code = 0
 
@@ -47,6 +46,8 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         if (savedInstanceState == null) {
             setUpCurrentFragment()
         }
+
+        bottom_navigation.itemIconTintList = null
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
@@ -129,7 +130,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         R.id.action_orders -> OrdersFragment.newInstance()
         R.id.action_search -> SearchFragment.newInstance()
         R.id.action_profile -> {
-            if (isUserEntered) {
+            if (isUserEntered()) {
                 ProfileFragment.newInstance()
             } else {
                 when (currentRegistrationStep) {
@@ -144,4 +145,6 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         }
         else -> throw RuntimeException("Unknown fragment id")
     }
+
+    private fun isUserEntered() = false
 }
