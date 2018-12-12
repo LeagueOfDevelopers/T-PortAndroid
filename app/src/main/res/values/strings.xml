@@ -28,5 +28,10 @@
     <string name="notify_about_discounts">Уведомлять об акциях и скидках</string>
     <string name="notify_about_order_status">Уведомлять о статусе заказов и бронирования</string>
     <string name="image_view_logo_description" translatable="false">TPort</string>
-    <string name="image_button_change_destination" translatable="false">Change destination</string>
+    <string name="image_button_change_destination">Изменить направление</string>
+    <string name="menu_filter">Фильтр</string>
+    <string name="search_routes_toolbar_title">Поиск маршрутов</string>
+    <string name="search_routes_toolbar_begin_label">Начало:</string>
+    <string name="search_routes_toolbar_end_label">Конец:</string>
+    <string name="image_view_filter_button">Кнопка фильтрация</string>
 </resources>

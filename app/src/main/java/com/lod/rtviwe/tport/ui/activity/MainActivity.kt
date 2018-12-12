@@ -7,9 +7,11 @@ import com.lod.rtviwe.tport.ui.fragment.*
 import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepOneListener
 import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepThreeListener
 import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepTwoListener
+import com.lod.rtviwe.tport.ui.listeners.SearchListener
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTwoListener, OnRegisterStepThreeListener {
+class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTwoListener, OnRegisterStepThreeListener,
+    SearchListener {
 
     companion object {
 
@@ -20,6 +22,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     }
 
     private var currentRegistrationStep = 1
+    private var currentSearchStep = 1
     private var currentFragmentId = R.id.action_search
     private var phoneNumber = 0L
     private var code = 0
@@ -80,12 +83,21 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     }
 
     override fun onBackPressed() {
-        when (currentRegistrationStep) {
-            2 -> {
-                currentRegistrationStep = 1
-                setUpCurrentFragment()
+        when (currentFragmentId) {
+            R.id.action_profile -> when (currentRegistrationStep) {
+                2 -> {
+                    currentRegistrationStep = 1
+                    setUpCurrentFragment()
+                }
+                else -> super.onBackPressed()
             }
-            else -> super.onBackPressed()
+            R.id.action_search -> when (currentSearchStep) {
+                2 -> {
+                    currentSearchStep = 1
+                    setUpCurrentFragment()
+                }
+                else -> super.onBackPressed()
+            }
         }
     }
 
@@ -113,6 +125,11 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         this.code = code
     }
 
+    override fun onPickUpButton() {
+        currentSearchStep = 2
+        setUpCurrentFragment()
+    }
+
     private fun setUpCurrentFragment() {
         val fragmentToSet = getCurrentFragment()
 
@@ -128,23 +145,17 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     private fun getCurrentFragment() = when (currentFragmentId) {
         R.id.action_bonuses -> BonusesFragment.newInstance()
         R.id.action_orders -> OrdersFragment.newInstance()
-        R.id.action_search -> SearchFragment.newInstance()
-        R.id.action_profile -> {
-            if (isUserEntered()) {
-                ProfileFragment.newInstance()
-            } else {
-                when (currentRegistrationStep) {
-                    // TODO remove it
-                    0 -> ProfileFragment.newInstance()
-                    1 -> RegisterStepOneFragment.newInstance(phoneNumber)
-                    2 -> RegisterStepTwoFragment.newInstance(phoneNumber, code)
-                    3 -> RegisterStepThreeFragment.newInstance()
-                    else -> throw RuntimeException("Unknown registration step")
-                }
-            }
+        R.id.action_search -> when (currentSearchStep) {
+            1 -> SearchFragment.newInstance()
+            2 -> SearchRoutesFragment.newInstance()
+            else -> SearchFragment.newInstance()
+        }
+        R.id.action_profile -> when (currentRegistrationStep) {
+            1 -> RegisterStepOneFragment.newInstance(phoneNumber)
+            2 -> RegisterStepTwoFragment.newInstance(phoneNumber, code)
+            3 -> RegisterStepThreeFragment.newInstance()
+            else -> ProfileFragment.newInstance()
         }
         else -> throw RuntimeException("Unknown fragment id")
     }
-
-    private fun isUserEntered() = false
 }

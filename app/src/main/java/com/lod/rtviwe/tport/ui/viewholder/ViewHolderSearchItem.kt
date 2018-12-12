@@ -8,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.model.recyclerview.SearchItem
+import com.lod.rtviwe.tport.ui.listeners.SearchListener
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.search_item.*
 import java.util.*
@@ -15,9 +16,16 @@ import java.util.*
 class ViewHolderSearchItem(override val containerView: View) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 
+    private lateinit var searchListener: SearchListener
+
     lateinit var item: SearchItem
 
     fun bind(searchItem: SearchItem) {
+        when (containerView.context) {
+            is SearchListener -> searchListener = containerView.context as SearchListener
+            else -> throw ClassCastException("${containerView.context} does not implements SearchListener")
+        }
+
         item = searchItem
         edit_text_from_place.setText(item.fromPlace)
         edit_text_to_place.setText(item.toPlace)
@@ -50,7 +58,7 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
         }
 
         button_pick_up.setOnClickListener {
-
+            searchListener.onPickUpButton()
         }
 
         image_button_change.setOnClickListener {
