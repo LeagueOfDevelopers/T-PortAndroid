@@ -34,4 +34,5 @@
     <string name="search_routes_toolbar_begin_label">Начало:</string>
     <string name="search_routes_toolbar_end_label">Конец:</string>
     <string name="image_view_filter_button">Кнопка фильтрация</string>
+    <string name="extended_fab_search_routes">Забронировать этот маршрут</string>
 </resources>

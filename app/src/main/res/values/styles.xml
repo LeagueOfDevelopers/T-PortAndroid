@@ -124,4 +124,11 @@
         <item name="android:typeface">sans</item>
     </style>
 
+    <style name="ExtendedFab" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
 </resources>
