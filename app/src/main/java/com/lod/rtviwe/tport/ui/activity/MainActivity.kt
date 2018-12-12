@@ -16,8 +16,11 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     companion object {
 
         private const val STATE_CURRENT_FRAGMENT = "CURRENT_FRAGMENT_ID"
-        private const val STATE_REGISTRATION_STEP = "CURRENT_REGISTRATION_ID"
+        private const val STATE_REGISTRATION_STEP = "CURRENT_REGISTRATION_STEP"
+        private const val STATE_SEARCH_STEP = "CURRENT_SEARCH_STEP"
         private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STATE"
+        private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
+        private const val STATE_TO_PLACE = "TO_PLACE_STATE"
         private const val STATE_CODE = "CODE_STATE"
     }
 
@@ -59,18 +62,25 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         outState?.apply {
             putInt(STATE_CURRENT_FRAGMENT, currentFragmentId)
             putInt(STATE_REGISTRATION_STEP, currentRegistrationStep)
+            putInt(STATE_SEARCH_STEP, currentSearchStep)
             putLong(STATE_PHONE_NUMBER, phoneNumber)
+            putString(STATE_FROM_PLACE, fromPlaceText)
+            putString(STATE_TO_PLACE, toPlaceText)
             putInt(STATE_CODE, code)
         }
 
         super.onSaveInstanceState(outState)
     }
 
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         savedInstanceState?.let {
             currentFragmentId = savedInstanceState.getInt(STATE_CURRENT_FRAGMENT)
             currentRegistrationStep = savedInstanceState.getInt(STATE_REGISTRATION_STEP)
+            currentSearchStep = savedInstanceState.getInt(STATE_SEARCH_STEP)
             phoneNumber = savedInstanceState.getLong(STATE_PHONE_NUMBER)
+            fromPlaceText = savedInstanceState.getString(STATE_FROM_PLACE)
+            toPlaceText = savedInstanceState.getString(STATE_TO_PLACE)
             code = savedInstanceState.getInt(STATE_CODE)
 
             setUpCurrentFragment()

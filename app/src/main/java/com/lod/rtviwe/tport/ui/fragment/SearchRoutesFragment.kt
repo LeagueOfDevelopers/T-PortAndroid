@@ -11,7 +11,6 @@ import com.lod.rtviwe.tport.viewmodel.SearchRoutesViewModel
 import kotlinx.android.synthetic.main.search_routes_toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class SearchRoutesFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.search_routes_fragment
@@ -48,6 +47,7 @@ class SearchRoutesFragment : BaseFragment() {
         }
     }
 
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.let {
             if (it.containsKey(STATE_FROM_PLACE)) {
