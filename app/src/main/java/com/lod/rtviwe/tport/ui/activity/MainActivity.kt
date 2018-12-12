@@ -26,6 +26,8 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     private var currentFragmentId = R.id.action_search
     private var phoneNumber = 0L
     private var code = 0
+    private var fromPlaceText = ""
+    private var toPlaceText = ""
 
     override fun getLayout() = R.layout.activity_main
 
@@ -125,8 +127,10 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         this.code = code
     }
 
-    override fun onPickUpButton() {
+    override fun onPickUpButton(fromPlace: String, toPlace: String) {
         currentSearchStep = 2
+        fromPlaceText = fromPlace
+        toPlaceText = toPlace
         setUpCurrentFragment()
     }
 
@@ -147,7 +151,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         R.id.action_orders -> OrdersFragment.newInstance()
         R.id.action_search -> when (currentSearchStep) {
             1 -> SearchFragment.newInstance()
-            2 -> SearchRoutesFragment.newInstance()
+            2 -> SearchRoutesFragment.newInstance(fromPlaceText, toPlaceText)
             else -> SearchFragment.newInstance()
         }
         R.id.action_profile -> when (currentRegistrationStep) {

@@ -58,7 +58,7 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
         }
 
         button_pick_up.setOnClickListener {
-            searchListener.onPickUpButton()
+            searchListener.onPickUpButton(edit_text_from_place.text.toString(), edit_text_to_place.text.toString())
         }
 
         image_button_change.setOnClickListener {
