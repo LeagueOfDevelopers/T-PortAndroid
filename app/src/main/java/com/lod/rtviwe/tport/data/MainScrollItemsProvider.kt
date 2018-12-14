@@ -1,7 +1,7 @@
 package com.lod.rtviwe.tport.data
 
 import androidx.lifecycle.MutableLiveData
-import com.lod.rtviwe.tport.model.recyclerview.MainScrollItem
+import com.lod.rtviwe.tport.model.mainscrollitem.MainScrollItem
 
 interface MainScrollItemsProvider {
 

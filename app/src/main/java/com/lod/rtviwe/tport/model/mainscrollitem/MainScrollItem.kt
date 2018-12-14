@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.model.recyclerview
+package com.lod.rtviwe.tport.model.mainscrollitem
 
 abstract class MainScrollItem(
     var type: MainScrollItemType

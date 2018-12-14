@@ -5,15 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.model.recyclerview.LogoItem
-import com.lod.rtviwe.tport.model.recyclerview.MainScrollItem
-import com.lod.rtviwe.tport.model.recyclerview.MainScrollItemType.LOGO_ITEM
-import com.lod.rtviwe.tport.model.recyclerview.MainScrollItemType.POPULAR_ITEM
-import com.lod.rtviwe.tport.model.recyclerview.MainScrollItemType.SEARCH_ITEM
-import com.lod.rtviwe.tport.model.recyclerview.MainScrollItemType.TITLE_ITEM
-import com.lod.rtviwe.tport.model.recyclerview.PopularItem
-import com.lod.rtviwe.tport.model.recyclerview.SearchItem
-import com.lod.rtviwe.tport.model.recyclerview.TitleItem
+import com.lod.rtviwe.tport.model.mainscrollitem.*
+import com.lod.rtviwe.tport.model.mainscrollitem.MainScrollItemType.*
 import com.lod.rtviwe.tport.ui.viewholder.ViewHolderLogoItem
 import com.lod.rtviwe.tport.ui.viewholder.ViewHolderPopularItem
 import com.lod.rtviwe.tport.ui.viewholder.ViewHolderSearchItem

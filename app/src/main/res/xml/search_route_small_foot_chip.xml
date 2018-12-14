@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<chip xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      style="@style/Widget.MaterialComponents.Chip.Action"
+      android:textAppearance="@style/ChipSmallText"
+      app:chipBackgroundColor="@color/colorSmallChipFootBackground"
+      app:chipCornerRadius="2dp"
+      app:chipMinHeight="18dp"/>

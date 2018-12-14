@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.model.recyclerview
+package com.lod.rtviwe.tport.model.mainscrollitem
 
 data class LogoItem(
     var logoUrl: String = "tport_logo.png"

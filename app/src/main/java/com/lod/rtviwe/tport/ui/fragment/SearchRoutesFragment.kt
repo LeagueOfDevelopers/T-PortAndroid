@@ -5,9 +5,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
+import com.lod.rtviwe.tport.ui.adapter.SearchRoutesAdapter
 import com.lod.rtviwe.tport.ui.listeners.SearchListener
 import com.lod.rtviwe.tport.viewmodel.SearchRoutesViewModel
+import kotlinx.android.synthetic.main.search_routes_fragment.*
 import kotlinx.android.synthetic.main.search_routes_toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -34,6 +38,9 @@ class SearchRoutesFragment : BaseFragment() {
     private val searchRoutesViewModel by viewModel<SearchRoutesViewModel>()
 
     private lateinit var searchListener: SearchListener
+    private lateinit var searchRoutesAdapter: SearchRoutesAdapter
+    private lateinit var searchRoutesLayoutManager: LinearLayoutManager
+    private lateinit var searchRoutesRecyclerView: RecyclerView
 
     private var fromPlace = ""
     private var toPlace = ""
@@ -66,5 +73,15 @@ class SearchRoutesFragment : BaseFragment() {
 
         edit_text_toolbar_from_place.setText(fromPlace)
         edit_text_toolbar_to_place.setText(toPlace)
+
+        searchRoutesAdapter = SearchRoutesAdapter(context, listOf())
+        searchRoutesLayoutManager = LinearLayoutManager(context)
+
+        searchRoutesViewModel.observeAdapter(this, searchRoutesAdapter)
+
+        searchRoutesRecyclerView = recycler_view_search_routes.apply {
+            adapter = searchRoutesAdapter
+            layoutManager = searchRoutesLayoutManager
+        }
     }
 }

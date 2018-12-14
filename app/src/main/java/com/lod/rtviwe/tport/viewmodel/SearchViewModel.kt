@@ -5,10 +5,10 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.data.MockMainScroll
-import com.lod.rtviwe.tport.model.recyclerview.LogoItem
-import com.lod.rtviwe.tport.model.recyclerview.MainScrollItemType
-import com.lod.rtviwe.tport.model.recyclerview.SearchItem
-import com.lod.rtviwe.tport.model.recyclerview.TitleItem
+import com.lod.rtviwe.tport.model.mainscrollitem.LogoItem
+import com.lod.rtviwe.tport.model.mainscrollitem.MainScrollItemType
+import com.lod.rtviwe.tport.model.mainscrollitem.SearchItem
+import com.lod.rtviwe.tport.model.mainscrollitem.TitleItem
 import com.lod.rtviwe.tport.ui.adapter.SearchAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

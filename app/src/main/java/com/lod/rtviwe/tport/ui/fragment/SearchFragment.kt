@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.model.recyclerview.SearchItem
+import com.lod.rtviwe.tport.model.mainscrollitem.SearchItem
 import com.lod.rtviwe.tport.ui.adapter.SearchAdapter
 import com.lod.rtviwe.tport.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.search_fragment.*

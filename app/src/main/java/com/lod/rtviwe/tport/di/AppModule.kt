@@ -1,6 +1,6 @@
 package com.lod.rtviwe.tport.di
 
-import com.lod.rtviwe.tport.model.recyclerview.SearchItem
+import com.lod.rtviwe.tport.model.mainscrollitem.SearchItem
 import com.lod.rtviwe.tport.viewmodel.*
 import com.redmadrobot.inputmask.helper.Mask
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
