@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- https://stackoverflow.com/questions/26743325/appcompat-v21-toolbar-elevation-pre-lollipop -->
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:elevation="4dp"
+        app:cardCornerRadius="0dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_search_routes"
+                android:layout_width="match_parent"
+                android:layout_height="?android:actionBarSize"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                    android:id="@+id/text_view_search_routes_toolbar_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    style="@style/TextViewSmallHeader"
+                    android:text="@string/search_routes_toolbar_title"/>
+
+            <ImageButton
+                    android:id="@+id/button_filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="@string/image_view_filter_button"
+                    android:text=""
+                    android:background="@color/colorTransparent"
+                    android:layout_gravity="end"
+                    app:srcCompat="@drawable/ic_filter_list_black_24dp"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+                android:id="@+id/text_view_toolbar_from_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/search_routes_toolbar_begin_label"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_search_routes"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/text_view_toolbar_to_place"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_toolbar_from_place"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:enabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text_view_toolbar_from_place"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_search_routes"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintBottom_toTopOf="@+id/edit_text_toolbar_to_place"
+                tools:text="@tools:sample/cities"/>
+
+        <TextView
+                android:id="@+id/text_view_toolbar_to_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/search_routes_toolbar_end_label"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_toolbar_from_place"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_toolbar_to_place"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:enabled="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="@tools:sample/cities"
+                app:layout_constraintTop_toBottomOf="@+id/edit_text_toolbar_from_place"
+                app:layout_constraintStart_toStartOf="@+id/edit_text_toolbar_from_place"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -7,4 +7,10 @@
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="colorButtonBackground">#FFFFFF</color>
     <color name="colorSecondTest">#B2AFB3</color>
+    <color name="colorSmallChipTaxiBackground">#F9A825</color>
+    <color name="colorSmallChipAirplaneBackground">#42A5F5</color>
+    <color name="colorSmallChipTrainBackground">#388E3C</color>
+    <color name="colorSmallChipShipBackground">#D81B60</color>
+    <color name="colorSmallChipFootBackground">#6D4C41</color>
+    <color name="colorStroke">#000000</color>
 </resources>

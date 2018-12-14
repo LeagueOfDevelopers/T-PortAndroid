@@ -1,12 +1,14 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlHighlight">@color/colorPrimaryRipple</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
     </style>
 
     <style name="TextViewOnSearchItem" parent="Theme.MaterialComponents.Light">
@@ -117,6 +119,34 @@
 
     <style name="SwitchSettings" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="ExtendedFab" parent="Widget.MaterialComponents.Button.TextButton.Icon">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:backgroundTint">@color/colorAccent</item>
+    </style>
+
+    <style name="TextViewMoneyOnSearchRoute" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@android:color/holo_orange_dark</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="ChipSmallText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="ChipBigText">
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textStyle">normal</item>
         <item name="android:typeface">sans</item>

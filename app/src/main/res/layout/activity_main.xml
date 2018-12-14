@@ -24,7 +24,7 @@
             android:clickable="true"
             android:focusable="true"
             app:labelVisibilityMode="labeled"
-            app:menu="@menu/bottom_navigation_main"
+            app:menu="@menu/bottom_navigation_main_menu"
             app:itemTextColor="@android:color/black"
             app:itemIconTint="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
