@@ -82,6 +82,17 @@ class SearchRoutesFragment : BaseFragment() {
         searchRoutesRecyclerView = recycler_view_search_routes.apply {
             adapter = searchRoutesAdapter
             layoutManager = searchRoutesLayoutManager
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+
+                    if (dy > 0 && fab_search_routes.isShown) {
+                        fab_search_routes.hide()
+                    } else if (dy < 0 && !fab_search_routes.isShown) {
+                        fab_search_routes.show()
+                    }
+                }
+            })
         }
     }
 }

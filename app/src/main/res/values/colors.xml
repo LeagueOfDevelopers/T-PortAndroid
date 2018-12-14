@@ -12,4 +12,5 @@
     <color name="colorSmallChipTrainBackground">#008000</color>
     <color name="colorSmallChipShipBackground">#FFFFFF</color>
     <color name="colorSmallChipFootBackground">#FFFFFF</color>
+    <color name="colorStroke">#000000</color>
 </resources>

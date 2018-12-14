@@ -128,7 +128,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
+        <item name="android:backgroundTint">@color/colorAccent</item>
     </style>
 
     <style name="TextViewMoneyOnSearchRoute" parent="Theme.MaterialComponents.Light">
