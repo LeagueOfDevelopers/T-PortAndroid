@@ -15,71 +15,73 @@ object MockSearchRoutes : SearchRoutesItemsProvider {
                 SearchRouteItem(
                     "9 ч 41 мин", 420, listOf(
                         RouteItemChip("Uber", RouteType.TAXI, 420),
+                        RouteItemChip("Plane", RouteType.AIRPLANE, 2880),
+                        RouteItemChip("Aero", RouteType.TRAIN, 500)
+                    )
+                ),
+                SearchRouteItem(
+                    "9 ч 41 мин", 420, listOf(
+                        RouteItemChip("UberX", RouteType.TAXI, 420),
                         RouteItemChip("Aeroflot", RouteType.AIRPLANE, 2880),
                         RouteItemChip("Aeroexpress", RouteType.TRAIN, 500)
                     )
                 ),
                 SearchRouteItem(
                     "9 ч 41 мин", 420, listOf(
-                        RouteItemChip("Uber", RouteType.TAXI, 420),
+                        RouteItemChip("UberX", RouteType.TAXI, 420),
                         RouteItemChip("Aeroflot", RouteType.AIRPLANE, 2880),
-                        RouteItemChip("Aeroexpress", RouteType.TRAIN, 500)
+                        RouteItemChip("Aeroexpress", RouteType.TRAIN, 500),
+                        RouteItemChip("Ferry", RouteType.SHIP, 1488),
+                        RouteItemChip("Machu Picchu", RouteType.FOOT, 0)
                     )
                 ),
                 SearchRouteItem(
                     "9 ч 41 мин", 420, listOf(
                         RouteItemChip("Uber", RouteType.TAXI, 420),
-                        RouteItemChip("Aeroflot", RouteType.AIRPLANE, 2880),
-                        RouteItemChip("Aeroexpress", RouteType.TRAIN, 500)
+                        RouteItemChip("Plane", RouteType.AIRPLANE, 2880),
+                        RouteItemChip("Aero", RouteType.TRAIN, 500)
                     )
                 ),
                 SearchRouteItem(
                     "9 ч 41 мин", 420, listOf(
                         RouteItemChip("Uber", RouteType.TAXI, 420),
-                        RouteItemChip("Aeroflot", RouteType.AIRPLANE, 2880),
-                        RouteItemChip("Aeroexpress", RouteType.TRAIN, 500)
+                        RouteItemChip("Plane", RouteType.AIRPLANE, 2880),
+                        RouteItemChip("Aero", RouteType.TRAIN, 500)
                     )
                 ),
                 SearchRouteItem(
                     "9 ч 41 мин", 420, listOf(
                         RouteItemChip("Uber", RouteType.TAXI, 420),
-                        RouteItemChip("Aeroflot", RouteType.AIRPLANE, 2880),
-                        RouteItemChip("Aeroexpress", RouteType.TRAIN, 500)
+                        RouteItemChip("Plane", RouteType.AIRPLANE, 2880),
+                        RouteItemChip("Aero", RouteType.TRAIN, 500)
                     )
                 ),
                 SearchRouteItem(
                     "9 ч 41 мин", 420, listOf(
                         RouteItemChip("Uber", RouteType.TAXI, 420),
-                        RouteItemChip("Aeroflot", RouteType.AIRPLANE, 2880),
-                        RouteItemChip("Aeroexpress", RouteType.TRAIN, 500)
+                        RouteItemChip("Plane", RouteType.AIRPLANE, 2880),
+                        RouteItemChip("Aero", RouteType.TRAIN, 500)
                     )
                 ),
                 SearchRouteItem(
                     "9 ч 41 мин", 420, listOf(
                         RouteItemChip("Uber", RouteType.TAXI, 420),
-                        RouteItemChip("Aeroflot", RouteType.AIRPLANE, 2880),
-                        RouteItemChip("Aeroexpress", RouteType.TRAIN, 500)
+                        RouteItemChip("Plane", RouteType.AIRPLANE, 2880),
+                        RouteItemChip("Aero", RouteType.TRAIN, 500)
                     )
                 ),
                 SearchRouteItem(
                     "9 ч 41 мин", 420, listOf(
                         RouteItemChip("Uber", RouteType.TAXI, 420),
-                        RouteItemChip("Aeroflot", RouteType.AIRPLANE, 2880),
-                        RouteItemChip("Aeroexpress", RouteType.TRAIN, 500)
+                        RouteItemChip("Plane", RouteType.AIRPLANE, 2880),
+                        RouteItemChip("Aero", RouteType.TRAIN, 500)
                     )
                 ),
                 SearchRouteItem(
                     "9 ч 41 мин", 420, listOf(
                         RouteItemChip("Uber", RouteType.TAXI, 420),
-                        RouteItemChip("Aeroflot", RouteType.AIRPLANE, 2880),
-                        RouteItemChip("Aeroexpress", RouteType.TRAIN, 500)
-                    )
-                ),
-                SearchRouteItem(
-                    "9 ч 41 мин", 420, listOf(
-                        RouteItemChip("Uber", RouteType.TAXI, 420),
-                        RouteItemChip("Aeroflot", RouteType.AIRPLANE, 2880),
-                        RouteItemChip("Aeroexpress", RouteType.TRAIN, 500)
+                        RouteItemChip("Plane", RouteType.AIRPLANE, 2880),
+                        RouteItemChip("Aero", RouteType.TRAIN, 500)
                     )
                 )
             )

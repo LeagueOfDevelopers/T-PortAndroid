@@ -26,10 +26,11 @@
 
         <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chip_group_small_routes"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_route_time"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -55,12 +56,12 @@
                 android:layout_marginTop="48dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_search_route_cost"/>
+                app:layout_constraintTop_toBottomOf="@+id/chip_group_small_routes"/>
 
         <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chip_group_big_routes"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
