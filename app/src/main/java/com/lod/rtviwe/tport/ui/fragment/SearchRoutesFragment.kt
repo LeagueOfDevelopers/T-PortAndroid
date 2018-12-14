@@ -86,11 +86,12 @@ class SearchRoutesFragment : BaseFragment() {
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
-
                     if (dy > 0) {
                         fab_search_routes.visibility = View.INVISIBLE
+                        // fab_search_routes.animate().yBy(-200f).setDuration(200).start()
                     } else if (dy < 0) {
                         fab_search_routes.visibility = View.VISIBLE
+                        // fab_search_routes.animate().yBy(200f).setDuration(200).start()
                     }
                 }
             })

@@ -27,7 +27,7 @@ class ViewHolderSearchRouteItem(override val containerView: View) : RecyclerView
         chip_group_small_routes.removeAllViews()
         chip_group_big_routes.removeAllViews()
         chip_group_small_routes.chipSpacingHorizontal = 0
-        chip_group_small_routes.chipSpacingVertical = 32
+        chip_group_small_routes.chipSpacingVertical = 16
 
         item.chips.forEach {
             val smallChip = Chip(containerView.context).apply {
