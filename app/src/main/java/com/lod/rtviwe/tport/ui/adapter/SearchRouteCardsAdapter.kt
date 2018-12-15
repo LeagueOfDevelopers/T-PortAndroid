@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Trip
-import com.lod.rtviwe.tport.ui.viewholder.ViewHolderRouteCardItem
+import com.lod.rtviwe.tport.ui.viewholder.ViewHolderTripItem
 
 class SearchRouteCardsAdapter(
     private val context: Context?,
@@ -16,13 +16,13 @@ class SearchRouteCardsAdapter(
     override fun getItemCount() = tripsList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolderRouteCardItem(
+        ViewHolderTripItem(
             LayoutInflater.from(context)
                 .inflate(R.layout.search_route_card, parent, false)
         )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ViewHolderRouteCardItem).bind(tripsList[position])
+        (holder as ViewHolderTripItem).bind(tripsList[position])
     }
 
     fun setData(newData: List<Trip>) {
