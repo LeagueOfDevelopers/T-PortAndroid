@@ -34,4 +34,5 @@
     <string name="search_routes_toolbar_end_label">End:</string>
     <string name="image_view_filter_button">Filter button</string>
     <string name="extended_fab_search_routes">Book this route</string>
+    <string name="image_view_route_type_description">Image of route type</string>
 </resources>

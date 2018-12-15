@@ -85,7 +85,7 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
     }
 
     private fun callDateTimePicker() {
-        val calendar = Calendar.getInstance()
+        val calendar = GregorianCalendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
