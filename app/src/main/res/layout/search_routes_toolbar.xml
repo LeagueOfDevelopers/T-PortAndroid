@@ -5,9 +5,9 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:elevation="4dp"
-        app:cardCornerRadius="0dp"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        app:cardCornerRadius="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -86,9 +86,9 @@
                 android:enabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:text="@tools:sample/cities"
                 app:layout_constraintTop_toBottomOf="@+id/edit_text_toolbar_from_place"
-                app:layout_constraintStart_toStartOf="@+id/edit_text_toolbar_from_place"/>
+                app:layout_constraintStart_toStartOf="@+id/edit_text_toolbar_from_place"
+                tools:text="@tools:sample/cities"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

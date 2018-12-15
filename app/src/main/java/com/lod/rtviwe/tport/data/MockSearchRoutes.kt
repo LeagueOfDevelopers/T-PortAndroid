@@ -17,27 +17,41 @@ object MockSearchRoutes : SearchRoutesItemsProvider {
                     "Moscow",
                     "Piter",
                     "",
-                    420,
+                    8970,
                     GregorianCalendar.getInstance().time,
                     listOf(
                         Route(
-                            "Uber",
+                            "UberX",
                             RouteType.TAXI,
                             420,
                             "A",
                             "B"
                         ),
                         Route(
-                            "Plane",
+                            "Aeroflot",
                             RouteType.AIRPLANE,
-                            2880,
+                            7700,
                             "A",
                             "B"
                         ),
                         Route(
-                            "Aero",
+                            "Aeroexpress",
                             RouteType.TRAIN,
                             500,
+                            "A",
+                            "B"
+                        ),
+                        Route(
+                            "Ferry",
+                            RouteType.SHIP,
+                            350,
+                            "A",
+                            "B"
+                        ),
+                        Route(
+                            "Machu Picchu",
+                            RouteType.FOOT,
+                            0,
                             "A",
                             "B"
                         )

@@ -83,18 +83,17 @@ class SearchRoutesFragment : BaseFragment() {
             adapter = searchRouteCardsAdapter
             layoutManager = searchRoutesLayoutManager
 
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                    if (dy > 0) {
-                        fab_search_routes.hide()
-                        // fab_search_routes.animate().yBy(-200f).setDuration(200).start()
-                    } else if (dy < 0) {
-                        fab_search_routes.show()
-                        // fab_search_routes.animate().yBy(200f).setDuration(200).start()
-                    }
-                }
-            })
+            // TODO move to next search step
+//            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                    super.onScrolled(recyclerView, dx, dy)
+//                    if (dy > 0) {
+//                        fab_search_routes.hide()
+//                    } else if (dy < 0) {
+//                        fab_search_routes.show()
+//                    }
+//                }
+//            })
         }
     }
 }

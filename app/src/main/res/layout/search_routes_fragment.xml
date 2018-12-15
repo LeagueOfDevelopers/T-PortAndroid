@@ -21,7 +21,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <!-- Variant 1 -->
+    <!--<com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_search_routes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,8 +38,9 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            style="@style/ExtendedFab"/>
+            style="@style/ExtendedFab"/> -->
 
+    <!-- Variant 2 -->
     <!--<com.google.android.material.button.MaterialButton
             android:id="@+id/fab_search_routes"
             android:layout_width="match_parent"

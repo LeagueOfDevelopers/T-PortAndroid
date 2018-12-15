@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Trip
-import com.lod.rtviwe.tport.ui.viewholder.ViewHolderMyOrderItem
+import com.lod.rtviwe.tport.ui.viewholder.ViewHolderOrderItem
 
 class OrdersAdapter(
     private val context: Context?,
@@ -16,13 +16,13 @@ class OrdersAdapter(
     override fun getItemCount() = tripsList.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolderMyOrderItem(
+        ViewHolderOrderItem(
             LayoutInflater.from(context)
-                .inflate(R.layout.my_order_route_item, parent, false)
+                .inflate(R.layout.order_item, parent, false)
         )
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as ViewHolderMyOrderItem).bind(tripsList[position])
+        (holder as ViewHolderOrderItem).bind(tripsList[position])
     }
 
     fun setData(newData: List<Trip>) {

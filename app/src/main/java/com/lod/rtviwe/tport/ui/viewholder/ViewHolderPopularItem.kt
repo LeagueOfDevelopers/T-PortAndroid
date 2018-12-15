@@ -18,8 +18,8 @@ class ViewHolderPopularItem(override val containerView: View) : RecyclerView.Vie
             .load(popularItem.backgroundUrl)
             .into(image_view_popular_item_background)
 
-//        card_view_popular_item.setOnClickListener {
-//
-//        }
+        card_view_popular_item.setOnClickListener {
+
+        }
     }
 }
