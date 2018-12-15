@@ -2,7 +2,7 @@ package com.lod.rtviwe.tport.ui.viewholder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.lod.rtviwe.tport.model.mainscrollitem.TitleItem
+import com.lod.rtviwe.tport.model.searchfragment.TitleItem
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.title_item.*
 

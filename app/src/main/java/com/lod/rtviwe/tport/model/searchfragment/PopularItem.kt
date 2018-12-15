@@ -1,7 +1,7 @@
-package com.lod.rtviwe.tport.model.mainscrollitem
+package com.lod.rtviwe.tport.model.searchfragment
 
 data class PopularItem(
     var placeFrom: String,
     val placeTo: String,
     var backgroundUrl: String
-) : MainScrollItem(MainScrollItemType.POPULAR_ITEM)
+) : SearchScrollItem(SearchItemType.POPULAR_ITEM)

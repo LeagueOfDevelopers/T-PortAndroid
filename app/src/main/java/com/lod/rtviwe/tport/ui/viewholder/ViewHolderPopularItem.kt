@@ -3,7 +3,7 @@ package com.lod.rtviwe.tport.ui.viewholder
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.lod.rtviwe.tport.model.mainscrollitem.PopularItem
+import com.lod.rtviwe.tport.model.searchfragment.PopularItem
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.popular_item.*
 

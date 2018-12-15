@@ -1,7 +1,7 @@
-package com.lod.rtviwe.tport.model.mainscrollitem
+package com.lod.rtviwe.tport.model.searchfragment
 
 data class SearchItem(
     var fromPlace: String,
     var toPlace: String,
     var travelTime: String
-) : MainScrollItem(MainScrollItemType.SEARCH_ITEM)
+) : SearchScrollItem(SearchItemType.SEARCH_ITEM)
