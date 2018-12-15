@@ -13,138 +13,52 @@ object MockMainScroll : MainScrollItemsProvider {
             mutableListOf(
                 PopularItem(
                     "Moscow",
+                    "Piter",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
+                    "Piter",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
+                    "Piter",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
+                    "Piter",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
+                    "Piter",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
+                    "Piter",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
+                    "Piter",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
+                    "Piter",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
+                    "Piter",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
-                    "https://i1.photocentra.ru/images/main78/781689_main.jpg"
-                ),
-                PopularItem(
-                    "Moscow",
+                    "Piter",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 )
             )
