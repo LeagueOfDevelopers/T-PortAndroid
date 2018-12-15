@@ -11,7 +11,8 @@ class ViewHolderPopularItem(override val containerView: View) : RecyclerView.Vie
     LayoutContainer {
 
     fun bind(popularItem: PopularItem) {
-        text_view_popular_item_name.text = popularItem.name
+        text_view_popular_item_place_from.text = popularItem.placeFrom
+        text_view_popular_item_place_to.text = popularItem.placeTo
 
         Glide.with(containerView.context)
             .load(popularItem.backgroundUrl)

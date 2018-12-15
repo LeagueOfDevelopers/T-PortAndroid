@@ -1,14 +1,11 @@
 <resources>
-
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlHighlight">@color/colorPrimaryRipple</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
     </style>
 
     <style name="TextViewOnSearchItem" parent="Theme.MaterialComponents.Light">
@@ -138,15 +135,8 @@
         <item name="android:typeface">sans</item>
     </style>
 
-    <style name="ChipSmallText">
+    <style name="TextViewRouteItem" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
-    </style>
-
-    <style name="ChipBigText">
-        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textStyle">normal</item>
         <item name="android:typeface">sans</item>

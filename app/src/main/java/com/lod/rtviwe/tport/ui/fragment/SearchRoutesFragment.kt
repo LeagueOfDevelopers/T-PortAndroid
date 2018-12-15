@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.ui.adapter.SearchRoutesAdapter
+import com.lod.rtviwe.tport.ui.adapter.SearchRouteCardsAdapter
 import com.lod.rtviwe.tport.ui.listeners.SearchListener
 import com.lod.rtviwe.tport.viewmodel.SearchRoutesViewModel
 import kotlinx.android.synthetic.main.search_routes_fragment.*
@@ -38,7 +38,7 @@ class SearchRoutesFragment : BaseFragment() {
     private val searchRoutesViewModel by viewModel<SearchRoutesViewModel>()
 
     private lateinit var searchListener: SearchListener
-    private lateinit var searchRoutesAdapter: SearchRoutesAdapter
+    private lateinit var searchRouteCardsAdapter: SearchRouteCardsAdapter
     private lateinit var searchRoutesLayoutManager: LinearLayoutManager
     private lateinit var searchRoutesRecyclerView: RecyclerView
 
@@ -74,27 +74,26 @@ class SearchRoutesFragment : BaseFragment() {
         edit_text_toolbar_from_place.setText(fromPlace)
         edit_text_toolbar_to_place.setText(toPlace)
 
-        searchRoutesAdapter = SearchRoutesAdapter(context, listOf())
+        searchRouteCardsAdapter = SearchRouteCardsAdapter(context, listOf())
         searchRoutesLayoutManager = LinearLayoutManager(context)
 
-        searchRoutesViewModel.observeAdapter(this, searchRoutesAdapter)
+        searchRoutesViewModel.observeAdapter(this, searchRouteCardsAdapter)
 
         searchRoutesRecyclerView = recycler_view_search_routes.apply {
-            adapter = searchRoutesAdapter
+            adapter = searchRouteCardsAdapter
             layoutManager = searchRoutesLayoutManager
 
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    super.onScrolled(recyclerView, dx, dy)
-                    if (dy > 0) {
-                        fab_search_routes.visibility = View.INVISIBLE
-                        // fab_search_routes.animate().yBy(-200f).setDuration(200).start()
-                    } else if (dy < 0) {
-                        fab_search_routes.visibility = View.VISIBLE
-                        // fab_search_routes.animate().yBy(200f).setDuration(200).start()
-                    }
-                }
-            })
+            // TODO move to next search step
+//            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                    super.onScrolled(recyclerView, dx, dy)
+//                    if (dy > 0) {
+//                        fab_search_routes.hide()
+//                    } else if (dy < 0) {
+//                        fab_search_routes.show()
+//                    }
+//                }
+//            })
         }
     }
 }
