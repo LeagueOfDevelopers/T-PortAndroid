@@ -8,7 +8,7 @@ class TPortApplication : Application() {
 
     companion object {
 
-        const val URL = ""
+        const val URL = "http://tport-test.lod-misis.ru/"
     }
 
     override fun onCreate() {

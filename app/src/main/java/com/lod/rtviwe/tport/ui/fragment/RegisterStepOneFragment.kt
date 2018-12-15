@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.lod.rtviwe.tport.R
+import com.lod.rtviwe.tport.network.RegistrationApi
 import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepOneListener
 import com.lod.rtviwe.tport.viewmodel.RegisterViewModel
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import kotlinx.android.synthetic.main.register_step_one_fragment.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class RegisterStepOneFragment : BaseFragment() {
@@ -30,6 +32,7 @@ class RegisterStepOneFragment : BaseFragment() {
     }
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
+    private val registrationApi by inject<RegistrationApi>()
 
     private lateinit var listenerStepOne: OnRegisterStepOneListener
     private var phoneNumber = 0L
@@ -87,7 +90,7 @@ class RegisterStepOneFragment : BaseFragment() {
     private fun checkPhoneNumber(phoneNumber: Long) = phoneNumber.toString().length == PHONE_NUMBER_LENGTH
 
     private fun setupNextStep() {
-        registerViewModel.sendCodeToPhoneNumber(phoneNumber)
+        registerViewModel.sendCodeToPhoneNumber(phoneNumber, registrationApi)
         listenerStepOne.onRegisterStepOneContinue(phoneNumber)
     }
 
