@@ -2,7 +2,7 @@ package com.lod.rtviwe.tport.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.lod.rtviwe.tport.TPortApplication
-import com.lod.rtviwe.tport.model.mainscrollitem.SearchItem
+import com.lod.rtviwe.tport.model.searchfragment.SearchItem
 import com.lod.rtviwe.tport.network.RegistrationApi
 import com.lod.rtviwe.tport.viewmodel.*
 import com.redmadrobot.inputmask.helper.Mask

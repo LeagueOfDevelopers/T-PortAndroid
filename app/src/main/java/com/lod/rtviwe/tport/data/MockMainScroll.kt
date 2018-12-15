@@ -1,14 +1,14 @@
 package com.lod.rtviwe.tport.data
 
 import androidx.lifecycle.MutableLiveData
-import com.lod.rtviwe.tport.model.mainscrollitem.MainScrollItem
-import com.lod.rtviwe.tport.model.mainscrollitem.PopularItem
+import com.lod.rtviwe.tport.model.searchfragment.PopularItem
+import com.lod.rtviwe.tport.model.searchfragment.SearchScrollItem
 
 object MockMainScroll : MainScrollItemsProvider {
 
-    override fun getItems(): MutableLiveData<MutableList<MainScrollItem>> = data
+    override fun getItems(): MutableLiveData<MutableList<SearchScrollItem>> = data
 
-    var data = MutableLiveData<MutableList<MainScrollItem>>().apply {
+    var data = MutableLiveData<MutableList<SearchScrollItem>>().apply {
         postValue(
             mutableListOf(
                 PopularItem(

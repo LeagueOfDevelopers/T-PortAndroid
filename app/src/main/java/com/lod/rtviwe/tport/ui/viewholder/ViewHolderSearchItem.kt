@@ -7,7 +7,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
-import com.lod.rtviwe.tport.model.mainscrollitem.SearchItem
+import com.lod.rtviwe.tport.model.searchfragment.SearchItem
 import com.lod.rtviwe.tport.ui.listeners.SearchListener
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.search_item.*
