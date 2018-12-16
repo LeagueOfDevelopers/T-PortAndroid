@@ -22,10 +22,10 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     companion object {
 
-        fun newInstance(phoneNumber: Long, code: Int): RegisterStepTwoFragment {
+        fun newInstance(phoneNumber: Long, code: String): RegisterStepTwoFragment {
             val newArguments = Bundle().apply {
                 putLong(STATE_PHONE_NUMBER, phoneNumber)
-                putInt(STATE_CODE, code)
+                putString(STATE_CODE, code)
             }
             return RegisterStepTwoFragment().apply {
                 arguments = newArguments
@@ -44,7 +44,7 @@ class RegisterStepTwoFragment : BaseFragment() {
     private lateinit var listenerStepTwo: OnRegisterStepTwoListener
 
     private var phoneNumber = 0L
-    private var code = 0
+    private var code = ""
 
     override fun getLayout() = R.layout.register_step_two_fragment
 
@@ -63,7 +63,7 @@ class RegisterStepTwoFragment : BaseFragment() {
                 phoneNumber = it.getLong(STATE_PHONE_NUMBER)
             }
             if (it.containsKey(STATE_CODE)) {
-                code = it.getInt(STATE_CODE)
+                code = it.getString(STATE_CODE)!!
             }
         }
 
@@ -82,9 +82,7 @@ class RegisterStepTwoFragment : BaseFragment() {
         )
         text_view_register_step_two_phone_number.text = res.formattedText.string
 
-        if (code != 0) {
-            edit_text_input_code.setText("$code")
-        }
+        edit_text_input_code.setText(code)
 
         edit_text_input_code.hint = MaskedTextChangedListener.installOn(
             edit_text_input_code,
@@ -92,8 +90,8 @@ class RegisterStepTwoFragment : BaseFragment() {
             object : MaskedTextChangedListener.ValueListener {
                 override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
                     try {
-                        listenerStepTwo.saveCode(code)
-                        tryToGetIntFrom(extractedValue)
+                        code = extractedValue
+                        listenerStepTwo.saveCode(extractedValue)
 
                         extractedValue.forEachIndexed { index, char ->
                             val numberImageResource = getNumberDrawable(char)
@@ -133,19 +131,12 @@ class RegisterStepTwoFragment : BaseFragment() {
         }
     }
 
-    private fun tryToGetIntFrom(string: String) {
-        if (string.isNotEmpty()) {
-            code = string.toInt()
-            listenerStepTwo.saveCode(code)
-        }
-    }
-
     private fun showError() {
         Timber.e("Wrong code input")
         edit_text_input_code.error = getString(R.string.error_wrong_code)
     }
 
-    private fun checkCodeLength(code: Int) = code.toString().length == CODE_LENGTH
+    private fun checkCodeLength(code: String) = (code.length == CODE_LENGTH)
 
     private fun setupNextStep() {
         listenerStepTwo.onRegisterStepTwoContinue()
@@ -153,8 +144,10 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     private fun showKeyboard() {
         edit_text_input_code.post {
-            val imm = activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.showSoftInput(edit_text_input_code, 0)
+            activity?.let {
+                val imm = activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(edit_text_input_code, 0)
+            }
         }
     }
 
