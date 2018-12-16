@@ -3,6 +3,7 @@ package com.lod.rtviwe.tport
 import android.app.Application
 import com.lod.rtviwe.tport.di.mainModule
 import org.koin.android.ext.android.startKoin
+import timber.log.Timber
 
 class TPortApplication : Application() {
 
@@ -13,6 +14,7 @@ class TPortApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Timber.plant(Timber.DebugTree())
         startKoin(this, listOf(mainModule))
     }
 }
