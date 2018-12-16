@@ -11,7 +11,7 @@ interface OnRegisterStepTwoListener {
 
     fun onRegisterStepTwoContinue()
 
-    fun saveCode(code: Int)
+    fun saveCode(code: String)
 }
 
 interface OnRegisterStepThreeListener {

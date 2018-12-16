@@ -28,7 +28,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     private var currentSearchStep = 1
     private var currentFragmentId = R.id.action_search
     private var phoneNumber = 0L
-    private var code = 0
+    private var code = ""
     private var fromPlaceText = ""
     private var toPlaceText = ""
 
@@ -66,7 +66,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
             putLong(STATE_PHONE_NUMBER, phoneNumber)
             putString(STATE_FROM_PLACE, fromPlaceText)
             putString(STATE_TO_PLACE, toPlaceText)
-            putInt(STATE_CODE, code)
+            putString(STATE_CODE, code)
         }
 
         super.onSaveInstanceState(outState)
@@ -81,7 +81,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
             phoneNumber = savedInstanceState.getLong(STATE_PHONE_NUMBER)
             fromPlaceText = savedInstanceState.getString(STATE_FROM_PLACE)
             toPlaceText = savedInstanceState.getString(STATE_TO_PLACE)
-            code = savedInstanceState.getInt(STATE_CODE)
+            code = savedInstanceState.getString(STATE_CODE)
 
             setUpCurrentFragment()
         }
@@ -133,7 +133,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         this.phoneNumber = phoneNumber
     }
 
-    override fun saveCode(code: Int) {
+    override fun saveCode(code: String) {
         this.code = code
     }
 
