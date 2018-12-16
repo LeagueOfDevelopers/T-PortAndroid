@@ -31,41 +31,82 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_did_send_code"
+                app:layout_constraintEnd_toEndOf="@+id/text_view_did_send_code"
+                app:layout_constraintHorizontal_bias="0.0"
                 tools:text="@tools:sample/us_phones"
                 style="@style/TextViewHeader"/>
 
         <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_text_input_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="8dp"
                 android:inputType="number"
                 android:digits="0123456789 .-"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="@tools:sample/us_zipcodes"
                 style="@style/EditTextCode"/>
+
+        <ImageView
+                android:id="@+id/image_view_code_first"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_ac_unit_black_24dp"
+                android:contentDescription="@string/image_view_code_first"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+                android:id="@+id/image_view_code_second"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_ac_unit_black_24dp"
+                android:contentDescription="@string/image_view_code_second"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
+                app:layout_constraintStart_toEndOf="@+id/image_view_code_first"/>
+
+        <ImageView
+                android:id="@+id/image_view_code_third"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_ac_unit_black_24dp"
+                android:contentDescription="@string/image_view_code_third"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
+                app:layout_constraintStart_toEndOf="@+id/image_view_code_second"/>
+
+        <ImageView
+                android:id="@+id/image_view_code_fourth"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_ac_unit_black_24dp"
+                android:contentDescription="@string/image_view_code_fourth"
+                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
+                app:layout_constraintStart_toEndOf="@+id/image_view_code_third"/>
 
         <TextView
                 android:id="@+id/text_view_did_get_code_question"
                 android:text="@string/did_get_code_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintTop_toBottomOf="@+id/edit_text_input_code"
+                android:layout_marginStart="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_view_code_first"
                 style="@style/TextViewInformation"/>
 
         <com.google.android.material.button.MaterialButton

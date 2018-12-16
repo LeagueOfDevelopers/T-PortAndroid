@@ -35,4 +35,8 @@
     <string name="image_view_filter_button">Filter button</string>
     <string name="extended_fab_search_routes">Book this route</string>
     <string name="image_view_route_type_description">Image of route type</string>
+    <string name="image_view_code_first">First number of code</string>
+    <string name="image_view_code_second">Second number of code</string>
+    <string name="image_view_code_third">Third number of code</string>
+    <string name="image_view_code_fourth">Fourth number of code</string>
 </resources>

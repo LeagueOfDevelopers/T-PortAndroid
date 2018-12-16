@@ -36,4 +36,8 @@
     <string name="image_view_filter_button">Кнопка фильтрация</string>
     <string name="extended_fab_search_routes">Забронировать этот маршрут</string>
     <string name="image_view_route_type_description">Картинка типа маршрута</string>
+    <string name="image_view_code_first">Первая цифра кода</string>
+    <string name="image_view_code_second">Вторая цифра кода</string>
+    <string name="image_view_code_third">Третья цифра кода</string>
+    <string name="image_view_code_fourth">Четвёртая цифра кода</string>
 </resources>
