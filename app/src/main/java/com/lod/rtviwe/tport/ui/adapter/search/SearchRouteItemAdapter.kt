@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.ui.adapter
+package com.lod.rtviwe.tport.ui.adapter.search
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Route
-import com.lod.rtviwe.tport.ui.viewholder.ViewHolderRouteItem
+import com.lod.rtviwe.tport.ui.viewholder.searchfragment.ViewHolderRouteItem
 
 class SearchRouteItemAdapter(
     private val context: Context?,

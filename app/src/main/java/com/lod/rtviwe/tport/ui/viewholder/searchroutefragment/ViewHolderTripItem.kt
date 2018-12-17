@@ -1,11 +1,11 @@
-package com.lod.rtviwe.tport.ui.viewholder
+package com.lod.rtviwe.tport.ui.viewholder.searchroutefragment
 
 import android.annotation.SuppressLint
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.model.Trip
-import com.lod.rtviwe.tport.ui.adapter.SearchRouteItemAdapter
+import com.lod.rtviwe.tport.ui.adapter.search.SearchRouteItemAdapter
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.search_route_card.*
 import java.text.SimpleDateFormat
@@ -22,7 +22,7 @@ class ViewHolderTripItem(override val containerView: View) : RecyclerView.ViewHo
         val searchRouteItemAdapter = SearchRouteItemAdapter(containerView.context, listOf())
         val searchRoutesLayoutManager = LinearLayoutManager(containerView.context, RecyclerView.HORIZONTAL, false)
 
-        searchRouteItemAdapter.setData(tripItem.items)
+        searchRouteItemAdapter.setData(tripItem.routes)
 
         recycler_view_routes_in_item.apply {
             adapter = searchRouteItemAdapter

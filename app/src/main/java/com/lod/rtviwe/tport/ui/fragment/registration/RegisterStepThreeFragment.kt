@@ -1,9 +1,10 @@
-package com.lod.rtviwe.tport.ui.fragment
+package com.lod.rtviwe.tport.ui.fragment.registration
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import com.lod.rtviwe.tport.R
+import com.lod.rtviwe.tport.ui.fragment.BaseFragment
 import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepThreeListener
 import com.lod.rtviwe.tport.viewmodel.RegisterViewModel
 import kotlinx.android.synthetic.main.register_step_three_fragment.*

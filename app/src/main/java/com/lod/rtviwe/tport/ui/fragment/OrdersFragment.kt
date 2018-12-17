@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.ui.adapter.OrdersAdapter
+import com.lod.rtviwe.tport.ui.adapter.order.OrdersAdapter
 import com.lod.rtviwe.tport.viewmodel.OrdersViewModel
 import kotlinx.android.synthetic.main.orders_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -35,7 +35,7 @@ class OrdersFragment : BaseFragment() {
 
         ordersViewModel.observeAdapter(this, ordersAdapter)
 
-        ordersRecyclerView = recycler_view_my_orders.apply {
+        ordersRecyclerView = recycler_view_orders.apply {
             adapter = ordersAdapter
             layoutManager = ordersLayoutManager
         }

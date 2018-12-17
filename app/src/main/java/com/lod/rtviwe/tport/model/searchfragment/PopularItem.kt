@@ -4,4 +4,4 @@ data class PopularItem(
     var placeFrom: String,
     val placeTo: String,
     var backgroundUrl: String
-) : SearchScrollItem(SearchItemType.POPULAR_ITEM)
+) : SearchItem(SearchItemType.POPULAR_ITEM)

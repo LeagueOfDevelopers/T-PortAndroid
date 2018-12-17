@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.ui.viewholder
+package com.lod.rtviwe.tport.ui.viewholder.searchfragment
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -7,7 +7,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.recyclerview.widget.RecyclerView
-import com.lod.rtviwe.tport.model.searchfragment.SearchItem
+import com.lod.rtviwe.tport.model.searchfragment.SearchBoxItem
 import com.lod.rtviwe.tport.ui.listeners.SearchListener
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.search_item.*
@@ -18,23 +18,23 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
 
     private lateinit var searchListener: SearchListener
 
-    lateinit var item: SearchItem
+    lateinit var boxItem: SearchBoxItem
 
-    fun bind(searchItem: SearchItem) {
+    fun bind(searchBoxItem: SearchBoxItem) {
         when (containerView.context) {
             is SearchListener -> searchListener = containerView.context as SearchListener
             else -> throw ClassCastException("${containerView.context} does not implements SearchListener")
         }
 
-        item = searchItem
-        edit_text_from_place.setText(item.fromPlace)
-        edit_text_to_place.setText(item.toPlace)
-        edit_text_data_travel.setText(item.travelTime)
+        boxItem = searchBoxItem
+        edit_text_from_place.setText(boxItem.fromPlace)
+        edit_text_to_place.setText(boxItem.toPlace)
+        edit_text_data_travel.setText(boxItem.travelTime)
 
         edit_text_from_place?.addTextChangedListener(object : TextWatcher {
 
             override fun onTextChanged(newText: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                item.fromPlace = newText.toString()
+                boxItem.fromPlace = newText.toString()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -45,7 +45,7 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
         edit_text_to_place?.addTextChangedListener(object : TextWatcher {
 
             override fun onTextChanged(newText: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                item.toPlace = newText.toString()
+                boxItem.toPlace = newText.toString()
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -95,7 +95,7 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
             DatePickerDialog.OnDateSetListener { _, selectedYear, selectedMonth, selectedDay ->
                 val editTextDateParam = "$selectedDay.${selectedMonth + 1}.$selectedYear"
                 edit_text_data_travel.setText(editTextDateParam)
-                item.travelTime = edit_text_data_travel.text.toString()
+                boxItem.travelTime = edit_text_data_travel.text.toString()
             }, year, month, day
         ).show()
     }

@@ -2,7 +2,7 @@ package com.lod.rtviwe.tport.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.lod.rtviwe.tport.TPortApplication
-import com.lod.rtviwe.tport.model.searchfragment.SearchItem
+import com.lod.rtviwe.tport.model.searchfragment.SearchBoxItem
 import com.lod.rtviwe.tport.network.RegistrationApi
 import com.lod.rtviwe.tport.viewmodel.*
 import com.redmadrobot.inputmask.helper.Mask
@@ -18,7 +18,7 @@ val mainModule = module {
     viewModel<ProfileViewModel>()
     viewModel<RegisterViewModel>()
     viewModel<SearchRoutesViewModel>()
-    single { SearchItem("", "", "") }
+    single { SearchBoxItem("", "", "") }
     single { Mask("+7 ([000]) [000]-[00]-[00]") }
     single {
         Retrofit.Builder()
