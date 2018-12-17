@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.ui.fragment
+package com.lod.rtviwe.tport.ui.fragment.search
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.searchfragment.SearchBoxItem
-import com.lod.rtviwe.tport.ui.adapter.SearchAdapter
+import com.lod.rtviwe.tport.ui.adapter.search.SearchAdapter
+import com.lod.rtviwe.tport.ui.fragment.BaseFragment
 import com.lod.rtviwe.tport.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.search_fragment.*
 import org.koin.android.ext.android.inject

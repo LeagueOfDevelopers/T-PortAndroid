@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.ui.viewholder
+package com.lod.rtviwe.tport.ui.viewholder.searchfragment
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

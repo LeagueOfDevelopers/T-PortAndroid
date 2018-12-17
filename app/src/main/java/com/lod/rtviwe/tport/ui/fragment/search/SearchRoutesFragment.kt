@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.ui.fragment
+package com.lod.rtviwe.tport.ui.fragment.search
 
 import android.content.Context
 import android.os.Bundle
@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.ui.adapter.SearchRouteCardsAdapter
+import com.lod.rtviwe.tport.ui.adapter.search.SearchRouteCardsAdapter
+import com.lod.rtviwe.tport.ui.fragment.BaseFragment
 import com.lod.rtviwe.tport.ui.listeners.SearchListener
 import com.lod.rtviwe.tport.viewmodel.SearchRoutesViewModel
 import kotlinx.android.synthetic.main.search_routes_fragment.*

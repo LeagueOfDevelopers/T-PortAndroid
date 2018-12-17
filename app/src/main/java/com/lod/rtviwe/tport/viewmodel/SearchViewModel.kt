@@ -9,7 +9,7 @@ import com.lod.rtviwe.tport.model.searchfragment.LogoItem
 import com.lod.rtviwe.tport.model.searchfragment.SearchBoxItem
 import com.lod.rtviwe.tport.model.searchfragment.SearchItemType
 import com.lod.rtviwe.tport.model.searchfragment.TitleItem
-import com.lod.rtviwe.tport.ui.adapter.SearchAdapter
+import com.lod.rtviwe.tport.ui.adapter.search.SearchAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

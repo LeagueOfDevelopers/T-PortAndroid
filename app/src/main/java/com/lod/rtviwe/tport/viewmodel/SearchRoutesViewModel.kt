@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.data.MockTrips
-import com.lod.rtviwe.tport.ui.adapter.SearchRouteCardsAdapter
+import com.lod.rtviwe.tport.ui.adapter.search.SearchRouteCardsAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

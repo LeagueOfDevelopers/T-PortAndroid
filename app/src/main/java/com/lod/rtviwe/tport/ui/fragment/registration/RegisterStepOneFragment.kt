@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.ui.fragment
+package com.lod.rtviwe.tport.ui.fragment.registration
 
 import android.content.Context
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.network.RegistrationApi
+import com.lod.rtviwe.tport.ui.fragment.BaseFragment
 import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepOneListener
 import com.lod.rtviwe.tport.viewmodel.RegisterViewModel
 import com.redmadrobot.inputmask.MaskedTextChangedListener

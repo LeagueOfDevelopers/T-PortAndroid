@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.ui.viewholder
+package com.lod.rtviwe.tport.ui.viewholder.searchfragment
 
 import android.app.Activity
 import android.app.DatePickerDialog

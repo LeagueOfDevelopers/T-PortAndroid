@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.ui.viewholder
+package com.lod.rtviwe.tport.ui.viewholder.searchfragment
 
 import android.annotation.SuppressLint
 import android.view.View

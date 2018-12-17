@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.data.MockTrips
-import com.lod.rtviwe.tport.ui.adapter.OrdersAdapter
+import com.lod.rtviwe.tport.ui.adapter.order.OrdersAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
