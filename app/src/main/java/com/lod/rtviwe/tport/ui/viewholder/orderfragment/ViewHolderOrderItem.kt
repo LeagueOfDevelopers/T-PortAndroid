@@ -4,6 +4,9 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.model.Trip
+import com.lod.rtviwe.tport.model.ordersfragment.OrderItem
+import com.lod.rtviwe.tport.model.ordersfragment.OrderLocation
+import com.lod.rtviwe.tport.model.ordersfragment.OrderRoute
 import com.lod.rtviwe.tport.ui.adapter.order.OrderRoutesAdapter
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.order_item.*
@@ -15,7 +18,13 @@ class ViewHolderOrderItem(override val containerView: View) : RecyclerView.ViewH
         val orderRoutesItemAdapter = OrderRoutesAdapter(containerView.context, listOf())
         val orderRoutesLayoutManager = LinearLayoutManager(containerView.context, RecyclerView.VERTICAL, false)
 
-        orderRoutesItemAdapter.setData(tripItem.routes)
+        val routesAndLocations = mutableListOf<OrderItem>()
+        tripItem.routes.forEach {
+            routesAndLocations.add(OrderLocation(it.location))
+            routesAndLocations.add(OrderRoute(it))
+        }
+
+        orderRoutesItemAdapter.setData(routesAndLocations)
 
         recycler_view_order_routes_and_locations.apply {
             adapter = orderRoutesItemAdapter
