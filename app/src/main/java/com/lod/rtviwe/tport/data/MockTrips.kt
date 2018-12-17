@@ -25,9 +25,10 @@ object MockTrips : SearchRoutesItemsProvider {
                             RouteType.TAXI,
                             420,
                             Location(
-                                "A",
-                                "B"
+                                "Дом",
+                                "Аэропорт"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -35,9 +36,10 @@ object MockTrips : SearchRoutesItemsProvider {
                             RouteType.AIRPLANE,
                             7700,
                             Location(
-                                "A",
-                                "B"
+                                "Пулково",
+                                "Хуюково"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -45,9 +47,10 @@ object MockTrips : SearchRoutesItemsProvider {
                             RouteType.TRAIN,
                             500,
                             Location(
-                                "A",
-                                "B"
+                                "Хуюково",
+                                "Московский вокзал"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -55,18 +58,20 @@ object MockTrips : SearchRoutesItemsProvider {
                             RouteType.SHIP,
                             350,
                             Location(
-                                "A",
-                                "B"
-                            )
+                                "Московский вокзал",
+                                "Австралия"
+                            ),
+                            GregorianCalendar.getInstance().time
                         ),
                         Route(
-                            "Machu Picchu",
+                            "Camping",
                             RouteType.FOOT,
                             0,
                             Location(
-                                "A",
-                                "B"
+                                "Австралия",
+                                "Урарту"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -84,7 +89,8 @@ object MockTrips : SearchRoutesItemsProvider {
                             Location(
                                 "A",
                                 "B"
-                            )
+                            ),
+                            GregorianCalendar.getInstance().time
                         ),
                         Route(
                             "Plane",
@@ -94,6 +100,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -104,6 +111,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -121,7 +129,8 @@ object MockTrips : SearchRoutesItemsProvider {
                             Location(
                                 "A",
                                 "B"
-                            )
+                            ),
+                            GregorianCalendar.getInstance().time
                         ),
                         Route(
                             "Plane",
@@ -131,6 +140,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -141,6 +151,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -158,7 +169,8 @@ object MockTrips : SearchRoutesItemsProvider {
                             Location(
                                 "A",
                                 "B"
-                            )
+                            ),
+                            GregorianCalendar.getInstance().time
                         ),
                         Route(
                             "Plane",
@@ -168,6 +180,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -178,6 +191,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -195,7 +209,8 @@ object MockTrips : SearchRoutesItemsProvider {
                             Location(
                                 "A",
                                 "B"
-                            )
+                            ),
+                            GregorianCalendar.getInstance().time
                         ),
                         Route(
                             "Plane",
@@ -205,6 +220,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -215,6 +231,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -232,7 +249,8 @@ object MockTrips : SearchRoutesItemsProvider {
                             Location(
                                 "A",
                                 "B"
-                            )
+                            ),
+                            GregorianCalendar.getInstance().time
                         ),
                         Route(
                             "Plane",
@@ -242,6 +260,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -252,6 +271,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -269,7 +289,8 @@ object MockTrips : SearchRoutesItemsProvider {
                             Location(
                                 "A",
                                 "B"
-                            )
+                            ),
+                            GregorianCalendar.getInstance().time
                         ),
                         Route(
                             "Plane",
@@ -279,6 +300,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -289,6 +311,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -306,7 +329,8 @@ object MockTrips : SearchRoutesItemsProvider {
                             Location(
                                 "A",
                                 "B"
-                            )
+                            ),
+                            GregorianCalendar.getInstance().time
                         ),
                         Route(
                             "Plane",
@@ -316,6 +340,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -326,6 +351,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -343,7 +369,8 @@ object MockTrips : SearchRoutesItemsProvider {
                             Location(
                                 "A",
                                 "B"
-                            )
+                            ),
+                            GregorianCalendar.getInstance().time
                         ),
                         Route(
                             "Plane",
@@ -353,6 +380,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -363,6 +391,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -380,7 +409,8 @@ object MockTrips : SearchRoutesItemsProvider {
                             Location(
                                 "A",
                                 "B"
-                            )
+                            ),
+                            GregorianCalendar.getInstance().time
                         ),
                         Route(
                             "Plane",
@@ -390,6 +420,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
@@ -400,6 +431,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                 "A",
                                 "B"
                             ),
+                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )

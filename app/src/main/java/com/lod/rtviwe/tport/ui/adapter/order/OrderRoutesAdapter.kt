@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.ordersfragment.OrderItem
 import com.lod.rtviwe.tport.model.ordersfragment.OrderItemType
+import com.lod.rtviwe.tport.model.ordersfragment.OrderLocation
+import com.lod.rtviwe.tport.model.ordersfragment.OrderRoute
 import com.lod.rtviwe.tport.ui.viewholder.orderfragment.ViewHolderOrderLocation
 import com.lod.rtviwe.tport.ui.viewholder.orderfragment.ViewHolderOrderRoute
 
@@ -33,10 +35,12 @@ class OrderRoutesAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder.itemViewType) {
-            OrderItemType.LOCATION.ordinal ->
-                (holder as ViewHolderOrderLocation).bind(orderItemsList[position])
+            OrderItemType.LOCATION.ordinal -> {
+                val isLast = (position == (orderItemsList.size - 1))
+                (holder as ViewHolderOrderLocation).bind(orderItemsList[position] as OrderLocation, isLast)
+            }
             OrderItemType.ROUTE.ordinal ->
-                (holder as ViewHolderOrderRoute).bind(orderItemsList[position])
+                (holder as ViewHolderOrderRoute).bind(orderItemsList[position] as OrderRoute)
         }
     }
 
