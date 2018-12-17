@@ -19,9 +19,9 @@ class ViewHolderOrderItem(override val containerView: View) : RecyclerView.ViewH
         val orderRoutesLayoutManager = LinearLayoutManager(containerView.context, RecyclerView.VERTICAL, false)
 
         val routesAndLocations = mutableListOf<OrderItem>()
-        tripItem.routes.forEach {
-            routesAndLocations.add(OrderLocation(it.location))
-            routesAndLocations.add(OrderRoute(it))
+        tripItem.routes.forEachIndexed { index, route ->
+            routesAndLocations.add(OrderRoute(route))
+            routesAndLocations.add(OrderLocation(route.location))
         }
 
         orderRoutesItemAdapter.setData(routesAndLocations)

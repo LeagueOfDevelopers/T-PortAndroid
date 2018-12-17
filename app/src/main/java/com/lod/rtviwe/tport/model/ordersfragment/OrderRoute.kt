@@ -4,4 +4,4 @@ import com.lod.rtviwe.tport.model.Route
 
 data class OrderRoute(
     val route: Route
-) : OrderItem(OrderItemType.LOCATION)
+) : OrderItem(OrderItemType.ROUTE)
