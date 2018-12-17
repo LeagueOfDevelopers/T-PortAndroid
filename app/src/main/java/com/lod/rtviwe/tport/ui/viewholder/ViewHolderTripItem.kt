@@ -22,7 +22,7 @@ class ViewHolderTripItem(override val containerView: View) : RecyclerView.ViewHo
         val searchRouteItemAdapter = SearchRouteItemAdapter(containerView.context, listOf())
         val searchRoutesLayoutManager = LinearLayoutManager(containerView.context, RecyclerView.HORIZONTAL, false)
 
-        searchRouteItemAdapter.setData(tripItem.items)
+        searchRouteItemAdapter.setData(tripItem.routes)
 
         recycler_view_routes_in_item.apply {
             adapter = searchRouteItemAdapter

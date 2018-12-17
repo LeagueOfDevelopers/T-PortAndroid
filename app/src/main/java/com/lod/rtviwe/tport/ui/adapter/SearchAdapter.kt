@@ -14,14 +14,14 @@ import com.lod.rtviwe.tport.ui.viewholder.ViewHolderTitleItem
 
 class SearchAdapter(
     private val context: Context?,
-    private var searchScrollItemsList: List<SearchScrollItem>
+    private var searchItemsList: List<SearchItem>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var searchViewHolder: ViewHolderSearchItem? = null
 
-    override fun getItemCount() = searchScrollItemsList.size
+    override fun getItemCount() = searchItemsList.size
 
-    override fun getItemViewType(position: Int): Int = searchScrollItemsList[position].type.ordinal
+    override fun getItemViewType(position: Int): Int = searchItemsList[position].type.ordinal
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder = when (viewType) {
         SEARCH_ITEM.ordinal -> ViewHolderSearchItem(
@@ -40,23 +40,23 @@ class SearchAdapter(
             LayoutInflater.from(context)
                 .inflate(R.layout.title_item, parent, false)
         )
-        else -> throw RuntimeException("Unknown item type")
+        else -> throw RuntimeException("Unknown boxItem type")
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder.itemViewType) {
             SEARCH_ITEM.ordinal -> {
                 searchViewHolder = holder as ViewHolderSearchItem
-                searchViewHolder?.bind(searchScrollItemsList[position] as SearchItem)
+                searchViewHolder?.bind(searchItemsList[position] as SearchBoxItem)
             }
-            POPULAR_ITEM.ordinal -> (holder as ViewHolderPopularItem).bind(searchScrollItemsList[position] as PopularItem)
-            LOGO_ITEM.ordinal -> (holder as ViewHolderLogoItem).bind(searchScrollItemsList[position] as LogoItem)
-            TITLE_ITEM.ordinal -> (holder as ViewHolderTitleItem).bind(searchScrollItemsList[position] as TitleItem)
+            POPULAR_ITEM.ordinal -> (holder as ViewHolderPopularItem).bind(searchItemsList[position] as PopularItem)
+            LOGO_ITEM.ordinal -> (holder as ViewHolderLogoItem).bind(searchItemsList[position] as LogoItem)
+            TITLE_ITEM.ordinal -> (holder as ViewHolderTitleItem).bind(searchItemsList[position] as TitleItem)
         }
     }
 
-    fun setData(newData: List<SearchScrollItem>) {
-        searchScrollItemsList = newData
+    fun setData(newData: List<SearchItem>) {
+        searchItemsList = newData
         notifyDataSetChanged()
     }
 }

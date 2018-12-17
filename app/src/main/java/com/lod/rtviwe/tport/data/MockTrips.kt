@@ -1,22 +1,22 @@
 package com.lod.rtviwe.tport.data
 
 import androidx.lifecycle.MutableLiveData
+import com.lod.rtviwe.tport.model.Location
 import com.lod.rtviwe.tport.model.Route
 import com.lod.rtviwe.tport.model.RouteType
 import com.lod.rtviwe.tport.model.Trip
 import java.util.*
 
-object MockSearchRoutes : SearchRoutesItemsProvider {
+object MockTrips : SearchRoutesItemsProvider {
 
-    override fun getItems() = items
+    override fun getItems() = data
 
-    private val items = MutableLiveData<MutableList<Trip>>().apply {
+    private val data = MutableLiveData<MutableList<Trip>>().apply {
         postValue(
             mutableListOf(
                 Trip(
                     "Moscow",
-                    "Piter",
-                    "",
+                    "St. Petersburg",
                     8970,
                     GregorianCalendar.getInstance().time,
                     listOf(
@@ -24,43 +24,56 @@ object MockSearchRoutes : SearchRoutesItemsProvider {
                             "UberX",
                             RouteType.TAXI,
                             420,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aeroflot",
                             RouteType.AIRPLANE,
                             7700,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aeroexpress",
                             RouteType.TRAIN,
                             500,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Ferry",
                             RouteType.SHIP,
                             350,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            )
                         ),
                         Route(
                             "Machu Picchu",
                             RouteType.FOOT,
                             0,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         )
                     )
                 ),
                 Trip(
                     "Moscow",
-                    "Piter",
-                    "",
+                    "St. Petersburg",
                     420,
                     GregorianCalendar.getInstance().time,
                     listOf(
@@ -68,29 +81,36 @@ object MockSearchRoutes : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         )
                     )
                 ),
                 Trip(
                     "Moscow",
-                    "Piter",
-                    "",
+                    "St. Petersburg",
                     420,
                     GregorianCalendar.getInstance().time,
                     listOf(
@@ -98,232 +118,289 @@ object MockSearchRoutes : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         )
                     )
                 ),
                 Trip(
                     "Moscow",
-                    "Piter",
-                    "",
+                    "St. Petersburg",
                     420,
-                    Calendar.getInstance().time,
+                    GregorianCalendar.getInstance().time,
                     listOf(
                         Route(
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         )
                     )
                 ),
                 Trip(
                     "Moscow",
-                    "Piter",
-                    "",
+                    "St. Petersburg",
                     420,
-                    Calendar.getInstance().time,
+                    GregorianCalendar.getInstance().time,
                     listOf(
                         Route(
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         )
                     )
                 ),
                 Trip(
                     "Moscow",
-                    "Piter",
-                    "",
+                    "St. Petersburg",
                     420,
-                    Calendar.getInstance().time,
+                    GregorianCalendar.getInstance().time,
                     listOf(
                         Route(
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         )
                     )
                 ),
                 Trip(
                     "Moscow",
-                    "Piter",
-                    "",
+                    "St. Petersburg",
                     420,
-                    Calendar.getInstance().time,
+                    GregorianCalendar.getInstance().time,
                     listOf(
                         Route(
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         )
                     )
                 ),
                 Trip(
                     "Moscow",
-                    "Piter",
-                    "",
+                    "St. Petersburg",
                     420,
-                    Calendar.getInstance().time,
+                    GregorianCalendar.getInstance().time,
                     listOf(
                         Route(
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         )
                     )
                 ),
                 Trip(
                     "Moscow",
-                    "Piter",
-                    "",
+                    "St. Petersburg",
                     420,
-                    Calendar.getInstance().time,
+                    GregorianCalendar.getInstance().time,
                     listOf(
                         Route(
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         )
                     )
                 ),
                 Trip(
                     "Moscow",
-                    "Piter",
-                    "",
+                    "St. Petersburg",
                     420,
-                    Calendar.getInstance().time,
+                    GregorianCalendar.getInstance().time,
                     listOf(
                         Route(
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            "A",
-                            "B"
+                            Location(
+                                "A",
+                                "B"
+                            ),
+                            true
                         )
                     )
                 )

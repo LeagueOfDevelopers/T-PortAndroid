@@ -2,63 +2,63 @@ package com.lod.rtviwe.tport.data
 
 import androidx.lifecycle.MutableLiveData
 import com.lod.rtviwe.tport.model.searchfragment.PopularItem
-import com.lod.rtviwe.tport.model.searchfragment.SearchScrollItem
+import com.lod.rtviwe.tport.model.searchfragment.SearchItem
 
-object MockMainScroll : MainScrollItemsProvider {
+object MockPopularTrips : SearchFragmentItemsProvider {
 
-    override fun getItems(): MutableLiveData<MutableList<SearchScrollItem>> = data
+    override fun getItems() = data
 
-    var data = MutableLiveData<MutableList<SearchScrollItem>>().apply {
+    var data = MutableLiveData<MutableList<SearchItem>>().apply {
         postValue(
             mutableListOf(
                 PopularItem(
                     "Moscow",
-                    "Piter",
+                    "St. Petersburg",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
-                    "Piter",
+                    "St. Petersburg",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
-                    "Piter",
+                    "St. Petersburg",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
-                    "Piter",
+                    "St. Petersburg",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
-                    "Piter",
+                    "St. Petersburg",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
-                    "Piter",
+                    "St. Petersburg",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
-                    "Piter",
+                    "St. Petersburg",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
-                    "Piter",
+                    "St. Petersburg",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
-                    "Piter",
+                    "St. Petersburg",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 ),
                 PopularItem(
                     "Moscow",
-                    "Piter",
+                    "St. Petersburg",
                     "https://i1.photocentra.ru/images/main78/781689_main.jpg"
                 )
             )
