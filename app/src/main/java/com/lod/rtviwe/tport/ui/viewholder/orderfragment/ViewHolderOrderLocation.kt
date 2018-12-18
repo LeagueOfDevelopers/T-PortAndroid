@@ -12,7 +12,7 @@ import java.util.*
 class ViewHolderOrderLocation(override val containerView: View) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 
-    fun bind(orderLocation: OrderLocation, isLast: Boolean) {
+    fun bind(orderLocation: OrderLocation, isFirst: Boolean, isLast: Boolean) {
         text_view_location.text = if (isLast)
             orderLocation.destination.placeTo
         else
@@ -22,5 +22,18 @@ class ViewHolderOrderLocation(override val containerView: View) : RecyclerView.V
             containerView.context.getString(R.string.arrival_time),
             SimpleDateFormat("hh:mm", Locale.getDefault()).format(orderLocation.destination.arrivalDate)
         )
+
+        when {
+            isFirst -> {
+                image_view_connection_bottom.setImageResource(R.drawable.ic_arrow_downward_black_24dp)
+            }
+            isLast -> {
+                image_view_connection_top.setImageResource(R.drawable.ic_arrow_downward_black_24dp)
+            }
+            else -> {
+                image_view_connection_top.setImageResource(R.drawable.ic_arrow_downward_black_24dp)
+                image_view_connection_bottom.setImageResource(R.drawable.ic_arrow_downward_black_24dp)
+            }
+        }
     }
 }

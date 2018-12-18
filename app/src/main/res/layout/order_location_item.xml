@@ -7,14 +7,28 @@
         android:layout_height="wrap_content">
 
     <ImageView
-            android:id="@+id/image_view_location_point"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
+            android:id="@+id/image_view_connection_top"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_marginStart="8dp"
-            android:src="@drawable/ic_location_on_black_24dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
+
+    <ImageView
+            android:id="@+id/image_view_location_point"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_location_on_black_24dp"
+            app:layout_constraintStart_toStartOf="@+id/image_view_connection_top"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_connection_top"/>
+
+    <ImageView
+            android:id="@+id/image_view_connection_bottom"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_location_point"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView
             android:id="@+id/text_view_location"
@@ -22,15 +36,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@+id/image_view_location_point"
-            app:layout_constraintTop_toTopOf="@+id/image_view_location_point"
             tools:text="@tools:sample/cities"
-            style="@style/TextViewSmallHeader"/>
+            style="@style/TextViewSmallHeader" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="@+id/image_view_connection_top"/>
 
     <TextView
             android:id="@+id/text_view_arrival_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/text_view_location"
             app:layout_constraintStart_toStartOf="@+id/text_view_location"
