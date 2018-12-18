@@ -2,6 +2,7 @@ package com.lod.rtviwe.tport.ui.viewholder.orderfragment
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.ordersfragment.OrderLocation
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.order_location_item.*
@@ -17,10 +18,9 @@ class ViewHolderOrderLocation(override val containerView: View) : RecyclerView.V
         else
             orderLocation.destination.placeFrom
 
-        text_view_arrival_date.text =
-                "Время прибытия: ${SimpleDateFormat(
-                    "hh:mm",
-                    Locale.getDefault()
-                ).format(orderLocation.destination.arrivalDate)}"
+        text_view_arrival_date.text = String.format(
+            containerView.context.getString(R.string.arrival_time),
+            SimpleDateFormat("hh:mm", Locale.getDefault()).format(orderLocation.destination.arrivalDate)
+        )
     }
 }
