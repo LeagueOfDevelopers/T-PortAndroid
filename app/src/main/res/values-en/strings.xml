@@ -39,4 +39,8 @@
     <string name="image_view_code_second">Second number of code</string>
     <string name="image_view_code_third">Third number of code</string>
     <string name="image_view_code_fourth">Fourth number of code</string>
+    <string name="arrival_time">Arrival time: %1$s</string>
+    <string name="is_paid">Paid</string>
+    <string name="not_paid">Not paid</string>
+    <string name="money">%1$s ₽</string>
 </resources>

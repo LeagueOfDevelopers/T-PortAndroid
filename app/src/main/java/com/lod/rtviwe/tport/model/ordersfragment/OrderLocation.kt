@@ -1,7 +1,7 @@
 package com.lod.rtviwe.tport.model.ordersfragment
 
-import com.lod.rtviwe.tport.model.Location
+import com.lod.rtviwe.tport.model.Destination
 
 data class OrderLocation(
-    val location: Location
+    val destination: Destination
 ) : OrderItem(OrderItemType.LOCATION)

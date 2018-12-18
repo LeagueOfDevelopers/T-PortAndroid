@@ -40,4 +40,8 @@
     <string name="image_view_code_second">Вторая цифра кода</string>
     <string name="image_view_code_third">Третья цифра кода</string>
     <string name="image_view_code_fourth">Четвёртая цифра кода</string>
+    <string name="arrival_time">Время прибытия: %1$s</string>
+    <string name="is_paid">Оплачено</string>
+    <string name="not_paid">Не оплачено</string>
+    <string name="money" translatable="false">%1$d ₽</string>
 </resources>

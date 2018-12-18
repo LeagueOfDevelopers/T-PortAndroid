@@ -34,10 +34,11 @@ class OrderRoutesAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val isLast = (position == (orderItemsList.size - 1))
+        val isFirst = (position == 0)
         when (holder.itemViewType) {
             OrderItemType.LOCATION.ordinal -> {
-                val isLast = (position == (orderItemsList.size - 1))
-                (holder as ViewHolderOrderLocation).bind(orderItemsList[position] as OrderLocation, isLast)
+                (holder as ViewHolderOrderLocation).bind(orderItemsList[position] as OrderLocation, isFirst, isLast)
             }
             OrderItemType.ROUTE.ordinal ->
                 (holder as ViewHolderOrderRoute).bind(orderItemsList[position] as OrderRoute)
