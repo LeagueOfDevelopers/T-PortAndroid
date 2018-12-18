@@ -20,10 +20,10 @@ class ViewHolderOrderItem(override val containerView: View) : RecyclerView.ViewH
 
         val routesAndLocations = mutableListOf<OrderItem>()
         tripItem.routes.forEachIndexed { index, route ->
-            routesAndLocations.add(OrderLocation(route.location))
+            routesAndLocations.add(OrderLocation(route.destination))
             routesAndLocations.add(OrderRoute(route))
             if (index == tripItem.routes.size - 1) {
-                routesAndLocations.add(OrderLocation(route.location))
+                routesAndLocations.add(OrderLocation(route.destination))
             }
         }
 

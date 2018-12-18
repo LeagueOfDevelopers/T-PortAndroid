@@ -17,7 +17,8 @@ class ViewHolderOrderRoute(override val containerView: View) : RecyclerView.View
         image_view_route_type.setImageResource(imageResourceToSet)
 
         text_view_route_name.text = routeItem.route.text
-        text_view_route_time.text = SimpleDateFormat("hh:mm", Locale.getDefault()).format(routeItem.route.arrivalDate)
+        text_view_route_time.text =
+                SimpleDateFormat("hh:mm", Locale.getDefault()).format(routeItem.route.destination.arrivalDate)
         text_view_route_cost.text = "${routeItem.route.cost}"
         text_view_is_route_paid.text = if (routeItem.route.isPaid) "Оплачено" else "Не оплачено"
     }

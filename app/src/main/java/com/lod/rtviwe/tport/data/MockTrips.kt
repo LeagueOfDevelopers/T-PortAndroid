@@ -1,7 +1,7 @@
 package com.lod.rtviwe.tport.data
 
 import androidx.lifecycle.MutableLiveData
-import com.lod.rtviwe.tport.model.Location
+import com.lod.rtviwe.tport.model.Destination
 import com.lod.rtviwe.tport.model.Route
 import com.lod.rtviwe.tport.model.RouteType
 import com.lod.rtviwe.tport.model.Trip
@@ -24,54 +24,54 @@ object MockTrips : SearchRoutesItemsProvider {
                             "UberX",
                             RouteType.TAXI,
                             420,
-                            Location(
+                            Destination(
                                 "Дом",
-                                "Аэропорт"
+                                "Аэропорт",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aeroflot",
                             RouteType.AIRPLANE,
                             7700,
-                            Location(
+                            Destination(
                                 "Пулково",
-                                "Хуюково"
+                                "Хуюково",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aeroexpress",
                             RouteType.TRAIN,
                             500,
-                            Location(
+                            Destination(
                                 "Хуюково",
-                                "Московский вокзал"
+                                "Московский вокзал",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Ferry",
                             RouteType.SHIP,
                             350,
-                            Location(
+                            Destination(
                                 "Московский вокзал",
-                                "Австралия"
-                            ),
-                            GregorianCalendar.getInstance().time
+                                "Австралия",
+                                GregorianCalendar.getInstance().time
+                            )
                         ),
                         Route(
                             "Camping",
                             RouteType.FOOT,
                             0,
-                            Location(
+                            Destination(
                                 "Австралия",
-                                "Урарту"
+                                "Урарту",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -86,32 +86,32 @@ object MockTrips : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
-                            ),
-                            GregorianCalendar.getInstance().time
+                                "B",
+                                GregorianCalendar.getInstance().time
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -126,32 +126,32 @@ object MockTrips : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
-                            ),
-                            GregorianCalendar.getInstance().time
+                                "B",
+                                GregorianCalendar.getInstance().time
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -166,32 +166,32 @@ object MockTrips : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
-                            ),
-                            GregorianCalendar.getInstance().time
+                                "B",
+                                GregorianCalendar.getInstance().time
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -206,32 +206,32 @@ object MockTrips : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
-                            ),
-                            GregorianCalendar.getInstance().time
+                                "B",
+                                GregorianCalendar.getInstance().time
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -246,32 +246,32 @@ object MockTrips : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
-                            ),
-                            GregorianCalendar.getInstance().time
+                                "B",
+                                GregorianCalendar.getInstance().time
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -286,32 +286,32 @@ object MockTrips : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
-                            ),
-                            GregorianCalendar.getInstance().time
+                                "B",
+                                GregorianCalendar.getInstance().time
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -326,32 +326,32 @@ object MockTrips : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
-                            ),
-                            GregorianCalendar.getInstance().time
+                                "B",
+                                GregorianCalendar.getInstance().time
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -366,32 +366,32 @@ object MockTrips : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
-                            ),
-                            GregorianCalendar.getInstance().time
+                                "B",
+                                GregorianCalendar.getInstance().time
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
@@ -406,32 +406,32 @@ object MockTrips : SearchRoutesItemsProvider {
                             "Uber",
                             RouteType.TAXI,
                             420,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
-                            ),
-                            GregorianCalendar.getInstance().time
+                                "B",
+                                GregorianCalendar.getInstance().time
+                            )
                         ),
                         Route(
                             "Plane",
                             RouteType.AIRPLANE,
                             2880,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         ),
                         Route(
                             "Aero",
                             RouteType.TRAIN,
                             500,
-                            Location(
+                            Destination(
                                 "A",
-                                "B"
+                                "B",
+                                GregorianCalendar.getInstance().time
                             ),
-                            GregorianCalendar.getInstance().time,
                             true
                         )
                     )
