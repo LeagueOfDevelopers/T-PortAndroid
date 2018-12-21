@@ -3,9 +3,9 @@ package com.lod.rtviwe.tport.ui.activity
 import android.os.Bundle
 import androidx.fragment.app.transaction
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.ui.fragment.BonusesFragment
-import com.lod.rtviwe.tport.ui.fragment.OrdersFragment
-import com.lod.rtviwe.tport.ui.fragment.ProfileFragment
+import com.lod.rtviwe.tport.ui.fragment.bonus.BonusesFragment
+import com.lod.rtviwe.tport.ui.fragment.order.OrdersFragment
+import com.lod.rtviwe.tport.ui.fragment.profile.ProfileFragment
 import com.lod.rtviwe.tport.ui.fragment.registration.RegisterStepOneFragment
 import com.lod.rtviwe.tport.ui.fragment.registration.RegisterStepThreeFragment
 import com.lod.rtviwe.tport.ui.fragment.registration.RegisterStepTwoFragment

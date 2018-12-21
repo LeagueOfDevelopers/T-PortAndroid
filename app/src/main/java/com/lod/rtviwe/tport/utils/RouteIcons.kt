@@ -3,7 +3,7 @@ package com.lod.rtviwe.tport.utils
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.RouteType
 
-object RouteIconsUtils {
+object RouteIcons {
 
     fun getImageResource(type: RouteType) = when (type) {
         RouteType.TAXI -> R.drawable.ic_local_taxi_blue_24dp

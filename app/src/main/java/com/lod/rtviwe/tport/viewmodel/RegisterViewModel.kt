@@ -15,6 +15,18 @@ class RegisterViewModel(app: Application) : BaseViewModel(app) {
     private val scopeCheckCode = CoroutineScope(Dispatchers.IO + jobCheckCode)
     private val scopeRegisterName = CoroutineScope(Dispatchers.IO + jobRegisterName)
 
+    private val handlerSendCode = CoroutineExceptionHandler { _, exception ->
+        Timber.e("Error while getting code: $exception")
+    }
+
+    private val handlerCheckCode = CoroutineExceptionHandler { _, exception ->
+        Timber.e("Error while checking code: $exception")
+    }
+
+    private val handlerRegisterName = CoroutineExceptionHandler { _, exception ->
+        Timber.e("Error while registering name: $exception")
+    }
+
     private lateinit var registrationApi: RegistrationApi
 
     private var code = 0
@@ -29,7 +41,7 @@ class RegisterViewModel(app: Application) : BaseViewModel(app) {
     fun sendCodeToPhoneNumber(phoneNumber: Long, api: RegistrationApi) {
         registrationApi = api
         jobSendCode.cancelChildren()
-        scopeSendCode.launch {
+        scopeSendCode.launch(handlerSendCode) {
             if (registrationApi.sendPhoneNumber(phoneNumber).await().body() == null) {
                 Timber.e("Error while getting code")
             } else {
@@ -48,19 +60,19 @@ class RegisterViewModel(app: Application) : BaseViewModel(app) {
         }
 
         jobCheckCode.cancelChildren()
-        scopeCheckCode.launch {
+        scopeCheckCode.launch(handlerCheckCode) {
             val result = registrationApi.sendCode(code).await().isSuccessful
 
             if (result) {
                 Timber.v("Right code")
             } else {
-                Timber.tag("RegisterViewModel").e("Wrong code probably")
+                Timber.e("Wrong code probably")
             }
         }
     }
 
     fun registerName() {
-        scopeRegisterName.launch {
+        scopeRegisterName.launch(handlerRegisterName) {
 
         }
     }
