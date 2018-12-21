@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.ui.fragment
+package com.lod.rtviwe.tport.ui.fragment.order
 
 import android.os.Bundle
 import android.view.View
@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.ui.adapter.order.OrdersAdapter
+import com.lod.rtviwe.tport.ui.fragment.BaseFragment
 import com.lod.rtviwe.tport.viewmodel.OrdersViewModel
 import kotlinx.android.synthetic.main.orders_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel

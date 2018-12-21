@@ -1,6 +1,7 @@
-package com.lod.rtviwe.tport.ui.fragment
+package com.lod.rtviwe.tport.ui.fragment.bonus
 
 import com.lod.rtviwe.tport.R
+import com.lod.rtviwe.tport.ui.fragment.BaseFragment
 import com.lod.rtviwe.tport.viewmodel.BonusesViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

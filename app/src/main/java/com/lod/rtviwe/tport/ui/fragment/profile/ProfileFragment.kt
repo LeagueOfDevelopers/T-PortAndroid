@@ -1,8 +1,9 @@
-package com.lod.rtviwe.tport.ui.fragment
+package com.lod.rtviwe.tport.ui.fragment.profile
 
 import android.os.Bundle
 import android.view.View
 import com.lod.rtviwe.tport.R
+import com.lod.rtviwe.tport.ui.fragment.BaseFragment
 import com.lod.rtviwe.tport.viewmodel.ProfileViewModel
 import kotlinx.android.synthetic.main.profile_fragment.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
