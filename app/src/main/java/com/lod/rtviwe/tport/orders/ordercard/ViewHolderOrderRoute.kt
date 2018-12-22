@@ -25,7 +25,7 @@ class ViewHolderOrderRoute(override val containerView: View) : RecyclerView.View
         val imageResourceToSet = RouteIcons.getImageResource(routeItem.route.type)
         image_view_route_type.setImageResource(imageResourceToSet)
 
-        text_view_route_name.text = routeItem.route.text
+        text_view_route_name.text = routeItem.route.vehicleName
         text_view_route_cost.text =
                 String.format(containerView.context.getString(R.string.money), routeItem.route.cost)
 

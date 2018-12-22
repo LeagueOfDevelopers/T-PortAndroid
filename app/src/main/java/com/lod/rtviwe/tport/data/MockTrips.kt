@@ -1,438 +1,793 @@
 package com.lod.rtviwe.tport.data
 
 import androidx.lifecycle.MutableLiveData
-import com.lod.rtviwe.tport.model.Destination
-import com.lod.rtviwe.tport.model.Route
-import com.lod.rtviwe.tport.model.RouteType
-import com.lod.rtviwe.tport.model.Trip
+import com.lod.rtviwe.tport.model.*
 import java.util.*
 
 object MockTrips : SearchRoutesItemsProvider {
 
     override fun getItems() = data
 
-    private val data = MutableLiveData<MutableList<Trip>>().apply {
+    private val data = MutableLiveData<MutableList<FullTrip>>().apply {
         postValue(
             mutableListOf(
-                Trip(
-                    "Moscow",
-                    "St. Petersburg",
-                    8970,
-                    GregorianCalendar.getInstance().time,
+                FullTrip(
+                    Trip(
+                        Place(
+                            "Москва",
+                            55.45,
+                            37.36
+                        ),
+                        Place(
+                            "Питера",
+                            59.56,
+                            30.18
+                        ),
+                        8970,
+                        Calendar.getInstance().time
+                    ),
                     listOf(
                         Route(
-                            "UberX",
+                            0,
+                            "Uber",
                             RouteType.TAXI,
-                            420,
-                            Destination(
-                                "Дом",
-                                "Аэропорт",
-                                GregorianCalendar.getInstance().time
-                            ),
-                            true
-                        ),
-                        Route(
-                            "Aeroflot",
-                            RouteType.AIRPLANE,
-                            7700,
-                            Destination(
-                                "Пулково",
-                                "Хуюково",
-                                GregorianCalendar.getInstance().time
-                            ),
-                            true
-                        ),
-                        Route(
-                            "Aeroexpress",
-                            RouteType.TRAIN,
-                            500,
-                            Destination(
-                                "Хуюково",
-                                "Московский вокзал",
-                                GregorianCalendar.getInstance().time
-                            ),
-                            true
-                        ),
-                        Route(
-                            "Ferry",
-                            RouteType.SHIP,
                             350,
                             Destination(
-                                "Московский вокзал",
-                                "Австралия",
-                                GregorianCalendar.getInstance().time
-                            )
+                                Place(
+                                    "Дом",
+                                    55.32,
+                                    37.01
+                                ),
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            true
                         ),
                         Route(
-                            "Camping",
-                            RouteType.FOOT,
                             0,
+                            "Aeroflot",
+                            RouteType.AIRPLANE,
+                            3500,
                             Destination(
-                                "Австралия",
-                                "Урарту",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Calendar.getInstance().time
                             ),
                             true
+                        ),
+                        Route(
+                            0,
+                            "UberX",
+                            RouteType.TAXI,
+                            450,
+                            Destination(
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Place(
+                                    "1703",
+                                    58.99,
+                                    39.42
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            false
                         )
                     )
                 ),
-                Trip(
-                    "Moscow",
-                    "St. Petersburg",
-                    420,
-                    GregorianCalendar.getInstance().time,
+                FullTrip(
+                    Trip(
+                        Place(
+                            "Москва",
+                            55.45,
+                            37.36
+                        ),
+                        Place(
+                            "Питера",
+                            59.56,
+                            30.18
+                        ),
+                        8970,
+                        Calendar.getInstance().time
+                    ),
                     listOf(
                         Route(
+                            0,
                             "Uber",
                             RouteType.TAXI,
-                            420,
+                            350,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
-                            )
+                                Place(
+                                    "Дом",
+                                    55.32,
+                                    37.01
+                                ),
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            true
                         ),
                         Route(
-                            "Plane",
+                            0,
+                            "Aeroflot",
                             RouteType.AIRPLANE,
-                            2880,
+                            3500,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Calendar.getInstance().time
                             ),
                             true
                         ),
                         Route(
-                            "Aero",
-                            RouteType.TRAIN,
-                            500,
+                            0,
+                            "UberX",
+                            RouteType.TAXI,
+                            450,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Place(
+                                    "1703",
+                                    58.99,
+                                    39.42
+                                ),
+                                Calendar.getInstance().time
                             ),
-                            true
+                            false
                         )
                     )
                 ),
-                Trip(
-                    "Moscow",
-                    "St. Petersburg",
-                    420,
-                    GregorianCalendar.getInstance().time,
+                FullTrip(
+                    Trip(
+                        Place(
+                            "Москва",
+                            55.45,
+                            37.36
+                        ),
+                        Place(
+                            "Питера",
+                            59.56,
+                            30.18
+                        ),
+                        8970,
+                        Calendar.getInstance().time
+                    ),
                     listOf(
                         Route(
+                            0,
                             "Uber",
                             RouteType.TAXI,
-                            420,
+                            350,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
-                            )
+                                Place(
+                                    "Дом",
+                                    55.32,
+                                    37.01
+                                ),
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            true
                         ),
                         Route(
-                            "Plane",
+                            0,
+                            "Aeroflot",
                             RouteType.AIRPLANE,
-                            2880,
+                            3500,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Calendar.getInstance().time
                             ),
                             true
                         ),
                         Route(
-                            "Aero",
-                            RouteType.TRAIN,
-                            500,
+                            0,
+                            "UberX",
+                            RouteType.TAXI,
+                            450,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Place(
+                                    "1703",
+                                    58.99,
+                                    39.42
+                                ),
+                                Calendar.getInstance().time
                             ),
-                            true
+                            false
                         )
                     )
                 ),
-                Trip(
-                    "Moscow",
-                    "St. Petersburg",
-                    420,
-                    GregorianCalendar.getInstance().time,
+                FullTrip(
+                    Trip(
+                        Place(
+                            "Москва",
+                            55.45,
+                            37.36
+                        ),
+                        Place(
+                            "Питера",
+                            59.56,
+                            30.18
+                        ),
+                        8970,
+                        Calendar.getInstance().time
+                    ),
                     listOf(
                         Route(
+                            0,
                             "Uber",
                             RouteType.TAXI,
-                            420,
+                            350,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
-                            )
+                                Place(
+                                    "Дом",
+                                    55.32,
+                                    37.01
+                                ),
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            true
                         ),
                         Route(
-                            "Plane",
+                            0,
+                            "Aeroflot",
                             RouteType.AIRPLANE,
-                            2880,
+                            3500,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Calendar.getInstance().time
                             ),
                             true
                         ),
                         Route(
-                            "Aero",
-                            RouteType.TRAIN,
-                            500,
+                            0,
+                            "UberX",
+                            RouteType.TAXI,
+                            450,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Place(
+                                    "1703",
+                                    58.99,
+                                    39.42
+                                ),
+                                Calendar.getInstance().time
                             ),
-                            true
+                            false
                         )
                     )
                 ),
-                Trip(
-                    "Moscow",
-                    "St. Petersburg",
-                    420,
-                    GregorianCalendar.getInstance().time,
+                FullTrip(
+                    Trip(
+                        Place(
+                            "Москва",
+                            55.45,
+                            37.36
+                        ),
+                        Place(
+                            "Питера",
+                            59.56,
+                            30.18
+                        ),
+                        8970,
+                        Calendar.getInstance().time
+                    ),
                     listOf(
                         Route(
+                            0,
                             "Uber",
                             RouteType.TAXI,
-                            420,
+                            350,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
-                            )
+                                Place(
+                                    "Дом",
+                                    55.32,
+                                    37.01
+                                ),
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            true
                         ),
                         Route(
-                            "Plane",
+                            0,
+                            "Aeroflot",
                             RouteType.AIRPLANE,
-                            2880,
+                            3500,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Calendar.getInstance().time
                             ),
                             true
                         ),
                         Route(
-                            "Aero",
-                            RouteType.TRAIN,
-                            500,
+                            0,
+                            "UberX",
+                            RouteType.TAXI,
+                            450,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Place(
+                                    "1703",
+                                    58.99,
+                                    39.42
+                                ),
+                                Calendar.getInstance().time
                             ),
-                            true
+                            false
                         )
                     )
                 ),
-                Trip(
-                    "Moscow",
-                    "St. Petersburg",
-                    420,
-                    GregorianCalendar.getInstance().time,
+                FullTrip(
+                    Trip(
+                        Place(
+                            "Москва",
+                            55.45,
+                            37.36
+                        ),
+                        Place(
+                            "Питера",
+                            59.56,
+                            30.18
+                        ),
+                        8970,
+                        Calendar.getInstance().time
+                    ),
                     listOf(
                         Route(
+                            0,
                             "Uber",
                             RouteType.TAXI,
-                            420,
+                            350,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
-                            )
+                                Place(
+                                    "Дом",
+                                    55.32,
+                                    37.01
+                                ),
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            true
                         ),
                         Route(
-                            "Plane",
+                            0,
+                            "Aeroflot",
                             RouteType.AIRPLANE,
-                            2880,
+                            3500,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Calendar.getInstance().time
                             ),
                             true
                         ),
                         Route(
-                            "Aero",
-                            RouteType.TRAIN,
-                            500,
+                            0,
+                            "UberX",
+                            RouteType.TAXI,
+                            450,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Place(
+                                    "1703",
+                                    58.99,
+                                    39.42
+                                ),
+                                Calendar.getInstance().time
                             ),
-                            true
+                            false
                         )
                     )
                 ),
-                Trip(
-                    "Moscow",
-                    "St. Petersburg",
-                    420,
-                    GregorianCalendar.getInstance().time,
+                FullTrip(
+                    Trip(
+                        Place(
+                            "Москва",
+                            55.45,
+                            37.36
+                        ),
+                        Place(
+                            "Питера",
+                            59.56,
+                            30.18
+                        ),
+                        8970,
+                        Calendar.getInstance().time
+                    ),
                     listOf(
                         Route(
+                            0,
                             "Uber",
                             RouteType.TAXI,
-                            420,
+                            350,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
-                            )
+                                Place(
+                                    "Дом",
+                                    55.32,
+                                    37.01
+                                ),
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            true
                         ),
                         Route(
-                            "Plane",
+                            0,
+                            "Aeroflot",
                             RouteType.AIRPLANE,
-                            2880,
+                            3500,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Calendar.getInstance().time
                             ),
                             true
                         ),
                         Route(
-                            "Aero",
-                            RouteType.TRAIN,
-                            500,
+                            0,
+                            "UberX",
+                            RouteType.TAXI,
+                            450,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Place(
+                                    "1703",
+                                    58.99,
+                                    39.42
+                                ),
+                                Calendar.getInstance().time
                             ),
-                            true
+                            false
                         )
                     )
                 ),
-                Trip(
-                    "Moscow",
-                    "St. Petersburg",
-                    420,
-                    GregorianCalendar.getInstance().time,
+                FullTrip(
+                    Trip(
+                        Place(
+                            "Москва",
+                            55.45,
+                            37.36
+                        ),
+                        Place(
+                            "Питера",
+                            59.56,
+                            30.18
+                        ),
+                        8970,
+                        Calendar.getInstance().time
+                    ),
                     listOf(
                         Route(
+                            0,
                             "Uber",
                             RouteType.TAXI,
-                            420,
+                            350,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
-                            )
+                                Place(
+                                    "Дом",
+                                    55.32,
+                                    37.01
+                                ),
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            true
                         ),
                         Route(
-                            "Plane",
+                            0,
+                            "Aeroflot",
                             RouteType.AIRPLANE,
-                            2880,
+                            3500,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Calendar.getInstance().time
                             ),
                             true
                         ),
                         Route(
-                            "Aero",
-                            RouteType.TRAIN,
-                            500,
+                            0,
+                            "UberX",
+                            RouteType.TAXI,
+                            450,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Place(
+                                    "1703",
+                                    58.99,
+                                    39.42
+                                ),
+                                Calendar.getInstance().time
                             ),
-                            true
+                            false
                         )
                     )
                 ),
-                Trip(
-                    "Moscow",
-                    "St. Petersburg",
-                    420,
-                    GregorianCalendar.getInstance().time,
+                FullTrip(
+                    Trip(
+                        Place(
+                            "Москва",
+                            55.45,
+                            37.36
+                        ),
+                        Place(
+                            "Питера",
+                            59.56,
+                            30.18
+                        ),
+                        8970,
+                        Calendar.getInstance().time
+                    ),
                     listOf(
                         Route(
+                            0,
                             "Uber",
                             RouteType.TAXI,
-                            420,
+                            350,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
-                            )
+                                Place(
+                                    "Дом",
+                                    55.32,
+                                    37.01
+                                ),
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            true
                         ),
                         Route(
-                            "Plane",
+                            0,
+                            "Aeroflot",
                             RouteType.AIRPLANE,
-                            2880,
+                            3500,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Calendar.getInstance().time
                             ),
                             true
                         ),
                         Route(
-                            "Aero",
-                            RouteType.TRAIN,
-                            500,
+                            0,
+                            "UberX",
+                            RouteType.TAXI,
+                            450,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Place(
+                                    "1703",
+                                    58.99,
+                                    39.42
+                                ),
+                                Calendar.getInstance().time
                             ),
-                            true
+                            false
                         )
                     )
                 ),
-                Trip(
-                    "Moscow",
-                    "St. Petersburg",
-                    420,
-                    GregorianCalendar.getInstance().time,
+                FullTrip(
+                    Trip(
+                        Place(
+                            "Москва",
+                            55.45,
+                            37.36
+                        ),
+                        Place(
+                            "Питера",
+                            59.56,
+                            30.18
+                        ),
+                        8970,
+                        Calendar.getInstance().time
+                    ),
                     listOf(
                         Route(
+                            0,
                             "Uber",
                             RouteType.TAXI,
-                            420,
+                            350,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
-                            )
+                                Place(
+                                    "Дом",
+                                    55.32,
+                                    37.01
+                                ),
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Calendar.getInstance().time
+                            ),
+                            true
                         ),
                         Route(
-                            "Plane",
+                            0,
+                            "Aeroflot",
                             RouteType.AIRPLANE,
-                            2880,
+                            3500,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Шереметьев",
+                                    56.00,
+                                    38.52
+                                ),
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Calendar.getInstance().time
                             ),
                             true
                         ),
                         Route(
-                            "Aero",
-                            RouteType.TRAIN,
-                            500,
+                            0,
+                            "UberX",
+                            RouteType.TAXI,
+                            450,
                             Destination(
-                                "A",
-                                "B",
-                                GregorianCalendar.getInstance().time
+                                Place(
+                                    "Пулково",
+                                    59.43,
+                                    21.21
+                                ),
+                                Place(
+                                    "1703",
+                                    58.99,
+                                    39.42
+                                ),
+                                Calendar.getInstance().time
                             ),
-                            true
+                            false
                         )
                     )
                 )
