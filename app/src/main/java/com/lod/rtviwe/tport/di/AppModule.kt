@@ -2,9 +2,14 @@ package com.lod.rtviwe.tport.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.lod.rtviwe.tport.TPortApplication
-import com.lod.rtviwe.tport.model.searchfragment.SearchBoxItem
+import com.lod.rtviwe.tport.bonuses.BonusesViewModel
 import com.lod.rtviwe.tport.network.RegistrationApi
-import com.lod.rtviwe.tport.viewmodel.*
+import com.lod.rtviwe.tport.orders.OrdersViewModel
+import com.lod.rtviwe.tport.profile.ProfileViewModel
+import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
+import com.lod.rtviwe.tport.search.SearchViewModel
+import com.lod.rtviwe.tport.search.searchRoute.SearchRoutesViewModel
+import com.lod.rtviwe.tport.search.wrappers.SearchBoxItem
 import com.redmadrobot.inputmask.helper.Mask
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
