@@ -1,9 +1,9 @@
-package com.lod.rtviwe.tport.orders
+package com.lod.rtviwe.tport.orders.ordercard
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.orders.wrappers.OrderLocation
+import com.lod.rtviwe.tport.orders.ordercard.wrapper.OrderLocation
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.order_location_item.*
 import java.text.SimpleDateFormat

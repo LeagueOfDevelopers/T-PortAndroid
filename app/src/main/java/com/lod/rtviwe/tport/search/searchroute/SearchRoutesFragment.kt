@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchRoute
+package com.lod.rtviwe.tport.search.searchroute
 
 import android.content.Context
 import android.os.Bundle

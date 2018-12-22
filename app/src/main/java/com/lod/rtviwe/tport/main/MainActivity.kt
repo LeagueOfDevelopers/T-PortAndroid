@@ -14,7 +14,7 @@ import com.lod.rtviwe.tport.profile.registration.RegisterStepOneFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterStepThreeFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterStepTwoFragment
 import com.lod.rtviwe.tport.search.SearchFragment
-import com.lod.rtviwe.tport.search.searchRoute.SearchRoutesFragment
+import com.lod.rtviwe.tport.search.searchroute.SearchRoutesFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTwoListener, OnRegisterStepThreeListener,

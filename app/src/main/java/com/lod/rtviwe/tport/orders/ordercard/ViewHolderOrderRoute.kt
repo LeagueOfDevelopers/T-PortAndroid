@@ -1,9 +1,9 @@
-package com.lod.rtviwe.tport.orders
+package com.lod.rtviwe.tport.orders.ordercard
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.orders.wrappers.OrderRoute
+import com.lod.rtviwe.tport.orders.ordercard.wrapper.OrderRoute
 import com.lod.rtviwe.tport.utils.RouteIcons
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.order_route_item.*

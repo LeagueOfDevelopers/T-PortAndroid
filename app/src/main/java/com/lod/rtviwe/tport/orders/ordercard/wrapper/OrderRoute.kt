@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.orders.wrappers
+package com.lod.rtviwe.tport.orders.ordercard.wrapper
 
 import com.lod.rtviwe.tport.model.Route
 

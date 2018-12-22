@@ -1,14 +1,14 @@
-package com.lod.rtviwe.tport.orders
+package com.lod.rtviwe.tport.orders.ordercard
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.orders.wrappers.OrderItem
-import com.lod.rtviwe.tport.orders.wrappers.OrderItemType
-import com.lod.rtviwe.tport.orders.wrappers.OrderLocation
-import com.lod.rtviwe.tport.orders.wrappers.OrderRoute
+import com.lod.rtviwe.tport.orders.ordercard.wrapper.OrderItem
+import com.lod.rtviwe.tport.orders.ordercard.wrapper.OrderItemType
+import com.lod.rtviwe.tport.orders.ordercard.wrapper.OrderLocation
+import com.lod.rtviwe.tport.orders.ordercard.wrapper.OrderRoute
 
 class OrderRoutesAdapter(
     private val context: Context?,

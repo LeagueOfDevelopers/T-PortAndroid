@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchRoute
+package com.lod.rtviwe.tport.search.searchroute
 
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
