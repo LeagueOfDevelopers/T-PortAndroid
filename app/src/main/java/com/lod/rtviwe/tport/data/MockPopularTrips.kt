@@ -1,8 +1,8 @@
 package com.lod.rtviwe.tport.data
 
 import androidx.lifecycle.MutableLiveData
-import com.lod.rtviwe.tport.model.searchfragment.PopularItem
-import com.lod.rtviwe.tport.model.searchfragment.SearchItem
+import com.lod.rtviwe.tport.search.wrappers.PopularItem
+import com.lod.rtviwe.tport.search.wrappers.SearchItem
 
 object MockPopularTrips : SearchFragmentItemsProvider {
 
