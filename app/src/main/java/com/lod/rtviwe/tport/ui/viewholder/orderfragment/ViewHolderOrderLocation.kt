@@ -25,14 +25,18 @@ class ViewHolderOrderLocation(override val containerView: View) : RecyclerView.V
 
         when {
             isFirst -> {
-                image_view_connection_bottom.setImageResource(R.drawable.ic_arrow_downward_black_24dp)
+                image_view_connection_bottom.background =
+                        containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
             }
             isLast -> {
-                image_view_connection_top.setImageResource(R.drawable.ic_arrow_downward_black_24dp)
+                image_view_connection_top.background =
+                        containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
             }
             else -> {
-                image_view_connection_top.setImageResource(R.drawable.ic_arrow_downward_black_24dp)
-                image_view_connection_bottom.setImageResource(R.drawable.ic_arrow_downward_black_24dp)
+                image_view_connection_top.background =
+                        containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
+                image_view_connection_bottom.background =
+                        containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
             }
         }
     }

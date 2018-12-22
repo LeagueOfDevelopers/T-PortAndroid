@@ -9,6 +9,7 @@ import com.lod.rtviwe.tport.ui.fragment.profile.ProfileFragment
 import com.lod.rtviwe.tport.ui.fragment.registration.RegisterStepOneFragment
 import com.lod.rtviwe.tport.ui.fragment.registration.RegisterStepThreeFragment
 import com.lod.rtviwe.tport.ui.fragment.registration.RegisterStepTwoFragment
+import com.lod.rtviwe.tport.ui.fragment.routedetails.RouteDetailsFragment
 import com.lod.rtviwe.tport.ui.fragment.search.SearchFragment
 import com.lod.rtviwe.tport.ui.fragment.search.SearchRoutesFragment
 import com.lod.rtviwe.tport.ui.listeners.OnRegisterStepOneListener
@@ -33,7 +34,8 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     private var currentRegistrationStep = 1
     private var currentSearchStep = 1
-    private var currentFragmentId = R.id.action_search
+    private var currentActionId = R.id.action_search
+    private var currentFragmentLayoutId = R.layout.search_fragment
     private var phoneNumber = 0L
     private var code = ""
     private var fromPlaceText = ""
@@ -45,9 +47,9 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         super.onCreate(savedInstanceState)
 
         bottom_navigation.setOnNavigationItemSelectedListener {
-            currentFragmentId = it.itemId
+            currentActionId = it.itemId
 
-            if (currentFragmentId != bottom_navigation.selectedItemId) {
+            if (currentActionId != bottom_navigation.selectedItemId) {
                 setUpCurrentFragment()
             } else {
                 scrollFragmentToTop()
@@ -56,7 +58,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
             true
         }
 
-        bottom_navigation.selectedItemId = currentFragmentId
+        bottom_navigation.selectedItemId = currentActionId
 
         if (savedInstanceState == null) {
             setUpCurrentFragment()
@@ -67,7 +69,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     override fun onSaveInstanceState(outState: Bundle?) {
         outState?.apply {
-            putInt(STATE_CURRENT_FRAGMENT, currentFragmentId)
+            putInt(STATE_CURRENT_FRAGMENT, currentActionId)
             putInt(STATE_REGISTRATION_STEP, currentRegistrationStep)
             putInt(STATE_SEARCH_STEP, currentSearchStep)
             putLong(STATE_PHONE_NUMBER, phoneNumber)
@@ -82,7 +84,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         savedInstanceState?.let {
-            currentFragmentId = savedInstanceState.getInt(STATE_CURRENT_FRAGMENT)
+            currentActionId = savedInstanceState.getInt(STATE_CURRENT_FRAGMENT)
             currentRegistrationStep = savedInstanceState.getInt(STATE_REGISTRATION_STEP)
             currentSearchStep = savedInstanceState.getInt(STATE_SEARCH_STEP)
             phoneNumber = savedInstanceState.getLong(STATE_PHONE_NUMBER)
@@ -102,7 +104,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     }
 
     override fun onBackPressed() {
-        when (currentFragmentId) {
+        when (currentActionId) {
             R.id.action_profile -> when (currentRegistrationStep) {
                 2 -> {
                     currentRegistrationStep = 1
@@ -123,16 +125,19 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     override fun onRegisterStepOneContinue(phoneNumber: Long) {
         this.phoneNumber = ("+7$phoneNumber").toLong()
         currentRegistrationStep = 2
+        currentFragmentLayoutId = R.layout.register_step_two_fragment
         setUpCurrentFragment()
     }
 
     override fun onRegisterStepTwoContinue() {
         currentRegistrationStep = 3
+        currentFragmentLayoutId = R.layout.register_step_three_fragment
         setUpCurrentFragment()
     }
 
     override fun onRegisterStepThreeContinue() {
         currentRegistrationStep = 0
+        currentFragmentLayoutId = R.layout.profile_fragment
         setUpCurrentFragment()
     }
 
@@ -146,6 +151,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     override fun onPickUpButton(fromPlace: String, toPlace: String) {
         currentSearchStep = 2
+        currentFragmentLayoutId = R.layout.search_routes_fragment
         fromPlaceText = fromPlace
         toPlaceText = toPlace
         setUpCurrentFragment()
@@ -163,7 +169,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 //        getCurrentFragment().scrollToTop()
     }
 
-    private fun getCurrentFragment() = when (currentFragmentId) {
+    private fun getCurrentFragment() = when (currentActionId) {
         R.id.action_bonuses -> BonusesFragment.newInstance()
         R.id.action_orders -> OrdersFragment.newInstance()
         R.id.action_search -> when (currentSearchStep) {
@@ -177,6 +183,19 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
             3 -> RegisterStepThreeFragment.newInstance()
             else -> ProfileFragment.newInstance()
         }
+        else -> throw RuntimeException("Unknown fragment id")
+    }
+
+    private fun getCurrentFragment2() = when (currentFragmentLayoutId) {
+        R.layout.search_fragment -> SearchFragment.newInstance()
+        R.layout.orders_fragment -> OrdersFragment.newInstance()
+        R.layout.bonuses_fragment -> BonusesFragment.newInstance()
+        R.layout.profile_fragment -> ProfileFragment.newInstance()
+        R.layout.register_step_one_fragment -> RegisterStepOneFragment.newInstance(phoneNumber)
+        R.layout.register_step_two_fragment -> RegisterStepTwoFragment.newInstance(phoneNumber, code)
+        R.layout.register_step_three_fragment -> RegisterStepThreeFragment.newInstance()
+        R.layout.search_routes_fragment -> SearchRoutesFragment.newInstance(fromPlaceText, toPlaceText)
+        R.layout.route_details_fragment -> RouteDetailsFragment.newInstance()
         else -> throw RuntimeException("Unknown fragment id")
     }
 }

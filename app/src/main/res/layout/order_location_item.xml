@@ -8,9 +8,9 @@
 
     <ImageView
             android:id="@+id/image_view_connection_top"
-            android:layout_width="24dp"
+            android:layout_width="8dp"
             android:layout_height="24dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -20,11 +20,12 @@
             android:layout_height="24dp"
             android:src="@drawable/ic_location_on_black_24dp"
             app:layout_constraintStart_toStartOf="@+id/image_view_connection_top"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_connection_top"/>
+            app:layout_constraintTop_toBottomOf="@+id/image_view_connection_top"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_connection_top"/>
 
     <ImageView
             android:id="@+id/image_view_connection_bottom"
-            android:layout_width="24dp"
+            android:layout_width="8dp"
             android:layout_height="24dp"
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/image_view_location_point"

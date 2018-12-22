@@ -44,7 +44,7 @@
     <ImageView
             android:id="@+id/image_view_connection_start"
             android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_height="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/image_view_route_item"
             app:layout_constraintBottom_toBottomOf="@+id/image_view_route_item"
@@ -53,7 +53,7 @@
     <ImageView
             android:id="@+id/image_view_connection_end"
             android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_height="8dp"
             app:layout_constraintTop_toTopOf="@+id/image_view_route_item"
             app:layout_constraintBottom_toBottomOf="@+id/image_view_route_item"
             app:layout_constraintEnd_toEndOf="parent"

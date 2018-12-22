@@ -74,6 +74,9 @@ class RegisterStepOneFragment : BaseFragment() {
             }
         }
 
+        // TODO remove
+        edit_text_phone_number.setText("8005553535")
+
         edit_text_phone_number.hint = MaskedTextChangedListener.installOn(
             edit_text_phone_number,
             "+7 ([000]) [000]-[00]-[00]",

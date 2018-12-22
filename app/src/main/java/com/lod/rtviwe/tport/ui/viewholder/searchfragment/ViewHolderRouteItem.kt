@@ -18,11 +18,17 @@ class ViewHolderRouteItem(override val containerView: View) : RecyclerView.ViewH
         image_view_route_item.setImageResource(imageResourceToSet)
 
         if (!isFirst) {
-            image_view_connection_start.setImageResource(R.drawable.ic_trending_flat_black_24dp)
+            image_view_connection_start.background =
+                    containerView.context.getDrawable(R.drawable.connection_rectangle_horizontal_start)
+        } else {
+            image_view_connection_start.visibility = View.INVISIBLE
         }
 
         if (!isLast) {
-            image_view_connection_end.setImageResource(R.drawable.ic_trending_flat_black_24dp)
+            image_view_connection_end.background =
+                    containerView.context.getDrawable(R.drawable.connection_rectangle_horizontal_end)
+        } else {
+            image_view_connection_end.visibility = View.INVISIBLE
         }
 
         text_view_route_type.text = routeItem.text

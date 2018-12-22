@@ -56,44 +56,44 @@
 
         <ImageView
                 android:id="@+id/image_view_code_first"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
-                android:src="@drawable/ic_ac_unit_black_24dp"
+                android:src="@drawable/ic_circle_black_24dp"
                 android:contentDescription="@string/image_view_code_first"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
                 app:layout_constraintStart_toStartOf="parent"/>
 
         <ImageView
                 android:id="@+id/image_view_code_second"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
-                android:src="@drawable/ic_ac_unit_black_24dp"
+                android:src="@drawable/ic_circle_black_24dp"
                 android:contentDescription="@string/image_view_code_second"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
                 app:layout_constraintStart_toEndOf="@+id/image_view_code_first"/>
 
         <ImageView
                 android:id="@+id/image_view_code_third"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
-                android:src="@drawable/ic_ac_unit_black_24dp"
+                android:src="@drawable/ic_circle_black_24dp"
                 android:contentDescription="@string/image_view_code_third"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
                 app:layout_constraintStart_toEndOf="@+id/image_view_code_second"/>
 
         <ImageView
                 android:id="@+id/image_view_code_fourth"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
-                android:src="@drawable/ic_ac_unit_black_24dp"
+                android:src="@drawable/ic_circle_black_24dp"
                 android:contentDescription="@string/image_view_code_fourth"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
                 app:layout_constraintStart_toEndOf="@+id/image_view_code_third"/>

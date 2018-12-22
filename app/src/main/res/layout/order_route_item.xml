@@ -8,10 +8,10 @@
 
     <ImageView
             android:id="@+id/image_view_connection_top"
-            android:layout_width="24dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:src="@drawable/ic_arrow_downward_black_24dp"
+            android:layout_width="8dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/connection_rectangle_vertical_end"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
@@ -21,15 +21,14 @@
             android:layout_height="24dp"
             android:src="@drawable/ic_local_taxi_blue_24dp"
             app:layout_constraintStart_toStartOf="@+id/image_view_connection_top"
-            app:layout_constraintEnd_toEndOf="@+id/image_view_connection_top"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_connection_top"/>
+            app:layout_constraintTop_toBottomOf="@+id/image_view_connection_top"
+            app:layout_constraintEnd_toStartOf="@+id/text_view_route_name" android:layout_marginEnd="8dp"/>
 
     <ImageView
             android:id="@+id/image_view_bottom_connection"
-            android:layout_width="24dp"
+            android:layout_width="8dp"
             android:layout_height="0dp"
-            android:src="@drawable/ic_arrow_downward_black_24dp"
+            android:background="@drawable/connection_rectangle_vertical_start"
             app:layout_constraintVertical_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/image_view_route_type"
             app:layout_constraintStart_toStartOf="@+id/image_view_route_type"
