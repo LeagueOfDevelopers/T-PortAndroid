@@ -1,123 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/scroll_view_step_two"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_view_step_two"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <TextView
-                android:id="@+id/text_view_did_send_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="160dp"
-                android:text="@string/text_did_send_code"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                style="@style/TextViewInformation"/>
+            android:id="@+id/text_view_did_send_code"
+            style="@style/TextViewInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/text_did_send_code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-                android:id="@+id/text_view_register_step_two_phone_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_did_send_code"
-                app:layout_constraintEnd_toEndOf="@+id/text_view_did_send_code"
-                app:layout_constraintHorizontal_bias="0.0"
-                tools:text="@tools:sample/us_phones"
-                style="@style/TextViewHeader"/>
+            android:id="@+id/text_view_register_step_two_phone_number"
+            style="@style/TextViewHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/text_view_did_send_code"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_did_send_code"
+            tools:text="@tools:sample/us_phones" />
 
         <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_input_code"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="8dp"
-                android:inputType="number"
-                android:digits="0123456789 .-"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="@tools:sample/us_zipcodes"
-                style="@style/EditTextCode"/>
+            android:id="@+id/edit_text_input_code"
+            style="@style/EditTextCode"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:digits="0123456789 .-"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/us_zipcodes" />
 
         <ImageView
-                android:id="@+id/image_view_code_first"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_circle_black_24dp"
-                android:contentDescription="@string/image_view_code_first"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
-                app:layout_constraintStart_toStartOf="parent"/>
+            android:id="@+id/image_view_code_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/image_view_code_first"
+            android:src="@drawable/ic_circle_black_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
 
         <ImageView
-                android:id="@+id/image_view_code_second"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_circle_black_24dp"
-                android:contentDescription="@string/image_view_code_second"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
-                app:layout_constraintStart_toEndOf="@+id/image_view_code_first"/>
+            android:id="@+id/image_view_code_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/image_view_code_second"
+            android:src="@drawable/ic_circle_black_24dp"
+            app:layout_constraintStart_toEndOf="@+id/image_view_code_first"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
 
         <ImageView
-                android:id="@+id/image_view_code_third"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_circle_black_24dp"
-                android:contentDescription="@string/image_view_code_third"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
-                app:layout_constraintStart_toEndOf="@+id/image_view_code_second"/>
+            android:id="@+id/image_view_code_third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/image_view_code_third"
+            android:src="@drawable/ic_circle_black_24dp"
+            app:layout_constraintStart_toEndOf="@+id/image_view_code_second"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
 
         <ImageView
-                android:id="@+id/image_view_code_fourth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_circle_black_24dp"
-                android:contentDescription="@string/image_view_code_fourth"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number"
-                app:layout_constraintStart_toEndOf="@+id/image_view_code_third"/>
+            android:id="@+id/image_view_code_fourth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/image_view_code_fourth"
+            android:src="@drawable/ic_circle_black_24dp"
+            app:layout_constraintStart_toEndOf="@+id/image_view_code_third"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
 
         <TextView
-                android:id="@+id/text_view_did_get_code_question"
-                android:text="@string/did_get_code_question"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_view_code_first"
-                style="@style/TextViewInformation"/>
+            android:id="@+id/text_view_did_get_code_question"
+            style="@style/TextViewInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/did_get_code_question"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_code_first" />
 
         <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_resend_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/button_resend_code"
-                app:layout_constraintStart_toEndOf="@+id/text_view_did_get_code_question"
-                app:layout_constraintTop_toTopOf="@+id/text_view_did_get_code_question"
-                app:layout_constraintBottom_toBottomOf="@+id/text_view_did_get_code_question"
-                style="@style/ButtonResendCode"/>
+            android:id="@+id/button_resend_code"
+            style="@style/ButtonResendCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_resend_code"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_did_get_code_question"
+            app:layout_constraintStart_toEndOf="@+id/text_view_did_get_code_question"
+            app:layout_constraintTop_toTopOf="@+id/text_view_did_get_code_question" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

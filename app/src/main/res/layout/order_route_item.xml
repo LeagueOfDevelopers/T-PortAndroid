@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ImageView
-            android:id="@+id/image_view_connection_top"
-            android:layout_width="8dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/connection_rectangle_vertical_end"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+        android:id="@+id/image_view_connection_top"
+        android:layout_width="8dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/connection_rectangle_vertical_end"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-            android:id="@+id/image_view_route_type"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_local_taxi_blue_24dp"
-            app:layout_constraintStart_toStartOf="@+id/image_view_connection_top"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_connection_top"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_route_name" android:layout_marginEnd="8dp"/>
+        android:id="@+id/image_view_route_type"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_local_taxi_blue_24dp"
+        app:layout_constraintEnd_toStartOf="@+id/text_view_route_name"
+        app:layout_constraintStart_toStartOf="@+id/image_view_connection_top"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_connection_top" />
 
     <ImageView
-            android:id="@+id/image_view_bottom_connection"
-            android:layout_width="8dp"
-            android:layout_height="0dp"
-            android:background="@drawable/connection_rectangle_vertical_start"
-            app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_route_type"
-            app:layout_constraintStart_toStartOf="@+id/image_view_route_type"
-            app:layout_constraintEnd_toEndOf="@+id/image_view_route_type"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        android:id="@+id/image_view_bottom_connection"
+        android:layout_width="8dp"
+        android:layout_height="0dp"
+        android:background="@drawable/connection_rectangle_vertical_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/image_view_route_type"
+        app:layout_constraintStart_toStartOf="@+id/image_view_route_type"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_route_type"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-            android:id="@+id/text_view_route_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/image_view_connection_top"
-            app:layout_constraintTop_toTopOf="@+id/image_view_connection_top"
-            tools:text="@tools:sample/lorem"
-            style="@style/TextViewSmallHeader"/>
+        android:id="@+id/text_view_route_name"
+        style="@style/TextViewSmallHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/image_view_connection_top"
+        app:layout_constraintTop_toTopOf="@+id/image_view_connection_top"
+        tools:text="@tools:sample/lorem" />
 
     <TextView
-            android:id="@+id/text_view_route_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/image_view_route_type"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_route_name"
-            tools:text="@tools:sample/date/hhmmss"
-            style="@style/TextViewSmallHeader"/>
+        android:id="@+id/text_view_route_time"
+        style="@style/TextViewSmallHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/image_view_route_type"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_route_name"
+        tools:text="@tools:sample/date/hhmmss" />
 
     <TextView
-            android:id="@+id/text_view_route_cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/image_view_bottom_connection"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_route_time"
-            tools:text="@tools:sample/us_zipcodes"
-            style="@style/TextViewMoneyOnSearchRoute"/>
+        android:id="@+id/text_view_route_cost"
+        style="@style/TextViewMoneyOnSearchRoute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/image_view_bottom_connection"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_route_time"
+        tools:text="@tools:sample/us_zipcodes" />
 
     <TextView
-            android:id="@+id/text_view_is_route_paid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@+id/text_view_route_cost"
-            app:layout_constraintTop_toTopOf="@+id/text_view_route_cost"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_route_cost"
-            tools:text="@tools:sample/lorem"/>
+        android:id="@+id/text_view_is_route_paid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_view_route_cost"
+        app:layout_constraintStart_toEndOf="@+id/text_view_route_cost"
+        app:layout_constraintTop_toTopOf="@+id/text_view_route_cost"
+        tools:text="@tools:sample/lorem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

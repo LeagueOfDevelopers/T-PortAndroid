@@ -4,10 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.transaction
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.bonuses.BonusesFragment
-import com.lod.rtviwe.tport.listeners.OnRegisterStepOneListener
-import com.lod.rtviwe.tport.listeners.OnRegisterStepThreeListener
-import com.lod.rtviwe.tport.listeners.OnRegisterStepTwoListener
-import com.lod.rtviwe.tport.listeners.SearchListener
+import com.lod.rtviwe.tport.listeners.*
 import com.lod.rtviwe.tport.orders.OrdersFragment
 import com.lod.rtviwe.tport.profile.ProfileFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterStepOneFragment
@@ -15,15 +12,17 @@ import com.lod.rtviwe.tport.profile.registration.RegisterStepThreeFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterStepTwoFragment
 import com.lod.rtviwe.tport.search.SearchFragment
 import com.lod.rtviwe.tport.search.searchroute.SearchRoutesFragment
+import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTwoListener, OnRegisterStepThreeListener,
-    SearchListener {
+    SearchListener, TripClickedListener {
 
     companion object {
 
         private const val STATE_CURRENT_FRAGMENT = "CURRENT_FRAGMENT_ID"
         private const val STATE_REGISTRATION_STEP = "CURRENT_REGISTRATION_STEP"
+        private const val STATE_ORDER_STEP = "CURRENT_ORDER_STEP"
         private const val STATE_SEARCH_STEP = "CURRENT_SEARCH_STEP"
         private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STATE"
         private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
@@ -33,6 +32,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     private var currentRegistrationStep = 1
     private var currentSearchStep = 1
+    private var currentOrderStep = 1
     private var currentActionId = R.id.action_search
     private var currentFragmentLayoutId = R.layout.search_fragment
     private var phoneNumber = 0L
@@ -71,6 +71,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
             putInt(STATE_CURRENT_FRAGMENT, currentActionId)
             putInt(STATE_REGISTRATION_STEP, currentRegistrationStep)
             putInt(STATE_SEARCH_STEP, currentSearchStep)
+            putInt(STATE_ORDER_STEP, currentOrderStep)
             putLong(STATE_PHONE_NUMBER, phoneNumber)
             putString(STATE_FROM_PLACE, fromPlaceText)
             putString(STATE_TO_PLACE, toPlaceText)
@@ -86,6 +87,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
             currentActionId = savedInstanceState.getInt(STATE_CURRENT_FRAGMENT)
             currentRegistrationStep = savedInstanceState.getInt(STATE_REGISTRATION_STEP)
             currentSearchStep = savedInstanceState.getInt(STATE_SEARCH_STEP)
+            currentOrderStep = savedInstanceState.getInt(STATE_ORDER_STEP)
             phoneNumber = savedInstanceState.getLong(STATE_PHONE_NUMBER)
             fromPlaceText = savedInstanceState.getString(STATE_FROM_PLACE)
             toPlaceText = savedInstanceState.getString(STATE_TO_PLACE)
@@ -112,8 +114,19 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
                 else -> super.onBackPressed()
             }
             R.id.action_search -> when (currentSearchStep) {
+                3 -> {
+                    currentSearchStep = 2
+                    setUpCurrentFragment()
+                }
                 2 -> {
                     currentSearchStep = 1
+                    setUpCurrentFragment()
+                }
+                else -> super.onBackPressed()
+            }
+            R.id.action_orders -> when (currentOrderStep) {
+                2 -> {
+                    currentOrderStep = 1
                     setUpCurrentFragment()
                 }
                 else -> super.onBackPressed()
@@ -137,6 +150,12 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     override fun onRegisterStepThreeContinue() {
         currentRegistrationStep = 0
         currentFragmentLayoutId = R.layout.profile_fragment
+        setUpCurrentFragment()
+    }
+
+    override fun openTripDetailFragment() {
+        currentSearchStep = 3
+        currentFragmentLayoutId = R.layout.trip_details_fragment
         setUpCurrentFragment()
     }
 
@@ -170,10 +189,15 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     private fun getCurrentFragment() = when (currentActionId) {
         R.id.action_bonuses -> BonusesFragment.newInstance()
-        R.id.action_orders -> OrdersFragment.newInstance()
+        R.id.action_orders -> when (currentOrderStep) {
+            1 -> OrdersFragment.newInstance()
+            2 -> TripDetailsFragment.newInstance()
+            else -> OrdersFragment.newInstance()
+        }
         R.id.action_search -> when (currentSearchStep) {
             1 -> SearchFragment.newInstance()
             2 -> SearchRoutesFragment.newInstance(fromPlaceText, toPlaceText)
+            3 -> TripDetailsFragment.newInstance()
             else -> SearchFragment.newInstance()
         }
         R.id.action_profile -> when (currentRegistrationStep) {
