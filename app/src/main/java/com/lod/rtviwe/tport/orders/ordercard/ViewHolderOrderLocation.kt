@@ -3,6 +3,7 @@ package com.lod.rtviwe.tport.orders.ordercard
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
+import com.lod.rtviwe.tport.listeners.OrderTripClickedListener
 import com.lod.rtviwe.tport.orders.ordercard.wrapper.OrderLocation
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.order_location_item.*
@@ -12,7 +13,14 @@ import java.util.*
 class ViewHolderOrderLocation(override val containerView: View) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 
+    private lateinit var orderTripClickedListener: OrderTripClickedListener
+
     fun bind(orderLocation: OrderLocation, isFirst: Boolean, isLast: Boolean) {
+        when (containerView.context) {
+            is OrderTripClickedListener -> orderTripClickedListener = containerView.context as OrderTripClickedListener
+            else -> throw ClassCastException("${containerView.context} does not implements SearchListener")
+        }
+
         text_view_location.text = if (isLast)
             orderLocation.destination.placeTo
         else
@@ -38,6 +46,10 @@ class ViewHolderOrderLocation(override val containerView: View) : RecyclerView.V
                 image_view_connection_bottom.background =
                         containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
             }
+        }
+
+        card_trip_location_item.setOnClickListener {
+            orderTripClickedListener.openTripDetailFragmentFromOrder()
         }
     }
 }

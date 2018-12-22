@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.listeners.TripClickedListener
+import com.lod.rtviwe.tport.listeners.SearchTripClickedListener
 import com.lod.rtviwe.tport.model.Trip
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.search_route_card.*
@@ -14,11 +14,12 @@ import java.util.*
 class ViewHolderTripItem(override val containerView: View) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 
-    private lateinit var tripClickedListener: TripClickedListener
+    private lateinit var searchTripClickedListener: SearchTripClickedListener
 
     fun bind(tripItem: Trip) {
         when (containerView.context) {
-            is TripClickedListener -> tripClickedListener = containerView.context as TripClickedListener
+            is SearchTripClickedListener -> searchTripClickedListener =
+                    containerView.context as SearchTripClickedListener
             else -> throw ClassCastException("${containerView.context} does not implements SearchListener")
         }
 
@@ -38,11 +39,11 @@ class ViewHolderTripItem(override val containerView: View) : RecyclerView.ViewHo
         }
 
         card_trip_item.setOnClickListener {
-            tripClickedListener.openTripDetailFragment()
+            searchTripClickedListener.openTripDetailFragmentFromSearch()
         }
 
         recycler_view_routes_in_item.setOnClickListener {
-            tripClickedListener.openTripDetailFragment()
+            searchTripClickedListener.openTripDetailFragmentFromSearch()
         }
     }
 }

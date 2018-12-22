@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.listeners.SearchListener
-import com.lod.rtviwe.tport.listeners.TripClickedListener
+import com.lod.rtviwe.tport.listeners.SearchTripClickedListener
 import kotlinx.android.synthetic.main.search_routes_fragment.*
 import kotlinx.android.synthetic.main.search_routes_toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,7 +37,7 @@ class SearchRoutesFragment : BaseFragment() {
 
     private val searchRoutesViewModel by viewModel<SearchRoutesViewModel>()
 
-    private lateinit var tripClickedListener: TripClickedListener
+    private lateinit var searchTripClickedListener: SearchTripClickedListener
     private lateinit var searchListener: SearchListener
     private lateinit var searchRouteCardsAdapter: SearchRouteCardsAdapter
     private lateinit var searchRoutesLayoutManager: LinearLayoutManager
@@ -55,7 +55,7 @@ class SearchRoutesFragment : BaseFragment() {
         }
 
         when (context) {
-            is TripClickedListener -> tripClickedListener = context
+            is SearchTripClickedListener -> searchTripClickedListener = context
             else -> throw ClassCastException("$context does not implements SearchListener")
         }
     }

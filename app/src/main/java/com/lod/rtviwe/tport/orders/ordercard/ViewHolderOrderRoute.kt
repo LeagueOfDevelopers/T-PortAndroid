@@ -3,6 +3,7 @@ package com.lod.rtviwe.tport.orders.ordercard
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
+import com.lod.rtviwe.tport.listeners.OrderTripClickedListener
 import com.lod.rtviwe.tport.orders.ordercard.wrapper.OrderRoute
 import com.lod.rtviwe.tport.utils.RouteIcons
 import kotlinx.android.extensions.LayoutContainer
@@ -13,7 +14,14 @@ import java.util.*
 class ViewHolderOrderRoute(override val containerView: View) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 
+    private lateinit var orderTripClickedListener: OrderTripClickedListener
+
     fun bind(routeItem: OrderRoute) {
+        when (containerView.context) {
+            is OrderTripClickedListener -> orderTripClickedListener = containerView.context as OrderTripClickedListener
+            else -> throw ClassCastException("${containerView.context} does not implements SearchListener")
+        }
+
         val imageResourceToSet = RouteIcons.getImageResource(routeItem.route.type)
         image_view_route_type.setImageResource(imageResourceToSet)
 
@@ -29,5 +37,9 @@ class ViewHolderOrderRoute(override val containerView: View) : RecyclerView.View
                     containerView.context.getString(R.string.is_paid)
                 else
                     containerView.context.getString(R.string.not_paid)
+
+        card_trip_route_item.setOnClickListener {
+            orderTripClickedListener.openTripDetailFragmentFromOrder()
+        }
     }
 }

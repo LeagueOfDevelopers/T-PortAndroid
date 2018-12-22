@@ -16,7 +16,7 @@ import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTwoListener, OnRegisterStepThreeListener,
-    SearchListener, TripClickedListener {
+    SearchListener, SearchTripClickedListener, OrderTripClickedListener {
 
     companion object {
 
@@ -153,8 +153,14 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         setUpCurrentFragment()
     }
 
-    override fun openTripDetailFragment() {
+    override fun openTripDetailFragmentFromSearch() {
         currentSearchStep = 3
+        currentFragmentLayoutId = R.layout.trip_details_fragment
+        setUpCurrentFragment()
+    }
+
+    override fun openTripDetailFragmentFromOrder() {
+        currentOrderStep = 2
         currentFragmentLayoutId = R.layout.trip_details_fragment
         setUpCurrentFragment()
     }
