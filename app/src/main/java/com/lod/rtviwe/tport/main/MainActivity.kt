@@ -27,6 +27,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STATE"
         private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
         private const val STATE_TO_PLACE = "TO_PLACE_STATE"
+        private const val STATE_TRAVEL_TIME = "TRAVEL_TIME_STATE"
         private const val STATE_CODE = "CODE_STATE"
     }
 
@@ -39,6 +40,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     private var code = ""
     private var fromPlaceText = ""
     private var toPlaceText = ""
+    private var travelTimeText = ""
 
     override fun getLayout() = R.layout.activity_main
 
@@ -75,6 +77,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
             putLong(STATE_PHONE_NUMBER, phoneNumber)
             putString(STATE_FROM_PLACE, fromPlaceText)
             putString(STATE_TO_PLACE, toPlaceText)
+            putString(STATE_TRAVEL_TIME, travelTimeText)
             putString(STATE_CODE, code)
         }
 
@@ -91,6 +94,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
             phoneNumber = savedInstanceState.getLong(STATE_PHONE_NUMBER)
             fromPlaceText = savedInstanceState.getString(STATE_FROM_PLACE)
             toPlaceText = savedInstanceState.getString(STATE_TO_PLACE)
+            travelTimeText = savedInstanceState.getString(STATE_TRAVEL_TIME)
             code = savedInstanceState.getString(STATE_CODE)
 
             setUpCurrentFragment()
@@ -173,11 +177,12 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         this.code = code
     }
 
-    override fun onPickUpButton(fromPlace: String, toPlace: String) {
+    override fun onPickUpButton(fromPlace: String, toPlace: String, travelTime: String) {
         currentSearchStep = 2
         currentFragmentLayoutId = R.layout.search_routes_fragment
         fromPlaceText = fromPlace
         toPlaceText = toPlace
+        travelTimeText = travelTime
         setUpCurrentFragment()
     }
 
@@ -202,7 +207,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         }
         R.id.action_search -> when (currentSearchStep) {
             1 -> SearchFragment.newInstance()
-            2 -> SearchRoutesFragment.newInstance(fromPlaceText, toPlaceText)
+            2 -> SearchRoutesFragment.newInstance(fromPlaceText, toPlaceText, travelTimeText)
             3 -> TripDetailsFragment.newInstance()
             else -> SearchFragment.newInstance()
         }

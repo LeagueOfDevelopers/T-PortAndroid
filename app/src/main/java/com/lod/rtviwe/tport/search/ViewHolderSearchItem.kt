@@ -58,11 +58,15 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
         }
 
         button_pick_up.setOnClickListener {
-            searchListener.onPickUpButton(edit_text_from_place.text.toString(), edit_text_to_place.text.toString())
+            searchListener.onPickUpButton(
+                edit_text_from_place.text.toString(),
+                edit_text_to_place.text.toString(),
+                edit_text_data_travel.text.toString()
+            )
         }
 
         image_button_change.setOnClickListener {
-            changeDestinations()
+            swapDestinations()
         }
 
         edit_text_from_place.setOnFocusChangeListener { view, hasFocus ->
@@ -78,7 +82,7 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
         }
     }
 
-    private fun changeDestinations() {
+    private fun swapDestinations() {
         val temp = edit_text_from_place.text
         edit_text_from_place.text = edit_text_to_place.text
         edit_text_to_place.text = temp

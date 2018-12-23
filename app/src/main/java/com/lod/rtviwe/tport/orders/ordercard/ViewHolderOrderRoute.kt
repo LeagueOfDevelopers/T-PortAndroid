@@ -29,7 +29,7 @@ class ViewHolderOrderRoute(override val containerView: View) : RecyclerView.View
         text_view_route_cost.text =
                 String.format(containerView.context.getString(R.string.money), routeItem.route.cost)
 
-        text_view_route_time.text =
+        text_view_route_time_label.text =
                 SimpleDateFormat("hh:mm", Locale.getDefault()).format(routeItem.route.destination.arrivalDate)
 
         text_view_is_route_paid.text =

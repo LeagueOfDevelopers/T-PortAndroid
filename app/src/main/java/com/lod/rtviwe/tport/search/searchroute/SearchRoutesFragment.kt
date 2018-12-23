@@ -21,10 +21,11 @@ class SearchRoutesFragment : BaseFragment() {
 
     companion object {
 
-        fun newInstance(fromPlace: String, toPlace: String): SearchRoutesFragment {
+        fun newInstance(fromPlace: String, toPlace: String, travelTime: String): SearchRoutesFragment {
             val newArguments = Bundle().apply {
                 putString(STATE_FROM_PLACE, fromPlace)
                 putString(STATE_TO_PLACE, toPlace)
+                putString(STATE_TRAVEL_TIME, travelTime)
             }
             return SearchRoutesFragment().apply {
                 arguments = newArguments
@@ -33,6 +34,7 @@ class SearchRoutesFragment : BaseFragment() {
 
         private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
         private const val STATE_TO_PLACE = "FROM_TO_STATE"
+        private const val STATE_TRAVEL_TIME = "TRAVEL_TIME_STATE"
     }
 
     private val searchRoutesViewModel by viewModel<SearchRoutesViewModel>()
@@ -45,6 +47,7 @@ class SearchRoutesFragment : BaseFragment() {
 
     private var fromPlace = ""
     private var toPlace = ""
+    private var travelTime = ""
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -69,6 +72,9 @@ class SearchRoutesFragment : BaseFragment() {
             if (it.containsKey(STATE_TO_PLACE)) {
                 toPlace = it.getString(STATE_TO_PLACE)
             }
+            if (it.containsKey(STATE_TRAVEL_TIME)) {
+                travelTime = it.getString(STATE_TRAVEL_TIME)
+            }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -79,6 +85,7 @@ class SearchRoutesFragment : BaseFragment() {
 
         edit_text_toolbar_from_place.setText(fromPlace)
         edit_text_toolbar_to_place.setText(toPlace)
+        edit_text_toolbar_when.setText(travelTime)
 
         searchRouteCardsAdapter = SearchRouteCardsAdapter(context, listOf())
         searchRoutesLayoutManager = LinearLayoutManager(context)
@@ -101,5 +108,15 @@ class SearchRoutesFragment : BaseFragment() {
 //                }
 //            })
         }
+
+        image_button_change.setOnClickListener {
+            swapDestinations()
+        }
+    }
+
+    private fun swapDestinations() {
+        val temp = edit_text_toolbar_from_place.text
+        edit_text_toolbar_from_place.text = edit_text_toolbar_to_place.text
+        edit_text_toolbar_to_place.text = temp
     }
 }

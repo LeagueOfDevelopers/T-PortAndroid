@@ -21,14 +21,14 @@ class ViewHolderRouteItem(override val containerView: View) : RecyclerView.ViewH
             image_view_connection_start.background =
                     containerView.context.getDrawable(R.drawable.connection_rectangle_horizontal_start)
         } else {
-            image_view_connection_start.visibility = View.INVISIBLE
+            image_view_connection_start.visibility = View.GONE
         }
 
         if (!isLast) {
             image_view_connection_end.background =
                     containerView.context.getDrawable(R.drawable.connection_rectangle_horizontal_end)
         } else {
-            image_view_connection_end.visibility = View.INVISIBLE
+            image_view_connection_end.visibility = View.GONE
         }
 
         text_view_route_type.text = routeItem.vehicleName

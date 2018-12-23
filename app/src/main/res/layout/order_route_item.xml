@@ -47,7 +47,7 @@
         tools:text="@tools:sample/lorem" />
 
     <TextView
-        android:id="@+id/text_view_route_time"
+            android:id="@+id/text_view_route_time_label"
         style="@style/TextViewSmallHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         app:layout_constraintStart_toEndOf="@+id/image_view_bottom_connection"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_route_time"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_route_time_label"
         tools:text="@tools:sample/us_zipcodes" />
 
     <TextView

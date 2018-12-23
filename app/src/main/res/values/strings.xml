@@ -32,7 +32,8 @@
     <string name="menu_filter">Фильтр</string>
     <string name="search_routes_toolbar_title">Поиск маршрутов</string>
     <string name="search_routes_toolbar_begin_label">Начало:</string>
-    <string name="search_routes_toolbar_end_label">Конец:</string>
+    <string name="search_routes_toolbar_end_label">Конец:</string>search_routes_toolbar_when_label
+    <string name="search_routes_toolbar_when_label">Когда:</string>
     <string name="image_view_filter_button">Кнопка фильтрация</string>
     <string name="extended_fab_search_routes">Забронировать этот маршрут</string>
     <string name="image_view_route_type_description">Картинка типа маршрута</string>
@@ -41,6 +42,7 @@
     <string name="image_view_code_third">Третья цифра кода</string>
     <string name="image_view_code_fourth">Четвёртая цифра кода</string>
     <string name="arrival_time">Время прибытия: %1$s</string>
+    <string name="short_arrival_time">Прибытие:</string>
     <string name="is_paid">Оплачено</string>
     <string name="not_paid">Не оплачено</string>
     <string name="money" translatable="false">%1$d ₽</string>
