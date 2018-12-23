@@ -22,9 +22,9 @@ class ViewHolderOrderLocation(override val containerView: View) : RecyclerView.V
         }
 
         text_view_location.text = if (isLast)
-            orderLocation.destination.placeTo
+            orderLocation.destination.placeTo.name
         else
-            orderLocation.destination.placeFrom
+            orderLocation.destination.placeFrom.name
 
         text_view_arrival_date.text = String.format(
             containerView.context.getString(R.string.arrival_time),
