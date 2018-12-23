@@ -31,7 +31,7 @@ class ViewHolderRouteItem(override val containerView: View) : RecyclerView.ViewH
             image_view_connection_end.visibility = View.INVISIBLE
         }
 
-        text_view_route_type.text = routeItem.text
+        text_view_route_type.text = routeItem.vehicleName
         text_view_route_cost.text = "${routeItem.cost} \u20BD" // \u20BD - ₽
     }
 
