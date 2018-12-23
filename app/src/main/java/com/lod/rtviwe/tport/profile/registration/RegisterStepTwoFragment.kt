@@ -99,7 +99,7 @@ class RegisterStepTwoFragment : BaseFragment() {
                         }
 
                         (extractedValue.length until CODE_LENGTH).forEach { index ->
-                            getImageViewCode(index).setImageResource(R.drawable.ic_circle_black_24dp)
+                            getImageViewCode(index).setImageResource(R.drawable.code_placeholder)
                         }
                     } catch (error: NumberFormatException) {
                         showError()
@@ -170,6 +170,6 @@ class RegisterStepTwoFragment : BaseFragment() {
         '7' -> R.drawable.ic_filter_7_black_24dp
         '8' -> R.drawable.ic_filter_8_black_24dp
         '9' -> R.drawable.ic_filter_9_black_24dp
-        else -> R.drawable.ic_circle_black_24dp
+        else -> R.drawable.code_placeholder
     }
 }
