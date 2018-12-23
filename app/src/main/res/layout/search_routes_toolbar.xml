@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="@string/search_routes_toolbar_begin_label"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_search_routes" />
@@ -83,7 +83,7 @@
             android:id="@+id/text_view_toolbar_to_place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/search_routes_toolbar_end_label"
             app:layout_constraintStart_toStartOf="@+id/text_view_toolbar_from_place"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_toolbar_from_place" />
@@ -104,7 +104,7 @@
             android:id="@+id/text_view_toolbar_when"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:text="@string/search_routes_toolbar_when_label"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/text_view_toolbar_to_place"

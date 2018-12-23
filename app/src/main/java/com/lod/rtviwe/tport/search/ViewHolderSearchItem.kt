@@ -65,9 +65,9 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
             )
         }
 
-        image_button_change.setOnClickListener {
-            swapDestinations()
-        }
+//        image_button_change.setOnClickListener {
+//            swapDestinations()
+//        }
 
         edit_text_from_place.setOnFocusChangeListener { view, hasFocus ->
             if (!hasFocus) {
