@@ -1,12 +1,9 @@
 package com.lod.rtviwe.tport.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Ignore
-import androidx.room.PrimaryKey
+import androidx.room.*
 import java.util.*
 
-//@Entity(tableName = "Destination")
+@Entity(tableName = "Destination")
 data class Destination(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "destination_id")

@@ -1,10 +1,11 @@
 package com.lod.rtviwe.tport.model
 
 import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
-//@Entity(tableName = "Place")
+@Entity(tableName = "Place")
 data class Place(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id_place")
@@ -13,7 +14,7 @@ data class Place(
     var name: String,
     @ColumnInfo(name = "place_latitude")
     var latitude: Double?,
-    @ColumnInfo(name = "place_latitude")
+    @ColumnInfo(name = "place_longitude")
     var longitude: Double?
 ) {
 

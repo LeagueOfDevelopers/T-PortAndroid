@@ -1,11 +1,8 @@
 package com.lod.rtviwe.tport.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Embedded
-import androidx.room.Ignore
-import androidx.room.PrimaryKey
+import androidx.room.*
 
-//@Entity(tableName = "Route")
+@Entity(tableName = "Route")
 data class Route(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id_route")
