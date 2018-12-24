@@ -39,7 +39,7 @@ object MockTrips : SearchRoutesItemsProvider {
                                     37.01
                                 ),
                                 Place(
-                                    "Шереметьев",
+                                    "Шереметьево",
                                     56.00,
                                     38.52
                                 ),
@@ -54,7 +54,7 @@ object MockTrips : SearchRoutesItemsProvider {
                             3500,
                             Destination(
                                 Place(
-                                    "Шереметьев",
+                                    "Шереметьево",
                                     56.00,
                                     38.52
                                 ),

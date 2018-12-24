@@ -1,6 +1,7 @@
 package com.lod.rtviwe.tport.orders.ordercard
 
 import android.view.View
+import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.listeners.OrderTripClickedListener
@@ -29,14 +30,19 @@ class ViewHolderOrderRoute(override val containerView: View) : RecyclerView.View
         text_view_route_cost.text =
                 String.format(containerView.context.getString(R.string.money), routeItem.route.cost)
 
-        text_view_route_time_label.text =
-                SimpleDateFormat("hh:mm", Locale.getDefault()).format(routeItem.route.destination.arrivalDate)
+        text_view_route_time_in_trip.text = String.format(
+            containerView.context.getString(R.string.time_in_travel),
+            SimpleDateFormat("hh:mm", Locale.getDefault()).format(routeItem.route.destination.arrivalDate)
+        )
 
         text_view_is_route_paid.text =
-                if (routeItem.route.isPaid)
+                if (routeItem.route.isPaid) {
+                    TextViewCompat.setTextAppearance(text_view_is_route_paid, R.style.TextViewIsPaid)
                     containerView.context.getString(R.string.is_paid)
-                else
+                } else {
+                    TextViewCompat.setTextAppearance(text_view_is_route_paid, R.style.TextViewIsNotPaid)
                     containerView.context.getString(R.string.not_paid)
+                }
 
         card_trip_route_item.setOnClickListener {
             orderTripClickedListener.openTripDetailFragmentFromOrder()

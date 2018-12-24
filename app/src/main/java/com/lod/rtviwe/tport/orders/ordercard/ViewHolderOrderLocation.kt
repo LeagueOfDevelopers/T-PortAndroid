@@ -21,11 +21,6 @@ class ViewHolderOrderLocation(override val containerView: View) : RecyclerView.V
             else -> throw ClassCastException("${containerView.context} does not implements SearchListener")
         }
 
-        text_view_location.text = if (isLast)
-            orderLocation.destination.placeTo.name
-        else
-            orderLocation.destination.placeFrom.name
-
         text_view_arrival_date.text = String.format(
             containerView.context.getString(R.string.arrival_time),
             SimpleDateFormat("hh:mm", Locale.getDefault()).format(orderLocation.destination.arrivalDate)
@@ -35,16 +30,23 @@ class ViewHolderOrderLocation(override val containerView: View) : RecyclerView.V
             isFirst -> {
                 image_view_connection_bottom.background =
                         containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
+                text_view_location.text = orderLocation.destination.placeFrom.name
+                text_view_arrival_date.text = ""
+                // TODO something
+                // image_view_location_point
             }
             isLast -> {
                 image_view_connection_top.background =
                         containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
+                text_view_location.text = orderLocation.destination.placeTo.name
+                divider_bottom.visibility = View.GONE
             }
             else -> {
                 image_view_connection_top.background =
                         containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
                 image_view_connection_bottom.background =
                         containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
+                text_view_location.text = orderLocation.destination.placeFrom.name
             }
         }
 
