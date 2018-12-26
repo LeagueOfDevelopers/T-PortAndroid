@@ -3,6 +3,7 @@ package com.lod.rtviwe.tport.main
 import android.os.Bundle
 import androidx.fragment.app.transaction
 import com.lod.rtviwe.tport.R
+import com.lod.rtviwe.tport.base.BaseActivity
 import com.lod.rtviwe.tport.bonuses.BonusesFragment
 import com.lod.rtviwe.tport.listeners.*
 import com.lod.rtviwe.tport.orders.OrdersFragment
@@ -90,6 +91,10 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         savedInstanceState?.let {
             currentActionId = savedInstanceState.getInt(STATE_ACTION_ID)
+            currentFragmentSearchTabId = savedInstanceState.getInt(STATE_SEARCH_LAYOUT_ID)
+            currentFragmentOrdersTabId = savedInstanceState.getInt(STATE_ORDERS_LAYOUT_ID)
+            currentFragmentBonusesTabId = savedInstanceState.getInt(STATE_BONUSES_LAYOUT_ID)
+            currentFragmentProfileTabId = savedInstanceState.getInt(STATE_PROFILE_LAYOUT_ID)
             phoneNumber = savedInstanceState.getLong(STATE_PHONE_NUMBER)
             fromPlaceText = savedInstanceState.getString(STATE_FROM_PLACE)
             toPlaceText = savedInstanceState.getString(STATE_TO_PLACE)
@@ -196,7 +201,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         R.id.action_orders -> when (currentFragmentOrdersTabId) {
             R.layout.orders_fragment -> OrdersFragment.newInstance()
             R.layout.trip_details_fragment -> TripDetailsFragment.newInstance()
-            else -> OrdersFragment.newInstance()
+            else -> throw RuntimeException("Not permitted fragment on action Orders")
         }
         R.id.action_search -> when (currentFragmentSearchTabId) {
             R.layout.search_fragment -> SearchFragment.newInstance()
@@ -206,12 +211,13 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
                 travelTimeText
             )
             R.layout.trip_details_fragment -> TripDetailsFragment.newInstance()
-            else -> SearchFragment.newInstance()
+            else -> throw RuntimeException("Not permitted fragment on action Search")
         }
         R.id.action_profile -> when (currentFragmentProfileTabId) {
             R.layout.register_step_one_fragment -> RegisterStepOneFragment.newInstance(phoneNumber)
             R.layout.register_step_two_fragment -> RegisterStepTwoFragment.newInstance(phoneNumber, code)
             R.layout.register_step_three_fragment -> RegisterStepThreeFragment.newInstance()
+            // TODO replace it to else -> throw RuntimeException("Not permitted fragment on action Orders")
             else -> ProfileFragment.newInstance()
         }
         else -> throw RuntimeException("Unknown fragment id")

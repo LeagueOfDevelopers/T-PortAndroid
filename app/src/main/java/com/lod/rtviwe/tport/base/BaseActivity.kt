@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.main
+package com.lod.rtviwe.tport.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
