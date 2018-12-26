@@ -20,10 +20,11 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     companion object {
 
-        private const val STATE_CURRENT_FRAGMENT = "CURRENT_FRAGMENT_ID"
-        private const val STATE_REGISTRATION_STEP = "CURRENT_REGISTRATION_STEP"
-        private const val STATE_ORDER_STEP = "CURRENT_ORDER_STEP"
-        private const val STATE_SEARCH_STEP = "CURRENT_SEARCH_STEP"
+        private const val STATE_ACTION_ID = "CURRENT_ACTION_ID"
+        private const val STATE_SEARCH_LAYOUT_ID = "CURRENT_SEARCH_LAYOUT_ID"
+        private const val STATE_ORDERS_LAYOUT_ID = "CURRENT_ORDERS_LAYOUT_ID"
+        private const val STATE_BONUSES_LAYOUT_ID = "CURRENT_BONUSES_LAYOUT_ID"
+        private const val STATE_PROFILE_LAYOUT_ID = "CURRENT_PROFILE_LAYOUT_ID"
         private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STATE"
         private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
         private const val STATE_TO_PLACE = "TO_PLACE_STATE"
@@ -31,11 +32,11 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         private const val STATE_CODE = "CODE_STATE"
     }
 
-    private var currentRegistrationStep = 1
-    private var currentSearchStep = 1
-    private var currentOrderStep = 1
     private var currentActionId = R.id.action_search
-    private var currentFragmentLayoutId = R.layout.search_fragment
+    private var currentFragmentOrdersTabId = R.layout.orders_fragment
+    private var currentFragmentSearchTabId = R.layout.search_fragment
+    private var currentFragmentBonusesTabId = R.layout.bonuses_fragment
+    private var currentFragmentProfileTabId = R.layout.register_step_one_fragment
     private var phoneNumber = 0L
     private var code = ""
     private var fromPlaceText = ""
@@ -70,10 +71,11 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     override fun onSaveInstanceState(outState: Bundle?) {
         outState?.apply {
-            putInt(STATE_CURRENT_FRAGMENT, currentActionId)
-            putInt(STATE_REGISTRATION_STEP, currentRegistrationStep)
-            putInt(STATE_SEARCH_STEP, currentSearchStep)
-            putInt(STATE_ORDER_STEP, currentOrderStep)
+            putInt(STATE_ACTION_ID, currentActionId)
+            putInt(STATE_SEARCH_LAYOUT_ID, currentFragmentSearchTabId)
+            putInt(STATE_ORDERS_LAYOUT_ID, currentFragmentOrdersTabId)
+            putInt(STATE_BONUSES_LAYOUT_ID, currentFragmentBonusesTabId)
+            putInt(STATE_PROFILE_LAYOUT_ID, currentFragmentProfileTabId)
             putLong(STATE_PHONE_NUMBER, phoneNumber)
             putString(STATE_FROM_PLACE, fromPlaceText)
             putString(STATE_TO_PLACE, toPlaceText)
@@ -87,10 +89,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         savedInstanceState?.let {
-            currentActionId = savedInstanceState.getInt(STATE_CURRENT_FRAGMENT)
-            currentRegistrationStep = savedInstanceState.getInt(STATE_REGISTRATION_STEP)
-            currentSearchStep = savedInstanceState.getInt(STATE_SEARCH_STEP)
-            currentOrderStep = savedInstanceState.getInt(STATE_ORDER_STEP)
+            currentActionId = savedInstanceState.getInt(STATE_ACTION_ID)
             phoneNumber = savedInstanceState.getLong(STATE_PHONE_NUMBER)
             fromPlaceText = savedInstanceState.getString(STATE_FROM_PLACE)
             toPlaceText = savedInstanceState.getString(STATE_TO_PLACE)
@@ -110,27 +109,27 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     override fun onBackPressed() {
         when (currentActionId) {
-            R.id.action_profile -> when (currentRegistrationStep) {
-                2 -> {
-                    currentRegistrationStep = 1
+            R.id.action_profile -> when (currentFragmentProfileTabId) {
+                R.layout.register_step_two_fragment -> {
+                    currentFragmentProfileTabId = R.layout.register_step_one_fragment
                     setUpCurrentFragment()
                 }
                 else -> super.onBackPressed()
             }
-            R.id.action_search -> when (currentSearchStep) {
-                3 -> {
-                    currentSearchStep = 2
+            R.id.action_search -> when (currentFragmentSearchTabId) {
+                R.layout.trip_details_fragment -> {
+                    currentFragmentSearchTabId = R.layout.search_routes_fragment
                     setUpCurrentFragment()
                 }
-                2 -> {
-                    currentSearchStep = 1
+                R.layout.search_routes_fragment -> {
+                    currentFragmentSearchTabId = R.layout.search_fragment
                     setUpCurrentFragment()
                 }
                 else -> super.onBackPressed()
             }
-            R.id.action_orders -> when (currentOrderStep) {
-                2 -> {
-                    currentOrderStep = 1
+            R.id.action_orders -> when (currentFragmentOrdersTabId) {
+                R.layout.trip_details_fragment -> {
+                    currentFragmentOrdersTabId = R.layout.orders_fragment
                     setUpCurrentFragment()
                 }
                 else -> super.onBackPressed()
@@ -140,32 +139,27 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     override fun onRegisterStepOneContinue(phoneNumber: Long) {
         this.phoneNumber = ("+7$phoneNumber").toLong()
-        currentRegistrationStep = 2
-        currentFragmentLayoutId = R.layout.register_step_two_fragment
+        currentFragmentProfileTabId = R.layout.register_step_two_fragment
         setUpCurrentFragment()
     }
 
     override fun onRegisterStepTwoContinue() {
-        currentRegistrationStep = 3
-        currentFragmentLayoutId = R.layout.register_step_three_fragment
+        currentFragmentProfileTabId = R.layout.register_step_three_fragment
         setUpCurrentFragment()
     }
 
     override fun onRegisterStepThreeContinue() {
-        currentRegistrationStep = 0
-        currentFragmentLayoutId = R.layout.profile_fragment
+        currentFragmentProfileTabId = R.layout.profile_fragment
         setUpCurrentFragment()
     }
 
     override fun openTripDetailFragmentFromSearch() {
-        currentSearchStep = 3
-        currentFragmentLayoutId = R.layout.trip_details_fragment
+        currentFragmentSearchTabId = R.layout.trip_details_fragment
         setUpCurrentFragment()
     }
 
     override fun openTripDetailFragmentFromOrder() {
-        currentOrderStep = 2
-        currentFragmentLayoutId = R.layout.trip_details_fragment
+        currentFragmentOrdersTabId = R.layout.trip_details_fragment
         setUpCurrentFragment()
     }
 
@@ -178,8 +172,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     }
 
     override fun onPickUpButton(fromPlace: String, toPlace: String, travelTime: String) {
-        currentSearchStep = 2
-        currentFragmentLayoutId = R.layout.search_routes_fragment
+        currentFragmentSearchTabId = R.layout.search_routes_fragment
         fromPlaceText = fromPlace
         toPlaceText = toPlace
         travelTimeText = travelTime
@@ -200,21 +193,25 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
 
     private fun getCurrentFragment() = when (currentActionId) {
         R.id.action_bonuses -> BonusesFragment.newInstance()
-        R.id.action_orders -> when (currentOrderStep) {
-            1 -> OrdersFragment.newInstance()
-            2 -> TripDetailsFragment.newInstance()
+        R.id.action_orders -> when (currentFragmentOrdersTabId) {
+            R.layout.orders_fragment -> OrdersFragment.newInstance()
+            R.layout.trip_details_fragment -> TripDetailsFragment.newInstance()
             else -> OrdersFragment.newInstance()
         }
-        R.id.action_search -> when (currentSearchStep) {
-            1 -> SearchFragment.newInstance()
-            2 -> SearchRoutesFragment.newInstance(fromPlaceText, toPlaceText, travelTimeText)
-            3 -> TripDetailsFragment.newInstance()
+        R.id.action_search -> when (currentFragmentSearchTabId) {
+            R.layout.search_fragment -> SearchFragment.newInstance()
+            R.layout.search_routes_fragment -> SearchRoutesFragment.newInstance(
+                fromPlaceText,
+                toPlaceText,
+                travelTimeText
+            )
+            R.layout.trip_details_fragment -> TripDetailsFragment.newInstance()
             else -> SearchFragment.newInstance()
         }
-        R.id.action_profile -> when (currentRegistrationStep) {
-            1 -> RegisterStepOneFragment.newInstance(phoneNumber)
-            2 -> RegisterStepTwoFragment.newInstance(phoneNumber, code)
-            3 -> RegisterStepThreeFragment.newInstance()
+        R.id.action_profile -> when (currentFragmentProfileTabId) {
+            R.layout.register_step_one_fragment -> RegisterStepOneFragment.newInstance(phoneNumber)
+            R.layout.register_step_two_fragment -> RegisterStepTwoFragment.newInstance(phoneNumber, code)
+            R.layout.register_step_three_fragment -> RegisterStepThreeFragment.newInstance()
             else -> ProfileFragment.newInstance()
         }
         else -> throw RuntimeException("Unknown fragment id")
