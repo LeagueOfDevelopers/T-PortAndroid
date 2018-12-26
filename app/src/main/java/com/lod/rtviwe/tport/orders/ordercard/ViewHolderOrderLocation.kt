@@ -13,14 +13,17 @@ import java.util.*
 class ViewHolderOrderLocation(override val containerView: View) : RecyclerView.ViewHolder(containerView),
     LayoutContainer {
 
-    private lateinit var orderTripClickedListener: OrderTripClickedListener
+    private var orderTripClickedListener: OrderTripClickedListener
 
-    fun bind(orderLocation: OrderLocation, isFirst: Boolean, isLast: Boolean) {
+    init {
+
         when (containerView.context) {
             is OrderTripClickedListener -> orderTripClickedListener = containerView.context as OrderTripClickedListener
             else -> throw ClassCastException("${containerView.context} does not implements SearchListener")
         }
+    }
 
+    fun bind(orderLocation: OrderLocation, isFirst: Boolean, isLast: Boolean) {
         text_view_arrival_date.text = String.format(
             containerView.context.getString(R.string.arrival_time),
             SimpleDateFormat("hh:mm", Locale.getDefault()).format(orderLocation.destination.arrivalDate)

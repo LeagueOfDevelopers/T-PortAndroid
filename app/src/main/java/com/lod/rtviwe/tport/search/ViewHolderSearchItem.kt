@@ -20,12 +20,15 @@ class ViewHolderSearchItem(override val containerView: View) : RecyclerView.View
 
     lateinit var boxItem: SearchBoxItem
 
-    fun bind(searchBoxItem: SearchBoxItem) {
+    init {
+
         when (containerView.context) {
             is SearchListener -> searchListener = containerView.context as SearchListener
             else -> throw ClassCastException("${containerView.context} does not implements SearchListener")
         }
+    }
 
+    fun bind(searchBoxItem: SearchBoxItem) {
         boxItem = searchBoxItem
         edit_text_from_place.setText(boxItem.fromPlace)
         edit_text_to_place.setText(boxItem.toPlace)

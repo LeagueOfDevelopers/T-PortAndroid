@@ -16,13 +16,16 @@ class ViewHolderTripItem(override val containerView: View) : RecyclerView.ViewHo
 
     private lateinit var searchTripClickedListener: SearchTripClickedListener
 
-    fun bind(tripItem: FullTrip) {
+    init {
+
         when (containerView.context) {
             is SearchTripClickedListener -> searchTripClickedListener =
                     containerView.context as SearchTripClickedListener
             else -> throw ClassCastException("${containerView.context} does not implements SearchListener")
         }
+    }
 
+    fun bind(tripItem: FullTrip) {
         text_view_route_time.text = SimpleDateFormat("hh:mm", Locale.getDefault()).format(tripItem.trip.timeTravel)
         text_view_search_route_cost.text =
                 String.format(containerView.context.getString(R.string.money), tripItem.trip.cost)

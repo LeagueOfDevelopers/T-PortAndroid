@@ -17,12 +17,15 @@ class ViewHolderOrderRoute(override val containerView: View) : RecyclerView.View
 
     private lateinit var orderTripClickedListener: OrderTripClickedListener
 
-    fun bind(routeItem: OrderRoute) {
+    init {
+
         when (containerView.context) {
             is OrderTripClickedListener -> orderTripClickedListener = containerView.context as OrderTripClickedListener
             else -> throw ClassCastException("${containerView.context} does not implements SearchListener")
         }
+    }
 
+    fun bind(routeItem: OrderRoute) {
         val imageResourceToSet = RouteIcons.getImageResource(routeItem.route.type)
         image_view_route_type.setImageResource(imageResourceToSet)
 
