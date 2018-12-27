@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Route
-import com.lod.rtviwe.tport.search.ViewHolderRouteItem
 
 class SearchRouteItemAdapter(
     private val context: Context?,

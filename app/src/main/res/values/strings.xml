@@ -8,7 +8,7 @@
     <string name="search_item_to_place">Куда</string>
     <string name="button_text_pick_up">Подобрать</string>
     <string name="search_item_travel_data">Когда</string>
-    <string name="title_item">Популярные направления</string>
+    <string name="popular_title_item">Популярные направления</string>
     <string name="popular_background_description">Фон карточки на главном меню</string>
     <string name="welcome_message">Добро пожаловать!</string>
     <string name="enter_phone_number">Для того, чтобы начать, введите ваш номер телефона</string>

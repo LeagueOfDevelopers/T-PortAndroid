@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search
+package com.lod.rtviwe.tport.search.searchroute
 
 import android.annotation.SuppressLint
 import android.view.View

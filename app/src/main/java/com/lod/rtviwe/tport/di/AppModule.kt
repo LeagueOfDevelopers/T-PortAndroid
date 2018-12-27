@@ -9,7 +9,7 @@ import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
 import com.lod.rtviwe.tport.search.SearchViewModel
 import com.lod.rtviwe.tport.search.searchroute.SearchRoutesViewModel
-import com.lod.rtviwe.tport.search.wrappers.SearchBoxItem
+import com.lod.rtviwe.tport.search.wrappers.SearchBox
 import com.redmadrobot.inputmask.helper.Mask
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
@@ -23,7 +23,7 @@ val mainModule = module {
     viewModel<ProfileViewModel>()
     viewModel<RegisterViewModel>()
     viewModel<SearchRoutesViewModel>()
-    single { SearchBoxItem("", "", "") }
+    single { SearchBox("", "", "") }
     single { Mask("+7 ([000]) [000]-[00]-[00]") }
     single {
         Retrofit.Builder()

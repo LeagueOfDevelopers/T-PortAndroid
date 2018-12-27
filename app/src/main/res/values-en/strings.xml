@@ -8,7 +8,7 @@
     <string name="search_item_to_place">To where</string>
     <string name="button_text_pick_up">Pick up</string>
     <string name="search_item_travel_data">When</string>
-    <string name="title_item">Popular trips</string>
+    <string name="popular_title_item">Popular trips</string>
     <string name="popular_background_description">Background of card main menu</string>
     <string name="welcome_message">Welcome!</string>
     <string name="enter_phone_number">Enter your phone number to start</string>
