@@ -1,11 +1,10 @@
-package com.lod.rtviwe.tport.search.searchroute.wrappers
+package com.lod.rtviwe.tport.search.searchroute.searchroutecard
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.listeners.SearchTripClickedListener
 import com.lod.rtviwe.tport.model.FullTrip
-import com.lod.rtviwe.tport.search.searchroute.searchroutecard.RouteItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder

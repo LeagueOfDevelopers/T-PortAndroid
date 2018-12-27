@@ -8,7 +8,7 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.order_item.view.*
 
-class OrderCard(private val fullTrip: FullTrip) : Item() {
+class OrderCardItem(private val fullTrip: FullTrip) : Item() {
 
     override fun getLayout() = R.layout.order_item
 
@@ -18,12 +18,12 @@ class OrderCard(private val fullTrip: FullTrip) : Item() {
 
         fullTrip.routes?.forEachIndexed { index, route ->
             val isFirst = index == 0
-            routesAdapter.add(OrderDestination(route.destination, isFirst, false))
-            routesAdapter.add(OrderRoute(route))
+            routesAdapter.add(OrderDestinationItem(route.destination, isFirst, false))
+            routesAdapter.add(OrderRouteItem(route))
 
             val isLast = index == fullTrip.routes!!.size - 1
             if (isLast) {
-                routesAdapter.add(OrderDestination(route.destination, isFirst, isLast))
+                routesAdapter.add(OrderDestinationItem(route.destination, isFirst, isLast))
             }
         }
 

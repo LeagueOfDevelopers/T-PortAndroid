@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.order_place_item.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class OrderDestination(
+class OrderDestinationItem(
     private val destination: Destination,
     private val isFirst: Boolean,
     private val isLast: Boolean

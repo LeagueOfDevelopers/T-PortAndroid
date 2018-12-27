@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.order_route_item.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class OrderRoute(private val route: Route) : Item() {
+class OrderRouteItem(private val route: Route) : Item() {
 
     private lateinit var orderTripClickedListener: OrderTripClickedListener
 
