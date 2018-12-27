@@ -8,6 +8,7 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.search.wrappers.*
 import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,8 +29,8 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app) {
             add(Logo())
             add(SearchBoxItem(searchBox))
             add(Title(app.getString(R.string.popular_title_item)))
-            MockTrips.getItems().observe(lifecycleOwner, Observer {
-                addAll(it.map(::PopularTrip))
+            MockTrips.getItems().observe(lifecycleOwner, Observer { it ->
+                addAll(it.map { Section(PopularTrip(it)) })
             })
         }
     }

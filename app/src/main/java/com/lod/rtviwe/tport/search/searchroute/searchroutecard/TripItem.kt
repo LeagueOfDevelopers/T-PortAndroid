@@ -6,6 +6,7 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.listeners.SearchTripClickedListener
 import com.lod.rtviwe.tport.model.FullTrip
 import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_route_trip_card.*
@@ -37,7 +38,7 @@ class TripItem(private val fullTrip: FullTrip) : Item() {
         fullTrip.routes?.forEachIndexed { index, route ->
             val isFirst = index == 0
             val isLast = index == fullTrip.routes!!.size - 1
-            searchRouteItemAdapter.add(RouteItem(route, isFirst, isLast))
+            searchRouteItemAdapter.add(Section(RouteItem(route, isFirst, isLast)))
         }
 
         viewHolder.recycler_view_routes_in_item.apply {
