@@ -8,7 +8,7 @@
     <string name="search_item_to_place">Куда</string>
     <string name="button_text_pick_up">Подобрать</string>
     <string name="search_item_travel_data">Когда</string>
-    <string name="title_item">Популярные направления</string>
+    <string name="popular_title_item">Популярные направления</string>
     <string name="popular_background_description">Фон карточки на главном меню</string>
     <string name="welcome_message">Добро пожаловать!</string>
     <string name="enter_phone_number">Для того, чтобы начать, введите ваш номер телефона</string>
@@ -32,7 +32,8 @@
     <string name="menu_filter">Фильтр</string>
     <string name="search_routes_toolbar_title">Поиск маршрутов</string>
     <string name="search_routes_toolbar_begin_label">Начало:</string>
-    <string name="search_routes_toolbar_end_label">Конец:</string>
+    <string name="search_routes_toolbar_end_label">Конец:</string>search_routes_toolbar_when_label
+    <string name="search_routes_toolbar_when_label">Когда:</string>
     <string name="image_view_filter_button">Кнопка фильтрация</string>
     <string name="extended_fab_search_routes">Забронировать этот маршрут</string>
     <string name="image_view_route_type_description">Картинка типа маршрута</string>
@@ -40,8 +41,10 @@
     <string name="image_view_code_second">Вторая цифра кода</string>
     <string name="image_view_code_third">Третья цифра кода</string>
     <string name="image_view_code_fourth">Четвёртая цифра кода</string>
-    <string name="arrival_time">Время прибытия: %1$s</string>
+    <string name="arrival_time">Время прибытия - %1$s</string>
+    <string name="time_in_travel">Время в пути - %1$s</string>
+    <string name="short_arrival_time">Прибытие:</string>
     <string name="is_paid">Оплачено</string>
-    <string name="not_paid">Не оплачено</string>
+    <string name="not_paid">Не оплачено!</string>
     <string name="money" translatable="false">%1$d ₽</string>
 </resources>

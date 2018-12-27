@@ -8,7 +8,7 @@
     <string name="search_item_to_place">To where</string>
     <string name="button_text_pick_up">Pick up</string>
     <string name="search_item_travel_data">When</string>
-    <string name="title_item">Popular trips</string>
+    <string name="popular_title_item">Popular trips</string>
     <string name="popular_background_description">Background of card main menu</string>
     <string name="welcome_message">Welcome!</string>
     <string name="enter_phone_number">Enter your phone number to start</string>
@@ -32,6 +32,7 @@
     <string name="search_routes_toolbar_title">Search routes</string>
     <string name="search_routes_toolbar_begin_label">Start:</string>
     <string name="search_routes_toolbar_end_label">End:</string>
+    <string name="search_routes_toolbar_when_label">When:</string>
     <string name="image_view_filter_button">Filter button</string>
     <string name="extended_fab_search_routes">Book this route</string>
     <string name="image_view_route_type_description">Image of route type</string>
@@ -39,8 +40,10 @@
     <string name="image_view_code_second">Second number of code</string>
     <string name="image_view_code_third">Third number of code</string>
     <string name="image_view_code_fourth">Fourth number of code</string>
-    <string name="arrival_time">Arrival time: %1$s</string>
+    <string name="arrival_time">Arrival time - %1$s</string>
+    <string name="time_in_travel">Time in trip - %1$s</string>
+    <string name="short_arrival_time">Arrival:</string>
     <string name="is_paid">Paid</string>
-    <string name="not_paid">Not paid</string>
+    <string name="not_paid">Not paid!</string>
     <string name="money">%1$s ₽</string>
 </resources>

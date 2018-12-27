@@ -99,7 +99,7 @@ class RegisterStepTwoFragment : BaseFragment() {
                         }
 
                         (extractedValue.length until CODE_LENGTH).forEach { index ->
-                            getImageViewCode(index).setImageResource(R.drawable.ic_circle_black_24dp)
+                            getImageViewCode(index).setImageResource(R.drawable.code_placeholder)
                         }
                     } catch (error: NumberFormatException) {
                         showError()
@@ -160,16 +160,16 @@ class RegisterStepTwoFragment : BaseFragment() {
     }
 
     private fun getNumberDrawable(char: Char) = when (char) {
-        '0' -> R.drawable.ic_exposure_zero_black_24dp
-        '1' -> R.drawable.ic_filter_1_black_24dp
-        '2' -> R.drawable.ic_filter_2_black_24dp
-        '3' -> R.drawable.ic_filter_3_black_24dp
-        '4' -> R.drawable.ic_filter_4_black_24dp
-        '5' -> R.drawable.ic_filter_5_black_24dp
-        '6' -> R.drawable.ic_filter_6_black_24dp
-        '7' -> R.drawable.ic_filter_7_black_24dp
-        '8' -> R.drawable.ic_filter_8_black_24dp
-        '9' -> R.drawable.ic_filter_9_black_24dp
-        else -> R.drawable.ic_circle_black_24dp
+        '0' -> R.drawable._0
+        '1' -> R.drawable._1
+        '2' -> R.drawable._2
+        '3' -> R.drawable._3
+        '4' -> R.drawable._4
+        '5' -> R.drawable._5
+        '6' -> R.drawable._6
+        '7' -> R.drawable._7
+        '8' -> R.drawable._8
+        '9' -> R.drawable._9
+        else -> R.drawable.code_placeholder
     }
 }

@@ -13,4 +13,5 @@ class TripDetailsFragment : BaseFragment() {
     }
 
     override fun getLayout() = R.layout.trip_details_fragment
+
 }

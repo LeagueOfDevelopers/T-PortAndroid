@@ -9,5 +9,5 @@ class RouteTypeConverter {
     fun toInt(routeType: RouteType) = routeType.ordinal
 
     @TypeConverter
-    fun toDormitory(id: Int) = RouteType.values().first { it.ordinal == id }
+    fun toRouteType(id: Int) = RouteType.values().first { it.ordinal == id }
 }

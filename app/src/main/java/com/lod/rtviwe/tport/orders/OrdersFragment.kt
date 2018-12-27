@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.orders_fragment.*
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class OrdersFragment : BaseFragment() {
 
@@ -18,9 +20,9 @@ class OrdersFragment : BaseFragment() {
         }
     }
 
-    private val ordersViewModel: OrdersViewModel by viewModel()
+    private val ordersViewModel: OrdersViewModel by sharedViewModel()
 
-    private lateinit var ordersAdapter: OrdersAdapter
+    private lateinit var ordersAdapter: GroupAdapter<ViewHolder>
     private lateinit var ordersLayoutManager: LinearLayoutManager
     private lateinit var ordersRecyclerView: RecyclerView
 
@@ -29,14 +31,14 @@ class OrdersFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ordersAdapter = OrdersAdapter(context, listOf())
+        ordersAdapter = GroupAdapter()
         ordersLayoutManager = LinearLayoutManager(context)
 
         ordersViewModel.observeAdapter(this, ordersAdapter)
 
         ordersRecyclerView = recycler_view_orders.apply {
-            adapter = ordersAdapter
             layoutManager = ordersLayoutManager
+            adapter = ordersAdapter
         }
     }
 }

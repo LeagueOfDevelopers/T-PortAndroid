@@ -1,15 +1,18 @@
 package com.lod.rtviwe.tport.search.searchroute
 
 import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.lod.rtviwe.tport.base.BaseViewModel
 import com.lod.rtviwe.tport.data.MockTrips
+import com.lod.rtviwe.tport.search.searchroute.searchroutecard.TripItem
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-class SearchRoutesViewModel(app: Application) : BaseViewModel(app) {
+class SearchRoutesViewModel(app: Application) : AndroidViewModel(app) {
 
     private val job = Job()
     private val viewModelScope = CoroutineScope(Dispatchers.IO + job)
@@ -19,9 +22,9 @@ class SearchRoutesViewModel(app: Application) : BaseViewModel(app) {
         job.cancel()
     }
 
-    fun observeAdapter(owner: LifecycleOwner, searchRouteCardsAdapter: SearchRouteCardsAdapter) {
+    fun observeAdapter(owner: LifecycleOwner, searchRouteCardsAdapter: GroupAdapter<ViewHolder>) {
         MockTrips.getItems().observe(owner, Observer {
-            searchRouteCardsAdapter.setData(it)
+            searchRouteCardsAdapter.addAll(it.map(::TripItem))
         })
     }
 }

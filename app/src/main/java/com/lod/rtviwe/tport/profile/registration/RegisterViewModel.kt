@@ -1,12 +1,12 @@
 package com.lod.rtviwe.tport.profile.registration
 
 import android.app.Application
-import com.lod.rtviwe.tport.base.BaseViewModel
+import androidx.lifecycle.AndroidViewModel
 import com.lod.rtviwe.tport.network.RegistrationApi
 import kotlinx.coroutines.*
 import timber.log.Timber
 
-class RegisterViewModel(app: Application) : BaseViewModel(app) {
+class RegisterViewModel(app: Application) : AndroidViewModel(app) {
 
     private val jobSendCode = Job()
     private val jobCheckCode = Job()
