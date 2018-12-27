@@ -18,12 +18,16 @@ class OrderCardItem(private val fullTrip: FullTrip) : Item() {
 
         fullTrip.routes?.forEachIndexed { index, route ->
             val isFirst = index == 0
-            routesAdapter.add(OrderDestinationItem(route.destination, isFirst, false))
+            if (isFirst) {
+                routesAdapter.add(OrderDestinationFirstItem(route.destination))
+            } else {
+                routesAdapter.add(OrderDestinationItem(route.destination, false))
+            }
             routesAdapter.add(OrderRouteItem(route))
 
             val isLast = index == fullTrip.routes!!.size - 1
             if (isLast) {
-                routesAdapter.add(OrderDestinationItem(route.destination, isFirst, isLast))
+                routesAdapter.add(OrderDestinationItem(route.destination, true))
             }
         }
 
