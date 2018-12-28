@@ -44,9 +44,5 @@ class OrderRouteItem(private val route: Route) : Item() {
                     TextViewCompat.setTextAppearance(viewHolder.text_view_is_route_paid, R.style.TextViewIsNotPaid)
                     viewHolder.containerView.context.getString(R.string.not_paid)
                 }
-
-        viewHolder.card_trip_route_item.setOnClickListener {
-            orderTripClickedListener.openTripDetailFragmentFromOrder()
-        }
     }
 }

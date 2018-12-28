@@ -40,9 +40,5 @@ class OrderDestinationItem(private val destination: Destination, private val isL
                     viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
             viewHolder.text_view_location.text = destination.placeFrom.name
         }
-
-        viewHolder.card_trip_location_item.setOnClickListener {
-            orderTripClickedListener.openTripDetailFragmentFromOrder()
-        }
     }
 }

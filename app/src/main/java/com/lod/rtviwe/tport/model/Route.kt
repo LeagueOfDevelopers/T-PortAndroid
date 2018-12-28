@@ -1,8 +1,11 @@
 package com.lod.rtviwe.tport.model
 
+import android.os.Parcelable
 import androidx.room.*
+import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "Route")
+@Parcelize
 data class Route(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id_route")
@@ -19,7 +22,7 @@ data class Route(
     var destination: Destination,
     @ColumnInfo(name = "route_is_paid")
     var isPaid: Boolean = false
-) {
+) : Parcelable {
 
     @Ignore
     constructor(

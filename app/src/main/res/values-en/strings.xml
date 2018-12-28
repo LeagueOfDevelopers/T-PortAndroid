@@ -30,6 +30,7 @@
     <string name="image_button_change_destination">Change destination</string>
     <string name="menu_filter">Filter</string>
     <string name="search_routes_toolbar_title">Search routes</string>
+    <string name="trip_details_toolbar_title">Trip</string>
     <string name="search_routes_toolbar_begin_label">Start:</string>
     <string name="search_routes_toolbar_end_label">End:</string>
     <string name="search_routes_toolbar_when_label">When:</string>

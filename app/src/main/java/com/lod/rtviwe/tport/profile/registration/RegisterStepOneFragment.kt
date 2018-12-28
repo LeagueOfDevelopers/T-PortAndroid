@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.listeners.OnRegisterStepOneListener
+import com.lod.rtviwe.tport.listeners.RegisterStepOneListener
 import com.lod.rtviwe.tport.network.RegistrationApi
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import kotlinx.android.synthetic.main.register_step_one_fragment.*
@@ -34,7 +34,7 @@ class RegisterStepOneFragment : BaseFragment() {
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
     private val registrationApi by inject<RegistrationApi>()
 
-    private lateinit var listenerStepOne: OnRegisterStepOneListener
+    private lateinit var listenerStepOne: RegisterStepOneListener
     private var phoneNumber = 0L
 
     override fun getLayout() = R.layout.register_step_one_fragment
@@ -43,8 +43,8 @@ class RegisterStepOneFragment : BaseFragment() {
         super.onAttach(context)
 
         when (context) {
-            is OnRegisterStepOneListener -> listenerStepOne = context
-            else -> throw ClassCastException("$context does not implements OnRegisterStepOneListener")
+            is RegisterStepOneListener -> listenerStepOne = context
+            else -> throw ClassCastException("$context does not implements RegisterStepOneListener")
         }
     }
 

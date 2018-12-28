@@ -25,8 +25,7 @@
                 style="@style/TextViewSmallHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/search_routes_toolbar_title" />
+                android:layout_gravity="center" />
 
             <ImageButton
                 android:id="@+id/button_filter"

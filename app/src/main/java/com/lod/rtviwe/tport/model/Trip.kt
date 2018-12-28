@@ -1,9 +1,12 @@
 package com.lod.rtviwe.tport.model
 
+import android.os.Parcelable
 import androidx.room.*
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Entity(tableName = "Trip")
+@Parcelize
 data class Trip(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id_trip")
@@ -16,7 +19,7 @@ data class Trip(
     var cost: Int,
     @ColumnInfo(name = "trip_time_travel")
     var timeTravel: Date
-) {
+) : Parcelable {
 
     @Ignore
     constructor(placeFrom: Place, placeTo: Place, cost: Int, timeTravel: Date) : this(
