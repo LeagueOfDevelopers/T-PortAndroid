@@ -4,10 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.model.FullTrip
+import com.lod.rtviwe.tport.orders.ordercard.OrderDestinationFirstItem
+import com.lod.rtviwe.tport.orders.ordercard.OrderDestinationItem
+import com.lod.rtviwe.tport.orders.ordercard.OrderRouteItem
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_routes_toolbar.*
+import kotlinx.android.synthetic.main.trip_details_fragment.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -54,5 +61,32 @@ class TripDetailsFragment : BaseFragment() {
                 Locale.getDefault()
             ).format(fullTrip.trip.timeTravel)
         )
+
+        val routesAdapter = GroupAdapter<ViewHolder>()
+        val routesLayoutManager = LinearLayoutManager(context)
+
+        fullTrip.routes?.forEachIndexed { index, route ->
+            val isFirst = index == 0
+            if (isFirst) {
+                routesAdapter.add(OrderDestinationFirstItem(route.destination))
+            } else {
+                routesAdapter.add(OrderDestinationItem(route.destination, false))
+            }
+            routesAdapter.add(OrderRouteItem(route))
+
+            val isLast = index == fullTrip.routes!!.size - 1
+            if (isLast) {
+                routesAdapter.add(OrderDestinationItem(route.destination, true))
+            }
+        }
+
+        recycler_view_order_routes.apply {
+            layoutManager = routesLayoutManager
+            adapter = routesAdapter
+        }
+
+        fab_book_trip.setOnClickListener {
+
+        }
     }
 }

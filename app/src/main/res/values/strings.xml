@@ -36,7 +36,7 @@
     <string name="search_routes_toolbar_end_label">Конец:</string>search_routes_toolbar_when_label
     <string name="search_routes_toolbar_when_label">Когда:</string>
     <string name="image_view_filter_button">Кнопка фильтрация</string>
-    <string name="extended_fab_search_routes">Забронировать этот маршрут</string>
+    <string name="extended_fab_book_trip">Забронировать этот маршрут</string>
     <string name="image_view_route_type_description">Картинка типа маршрута</string>
     <string name="image_view_code_first">Первая цифра кода</string>
     <string name="image_view_code_second">Вторая цифра кода</string>
