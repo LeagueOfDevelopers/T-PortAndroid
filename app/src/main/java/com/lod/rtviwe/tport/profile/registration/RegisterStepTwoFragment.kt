@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.listeners.OnRegisterStepTwoListener
+import com.lod.rtviwe.tport.listeners.RegisterStepTwoListener
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import com.redmadrobot.inputmask.helper.Mask
 import com.redmadrobot.inputmask.model.CaretString
@@ -41,7 +41,7 @@ class RegisterStepTwoFragment : BaseFragment() {
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
     private val phoneNumberMask by inject<Mask>()
 
-    private lateinit var listenerStepTwo: OnRegisterStepTwoListener
+    private lateinit var listenerStepTwo: RegisterStepTwoListener
 
     private var phoneNumber = 0L
     private var code = ""
@@ -52,8 +52,8 @@ class RegisterStepTwoFragment : BaseFragment() {
         super.onAttach(context)
 
         when (context) {
-            is OnRegisterStepTwoListener -> listenerStepTwo = context
-            else -> throw ClassCastException("$context does not implements OnRegisterStepTwoListener")
+            is RegisterStepTwoListener -> listenerStepTwo = context
+            else -> throw ClassCastException("$context does not implements RegisterStepTwoListener")
         }
     }
 

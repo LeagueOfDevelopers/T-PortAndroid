@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchroute.searchroutecard
+package com.lod.rtviwe.tport.search.searchtrip.searchtripcard
 
 import android.annotation.SuppressLint
 import android.view.View
@@ -7,7 +7,7 @@ import com.lod.rtviwe.tport.model.Route
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.search_route_item.*
+import kotlinx.android.synthetic.main.search_trip_route_item.*
 
 class RouteItem(
     private val route: Route,
@@ -15,7 +15,7 @@ class RouteItem(
     private val isLast: Boolean
 ) : Item() {
 
-    override fun getLayout() = R.layout.search_route_item
+    override fun getLayout() = R.layout.search_trip_route_item
 
     @SuppressLint("SetTextI18n")
     override fun bind(viewHolder: ViewHolder, position: Int) {

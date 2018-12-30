@@ -1,20 +1,20 @@
 package com.lod.rtviwe.tport.listeners
 
-interface OnRegisterStepOneListener {
+interface RegisterStepOneListener {
 
     fun onRegisterStepOneContinue(phoneNumber: Long)
 
     fun savePhoneNumber(phoneNumber: Long)
 }
 
-interface OnRegisterStepTwoListener {
+interface RegisterStepTwoListener {
 
     fun onRegisterStepTwoContinue()
 
     fun saveCode(code: String)
 }
 
-interface OnRegisterStepThreeListener {
+interface RegisterStepThreeListener {
 
     fun onRegisterStepThreeContinue()
 }

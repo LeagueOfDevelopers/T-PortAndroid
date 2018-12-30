@@ -6,17 +6,18 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseActivity
 import com.lod.rtviwe.tport.bonuses.BonusesFragment
 import com.lod.rtviwe.tport.listeners.*
+import com.lod.rtviwe.tport.model.FullTrip
 import com.lod.rtviwe.tport.orders.OrdersFragment
 import com.lod.rtviwe.tport.profile.ProfileFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterStepOneFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterStepThreeFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterStepTwoFragment
 import com.lod.rtviwe.tport.search.SearchFragment
-import com.lod.rtviwe.tport.search.searchroute.SearchRoutesFragment
+import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
 import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTwoListener, OnRegisterStepThreeListener,
+class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoListener, RegisterStepThreeListener,
     SearchListener, SearchTripClickedListener, OrderTripClickedListener {
 
     companion object {
@@ -43,6 +44,8 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     private var fromPlaceText = ""
     private var toPlaceText = ""
     private var travelTimeText = ""
+    private var tripFromSearch: FullTrip? = null
+    private var tripFromOrders: FullTrip? = null
 
     override fun getLayout() = R.layout.activity_main
 
@@ -123,10 +126,10 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
             }
             R.id.action_search -> when (currentFragmentSearchTabId) {
                 R.layout.trip_details_fragment -> {
-                    currentFragmentSearchTabId = R.layout.search_routes_fragment
+                    currentFragmentSearchTabId = R.layout.search_trips_fragment
                     setUpCurrentFragment()
                 }
-                R.layout.search_routes_fragment -> {
+                R.layout.search_trips_fragment -> {
                     currentFragmentSearchTabId = R.layout.search_fragment
                     setUpCurrentFragment()
                 }
@@ -158,13 +161,15 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         setUpCurrentFragment()
     }
 
-    override fun openTripDetailFragmentFromSearch() {
+    override fun openTripDetailFragmentFromSearch(fullTrip: FullTrip) {
         currentFragmentSearchTabId = R.layout.trip_details_fragment
+        tripFromSearch = fullTrip
         setUpCurrentFragment()
     }
 
-    override fun openTripDetailFragmentFromOrder() {
+    override fun openTripDetailFragmentFromOrder(fullTrip: FullTrip) {
         currentFragmentOrdersTabId = R.layout.trip_details_fragment
+        tripFromOrders = fullTrip
         setUpCurrentFragment()
     }
 
@@ -177,7 +182,7 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
     }
 
     override fun onPickUpButton(fromPlace: String, toPlace: String, travelTime: String) {
-        currentFragmentSearchTabId = R.layout.search_routes_fragment
+        currentFragmentSearchTabId = R.layout.search_trips_fragment
         fromPlaceText = fromPlace
         toPlaceText = toPlace
         travelTimeText = travelTime
@@ -200,17 +205,29 @@ class MainActivity : BaseActivity(), OnRegisterStepOneListener, OnRegisterStepTw
         R.id.action_bonuses -> BonusesFragment.newInstance()
         R.id.action_orders -> when (currentFragmentOrdersTabId) {
             R.layout.orders_fragment -> OrdersFragment.newInstance()
-            R.layout.trip_details_fragment -> TripDetailsFragment.newInstance()
+            R.layout.trip_details_fragment -> {
+                if (tripFromOrders != null) {
+                    TripDetailsFragment.newInstance(tripFromOrders!!)
+                } else {
+                    throw RuntimeException("Trip from order is null")
+                }
+            }
             else -> throw RuntimeException("Not permitted fragment on action Orders")
         }
         R.id.action_search -> when (currentFragmentSearchTabId) {
             R.layout.search_fragment -> SearchFragment.newInstance()
-            R.layout.search_routes_fragment -> SearchRoutesFragment.newInstance(
+            R.layout.search_trips_fragment -> SearchTripsFragment.newInstance(
                 fromPlaceText,
                 toPlaceText,
                 travelTimeText
             )
-            R.layout.trip_details_fragment -> TripDetailsFragment.newInstance()
+            R.layout.trip_details_fragment -> {
+                if (tripFromSearch != null) {
+                    TripDetailsFragment.newInstance(tripFromSearch!!)
+                } else {
+                    throw RuntimeException("Trip from search is null")
+                }
+            }
             else -> throw RuntimeException("Not permitted fragment on action Search")
         }
         R.id.action_profile -> when (currentFragmentProfileTabId) {

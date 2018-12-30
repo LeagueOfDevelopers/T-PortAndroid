@@ -30,11 +30,12 @@
     <string name="image_button_change_destination">Change destination</string>
     <string name="menu_filter">Filter</string>
     <string name="search_routes_toolbar_title">Search routes</string>
+    <string name="trip_details_toolbar_title">Trip</string>
     <string name="search_routes_toolbar_begin_label">Start:</string>
     <string name="search_routes_toolbar_end_label">End:</string>
     <string name="search_routes_toolbar_when_label">When:</string>
     <string name="image_view_filter_button">Filter button</string>
-    <string name="extended_fab_search_routes">Book this route</string>
+    <string name="extended_fab_book_trip">Book this route</string>
     <string name="image_view_route_type_description">Image of route type</string>
     <string name="image_view_code_first">First number of code</string>
     <string name="image_view_code_second">Second number of code</string>

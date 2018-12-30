@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.orders.ordercard.OrderCardItem
 import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +26,7 @@ class OrdersViewModel(app: Application) : AndroidViewModel(app) {
 
     fun observeAdapter(owner: LifecycleOwner, ordersAdapter: GroupAdapter<ViewHolder>) {
         MockTrips.getItems().observe(owner, Observer { it ->
-            ordersAdapter.addAll(it.map(::OrderCardItem))
+            ordersAdapter.addAll(it.map { Section(OrderCardItem(it)) })
         })
     }
 }

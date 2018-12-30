@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchroute.searchroutecard
+package com.lod.rtviwe.tport.search.searchtrip.searchtripcard
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -6,9 +6,10 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.listeners.SearchTripClickedListener
 import com.lod.rtviwe.tport.model.FullTrip
 import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.search_route_trip_card.*
+import kotlinx.android.synthetic.main.search_trip_card.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -16,7 +17,7 @@ class TripItem(private val fullTrip: FullTrip) : Item() {
 
     private lateinit var searchTripClickedListener: SearchTripClickedListener
 
-    override fun getLayout() = R.layout.search_route_trip_card
+    override fun getLayout() = R.layout.search_trip_card
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         when (viewHolder.containerView.context) {
@@ -37,7 +38,7 @@ class TripItem(private val fullTrip: FullTrip) : Item() {
         fullTrip.routes?.forEachIndexed { index, route ->
             val isFirst = index == 0
             val isLast = index == fullTrip.routes!!.size - 1
-            searchRouteItemAdapter.add(RouteItem(route, isFirst, isLast))
+            searchRouteItemAdapter.add(Section(RouteItem(route, isFirst, isLast)))
         }
 
         viewHolder.recycler_view_routes_in_item.apply {
@@ -46,11 +47,11 @@ class TripItem(private val fullTrip: FullTrip) : Item() {
         }
 
         viewHolder.card_trip_item.setOnClickListener {
-            searchTripClickedListener.openTripDetailFragmentFromSearch()
+            searchTripClickedListener.openTripDetailFragmentFromSearch(fullTrip)
         }
 
         viewHolder.recycler_view_routes_in_item.setOnClickListener {
-            searchTripClickedListener.openTripDetailFragmentFromSearch()
+            searchTripClickedListener.openTripDetailFragmentFromSearch(fullTrip)
         }
     }
 }
