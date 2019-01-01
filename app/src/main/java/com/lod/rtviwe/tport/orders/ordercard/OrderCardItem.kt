@@ -3,7 +3,7 @@ package com.lod.rtviwe.tport.orders.ordercard
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.FullTrip
-import com.lod.rtviwe.tport.search.searchtrip.OrderTripClickedListener
+import com.lod.rtviwe.tport.orders.OrderTripClickedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder

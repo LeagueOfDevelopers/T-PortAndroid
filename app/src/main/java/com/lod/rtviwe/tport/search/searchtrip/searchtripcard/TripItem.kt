@@ -1,5 +1,6 @@
 package com.lod.rtviwe.tport.search.searchtrip.searchtripcard
 
+import android.view.MotionEvent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
@@ -50,8 +51,11 @@ class TripItem(private val fullTrip: FullTrip) : Item() {
             searchTripClickedListener.openTripDetailFragmentFromSearch(fullTrip)
         }
 
-        viewHolder.recycler_view_routes_in_item.setOnClickListener {
-            searchTripClickedListener.openTripDetailFragmentFromSearch(fullTrip)
+        viewHolder.recycler_view_routes_in_item.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                searchTripClickedListener.openTripDetailFragmentFromSearch(fullTrip)
+            }
+            true
         }
     }
 }
