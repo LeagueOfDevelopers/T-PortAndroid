@@ -1,10 +1,10 @@
-package com.lod.rtviwe.tport.listeners
+package com.lod.rtviwe.tport.profile.registration
 
 interface RegisterStepOneListener {
 
-    fun onRegisterStepOneContinue(phoneNumber: Long)
+    fun onRegisterStepOneContinue(phoneNumber: String)
 
-    fun savePhoneNumber(phoneNumber: Long)
+    fun savePhoneNumber(phoneNumber: String)
 }
 
 interface RegisterStepTwoListener {

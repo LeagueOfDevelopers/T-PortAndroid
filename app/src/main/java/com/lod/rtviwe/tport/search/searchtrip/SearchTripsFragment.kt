@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.listeners.SearchListener
-import com.lod.rtviwe.tport.listeners.SearchTripClickedListener
+import com.lod.rtviwe.tport.search.SearchListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_routes_toolbar.*
@@ -29,6 +28,7 @@ class SearchTripsFragment : BaseFragment() {
                 putString(STATE_TO_PLACE, toPlace)
                 putString(STATE_TRAVEL_TIME, travelTime)
             }
+
             return SearchTripsFragment().apply {
                 arguments = newArguments
             }

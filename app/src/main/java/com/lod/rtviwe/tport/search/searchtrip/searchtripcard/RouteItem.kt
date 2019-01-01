@@ -1,6 +1,5 @@
 package com.lod.rtviwe.tport.search.searchtrip.searchtripcard
 
-import android.annotation.SuppressLint
 import android.view.View
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Route
@@ -17,7 +16,6 @@ class RouteItem(
 
     override fun getLayout() = R.layout.search_trip_route_item
 
-    @SuppressLint("SetTextI18n")
     override fun bind(viewHolder: ViewHolder, position: Int) {
         val imageResourceToSet = RouteIcons.getImageResource(route.type)
         viewHolder.image_view_route_item.setImageResource(imageResourceToSet)
@@ -37,6 +35,7 @@ class RouteItem(
         }
 
         viewHolder.text_view_route_type.text = route.vehicleName
-        viewHolder.text_view_route_cost.text = "${route.cost} \u20BD" // \u20BD - ₽
+        viewHolder.text_view_route_cost.text =
+                String.format(viewHolder.containerView.context.getString(R.string.money), route.cost)
     }
 }

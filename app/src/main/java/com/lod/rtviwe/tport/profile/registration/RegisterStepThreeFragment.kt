@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.listeners.RegisterStepThreeListener
 import kotlinx.android.synthetic.main.register_step_three_fragment.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 

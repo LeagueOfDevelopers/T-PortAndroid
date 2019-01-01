@@ -2,8 +2,8 @@ package com.lod.rtviwe.tport.orders.ordercard
 
 import android.view.View
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.listeners.OrderTripClickedListener
 import com.lod.rtviwe.tport.model.Destination
+import com.lod.rtviwe.tport.orders.OrderTripClickedListener
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.order_place_item.*
@@ -28,14 +28,13 @@ class OrderDestinationItem(private val destination: Destination, private val isL
             SimpleDateFormat("hh:mm", Locale.getDefault()).format(destination.arrivalDate)
         )
 
+        viewHolder.image_view_connection_top.background =
+                viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
+
         if (isLast) {
-            viewHolder.image_view_connection_top.background =
-                    viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
             viewHolder.text_view_location.text = destination.placeTo.name
             viewHolder.divider_bottom.visibility = View.GONE
         } else {
-            viewHolder.image_view_connection_top.background =
-                    viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
             viewHolder.image_view_connection_bottom.background =
                     viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
             viewHolder.text_view_location.text = destination.placeFrom.name

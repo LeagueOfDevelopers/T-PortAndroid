@@ -7,26 +7,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.listeners.RegisterStepTwoListener
+import com.lod.rtviwe.tport.network.LoginConfirmationRequest
+import com.lod.rtviwe.tport.network.RegistrationApi
+import com.lod.rtviwe.tport.utils.RouteIcons
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import com.redmadrobot.inputmask.helper.Mask
 import com.redmadrobot.inputmask.model.CaretString
 import kotlinx.android.synthetic.main.register_step_two_fragment.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import timber.log.Timber
 
 class RegisterStepTwoFragment : BaseFragment() {
 
     companion object {
 
-        fun newInstance(phoneNumber: Long, code: String): RegisterStepTwoFragment {
+        fun newInstance(phoneNumber: String, code: String): RegisterStepTwoFragment {
             val newArguments = Bundle().apply {
-                putLong(STATE_PHONE_NUMBER, phoneNumber)
+                putString(STATE_PHONE_NUMBER, phoneNumber)
                 putString(STATE_CODE, code)
             }
+
             return RegisterStepTwoFragment().apply {
                 arguments = newArguments
             }
@@ -39,11 +42,23 @@ class RegisterStepTwoFragment : BaseFragment() {
     }
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
+    private val registrationApi by inject<RegistrationApi>()
     private val phoneNumberMask by inject<Mask>()
+
+    private val onCodePassedListener = object : CheckCodeCallback {
+
+        override fun pass() {
+            setupNextStep()
+        }
+
+        override fun fail() {
+            Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
+        }
+    }
 
     private lateinit var listenerStepTwo: RegisterStepTwoListener
 
-    private var phoneNumber = 0L
+    private var phoneNumber = ""
     private var code = ""
 
     override fun getLayout() = R.layout.register_step_two_fragment
@@ -57,13 +72,14 @@ class RegisterStepTwoFragment : BaseFragment() {
         }
     }
 
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.let {
             if (it.containsKey(STATE_PHONE_NUMBER)) {
-                phoneNumber = it.getLong(STATE_PHONE_NUMBER)
+                phoneNumber = it.getString(STATE_PHONE_NUMBER)
             }
             if (it.containsKey(STATE_CODE)) {
-                code = it.getString(STATE_CODE)!!
+                code = it.getString(STATE_CODE)
             }
         }
 
@@ -75,8 +91,8 @@ class RegisterStepTwoFragment : BaseFragment() {
 
         val res = phoneNumberMask.apply(
             CaretString(
-                phoneNumber.toString(),
-                phoneNumber.toString().length
+                phoneNumber,
+                phoneNumber.length
             ),
             true
         )
@@ -94,7 +110,7 @@ class RegisterStepTwoFragment : BaseFragment() {
                         listenerStepTwo.saveCode(extractedValue)
 
                         extractedValue.forEachIndexed { index, char ->
-                            val numberImageResource = getNumberDrawable(char)
+                            val numberImageResource = RouteIcons.getNumberDrawable(char)
                             getImageViewCode(index).setImageResource(numberImageResource)
                         }
 
@@ -106,11 +122,15 @@ class RegisterStepTwoFragment : BaseFragment() {
                     }
 
                     if (checkCodeLength(code)) {
-                        registerViewModel.checkCode(code)
-                        setupNextStep()
+                        registerViewModel.login(
+                            registrationApi,
+                            onCodePassedListener,
+                            LoginConfirmationRequest("+$phoneNumber", code.toInt())
+                        )
                     }
                 }
             }).placeholder()
+
         edit_text_input_code.requestFocus()
         showKeyboard()
 
@@ -132,8 +152,7 @@ class RegisterStepTwoFragment : BaseFragment() {
     }
 
     private fun showError() {
-        Timber.e("Wrong code input")
-        edit_text_input_code.error = getString(R.string.error_wrong_code)
+        Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
     }
 
     private fun checkCodeLength(code: String) = (code.length == CODE_LENGTH)
@@ -145,7 +164,7 @@ class RegisterStepTwoFragment : BaseFragment() {
     private fun showKeyboard() {
         edit_text_input_code.post {
             activity?.let {
-                val imm = activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm = it.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.showSoftInput(edit_text_input_code, 0)
             }
         }
@@ -157,19 +176,5 @@ class RegisterStepTwoFragment : BaseFragment() {
         2 -> image_view_code_third
         3 -> image_view_code_fourth
         else -> throw IndexOutOfBoundsException("Wrong image view code index")
-    }
-
-    private fun getNumberDrawable(char: Char) = when (char) {
-        '0' -> R.drawable._0
-        '1' -> R.drawable._1
-        '2' -> R.drawable._2
-        '3' -> R.drawable._3
-        '4' -> R.drawable._4
-        '5' -> R.drawable._5
-        '6' -> R.drawable._6
-        '7' -> R.drawable._7
-        '8' -> R.drawable._8
-        '9' -> R.drawable._9
-        else -> R.drawable.code_placeholder
     }
 }

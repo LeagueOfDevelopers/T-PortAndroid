@@ -2,8 +2,8 @@ package com.lod.rtviwe.tport.orders.ordercard
 
 import androidx.core.widget.TextViewCompat
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.listeners.OrderTripClickedListener
 import com.lod.rtviwe.tport.model.Route
+import com.lod.rtviwe.tport.orders.OrderTripClickedListener
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder

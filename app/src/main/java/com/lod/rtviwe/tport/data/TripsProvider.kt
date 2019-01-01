@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.lod.rtviwe.tport.model.FullTrip
 
 
-interface SearchRoutesItemsProvider {
+interface TripsProvider {
 
     fun getItems(): MutableLiveData<MutableList<FullTrip>>
 }
