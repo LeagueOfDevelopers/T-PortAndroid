@@ -6,8 +6,3 @@ interface SearchTripClickedListener {
 
     fun openTripDetailFragmentFromSearch(fullTrip: FullTrip)
 }
-
-interface OrderTripClickedListener {
-
-    fun openTripDetailFragmentFromOrder(fullTrip: FullTrip)
-}

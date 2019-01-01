@@ -47,11 +47,11 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     private val onCodePassedListener = object : CheckCodeCallback {
 
-        override fun passed() {
+        override fun pass() {
             setupNextStep()
         }
 
-        override fun failed() {
+        override fun fail() {
             Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
         }
     }

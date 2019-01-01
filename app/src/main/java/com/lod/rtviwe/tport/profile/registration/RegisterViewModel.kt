@@ -44,9 +44,9 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app) {
         jobSendCode.cancelChildren()
         scopeSendCode.launch(handlerSendCode) {
             if (checkCode()) {
-                onCodeCheckListener.passed()
+                onCodeCheckListener.pass()
             } else {
-                onCodeCheckListener.failed()
+                onCodeCheckListener.fail()
             }
         }
     }
