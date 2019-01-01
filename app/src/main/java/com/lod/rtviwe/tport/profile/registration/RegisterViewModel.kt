@@ -13,8 +13,8 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app) {
     private val jobSendCode = Job()
     private val jobSendName = Job()
 
-    private val scopeSendCode = CoroutineScope(Dispatchers.IO + jobSendCode)
-    private val scopeSendName = CoroutineScope(Dispatchers.IO + jobSendName)
+    private val scopeSendCode = CoroutineScope(Dispatchers.Main + jobSendCode)
+    private val scopeSendName = CoroutineScope(Dispatchers.Main + jobSendName)
 
     private val handlerSendCode = CoroutineExceptionHandler { _, exception ->
         Timber.e("Error while sending phone number and code: $exception")
@@ -33,13 +33,21 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app) {
         jobSendName.cancel()
     }
 
-    fun login(registrationApi: RegistrationApi, loginConfirmationRequest: LoginConfirmationRequest) {
+    fun login(
+        registrationApi: RegistrationApi,
+        onCodeCheckListener: CheckCodeCallback,
+        loginConfirmationRequest: LoginConfirmationRequest
+    ) {
         this.registrationApi = registrationApi
         this.loginConfirmationRequest = loginConfirmationRequest
 
         jobSendCode.cancelChildren()
         scopeSendCode.launch(handlerSendCode) {
-            checkCode()
+            if (checkCode()) {
+                onCodeCheckListener.passed()
+            } else {
+                onCodeCheckListener.failed()
+            }
         }
     }
 
@@ -52,7 +60,6 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app) {
                 Timber.v("Right code")
                 return true
             }
-            // TODO показать ошибку пользователю
             400 -> Timber.e("Wrong code")
             else -> Timber.e("Unknown error happened on David")
         }

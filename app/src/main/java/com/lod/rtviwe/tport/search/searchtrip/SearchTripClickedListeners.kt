@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.listeners
+package com.lod.rtviwe.tport.search.searchtrip
 
 import com.lod.rtviwe.tport.model.FullTrip
 

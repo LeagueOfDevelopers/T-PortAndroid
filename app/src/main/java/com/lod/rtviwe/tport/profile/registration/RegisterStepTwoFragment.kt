@@ -10,7 +10,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.listeners.RegisterStepTwoListener
 import com.lod.rtviwe.tport.network.LoginConfirmationRequest
 import com.lod.rtviwe.tport.network.RegistrationApi
 import com.lod.rtviwe.tport.utils.RouteIcons
@@ -20,7 +19,6 @@ import com.redmadrobot.inputmask.model.CaretString
 import kotlinx.android.synthetic.main.register_step_two_fragment.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import timber.log.Timber
 
 class RegisterStepTwoFragment : BaseFragment() {
 
@@ -31,6 +29,7 @@ class RegisterStepTwoFragment : BaseFragment() {
                 putString(STATE_PHONE_NUMBER, phoneNumber)
                 putString(STATE_CODE, code)
             }
+
             return RegisterStepTwoFragment().apply {
                 arguments = newArguments
             }
@@ -45,6 +44,17 @@ class RegisterStepTwoFragment : BaseFragment() {
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
     private val registrationApi by inject<RegistrationApi>()
     private val phoneNumberMask by inject<Mask>()
+
+    private val onCodePassedListener = object : CheckCodeCallback {
+
+        override fun passed() {
+            setupNextStep()
+        }
+
+        override fun failed() {
+            Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
+        }
+    }
 
     private lateinit var listenerStepTwo: RegisterStepTwoListener
 
@@ -114,9 +124,9 @@ class RegisterStepTwoFragment : BaseFragment() {
                     if (checkCodeLength(code)) {
                         registerViewModel.login(
                             registrationApi,
+                            onCodePassedListener,
                             LoginConfirmationRequest("+$phoneNumber", code.toInt())
                         )
-                        setupNextStep()
                     }
                 }
             }).placeholder()
@@ -142,7 +152,6 @@ class RegisterStepTwoFragment : BaseFragment() {
     }
 
     private fun showError() {
-        Timber.e("Wrong code input")
         Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
     }
 

@@ -3,8 +3,8 @@ package com.lod.rtviwe.tport.search.searchtrip.searchtripcard
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.listeners.SearchTripClickedListener
 import com.lod.rtviwe.tport.model.FullTrip
+import com.lod.rtviwe.tport.search.searchtrip.SearchTripClickedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item

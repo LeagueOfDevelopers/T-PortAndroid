@@ -7,7 +7,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.listeners.SearchListener
+import com.lod.rtviwe.tport.search.SearchListener
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_box_item.*

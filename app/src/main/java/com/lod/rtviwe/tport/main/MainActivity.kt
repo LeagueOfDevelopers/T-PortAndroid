@@ -5,20 +5,23 @@ import androidx.fragment.app.transaction
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseActivity
 import com.lod.rtviwe.tport.bonuses.BonusesFragment
-import com.lod.rtviwe.tport.listeners.*
 import com.lod.rtviwe.tport.model.FullTrip
 import com.lod.rtviwe.tport.orders.OrdersFragment
 import com.lod.rtviwe.tport.profile.ProfileFragment
-import com.lod.rtviwe.tport.profile.registration.RegisterStepOneFragment
-import com.lod.rtviwe.tport.profile.registration.RegisterStepThreeFragment
-import com.lod.rtviwe.tport.profile.registration.RegisterStepTwoFragment
+import com.lod.rtviwe.tport.profile.registration.*
 import com.lod.rtviwe.tport.search.SearchFragment
+import com.lod.rtviwe.tport.search.SearchListener
+import com.lod.rtviwe.tport.search.searchtrip.OrderTripClickedListener
+import com.lod.rtviwe.tport.search.searchtrip.SearchTripClickedListener
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
 import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoListener, RegisterStepThreeListener,
-    SearchListener, SearchTripClickedListener, OrderTripClickedListener {
+class MainActivity : BaseActivity(), RegisterStepOneListener,
+    RegisterStepTwoListener,
+    RegisterStepThreeListener,
+    SearchListener, SearchTripClickedListener,
+    OrderTripClickedListener {
 
     companion object {
 

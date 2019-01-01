@@ -2,8 +2,8 @@ package com.lod.rtviwe.tport.orders.ordercard
 
 import android.view.View
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.listeners.OrderTripClickedListener
 import com.lod.rtviwe.tport.model.Destination
+import com.lod.rtviwe.tport.search.searchtrip.OrderTripClickedListener
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.order_place_item.*
