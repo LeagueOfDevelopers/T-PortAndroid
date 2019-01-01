@@ -28,14 +28,13 @@ class OrderDestinationItem(private val destination: Destination, private val isL
             SimpleDateFormat("hh:mm", Locale.getDefault()).format(destination.arrivalDate)
         )
 
+        viewHolder.image_view_connection_top.background =
+                viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
+
         if (isLast) {
-            viewHolder.image_view_connection_top.background =
-                    viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
             viewHolder.text_view_location.text = destination.placeTo.name
             viewHolder.divider_bottom.visibility = View.GONE
         } else {
-            viewHolder.image_view_connection_top.background =
-                    viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
             viewHolder.image_view_connection_bottom.background =
                     viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
             viewHolder.text_view_location.text = destination.placeFrom.name

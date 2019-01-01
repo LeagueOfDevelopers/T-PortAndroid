@@ -64,10 +64,6 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item() {
             )
         }
 
-//        viewHolder.image_button_change.setOnClickListener {
-//            swapDestinations()
-//        }
-
         viewHolder.edit_text_from_place.setOnFocusChangeListener { view, hasFocus ->
             if (!hasFocus) {
                 hideKeyboard(view, viewHolder)
@@ -80,12 +76,6 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item() {
             }
         }
     }
-
-//    private fun swapDestinations(viewHolder: ViewHolder) {
-//        val temp = viewHolder.edit_text_from_place.text
-//        viewHolder.edit_text_from_place.text = viewHolder.edit_text_to_place.text
-//        viewHolder.edit_text_to_place.text = temp
-//    }
 
     private fun callDateTimePicker(viewHolder: ViewHolder) {
         val calendar = GregorianCalendar.getInstance()

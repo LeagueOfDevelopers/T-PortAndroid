@@ -29,6 +29,7 @@ class SearchTripsFragment : BaseFragment() {
                 putString(STATE_TO_PLACE, toPlace)
                 putString(STATE_TRAVEL_TIME, travelTime)
             }
+
             return SearchTripsFragment().apply {
                 arguments = newArguments
             }

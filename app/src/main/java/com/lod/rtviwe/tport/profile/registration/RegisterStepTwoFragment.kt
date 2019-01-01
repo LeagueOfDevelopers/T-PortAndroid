@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.listeners.RegisterStepTwoListener
@@ -22,9 +23,9 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     companion object {
 
-        fun newInstance(phoneNumber: Long, code: String): RegisterStepTwoFragment {
+        fun newInstance(phoneNumber: String, code: String): RegisterStepTwoFragment {
             val newArguments = Bundle().apply {
-                putLong(STATE_PHONE_NUMBER, phoneNumber)
+                putString(STATE_PHONE_NUMBER, phoneNumber)
                 putString(STATE_CODE, code)
             }
             return RegisterStepTwoFragment().apply {
@@ -43,7 +44,7 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     private lateinit var listenerStepTwo: RegisterStepTwoListener
 
-    private var phoneNumber = 0L
+    private var phoneNumber = ""
     private var code = ""
 
     override fun getLayout() = R.layout.register_step_two_fragment
@@ -57,13 +58,14 @@ class RegisterStepTwoFragment : BaseFragment() {
         }
     }
 
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.let {
             if (it.containsKey(STATE_PHONE_NUMBER)) {
-                phoneNumber = it.getLong(STATE_PHONE_NUMBER)
+                phoneNumber = it.getString(STATE_PHONE_NUMBER)
             }
             if (it.containsKey(STATE_CODE)) {
-                code = it.getString(STATE_CODE)!!
+                code = it.getString(STATE_CODE)
             }
         }
 
@@ -75,8 +77,8 @@ class RegisterStepTwoFragment : BaseFragment() {
 
         val res = phoneNumberMask.apply(
             CaretString(
-                phoneNumber.toString(),
-                phoneNumber.toString().length
+                phoneNumber,
+                phoneNumber.length
             ),
             true
         )
@@ -133,7 +135,7 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     private fun showError() {
         Timber.e("Wrong code input")
-        edit_text_input_code.error = getString(R.string.error_wrong_code)
+        Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
     }
 
     private fun checkCodeLength(code: String) = (code.length == CODE_LENGTH)
@@ -145,7 +147,7 @@ class RegisterStepTwoFragment : BaseFragment() {
     private fun showKeyboard() {
         edit_text_input_code.post {
             activity?.let {
-                val imm = activity!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm = it.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.showSoftInput(edit_text_input_code, 0)
             }
         }

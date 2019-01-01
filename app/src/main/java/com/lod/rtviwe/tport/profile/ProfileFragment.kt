@@ -26,5 +26,6 @@ class ProfileFragment : BaseFragment() {
         text_view_profile_name.text = getUserName()
     }
 
+    // TODO get from prefs
     private fun getUserName() = "Сергей Иванов"
 }

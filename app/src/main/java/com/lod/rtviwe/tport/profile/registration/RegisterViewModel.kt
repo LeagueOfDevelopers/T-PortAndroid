@@ -39,14 +39,14 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app) {
         jobRegisterName.cancel()
     }
 
-    fun sendCodeToPhoneNumber(phoneNumber: Long, api: RegistrationApi) {
+    fun sendCodeToPhoneNumber(phoneNumber: String, api: RegistrationApi) {
         registrationApi = api
         jobSendCode.cancelChildren()
         scopeSendCode.launch(handlerSendCode) {
-            if (registrationApi.sendPhoneNumber(phoneNumber).await().body() == null) {
+            if (registrationApi.sendPhoneNumber(phoneNumber.toLong()).await().body() == null) {
                 Timber.e("Error while getting code")
             } else {
-                code = registrationApi.sendPhoneNumber(phoneNumber).await().body()!!
+                code = registrationApi.sendPhoneNumber(phoneNumber.toLong()).await().body()!!
             }
         }
     }

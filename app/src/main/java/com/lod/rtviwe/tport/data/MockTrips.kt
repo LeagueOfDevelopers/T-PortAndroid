@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.lod.rtviwe.tport.model.*
 import java.util.*
 
-object MockTrips : SearchRoutesItemsProvider {
+object MockTrips : TripsProvider {
 
     override fun getItems() = data
 

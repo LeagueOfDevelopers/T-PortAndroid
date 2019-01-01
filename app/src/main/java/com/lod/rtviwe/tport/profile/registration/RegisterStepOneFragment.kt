@@ -18,9 +18,9 @@ class RegisterStepOneFragment : BaseFragment() {
 
     companion object {
 
-        fun newInstance(phoneNumber: Long): RegisterStepOneFragment {
+        fun newInstance(phoneNumber: String): RegisterStepOneFragment {
             val newArguments = Bundle().apply {
-                putLong(STATE_PHONE_NUMBER, phoneNumber)
+                putString(STATE_PHONE_NUMBER, phoneNumber)
             }
             return RegisterStepOneFragment().apply {
                 arguments = newArguments
@@ -35,7 +35,7 @@ class RegisterStepOneFragment : BaseFragment() {
     private val registrationApi by inject<RegistrationApi>()
 
     private lateinit var listenerStepOne: RegisterStepOneListener
-    private var phoneNumber = 0L
+    private var phoneNumber = ""
 
     override fun getLayout() = R.layout.register_step_one_fragment
 
@@ -48,10 +48,11 @@ class RegisterStepOneFragment : BaseFragment() {
         }
     }
 
+    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.let {
             if (it.containsKey(STATE_PHONE_NUMBER)) {
-                phoneNumber = it.getLong(STATE_PHONE_NUMBER)
+                phoneNumber = it.getString(STATE_PHONE_NUMBER)
             }
         }
 
@@ -61,8 +62,8 @@ class RegisterStepOneFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (phoneNumber != 0L) {
-            edit_text_phone_number.setText("$phoneNumber")
+        if (!phoneNumber.isEmpty()) {
+            edit_text_phone_number.setText(phoneNumber)
         }
 
         button_register_step_one_continue.setOnClickListener {
@@ -82,15 +83,13 @@ class RegisterStepOneFragment : BaseFragment() {
             object : MaskedTextChangedListener.ValueListener {
                 override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
                     if (extractedValue.isNotEmpty()) {
-                        phoneNumber = extractedValue.toLong()
+                        phoneNumber = extractedValue
                         listenerStepOne.savePhoneNumber(phoneNumber)
                     }
                 }
             }).placeholder()
         edit_text_phone_number.requestFocus()
     }
-
-    private fun checkPhoneNumber(phoneNumber: Long) = phoneNumber.toString().length == PHONE_NUMBER_LENGTH
 
     private fun setupNextStep() {
         registerViewModel.sendCodeToPhoneNumber(phoneNumber, registrationApi)
@@ -100,4 +99,6 @@ class RegisterStepOneFragment : BaseFragment() {
     private fun showErrorPhoneNumber() {
         edit_text_phone_number.error = getString(R.string.error_wrong_number)
     }
+
+    private fun checkPhoneNumber(phoneNumber: String) = phoneNumber.length == PHONE_NUMBER_LENGTH
 }
