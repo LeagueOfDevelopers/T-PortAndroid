@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.listeners.RegisterStepTwoListener
+import com.lod.rtviwe.tport.utils.RouteIcons
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import com.redmadrobot.inputmask.helper.Mask
 import com.redmadrobot.inputmask.model.CaretString
@@ -96,7 +97,7 @@ class RegisterStepTwoFragment : BaseFragment() {
                         listenerStepTwo.saveCode(extractedValue)
 
                         extractedValue.forEachIndexed { index, char ->
-                            val numberImageResource = getNumberDrawable(char)
+                            val numberImageResource = RouteIcons.getNumberDrawable(char)
                             getImageViewCode(index).setImageResource(numberImageResource)
                         }
 
@@ -159,19 +160,5 @@ class RegisterStepTwoFragment : BaseFragment() {
         2 -> image_view_code_third
         3 -> image_view_code_fourth
         else -> throw IndexOutOfBoundsException("Wrong image view code index")
-    }
-
-    private fun getNumberDrawable(char: Char) = when (char) {
-        '0' -> R.drawable._0
-        '1' -> R.drawable._1
-        '2' -> R.drawable._2
-        '3' -> R.drawable._3
-        '4' -> R.drawable._4
-        '5' -> R.drawable._5
-        '6' -> R.drawable._6
-        '7' -> R.drawable._7
-        '8' -> R.drawable._8
-        '9' -> R.drawable._9
-        else -> R.drawable.code_placeholder
     }
 }
