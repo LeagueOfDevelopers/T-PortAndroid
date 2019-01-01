@@ -2,6 +2,8 @@ package com.lod.rtviwe.tport.profile.registration
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.google.gson.Gson
+import com.lod.rtviwe.tport.network.LoginConfirmationRequest
 import com.lod.rtviwe.tport.network.RegistrationApi
 import kotlinx.coroutines.*
 import timber.log.Timber
@@ -9,72 +11,52 @@ import timber.log.Timber
 class RegisterViewModel(app: Application) : AndroidViewModel(app) {
 
     private val jobSendCode = Job()
-    private val jobCheckCode = Job()
-    private val jobRegisterName = Job()
+    private val jobSendName = Job()
 
     private val scopeSendCode = CoroutineScope(Dispatchers.IO + jobSendCode)
-    private val scopeCheckCode = CoroutineScope(Dispatchers.IO + jobCheckCode)
-    private val scopeRegisterName = CoroutineScope(Dispatchers.IO + jobRegisterName)
+    private val scopeSendName = CoroutineScope(Dispatchers.IO + jobSendName)
 
     private val handlerSendCode = CoroutineExceptionHandler { _, exception ->
-        Timber.e("Error while getting code: $exception")
+        Timber.e("Error while sending phone number and code: $exception")
     }
 
-    private val handlerCheckCode = CoroutineExceptionHandler { _, exception ->
-        Timber.e("Error while checking code: $exception")
-    }
-
-    private val handlerRegisterName = CoroutineExceptionHandler { _, exception ->
-        Timber.e("Error while registering name: $exception")
+    private val handlerSendName = CoroutineExceptionHandler { _, exception ->
+        Timber.e("Error while sending name: $exception")
     }
 
     private lateinit var registrationApi: RegistrationApi
-
-    private var code = 0
+    private lateinit var loginConfirmationRequest: LoginConfirmationRequest
 
     override fun onCleared() {
         super.onCleared()
-        jobCheckCode.cancel()
         jobSendCode.cancel()
-        jobRegisterName.cancel()
+        jobSendName.cancel()
     }
 
-    fun sendCodeToPhoneNumber(phoneNumber: String, api: RegistrationApi) {
-        registrationApi = api
+    fun login(registrationApi: RegistrationApi, loginConfirmationRequest: LoginConfirmationRequest) {
+        this.registrationApi = registrationApi
+        this.loginConfirmationRequest = loginConfirmationRequest
+
         jobSendCode.cancelChildren()
         scopeSendCode.launch(handlerSendCode) {
-            if (registrationApi.sendPhoneNumber(phoneNumber.toLong()).await().body() == null) {
-                Timber.e("Error while getting code")
-            } else {
-                code = registrationApi.sendPhoneNumber(phoneNumber.toLong()).await().body()!!
-            }
+            checkCode()
         }
     }
 
-    fun checkCode(codeString: String) {
-        try {
-            code = codeString.toInt()
-        } catch (e: ClassCastException) {
-            Timber.e("Code cannot be casted to int")
-            // TODO показать ошибку пользователю
-            return
-        }
+    private suspend fun checkCode(): Boolean {
+        val requestCode =
+            registrationApi.sendPhoneNumberWithCode(Gson().toJson(loginConfirmationRequest)).await().code()
 
-        jobCheckCode.cancelChildren()
-        scopeCheckCode.launch(handlerCheckCode) {
-            val result = registrationApi.sendCode(code).await().isSuccessful
-
-            if (result) {
+        when (requestCode) {
+            200 -> {
                 Timber.v("Right code")
-            } else {
-                Timber.e("Wrong code probably")
+                return true
             }
+            // TODO показать ошибку пользователю
+            400 -> Timber.e("Wrong code")
+            else -> Timber.e("Unknown error happened on David")
         }
-    }
 
-    fun registerName() {
-        scopeRegisterName.launch(handlerRegisterName) {
-
-        }
+        return false
     }
 }
