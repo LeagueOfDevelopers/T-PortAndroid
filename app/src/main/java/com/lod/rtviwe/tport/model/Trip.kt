@@ -15,9 +15,7 @@ data class Trip(
     var placeFrom: Place,
     @Embedded(prefix = "to_")
     var placeTo: Place,
-    @ColumnInfo(name = "trip_cost")
     var cost: Int,
-    @ColumnInfo(name = "trip_time_travel")
     var timeTravel: Date
 ) : Parcelable {
 

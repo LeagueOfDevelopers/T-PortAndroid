@@ -5,7 +5,7 @@ import androidx.room.*
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 
-@Entity(tableName = "Destination")
+@Entity
 @Parcelize
 data class Destination(
     @PrimaryKey(autoGenerate = true)
@@ -15,7 +15,6 @@ data class Destination(
     var placeFrom: Place,
     @Embedded(prefix = "to_")
     var placeTo: Place,
-    @ColumnInfo(name = "arrival_date")
     var arrivalDate: Date
 ) : Parcelable {
 
