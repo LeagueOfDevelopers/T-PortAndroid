@@ -2,17 +2,19 @@ package com.lod.rtviwe.tport.network
 
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.POST
+import retrofit2.http.PUT
 
 interface RegistrationApi {
 
     @POST("/login")
     fun sendPhoneNumber(
-        @Query("phone") phoneNumber: String
-    ): Deferred<Response<Int>>
+        @Body body: LoginRequest
+    ): Deferred<Response<ResponseToken>>
 
     @PUT("/login")
     fun sendPhoneNumberWithCode(
-        @Body body: String
-    ): Deferred<Response<Int>>
+        @Body body: LoginConfirmationRequest
+    ): Deferred<Response<ResponseToken>>
 }

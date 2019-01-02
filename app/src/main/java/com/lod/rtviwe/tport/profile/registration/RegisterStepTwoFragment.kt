@@ -47,7 +47,7 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     private val onCodePassedListener = object : CheckCodeCallback {
 
-        override fun pass() {
+        override fun pass(token: String) {
             setupNextStep()
         }
 
@@ -104,6 +104,7 @@ class RegisterStepTwoFragment : BaseFragment() {
             edit_text_input_code,
             "[0][0][0][0]",
             object : MaskedTextChangedListener.ValueListener {
+
                 override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
                     try {
                         code = extractedValue
