@@ -95,8 +95,8 @@ class TripDetailsFragment : BaseFragment() {
     }
 
     private fun swapDestinations() {
-        val temp = edit_text_from_place.text
-        edit_text_from_place.text = edit_text_to_place.text
-        edit_text_to_place.text = temp
+        val temp = edit_text_toolbar_from_place.text
+        edit_text_toolbar_from_place.text = edit_text_toolbar_to_place.text
+        edit_text_toolbar_to_place.text = temp
     }
 }
