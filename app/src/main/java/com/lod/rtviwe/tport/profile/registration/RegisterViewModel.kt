@@ -52,8 +52,9 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private suspend fun checkCode(): Boolean {
-        val requestCode =
-            registrationApi.sendPhoneNumberWithCode(Gson().toJson(loginConfirmationRequest)).await().code()
+        val bodyRequest = Gson().toJson(loginConfirmationRequest)
+        val request = registrationApi.sendPhoneNumberWithCode(bodyRequest).await()
+        val requestCode = request.code()
 
         when (requestCode) {
             200 -> {

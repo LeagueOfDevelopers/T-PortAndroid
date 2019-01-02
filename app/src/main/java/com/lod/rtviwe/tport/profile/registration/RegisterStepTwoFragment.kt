@@ -125,7 +125,7 @@ class RegisterStepTwoFragment : BaseFragment() {
                         registerViewModel.login(
                             registrationApi,
                             onCodePassedListener,
-                            LoginConfirmationRequest("+$phoneNumber", code.toInt())
+                            LoginConfirmationRequest("+$phoneNumber", code)
                         )
                     }
                 }
