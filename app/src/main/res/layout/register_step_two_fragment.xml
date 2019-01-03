@@ -54,48 +54,48 @@
             tools:text="@tools:sample/us_zipcodes" />
 
         <ImageView
-                android:id="@+id/image_view_code_first"
+            android:id="@+id/image_view_code_first"
             android:layout_width="48dp"
             android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/image_view_code_first"
-                android:src="@drawable/code_placeholder"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/image_view_code_first"
+            android:src="@drawable/code_placeholder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
 
         <ImageView
-                android:id="@+id/image_view_code_second"
+            android:id="@+id/image_view_code_second"
             android:layout_width="48dp"
             android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/image_view_code_second"
-                android:src="@drawable/code_placeholder"
-                app:layout_constraintStart_toEndOf="@+id/image_view_code_first"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/image_view_code_second"
+            android:src="@drawable/code_placeholder"
+            app:layout_constraintStart_toEndOf="@+id/image_view_code_first"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
 
         <ImageView
-                android:id="@+id/image_view_code_third"
+            android:id="@+id/image_view_code_third"
             android:layout_width="48dp"
             android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/image_view_code_third"
-                android:src="@drawable/code_placeholder"
-                app:layout_constraintStart_toEndOf="@+id/image_view_code_second"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/image_view_code_third"
+            android:src="@drawable/code_placeholder"
+            app:layout_constraintStart_toEndOf="@+id/image_view_code_second"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
 
         <ImageView
-                android:id="@+id/image_view_code_fourth"
+            android:id="@+id/image_view_code_fourth"
             android:layout_width="48dp"
             android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/image_view_code_fourth"
-                android:src="@drawable/code_placeholder"
-                app:layout_constraintStart_toEndOf="@+id/image_view_code_third"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/image_view_code_fourth"
+            android:src="@drawable/code_placeholder"
+            app:layout_constraintStart_toEndOf="@+id/image_view_code_third"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
 
         <TextView
             android:id="@+id/text_view_did_get_code_question"

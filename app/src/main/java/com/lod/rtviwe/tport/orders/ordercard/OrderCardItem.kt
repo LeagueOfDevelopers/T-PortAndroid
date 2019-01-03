@@ -4,7 +4,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.FullTrip
 import com.lod.rtviwe.tport.orders.OrderTripClickedListener
-import com.lod.rtviwe.tport.utils.PopulateAdapter
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
@@ -26,7 +25,19 @@ class OrderCardItem(private val fullTrip: FullTrip) : Item() {
         val routesAdapter = GroupAdapter<ViewHolder>()
         val routesLayoutManager = LinearLayoutManager(viewHolder.containerView.context)
 
-        PopulateAdapter.fillTripAdapter(routesAdapter, fullTrip)
+        fullTrip.routes?.forEachIndexed { index, route ->
+            if (index == 0) {
+                routesAdapter.add(OrderDestinationFirstItem(route.destination))
+            } else {
+                routesAdapter.add(OrderDestinationItem(route.destination, false))
+            }
+
+            routesAdapter.add(OrderRouteItem(route))
+
+            if (index == fullTrip.routes!!.size - 1) {
+                routesAdapter.add(OrderDestinationItem(route.destination, true))
+            }
+        }
 
         viewHolder.containerView.recycler_view_order_routes.apply {
             layoutManager = routesLayoutManager
