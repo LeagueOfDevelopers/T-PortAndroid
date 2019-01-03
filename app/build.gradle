@@ -10,9 +10,9 @@ android {
     signingConfigs {
         config {
             keyAlias 'key0'
-            keyPassword 'nABv4QQP9DBZYBjSmjWddUKWGpGP4tzRLwUJKR4XH7ggMQNQ3sN4XuzY7qJx5cVd'
+            keyPassword 'NDjRcZz9LkyR7G37DkuYKbSvfs7tSpWPDcGBaWPdLzSzHGJv8mMKpet95jqrBksE'
             storeFile file('/home/rtviwe/tport.jks')
-            storePassword 'NDjRcZz9LkyR7G37DkuYKbSvfs7tSpWPDcGBaWPdLzSzHGJv8mMKpet95jqrBksE'
+            storePassword 'nABv4QQP9DBZYBjSmjWddUKWGpGP4tzRLwUJKR4XH7ggMQNQ3sN4XuzY7qJx5cVd'
         }
     }
     compileSdkVersion 28
