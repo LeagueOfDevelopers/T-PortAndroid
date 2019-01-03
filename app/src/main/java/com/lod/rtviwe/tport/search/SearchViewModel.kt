@@ -47,7 +47,7 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
 
     fun findAutocomplete(text: String, callback: AutocompleteCallback) {
         scopeAutocomplete.launch(handlerAutocomplete) {
-            val request = autocompleteApi.getAutocomplete(text, Locale.getDefault().country).await()
+            val request = autocompleteApi.getAutocomplete(text, Locale.getDefault().language).await()
             val requestCode = request.code()
 
             when (requestCode) {
