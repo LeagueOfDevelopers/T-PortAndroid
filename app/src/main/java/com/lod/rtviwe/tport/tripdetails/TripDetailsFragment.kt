@@ -13,7 +13,6 @@ import com.lod.rtviwe.tport.orders.ordercard.OrderDestinationItem
 import com.lod.rtviwe.tport.orders.ordercard.OrderRouteItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.search_box_item.*
 import kotlinx.android.synthetic.main.search_routes_toolbar.*
 import kotlinx.android.synthetic.main.trip_details_fragment.*
 import java.text.SimpleDateFormat

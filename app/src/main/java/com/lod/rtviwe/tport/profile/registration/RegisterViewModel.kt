@@ -2,13 +2,15 @@ package com.lod.rtviwe.tport.profile.registration
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.lod.rtviwe.tport.network.LoginConfirmationRequest
-import com.lod.rtviwe.tport.network.RegistrationApi
-import com.lod.rtviwe.tport.network.ResponseToken
+import com.lod.rtviwe.tport.network.register.LoginConfirmationRequest
+import com.lod.rtviwe.tport.network.register.RegistrationApi
+import com.lod.rtviwe.tport.network.register.ResponseToken
 import kotlinx.coroutines.*
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.get
 import timber.log.Timber
 
-class RegisterViewModel(app: Application) : AndroidViewModel(app) {
+class RegisterViewModel(app: Application) : AndroidViewModel(app), KoinComponent {
 
     private val jobSendCode = Job()
     private val jobSendName = Job()
@@ -24,8 +26,7 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app) {
         Timber.e("Error while sending name: $exception")
     }
 
-    private lateinit var registrationApi: RegistrationApi
-    private lateinit var loginConfirmationRequest: LoginConfirmationRequest
+    private val registrationApi: RegistrationApi = get()
 
     override fun onCleared() {
         super.onCleared()
@@ -33,17 +34,10 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app) {
         jobSendName.cancel()
     }
 
-    fun login(
-        registrationApi: RegistrationApi,
-        onCodeCheckListener: CheckCodeCallback,
-        loginConfirmationRequest: LoginConfirmationRequest
-    ) {
-        this.registrationApi = registrationApi
-        this.loginConfirmationRequest = loginConfirmationRequest
-
+    fun login(onCodeCheckListener: CheckCodeCallback, loginConfirmationRequest: LoginConfirmationRequest) {
         jobSendCode.cancelChildren()
         scopeSendCode.launch(handlerSendCode) {
-            val responseToken = checkCode()
+            val responseToken = checkCode(loginConfirmationRequest)
             if (responseToken != null) {
                 onCodeCheckListener.pass(responseToken.token)
             } else {
@@ -52,7 +46,7 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    private suspend fun checkCode(): ResponseToken? {
+    private suspend fun checkCode(loginConfirmationRequest: LoginConfirmationRequest): ResponseToken? {
         val request = registrationApi.sendPhoneNumberWithCode(loginConfirmationRequest).await()
         val requestCode = request.code()
 

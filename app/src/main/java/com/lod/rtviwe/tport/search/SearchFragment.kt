@@ -11,7 +11,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_fragment.*
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SearchFragment : BaseFragment() {
 
@@ -22,7 +22,7 @@ class SearchFragment : BaseFragment() {
         }
     }
 
-    private val searchViewModel by viewModel<SearchViewModel>()
+    private val searchViewModel by sharedViewModel<SearchViewModel>()
     private val searchBox by inject<SearchBox>()
 
     private var searchAdapter = GroupAdapter<ViewHolder>()

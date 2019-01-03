@@ -26,16 +26,15 @@ class OrderCardItem(private val fullTrip: FullTrip) : Item() {
         val routesLayoutManager = LinearLayoutManager(viewHolder.containerView.context)
 
         fullTrip.routes?.forEachIndexed { index, route ->
-            val isFirst = index == 0
-            if (isFirst) {
+            if (index == 0) {
                 routesAdapter.add(OrderDestinationFirstItem(route.destination))
             } else {
                 routesAdapter.add(OrderDestinationItem(route.destination, false))
             }
+
             routesAdapter.add(OrderRouteItem(route))
 
-            val isLast = index == fullTrip.routes!!.size - 1
-            if (isLast) {
+            if (index == fullTrip.routes!!.size - 1) {
                 routesAdapter.add(OrderDestinationItem(route.destination, true))
             }
         }

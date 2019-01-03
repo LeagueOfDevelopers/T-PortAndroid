@@ -6,16 +6,22 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.ArrayAdapter
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.search.SearchListener
+import com.lod.rtviwe.tport.search.SearchViewModel
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_box_item.*
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.get
 import java.util.*
 
-class SearchBoxItem(private val searchBox: SearchBox) : Item() {
+class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
 
     private lateinit var searchListener: SearchListener
+
+    private val searchViewModel: SearchViewModel = get()
 
     override fun getLayout() = R.layout.search_box_item
 
@@ -26,6 +32,28 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item() {
             else -> throw ClassCastException("${viewHolder.containerView.context} does not implements SearchListener")
         }
 
+        val autocompleteFromPlaceCallback = object : AutocompleteCallback {
+
+            override fun autocomplete(words: List<String>) {
+                val adapter =
+                    ArrayAdapter<String>(
+                        viewHolder.containerView.context,
+                        android.R.layout.simple_dropdown_item_1line,
+                        words
+                    )
+                viewHolder.edit_text_from_place.setAdapter(adapter)
+            }
+        }
+
+        val autocompleteToPlaceCallback = object : AutocompleteCallback {
+
+            override fun autocomplete(words: List<String>) {
+                viewHolder.edit_text_to_place.setAdapter(
+                    ArrayAdapter(viewHolder.containerView.context, android.R.layout.simple_dropdown_item_1line, words)
+                )
+            }
+        }
+
         viewHolder.edit_text_from_place.setText(searchBox.fromPlace)
         viewHolder.edit_text_to_place.setText(searchBox.toPlace)
         viewHolder.edit_text_data_travel.setText(searchBox.travelTime)
@@ -34,6 +62,7 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item() {
 
             override fun onTextChanged(newText: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 searchBox.fromPlace = newText.toString()
+                searchViewModel.findAutocomplete(newText.toString(), autocompleteFromPlaceCallback)
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -45,6 +74,7 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item() {
 
             override fun onTextChanged(newText: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 searchBox.toPlace = newText.toString()
+                searchViewModel.findAutocomplete(newText.toString(), autocompleteToPlaceCallback)
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
