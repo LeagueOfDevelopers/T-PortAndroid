@@ -53,12 +53,16 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
             when (requestCode) {
                 200 -> {
                     request.body()?.let { array ->
-                        callback.autocomplete(array.map { it.name!! })
-                        Timber.e(array.map { it.name!! }.toString())
+                        callback.autocomplete(array.map { it.name!! }.take(AMOUNT_AUTOCOMPLETE_WORDS))
                     }
                 }
                 else -> Timber.e("Unknown error happened on autocomplete")
             }
         }
+    }
+
+    companion object {
+
+        private const val AMOUNT_AUTOCOMPLETE_WORDS = 10
     }
 }
