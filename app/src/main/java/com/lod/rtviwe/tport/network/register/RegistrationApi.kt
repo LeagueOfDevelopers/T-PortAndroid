@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.network
+package com.lod.rtviwe.tport.network.register
 
 import kotlinx.coroutines.Deferred
 import retrofit2.Response

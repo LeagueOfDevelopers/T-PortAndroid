@@ -3,7 +3,8 @@ package com.lod.rtviwe.tport.di
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.bonuses.BonusesViewModel
-import com.lod.rtviwe.tport.network.RegistrationApi
+import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
+import com.lod.rtviwe.tport.network.register.RegistrationApi
 import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
@@ -29,8 +30,16 @@ val mainModule = module {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .baseUrl(TPortApplication.URL)
+            .baseUrl(TPortApplication.TPORT_URL)
             .build()
             .create(RegistrationApi::class.java)
+    }
+    single {
+        Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .baseUrl(TPortApplication.AUTOCOMPLETE_URL)
+            .build()
+            .create(AutocompleteApi::class.java)
     }
 }

@@ -11,7 +11,7 @@ import android.widget.Toast
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.network.LoginConfirmationRequest
+import com.lod.rtviwe.tport.network.register.LoginConfirmationRequest
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import com.redmadrobot.inputmask.helper.Mask
@@ -125,7 +125,8 @@ class RegisterStepTwoFragment : BaseFragment() {
 
                     if (checkCodeLength(code)) {
                         registerViewModel.login(
-                            onCodePassedListener, LoginConfirmationRequest("+$phoneNumber", code)
+                            onCodePassedListener,
+                            LoginConfirmationRequest("+$phoneNumber", code)
                         )
                     }
                 }

@@ -13,7 +13,8 @@ class TPortApplication : Application() {
         private const val TOKEN_PREFS = "user token"
         private const val TOKEN = "token"
 
-        const val URL = "http://tport-test.lod-misis.ru/"
+        const val TPORT_URL = "http://tport-test.lod-misis.ru/"
+        const val AUTOCOMPLETE_URL = "http://autocomplete.travelpayouts.com/"
 
         fun putToken(context: Context, token: String) {
             context.getSharedPreferences(TOKEN_PREFS, Context.MODE_PRIVATE).edit().apply {
