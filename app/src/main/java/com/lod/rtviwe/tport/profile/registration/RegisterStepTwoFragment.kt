@@ -30,7 +30,6 @@ class RegisterStepTwoFragment : BaseFragment() {
 
         override fun pass(token: String) {
             TPortApplication.putToken(activity!!, token)
-
             setupNextStep()
         }
 
@@ -72,65 +71,43 @@ class RegisterStepTwoFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val res = phoneNumberMask.apply(
-            CaretString(
-                phoneNumber,
-                phoneNumber.length
-            ),
+        val maskResult = phoneNumberMask.apply(
+            CaretString(phoneNumber, phoneNumber.length),
             true
         )
-        text_view_register_step_two_phone_number.text = res.formattedText.string
+        text_view_register_step_two_phone_number.text = maskResult.formattedText.string
 
         edit_text_input_code.setText(code)
+
+        val maskTextChangeListener = object : MaskedTextChangedListener.ValueListener {
+
+            override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
+                handleCodeChange(extractedValue)
+            }
+        }
 
         edit_text_input_code.hint = MaskedTextChangedListener.installOn(
             edit_text_input_code,
             "[0][0][0][0]",
-            object : MaskedTextChangedListener.ValueListener {
-
-                override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
-                    try {
-                        code = extractedValue
-                        listenerStepTwo.saveCode(extractedValue)
-
-                        extractedValue.forEachIndexed { index, char ->
-                            val numberImageResource = RouteIcons.getNumberDrawable(char)
-                            getImageViewCode(index).setImageResource(numberImageResource)
-                        }
-
-                        (extractedValue.length until CODE_LENGTH).forEach { index ->
-                            getImageViewCode(index).setImageResource(R.drawable.code_placeholder)
-                        }
-                    } catch (error: NumberFormatException) {
-                        showError()
-                    }
-
-                    if (checkCodeLength(code)) {
-                        registerViewModel.login(
-                            onCodePassedListener,
-                            LoginConfirmationRequest(phoneNumber.toPhone(), code)
-                        )
-                    }
-                }
-            }).placeholder()
+            maskTextChangeListener
+        ).placeholder()
 
         edit_text_input_code.requestFocus()
         showKeyboard()
 
-        image_view_code_first.setOnClickListener {
+        group_code_input.setOnClickListener {
             showKeyboard()
         }
+    }
 
-        image_view_code_second.setOnClickListener {
-            showKeyboard()
-        }
+    private fun handleCodeChange(newText: String) {
+        updateCodeImages(newText)
 
-        image_view_code_third.setOnClickListener {
-            showKeyboard()
-        }
-
-        image_view_code_fourth.setOnClickListener {
-            showKeyboard()
+        if (checkCodeLength(code)) {
+            registerViewModel.login(
+                onCodePassedListener,
+                LoginConfirmationRequest(phoneNumber.toPhone(), code)
+            )
         }
     }
 
@@ -142,6 +119,24 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     private fun setupNextStep() {
         listenerStepTwo.onRegisterStepTwoContinue()
+    }
+
+    private fun updateCodeImages(text: String) {
+        try {
+            code = text
+            listenerStepTwo.saveCode(text)
+
+            text.forEachIndexed { index, char ->
+                val numberImageResource = RouteIcons.getNumberDrawable(char)
+                getImageViewCode(index).setImageResource(numberImageResource)
+            }
+
+            (text.length until CODE_LENGTH).forEach { index ->
+                getImageViewCode(index).setImageResource(R.drawable.code_placeholder)
+            }
+        } catch (error: NumberFormatException) {
+            showError()
+        }
     }
 
     private fun showKeyboard() {
