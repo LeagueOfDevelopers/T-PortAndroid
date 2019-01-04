@@ -13,6 +13,7 @@ import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.network.register.LoginConfirmationRequest
 import com.lod.rtviwe.tport.utils.RouteIcons
+import com.lod.rtviwe.tport.utils.toPhone
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import com.redmadrobot.inputmask.helper.Mask
 import com.redmadrobot.inputmask.model.CaretString
@@ -126,7 +127,7 @@ class RegisterStepTwoFragment : BaseFragment() {
                     if (checkCodeLength(code)) {
                         registerViewModel.login(
                             onCodePassedListener,
-                            LoginConfirmationRequest("+$phoneNumber", code)
+                            LoginConfirmationRequest(phoneNumber.toPhone(), code)
                         )
                     }
                 }
