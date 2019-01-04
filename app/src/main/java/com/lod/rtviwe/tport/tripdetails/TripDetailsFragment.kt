@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.model.FullTrip
-import com.lod.rtviwe.tport.orders.decorators.OrderDestinationFirstItem
-import com.lod.rtviwe.tport.orders.decorators.OrderDestinationItem
-import com.lod.rtviwe.tport.orders.decorators.OrderRouteItem
+import com.lod.rtviwe.tport.orders.items.OrderDestinationFirstItem
+import com.lod.rtviwe.tport.orders.items.OrderDestinationItem
+import com.lod.rtviwe.tport.orders.items.OrderRouteItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_routes_toolbar.*
@@ -24,10 +24,11 @@ class TripDetailsFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.trip_details_fragment
 
-    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        arguments?.let {
-            fullTrip = it.getParcelable(STATE_TRIP)
+        arguments?.also {
+            it.getParcelable<FullTrip>(STATE_TRIP)?.let { trip ->
+                fullTrip = trip
+            }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -38,14 +39,11 @@ class TripDetailsFragment : BaseFragment() {
 
         text_view_search_routes_toolbar_label.text = getString(R.string.trip_details_toolbar_title)
 
-        edit_text_toolbar_from_place.setText(fullTrip.trip.placeFrom.name)
-        edit_text_toolbar_to_place.setText(fullTrip.trip.placeTo.name)
-        edit_text_toolbar_when.setText(
-            SimpleDateFormat(
-                "dd.MM.yyyy",
-                Locale.getDefault()
-            ).format(fullTrip.trip.timeTravel)
-        )
+        with(fullTrip.trip) {
+            edit_text_toolbar_from_place.setText(placeFrom.name)
+            edit_text_toolbar_to_place.setText(placeTo.name)
+            edit_text_toolbar_when.setText(SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(timeTravel))
+        }
 
         val routesAdapter = GroupAdapter<ViewHolder>()
         val routesLayoutManager = LinearLayoutManager(context)

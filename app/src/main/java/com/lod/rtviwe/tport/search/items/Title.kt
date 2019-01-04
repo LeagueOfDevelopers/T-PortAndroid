@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.decorators
+package com.lod.rtviwe.tport.search.items
 
 import com.lod.rtviwe.tport.R
 import com.xwray.groupie.kotlinandroidextensions.Item

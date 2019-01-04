@@ -7,10 +7,10 @@ import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
-import com.lod.rtviwe.tport.search.decorators.Logo
-import com.lod.rtviwe.tport.search.decorators.PopularTrip
-import com.lod.rtviwe.tport.search.decorators.SearchBoxItem
-import com.lod.rtviwe.tport.search.decorators.Title
+import com.lod.rtviwe.tport.search.items.Logo
+import com.lod.rtviwe.tport.search.items.PopularTrip
+import com.lod.rtviwe.tport.search.items.SearchBoxItem
+import com.lod.rtviwe.tport.search.items.Title
 import com.lod.rtviwe.tport.search.searchbox.AutocompleteCallback
 import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.xwray.groupie.GroupAdapter
@@ -58,10 +58,10 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
             when (requestCode) {
                 200 -> {
                     request.body()?.let { array ->
-                        callback.autocomplete(array.map { it.name!! }.take(AMOUNT_AUTOCOMPLETE_WORDS))
+                        callback.autocomplete(array.map { it.name }.take(AMOUNT_AUTOCOMPLETE_WORDS))
                     }
                 }
-                else -> Timber.e("Unknown error happened on autocomplete")
+                else -> Timber.e("Unknown error happened on travelpayouts.com")
             }
         }
     }

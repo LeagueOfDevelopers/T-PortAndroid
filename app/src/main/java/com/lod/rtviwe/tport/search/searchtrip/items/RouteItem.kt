@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip.decorators
+package com.lod.rtviwe.tport.search.searchtrip.items
 
 import android.view.View
 import com.lod.rtviwe.tport.R

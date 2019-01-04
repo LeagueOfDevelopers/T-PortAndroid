@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.orders.decorators
+package com.lod.rtviwe.tport.orders.items
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lod.rtviwe.tport.R
@@ -19,7 +19,7 @@ class OrderCardItem(private val fullTrip: FullTrip) : Item() {
         when (viewHolder.containerView.context) {
             is OrderTripClickedListener -> orderTripClickedListener =
                     viewHolder.containerView.context as OrderTripClickedListener
-            else -> throw ClassCastException("${viewHolder.containerView.context} does not implements SearchListener")
+            else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
         }
 
         val routesAdapter = GroupAdapter<ViewHolder>()

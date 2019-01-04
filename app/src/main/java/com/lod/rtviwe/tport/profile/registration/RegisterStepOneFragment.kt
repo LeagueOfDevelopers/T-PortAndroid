@@ -1,5 +1,6 @@
 package com.lod.rtviwe.tport.profile.registration
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -27,21 +28,20 @@ class RegisterStepOneFragment : BaseFragment() {
 
         when (context) {
             is RegisterStepOneListener -> listenerStepOne = context
-            else -> throw ClassCastException("$context does not implements RegisterStepOneListener")
+            else -> throw ClassCastException("$context does not implement RegisterStepOneListener")
         }
     }
 
-    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        arguments?.let {
-            if (it.containsKey(STATE_PHONE_NUMBER)) {
-                phoneNumber = it.getString(STATE_PHONE_NUMBER)
-            }
+        arguments?.also {
+            it.getString(STATE_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
+    // TODO remove
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -91,6 +91,7 @@ class RegisterStepOneFragment : BaseFragment() {
             val newArguments = Bundle().apply {
                 putString(STATE_PHONE_NUMBER, phoneNumber)
             }
+
             return RegisterStepOneFragment().apply {
                 arguments = newArguments
             }

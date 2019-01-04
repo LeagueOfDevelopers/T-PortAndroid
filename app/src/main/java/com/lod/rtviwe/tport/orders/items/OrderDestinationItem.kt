@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.orders.decorators
+package com.lod.rtviwe.tport.orders.items
 
 import android.view.View
 import com.lod.rtviwe.tport.R
@@ -20,7 +20,7 @@ class OrderDestinationItem(private val destination: Destination, private val isL
         when (viewHolder.containerView.context) {
             is OrderTripClickedListener -> orderTripClickedListener =
                     viewHolder.containerView.context as OrderTripClickedListener
-            else -> throw ClassCastException("${viewHolder.containerView.context} does not implements SearchListener")
+            else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
         }
 
         viewHolder.text_view_arrival_date.text = String.format(

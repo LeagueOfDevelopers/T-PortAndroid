@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.orders.decorators
+package com.lod.rtviwe.tport.orders.items
 
 import androidx.core.widget.TextViewCompat
 import com.lod.rtviwe.tport.R
@@ -21,7 +21,7 @@ class OrderRouteItem(private val route: Route) : Item() {
         when (viewHolder.containerView.context) {
             is OrderTripClickedListener -> orderTripClickedListener =
                     viewHolder.containerView.context as OrderTripClickedListener
-            else -> throw ClassCastException("${viewHolder.containerView.context} does not implements SearchListener")
+            else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
         }
 
         val imageResourceToSet = RouteIcons.getImageResource(route.type)

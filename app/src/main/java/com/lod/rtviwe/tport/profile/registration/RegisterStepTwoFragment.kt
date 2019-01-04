@@ -20,6 +20,7 @@ import com.redmadrobot.inputmask.model.CaretString
 import kotlinx.android.synthetic.main.register_step_two_fragment.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import timber.log.Timber
 
 class RegisterStepTwoFragment : BaseFragment() {
 
@@ -29,7 +30,12 @@ class RegisterStepTwoFragment : BaseFragment() {
     private val onCodePassedListener = object : CheckCodeCallback {
 
         override fun pass(token: String) {
-            TPortApplication.putToken(activity!!, token)
+            if (activity != null) {
+                TPortApplication.putToken(activity!!, token)
+            } else {
+                Timber.e("Fragment has been closed")
+            }
+
             setupNextStep()
         }
 
@@ -50,19 +56,14 @@ class RegisterStepTwoFragment : BaseFragment() {
 
         when (context) {
             is RegisterStepTwoListener -> listenerStepTwo = context
-            else -> throw ClassCastException("$context does not implements RegisterStepTwoListener")
+            else -> throw ClassCastException("$context does not implement RegisterStepTwoListener")
         }
     }
 
-    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        arguments?.let {
-            if (it.containsKey(STATE_PHONE_NUMBER)) {
-                phoneNumber = it.getString(STATE_PHONE_NUMBER)
-            }
-            if (it.containsKey(STATE_CODE)) {
-                code = it.getString(STATE_CODE)
-            }
+        arguments?.also {
+            it.getString(STATE_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
+            it.getString(STATE_CODE)?.let { code -> this.code = code }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)

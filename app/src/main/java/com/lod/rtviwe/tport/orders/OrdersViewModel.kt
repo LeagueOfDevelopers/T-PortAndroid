@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.data.MockTrips
-import com.lod.rtviwe.tport.orders.decorators.OrderCardItem
+import com.lod.rtviwe.tport.orders.items.OrderCardItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder

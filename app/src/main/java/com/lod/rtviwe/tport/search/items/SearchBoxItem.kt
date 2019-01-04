@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.decorators
+package com.lod.rtviwe.tport.search.items
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -31,25 +31,19 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
         when (viewHolder.containerView.context) {
             is SearchListener -> searchListener =
                     viewHolder.containerView.context as SearchListener
-            else -> throw ClassCastException("${viewHolder.containerView.context} does not implements SearchListener")
+            else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
         }
 
-        val autocompleteFromPlaceCallback = object :
-            AutocompleteCallback {
+        val autocompleteFromPlaceCallback = object : AutocompleteCallback {
 
             override fun autocomplete(words: List<String>) {
-                val adapter =
-                    ArrayAdapter<String>(
-                        viewHolder.containerView.context,
-                        android.R.layout.simple_dropdown_item_1line,
-                        words
-                    )
-                viewHolder.edit_text_from_place.setAdapter(adapter)
+                viewHolder.edit_text_from_place.setAdapter(
+                    ArrayAdapter(viewHolder.containerView.context, android.R.layout.simple_dropdown_item_1line, words)
+                )
             }
         }
 
-        val autocompleteToPlaceCallback = object :
-            AutocompleteCallback {
+        val autocompleteToPlaceCallback = object : AutocompleteCallback {
 
             override fun autocomplete(words: List<String>) {
                 viewHolder.edit_text_to_place.setAdapter(
@@ -65,8 +59,9 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
         viewHolder.edit_text_from_place?.addTextChangedListener(object : TextWatcher {
 
             override fun onTextChanged(newText: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                searchBox.fromPlace = newText.toString()
-                searchViewModel.findAutocomplete(newText.toString(), autocompleteFromPlaceCallback)
+                val text = newText.toString()
+                searchBox.fromPlace = text
+                searchViewModel.findAutocomplete(text, autocompleteFromPlaceCallback)
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
@@ -77,8 +72,9 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
         viewHolder.edit_text_to_place?.addTextChangedListener(object : TextWatcher {
 
             override fun onTextChanged(newText: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                searchBox.toPlace = newText.toString()
-                searchViewModel.findAutocomplete(newText.toString(), autocompleteToPlaceCallback)
+                val text = newText.toString()
+                searchBox.toPlace = text
+                searchViewModel.findAutocomplete(text, autocompleteToPlaceCallback)
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}

@@ -37,21 +37,20 @@ class SearchTripsFragment : BaseFragment() {
 
         when (context) {
             is SearchListener -> searchListener = context
-            else -> throw ClassCastException("$context does not implements SearchListener")
+            else -> throw ClassCastException("$context does not implement SearchListener")
         }
 
         when (context) {
             is SearchTripClickedListener -> searchTripClickedListener = context
-            else -> throw ClassCastException("$context does not implements SearchTripClickedListener")
+            else -> throw ClassCastException("$context does not implement SearchTripClickedListener")
         }
     }
 
-    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        arguments?.let {
-            fromPlace = it.getString(STATE_FROM_PLACE)
-            toPlace = it.getString(STATE_TO_PLACE)
-            travelTime = it.getString(STATE_TRAVEL_TIME)
+        arguments?.also {
+            it.getString(STATE_FROM_PLACE)?.let { place -> fromPlace = place }
+            it.getString(STATE_TO_PLACE)?.let { place -> toPlace = place }
+            it.getString(STATE_TRAVEL_TIME)?.let { place -> travelTime = place }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)

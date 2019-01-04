@@ -20,7 +20,7 @@ class RegisterStepThreeFragment : BaseFragment() {
 
         when (context) {
             is RegisterStepThreeListener -> listenerStepThree = context
-            else -> throw ClassCastException("$context does not implements RegisterStepThreeListener")
+            else -> throw ClassCastException("$context does not implement RegisterStepThreeListener")
         }
     }
 

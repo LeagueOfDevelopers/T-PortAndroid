@@ -147,7 +147,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
         setUpCurrentFragment()
     }
 
-    override fun openTripDetailFragmentFromSearch(fullTrip: FullTrip) {
+    override fun openTripDetailsFragmentFromSearch(fullTrip: FullTrip) {
         fragmentSearchTabId = R.layout.trip_details_fragment
         tripInSearchFragment = fullTrip
         setUpCurrentFragment()
@@ -185,7 +185,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
 
     // TODO
     private fun scrollFragmentToTop() {
-//        getCurrentFragment().scrollToTop()
+
     }
 
     private fun getCurrentFragment() = when (actionId) {
