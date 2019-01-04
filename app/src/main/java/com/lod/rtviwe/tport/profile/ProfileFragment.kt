@@ -9,13 +9,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileFragment : BaseFragment() {
 
-    companion object {
-
-        fun newInstance(): ProfileFragment {
-            return ProfileFragment()
-        }
-    }
-
     private val profileViewModel: ProfileViewModel by viewModel()
 
     override fun getLayout() = R.layout.profile_fragment
@@ -28,4 +21,11 @@ class ProfileFragment : BaseFragment() {
 
     // TODO get from prefs
     private fun getUserName() = "Сергей Иванов"
+
+    companion object {
+
+        fun newInstance(): ProfileFragment {
+            return ProfileFragment()
+        }
+    }
 }

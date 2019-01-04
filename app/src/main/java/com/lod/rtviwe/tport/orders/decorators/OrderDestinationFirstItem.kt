@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.orders.ordercard
+package com.lod.rtviwe.tport.orders.decorators
 
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Destination

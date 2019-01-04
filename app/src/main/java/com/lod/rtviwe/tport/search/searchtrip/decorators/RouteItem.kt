@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip.searchtripcard
+package com.lod.rtviwe.tport.search.searchtrip.decorators
 
 import android.view.View
 import com.lod.rtviwe.tport.R
@@ -8,11 +8,7 @@ import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_trip_route_item.*
 
-class RouteItem(
-    private val route: Route,
-    private val isFirst: Boolean,
-    private val isLast: Boolean
-) : Item() {
+class RouteItem(private val route: Route, private val isFirst: Boolean, private val isLast: Boolean) : Item() {
 
     override fun getLayout() = R.layout.search_trip_route_item
 

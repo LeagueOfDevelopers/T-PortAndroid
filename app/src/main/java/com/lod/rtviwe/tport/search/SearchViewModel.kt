@@ -7,7 +7,12 @@ import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
-import com.lod.rtviwe.tport.search.wrappers.*
+import com.lod.rtviwe.tport.search.decorators.Logo
+import com.lod.rtviwe.tport.search.decorators.PopularTrip
+import com.lod.rtviwe.tport.search.decorators.SearchBoxItem
+import com.lod.rtviwe.tport.search.decorators.Title
+import com.lod.rtviwe.tport.search.searchbox.AutocompleteCallback
+import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder

@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.wrappers
+package com.lod.rtviwe.tport.search.decorators
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.search.SearchListener
 import com.lod.rtviwe.tport.search.SearchViewModel
+import com.lod.rtviwe.tport.search.searchbox.AutocompleteCallback
+import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_box_item.*
@@ -32,7 +34,8 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
             else -> throw ClassCastException("${viewHolder.containerView.context} does not implements SearchListener")
         }
 
-        val autocompleteFromPlaceCallback = object : AutocompleteCallback {
+        val autocompleteFromPlaceCallback = object :
+            AutocompleteCallback {
 
             override fun autocomplete(words: List<String>) {
                 val adapter =
@@ -45,7 +48,8 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
             }
         }
 
-        val autocompleteToPlaceCallback = object : AutocompleteCallback {
+        val autocompleteToPlaceCallback = object :
+            AutocompleteCallback {
 
             override fun autocomplete(words: List<String>) {
                 viewHolder.edit_text_to_place.setAdapter(

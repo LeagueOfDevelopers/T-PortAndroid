@@ -6,14 +6,14 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BonusesFragment : BaseFragment() {
 
+    private val bonusesViewModel: BonusesViewModel by viewModel()
+
+    override fun getLayout() = R.layout.bonuses_fragment
+
     companion object {
 
         fun newInstance(): BonusesFragment {
             return BonusesFragment()
         }
     }
-
-    private val bonusesViewModel: BonusesViewModel by viewModel()
-
-    override fun getLayout() = R.layout.bonuses_fragment
 }

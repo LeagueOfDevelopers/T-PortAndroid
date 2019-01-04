@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.model.FullTrip
-import com.lod.rtviwe.tport.orders.ordercard.OrderDestinationFirstItem
-import com.lod.rtviwe.tport.orders.ordercard.OrderDestinationItem
-import com.lod.rtviwe.tport.orders.ordercard.OrderRouteItem
+import com.lod.rtviwe.tport.orders.decorators.OrderDestinationFirstItem
+import com.lod.rtviwe.tport.orders.decorators.OrderDestinationItem
+import com.lod.rtviwe.tport.orders.decorators.OrderRouteItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_routes_toolbar.*
@@ -19,21 +19,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class TripDetailsFragment : BaseFragment() {
-
-    companion object {
-
-        fun newInstance(fullTrip: FullTrip): TripDetailsFragment {
-            val newArguments = Bundle().apply {
-                putParcelable(STATE_TRIP, fullTrip)
-            }
-
-            return TripDetailsFragment().apply {
-                arguments = newArguments
-            }
-        }
-
-        private const val STATE_TRIP = "TRIP_STATE"
-    }
 
     private lateinit var fullTrip: FullTrip
 
@@ -97,5 +82,20 @@ class TripDetailsFragment : BaseFragment() {
         val temp = edit_text_toolbar_from_place.text
         edit_text_toolbar_from_place.text = edit_text_toolbar_to_place.text
         edit_text_toolbar_to_place.text = temp
+    }
+
+    companion object {
+
+        fun newInstance(fullTrip: FullTrip): TripDetailsFragment {
+            val newArguments = Bundle().apply {
+                putParcelable(STATE_TRIP, fullTrip)
+            }
+
+            return TripDetailsFragment().apply {
+                arguments = newArguments
+            }
+        }
+
+        private const val STATE_TRIP = "TRIP_STATE"
     }
 }

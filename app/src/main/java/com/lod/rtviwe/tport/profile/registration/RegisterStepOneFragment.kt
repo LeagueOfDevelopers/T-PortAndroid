@@ -15,21 +15,6 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class RegisterStepOneFragment : BaseFragment() {
 
-    companion object {
-
-        fun newInstance(phoneNumber: String): RegisterStepOneFragment {
-            val newArguments = Bundle().apply {
-                putString(STATE_PHONE_NUMBER, phoneNumber)
-            }
-            return RegisterStepOneFragment().apply {
-                arguments = newArguments
-            }
-        }
-
-        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STEP_ONE_STATE"
-        const val PHONE_NUMBER_LENGTH = 10
-    }
-
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
 
     private lateinit var listenerStepOne: RegisterStepOneListener
@@ -99,4 +84,19 @@ class RegisterStepOneFragment : BaseFragment() {
     }
 
     private fun checkPhoneNumber(phoneNumber: String) = phoneNumber.length == PHONE_NUMBER_LENGTH
+
+    companion object {
+
+        fun newInstance(phoneNumber: String): RegisterStepOneFragment {
+            val newArguments = Bundle().apply {
+                putString(STATE_PHONE_NUMBER, phoneNumber)
+            }
+            return RegisterStepOneFragment().apply {
+                arguments = newArguments
+            }
+        }
+
+        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STEP_ONE_STATE"
+        const val PHONE_NUMBER_LENGTH = 10
+    }
 }

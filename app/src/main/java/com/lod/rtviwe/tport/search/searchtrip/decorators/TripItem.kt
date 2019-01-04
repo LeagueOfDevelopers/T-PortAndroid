@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip.searchtripcard
+package com.lod.rtviwe.tport.search.searchtrip.decorators
 
 import android.view.MotionEvent
 import androidx.recyclerview.widget.LinearLayoutManager

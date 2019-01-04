@@ -23,25 +23,6 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class RegisterStepTwoFragment : BaseFragment() {
 
-    companion object {
-
-        fun newInstance(phoneNumber: String, code: String): RegisterStepTwoFragment {
-            val newArguments = Bundle().apply {
-                putString(STATE_PHONE_NUMBER, phoneNumber)
-                putString(STATE_CODE, code)
-            }
-
-            return RegisterStepTwoFragment().apply {
-                arguments = newArguments
-            }
-        }
-
-        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STEP_TWO_STATE"
-        private const val STATE_CODE = "CODE_STEP_TWO_STATE"
-
-        const val CODE_LENGTH = 4
-    }
-
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
     private val phoneNumberMask by inject<Mask>()
 
@@ -178,5 +159,24 @@ class RegisterStepTwoFragment : BaseFragment() {
         2 -> image_view_code_third
         3 -> image_view_code_fourth
         else -> throw IndexOutOfBoundsException("Wrong image view code index")
+    }
+
+    companion object {
+
+        fun newInstance(phoneNumber: String, code: String): RegisterStepTwoFragment {
+            val newArguments = Bundle().apply {
+                putString(STATE_PHONE_NUMBER, phoneNumber)
+                putString(STATE_CODE, code)
+            }
+
+            return RegisterStepTwoFragment().apply {
+                arguments = newArguments
+            }
+        }
+
+        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STEP_TWO_STATE"
+        private const val STATE_CODE = "CODE_STEP_TWO_STATE"
+
+        const val CODE_LENGTH = 4
     }
 }
