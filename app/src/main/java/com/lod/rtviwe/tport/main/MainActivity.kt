@@ -20,20 +20,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoListener, RegisterStepThreeListener,
     SearchListener, SearchTripClickedListener, OrderTripClickedListener {
 
-    companion object {
-
-        private const val STATE_ACTION_ID = "CURRENT_ACTION_ID"
-        private const val STATE_SEARCH_LAYOUT_ID = "CURRENT_SEARCH_LAYOUT_ID"
-        private const val STATE_ORDERS_LAYOUT_ID = "CURRENT_ORDERS_LAYOUT_ID"
-        private const val STATE_BONUSES_LAYOUT_ID = "CURRENT_BONUSES_LAYOUT_ID"
-        private const val STATE_PROFILE_LAYOUT_ID = "CURRENT_PROFILE_LAYOUT_ID"
-        private const val STATE_REGISTER_PHONE_NUMBER = "REGISTER_PHONE_NUMBER_STATE"
-        private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
-        private const val STATE_TO_PLACE = "TO_PLACE_STATE"
-        private const val STATE_TRAVEL_TIME = "TRAVEL_TIME_STATE"
-        private const val STATE_CODE = "CODE_STATE"
-    }
-
     private var actionId = R.id.action_search
     private var fragmentOrdersTabId = R.layout.orders_fragment
     private var fragmentSearchTabId = R.layout.search_fragment
@@ -146,7 +132,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
     }
 
     override fun onRegisterStepOneContinue(phoneNumber: String) {
-        registerPhoneNumber = "7$phoneNumber"
+        registerPhoneNumber = phoneNumber
         fragmentProfileTabId = R.layout.register_step_two_fragment
         setUpCurrentFragment()
     }
@@ -161,7 +147,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
         setUpCurrentFragment()
     }
 
-    override fun openTripDetailFragmentFromSearch(fullTrip: FullTrip) {
+    override fun openTripDetailsFragmentFromSearch(fullTrip: FullTrip) {
         fragmentSearchTabId = R.layout.trip_details_fragment
         tripInSearchFragment = fullTrip
         setUpCurrentFragment()
@@ -199,7 +185,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
 
     // TODO
     private fun scrollFragmentToTop() {
-//        getCurrentFragment().scrollToTop()
+
     }
 
     private fun getCurrentFragment() = when (actionId) {
@@ -244,4 +230,18 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
 
     // TODO get from prefs
     private fun isUserLogged() = false
+
+    companion object {
+
+        private const val STATE_ACTION_ID = "CURRENT_ACTION_ID"
+        private const val STATE_SEARCH_LAYOUT_ID = "CURRENT_SEARCH_LAYOUT_ID"
+        private const val STATE_ORDERS_LAYOUT_ID = "CURRENT_ORDERS_LAYOUT_ID"
+        private const val STATE_BONUSES_LAYOUT_ID = "CURRENT_BONUSES_LAYOUT_ID"
+        private const val STATE_PROFILE_LAYOUT_ID = "CURRENT_PROFILE_LAYOUT_ID"
+        private const val STATE_REGISTER_PHONE_NUMBER = "REGISTER_PHONE_NUMBER_STATE"
+        private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
+        private const val STATE_TO_PLACE = "TO_PLACE_STATE"
+        private const val STATE_TRAVEL_TIME = "TRAVEL_TIME_STATE"
+        private const val STATE_CODE = "CODE_STATE"
+    }
 }

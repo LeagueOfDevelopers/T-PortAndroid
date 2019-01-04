@@ -9,8 +9,8 @@ import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
 import com.lod.rtviwe.tport.search.SearchViewModel
+import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
-import com.lod.rtviwe.tport.search.wrappers.SearchBox
 import com.redmadrobot.inputmask.helper.Mask
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module

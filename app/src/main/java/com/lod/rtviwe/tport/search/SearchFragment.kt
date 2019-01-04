@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.search.wrappers.SearchBox
+import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_fragment.*
@@ -14,13 +14,6 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class SearchFragment : BaseFragment() {
-
-    companion object {
-
-        fun newInstance(): SearchFragment {
-            return SearchFragment()
-        }
-    }
 
     private val searchViewModel by sharedViewModel<SearchViewModel>()
     private val searchBox by inject<SearchBox>()
@@ -41,6 +34,13 @@ class SearchFragment : BaseFragment() {
         searchRecyclerView = recycler_view_search.apply {
             adapter = searchAdapter
             layoutManager = searchLayoutManager
+        }
+    }
+
+    companion object {
+
+        fun newInstance(): SearchFragment {
+            return SearchFragment()
         }
     }
 }

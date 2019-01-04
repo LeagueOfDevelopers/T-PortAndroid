@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.wrappers
+package com.lod.rtviwe.tport.search.items
 
 import com.bumptech.glide.Glide
 import com.lod.rtviwe.tport.R

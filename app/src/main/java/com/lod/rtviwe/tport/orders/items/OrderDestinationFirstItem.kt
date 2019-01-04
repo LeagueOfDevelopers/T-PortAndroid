@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.orders.ordercard
+package com.lod.rtviwe.tport.orders.items
 
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Destination
@@ -17,7 +17,7 @@ class OrderDestinationFirstItem(private val destination: Destination) : Item() {
         when (viewHolder.containerView.context) {
             is OrderTripClickedListener -> orderTripClickedListener =
                     viewHolder.containerView.context as OrderTripClickedListener
-            else -> throw ClassCastException("${viewHolder.containerView.context} does not implements SearchListener")
+            else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
         }
 
         viewHolder.image_view_connection_bottom.background =

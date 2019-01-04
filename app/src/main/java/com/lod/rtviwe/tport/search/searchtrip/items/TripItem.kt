@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip.searchtripcard
+package com.lod.rtviwe.tport.search.searchtrip.items
 
 import android.view.MotionEvent
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,13 +24,15 @@ class TripItem(private val fullTrip: FullTrip) : Item() {
         when (viewHolder.containerView.context) {
             is SearchTripClickedListener -> searchTripClickedListener =
                     viewHolder.containerView.context as SearchTripClickedListener
-            else -> throw ClassCastException("${viewHolder.containerView.context} does not implements SearchListener")
+            else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
         }
 
-        viewHolder.text_view_route_time.text =
-                SimpleDateFormat("hh:mm", Locale.getDefault()).format(fullTrip.trip.timeTravel)
-        viewHolder.text_view_search_route_cost.text =
-                String.format(viewHolder.containerView.context.getString(R.string.money), fullTrip.trip.cost)
+        with(fullTrip.trip) {
+            viewHolder.text_view_route_time.text =
+                    SimpleDateFormat("hh:mm", Locale.getDefault()).format(timeTravel)
+            viewHolder.text_view_search_route_cost.text =
+                    String.format(viewHolder.containerView.context.getString(R.string.money), cost)
+        }
 
         val searchRouteItemAdapter = GroupAdapter<ViewHolder>()
         val searchRoutesLayoutManager =
@@ -48,12 +50,12 @@ class TripItem(private val fullTrip: FullTrip) : Item() {
         }
 
         viewHolder.card_trip_item.setOnClickListener {
-            searchTripClickedListener.openTripDetailFragmentFromSearch(fullTrip)
+            searchTripClickedListener.openTripDetailsFragmentFromSearch(fullTrip)
         }
 
         viewHolder.recycler_view_routes_in_item.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_UP) {
-                searchTripClickedListener.openTripDetailFragmentFromSearch(fullTrip)
+                searchTripClickedListener.openTripDetailsFragmentFromSearch(fullTrip)
             }
             true
         }

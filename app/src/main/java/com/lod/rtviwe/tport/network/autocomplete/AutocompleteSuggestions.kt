@@ -1,5 +1,6 @@
 package com.lod.rtviwe.tport.network.autocomplete
 
+// TODO find out which are not nullable
 data class AutocompleteSuggestions(
     val code: String?,
     val mainAirportName: String?,
@@ -11,6 +12,6 @@ data class AutocompleteSuggestions(
     val type: String?,
     val countryCode: String?,
     val coordinates: HashMap<String, String>?,
-    val name: String?,
+    val name: String,
     val state_code: String?
 )

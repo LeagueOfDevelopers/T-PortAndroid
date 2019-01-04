@@ -20,25 +20,6 @@ class SearchTripsFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.search_trips_fragment
 
-    companion object {
-
-        fun newInstance(fromPlace: String, toPlace: String, travelTime: String): SearchTripsFragment {
-            val newArguments = Bundle().apply {
-                putString(STATE_FROM_PLACE, fromPlace)
-                putString(STATE_TO_PLACE, toPlace)
-                putString(STATE_TRAVEL_TIME, travelTime)
-            }
-
-            return SearchTripsFragment().apply {
-                arguments = newArguments
-            }
-        }
-
-        private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
-        private const val STATE_TO_PLACE = "FROM_TO_STATE"
-        private const val STATE_TRAVEL_TIME = "TRAVEL_TIME_STATE"
-    }
-
     private val searchRoutesViewModel by viewModel<SearchTripsViewModel>()
     private var searchRouteCardsAdapter = GroupAdapter<ViewHolder>()
 
@@ -56,21 +37,20 @@ class SearchTripsFragment : BaseFragment() {
 
         when (context) {
             is SearchListener -> searchListener = context
-            else -> throw ClassCastException("$context does not implements SearchListener")
+            else -> throw ClassCastException("$context does not implement SearchListener")
         }
 
         when (context) {
             is SearchTripClickedListener -> searchTripClickedListener = context
-            else -> throw ClassCastException("$context does not implements SearchTripClickedListener")
+            else -> throw ClassCastException("$context does not implement SearchTripClickedListener")
         }
     }
 
-    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        arguments?.let {
-            fromPlace = it.getString(STATE_FROM_PLACE)
-            toPlace = it.getString(STATE_TO_PLACE)
-            travelTime = it.getString(STATE_TRAVEL_TIME)
+        arguments?.also {
+            it.getString(STATE_FROM_PLACE)?.let { place -> fromPlace = place }
+            it.getString(STATE_TO_PLACE)?.let { place -> toPlace = place }
+            it.getString(STATE_TRAVEL_TIME)?.let { place -> travelTime = place }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -103,5 +83,24 @@ class SearchTripsFragment : BaseFragment() {
         val temp = edit_text_toolbar_from_place.text
         edit_text_toolbar_from_place.text = edit_text_toolbar_to_place.text
         edit_text_toolbar_to_place.text = temp
+    }
+
+    companion object {
+
+        fun newInstance(fromPlace: String, toPlace: String, travelTime: String): SearchTripsFragment {
+            val newArguments = Bundle().apply {
+                putString(STATE_FROM_PLACE, fromPlace)
+                putString(STATE_TO_PLACE, toPlace)
+                putString(STATE_TRAVEL_TIME, travelTime)
+            }
+
+            return SearchTripsFragment().apply {
+                arguments = newArguments
+            }
+        }
+
+        private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
+        private const val STATE_TO_PLACE = "FROM_TO_STATE"
+        private const val STATE_TRAVEL_TIME = "TRAVEL_TIME_STATE"
     }
 }

@@ -10,13 +10,6 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class RegisterStepThreeFragment : BaseFragment() {
 
-    companion object {
-
-        fun newInstance(): RegisterStepThreeFragment {
-            return RegisterStepThreeFragment()
-        }
-    }
-
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
     private lateinit var listenerStepThree: RegisterStepThreeListener
 
@@ -27,7 +20,7 @@ class RegisterStepThreeFragment : BaseFragment() {
 
         when (context) {
             is RegisterStepThreeListener -> listenerStepThree = context
-            else -> throw ClassCastException("$context does not implements RegisterStepThreeListener")
+            else -> throw ClassCastException("$context does not implement RegisterStepThreeListener")
         }
     }
 
@@ -41,5 +34,12 @@ class RegisterStepThreeFragment : BaseFragment() {
 
     private fun setupNextStep() {
         listenerStepThree.onRegisterStepThreeContinue()
+    }
+
+    companion object {
+
+        fun newInstance(): RegisterStepThreeFragment {
+            return RegisterStepThreeFragment()
+        }
     }
 }

@@ -7,7 +7,12 @@ import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
-import com.lod.rtviwe.tport.search.wrappers.*
+import com.lod.rtviwe.tport.search.items.Logo
+import com.lod.rtviwe.tport.search.items.PopularTrip
+import com.lod.rtviwe.tport.search.items.SearchBoxItem
+import com.lod.rtviwe.tport.search.items.Title
+import com.lod.rtviwe.tport.search.searchbox.AutocompleteCallback
+import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
@@ -47,18 +52,22 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
 
     fun findAutocomplete(text: String, callback: AutocompleteCallback) {
         scopeAutocomplete.launch(handlerAutocomplete) {
-            val request = autocompleteApi.getAutocomplete(text, Locale.getDefault().country).await()
+            val request = autocompleteApi.getAutocomplete(text, Locale.getDefault().language).await()
             val requestCode = request.code()
 
             when (requestCode) {
                 200 -> {
                     request.body()?.let { array ->
-                        callback.autocomplete(array.map { it.name!! })
-                        Timber.e(array.map { it.name!! }.toString())
+                        callback.autocomplete(array.map { it.name }.take(AMOUNT_AUTOCOMPLETE_WORDS))
                     }
                 }
-                else -> Timber.e("Unknown error happened on autocomplete")
+                else -> Timber.e("Unknown error happened on travelpayouts.com")
             }
         }
+    }
+
+    companion object {
+
+        private const val AMOUNT_AUTOCOMPLETE_WORDS = 10
     }
 }

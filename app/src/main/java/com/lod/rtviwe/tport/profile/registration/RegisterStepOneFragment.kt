@@ -1,5 +1,6 @@
 package com.lod.rtviwe.tport.profile.registration
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,25 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
+import com.lod.rtviwe.tport.network.register.LoginRequest
+import com.lod.rtviwe.tport.utils.toPhone
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import kotlinx.android.synthetic.main.register_step_one_fragment.*
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class RegisterStepOneFragment : BaseFragment() {
 
-    companion object {
-
-        fun newInstance(phoneNumber: String): RegisterStepOneFragment {
-            val newArguments = Bundle().apply {
-                putString(STATE_PHONE_NUMBER, phoneNumber)
-            }
-            return RegisterStepOneFragment().apply {
-                arguments = newArguments
-            }
-        }
-
-        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STEP_ONE_STATE"
-        const val PHONE_NUMBER_LENGTH = 10
-    }
+    private val registerViewModel by sharedViewModel<RegisterViewModel>()
 
     private lateinit var listenerStepOne: RegisterStepOneListener
     private var phoneNumber = ""
@@ -37,21 +28,20 @@ class RegisterStepOneFragment : BaseFragment() {
 
         when (context) {
             is RegisterStepOneListener -> listenerStepOne = context
-            else -> throw ClassCastException("$context does not implements RegisterStepOneListener")
+            else -> throw ClassCastException("$context does not implement RegisterStepOneListener")
         }
     }
 
-    @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        arguments?.let {
-            if (it.containsKey(STATE_PHONE_NUMBER)) {
-                phoneNumber = it.getString(STATE_PHONE_NUMBER)
-            }
+        arguments?.also {
+            it.getString(STATE_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
+    // TODO remove
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -61,6 +51,7 @@ class RegisterStepOneFragment : BaseFragment() {
 
         button_register_step_one_continue.setOnClickListener {
             if (checkPhoneNumber(phoneNumber)) {
+                registerViewModel.sendPhone(LoginRequest(phoneNumber.toPhone()))
                 setupNextStep()
             } else {
                 showErrorPhoneNumber()
@@ -93,4 +84,20 @@ class RegisterStepOneFragment : BaseFragment() {
     }
 
     private fun checkPhoneNumber(phoneNumber: String) = phoneNumber.length == PHONE_NUMBER_LENGTH
+
+    companion object {
+
+        fun newInstance(phoneNumber: String): RegisterStepOneFragment {
+            val newArguments = Bundle().apply {
+                putString(STATE_PHONE_NUMBER, phoneNumber)
+            }
+
+            return RegisterStepOneFragment().apply {
+                arguments = newArguments
+            }
+        }
+
+        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STEP_ONE_STATE"
+        const val PHONE_NUMBER_LENGTH = 10
+    }
 }
