@@ -146,7 +146,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
     }
 
     override fun onRegisterStepOneContinue(phoneNumber: String) {
-        registerPhoneNumber = "7$phoneNumber"
+        registerPhoneNumber = phoneNumber
         fragmentProfileTabId = R.layout.register_step_two_fragment
         setUpCurrentFragment()
     }

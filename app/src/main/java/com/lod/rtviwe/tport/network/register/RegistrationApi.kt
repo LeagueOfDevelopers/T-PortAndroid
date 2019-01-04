@@ -11,7 +11,7 @@ interface RegistrationApi {
     @POST("/login")
     fun sendPhoneNumber(
         @Body body: LoginRequest
-    ): Deferred<Response<ResponseToken>>
+    ): Deferred<Response<Void>>
 
     @PUT("/login")
     fun sendPhoneNumberWithCode(
