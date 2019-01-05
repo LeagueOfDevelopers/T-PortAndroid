@@ -2,7 +2,7 @@ package com.lod.rtviwe.tport.network.autocomplete
 
 // TODO find out which are not nullable
 data class AutocompleteSuggestions(
-    val code: String?,
+    val code: String,
     val mainAirportName: String?,
     val countryCases: String?,
     val indexStrings: Array<String>?,

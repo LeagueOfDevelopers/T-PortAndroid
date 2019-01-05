@@ -5,6 +5,7 @@ import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.bonuses.BonusesViewModel
 import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
 import com.lod.rtviwe.tport.network.register.RegistrationApi
+import com.lod.rtviwe.tport.network.searchTrips.SearchTripsApi
 import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
@@ -41,5 +42,13 @@ val mainModule = module {
             .baseUrl(TPortApplication.AUTOCOMPLETE_URL)
             .build()
             .create(AutocompleteApi::class.java)
+    }
+    single {
+        Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .baseUrl(TPortApplication.TPORT_URL)
+            .build()
+            .create(SearchTripsApi::class.java)
     }
 }

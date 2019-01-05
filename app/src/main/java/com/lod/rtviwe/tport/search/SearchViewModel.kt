@@ -12,6 +12,7 @@ import com.lod.rtviwe.tport.search.items.PopularTrip
 import com.lod.rtviwe.tport.search.items.SearchBoxItem
 import com.lod.rtviwe.tport.search.items.Title
 import com.lod.rtviwe.tport.search.searchbox.AutocompleteCallback
+import com.lod.rtviwe.tport.search.searchbox.DestinationWord
 import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
@@ -58,7 +59,11 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
             when (requestCode) {
                 200 -> {
                     request.body()?.let { array ->
-                        callback.autocomplete(array.map { it.name }.take(AMOUNT_AUTOCOMPLETE_WORDS))
+                        callback.autocomplete(
+                            array.map { DestinationWord(it.name, it.code) }.take(
+                                AMOUNT_AUTOCOMPLETE_WORDS
+                            )
+                        )
                     }
                 }
                 else -> Timber.e("Unknown error happened on travelpayouts.com")

@@ -11,6 +11,7 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.search.SearchListener
 import com.lod.rtviwe.tport.search.SearchViewModel
 import com.lod.rtviwe.tport.search.searchbox.AutocompleteCallback
+import com.lod.rtviwe.tport.search.searchbox.DestinationWord
 import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
@@ -25,6 +26,9 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
 
     private val searchViewModel: SearchViewModel = get()
 
+    private var fromPlace = DestinationWord()
+    private var toPlace = DestinationWord()
+
     override fun getLayout() = R.layout.search_box_item
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
@@ -36,19 +40,29 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
 
         val autocompleteFromPlaceCallback = object : AutocompleteCallback {
 
-            override fun autocomplete(words: List<String>) {
+            override fun autocomplete(destinationWords: List<DestinationWord>) {
                 viewHolder.edit_text_from_place.setAdapter(
-                    ArrayAdapter(viewHolder.containerView.context, android.R.layout.simple_dropdown_item_1line, words)
+                    ArrayAdapter(
+                        viewHolder.containerView.context,
+                        android.R.layout.simple_dropdown_item_1line,
+                        destinationWords.map { it.name })
                 )
+
+                destinationWords.firstOrNull()?.let { fromPlace = it }
             }
         }
 
         val autocompleteToPlaceCallback = object : AutocompleteCallback {
 
-            override fun autocomplete(words: List<String>) {
+            override fun autocomplete(destinationWords: List<DestinationWord>) {
                 viewHolder.edit_text_to_place.setAdapter(
-                    ArrayAdapter(viewHolder.containerView.context, android.R.layout.simple_dropdown_item_1line, words)
+                    ArrayAdapter(
+                        viewHolder.containerView.context,
+                        android.R.layout.simple_dropdown_item_1line,
+                        destinationWords.map { it.name })
                 )
+
+                destinationWords.firstOrNull()?.let { toPlace = it }
             }
         }
 
@@ -88,10 +102,15 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
 
         viewHolder.button_pick_up.setOnClickListener {
             searchListener.onPickUpButton(
-                viewHolder.edit_text_from_place.text.toString(),
-                viewHolder.edit_text_to_place.text.toString(),
+                DestinationWord(viewHolder.edit_text_from_place.text.toString(), fromPlace.code),
+                DestinationWord(viewHolder.edit_text_to_place.text.toString(), toPlace.code),
                 viewHolder.edit_text_data_travel.text.toString()
             )
+//            searchListener.onPickUpButton(
+//                fromPlace,
+//                toPlace,
+//                viewHolder.edit_text_data_travel.text.toString()
+//            )
         }
 
         viewHolder.edit_text_from_place.setOnFocusChangeListener { view, hasFocus ->
