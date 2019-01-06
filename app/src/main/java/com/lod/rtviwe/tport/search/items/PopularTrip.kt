@@ -2,7 +2,6 @@ package com.lod.rtviwe.tport.search.items
 
 import com.bumptech.glide.Glide
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.model.FullTrip
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.popular_trip_item.*

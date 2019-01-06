@@ -4,15 +4,12 @@ import android.view.MotionEvent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.model.FullTrip
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripClickedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_trip_card.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 class TripItem(private val fullTrip: FullTrip) : Item() {
 
@@ -38,7 +35,7 @@ class TripItem(private val fullTrip: FullTrip) : Item() {
         val searchRoutesLayoutManager =
             LinearLayoutManager(viewHolder.containerView.context, RecyclerView.HORIZONTAL, false)
 
-        fullTrip.routes?.forEachIndexed { index, route ->
+        fullTrip.routes.forEachIndexed { index, route ->
             val isFirst = index == 0
             val isLast = index == fullTrip.routes!!.size - 1
             searchRouteItemAdapter.add(Section(RouteItem(route, isFirst, isLast)))

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.model.FullTrip
 import com.lod.rtviwe.tport.orders.items.OrderDestinationFirstItem
 import com.lod.rtviwe.tport.orders.items.OrderDestinationItem
 import com.lod.rtviwe.tport.orders.items.OrderRouteItem
@@ -15,8 +14,6 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_routes_toolbar.*
 import kotlinx.android.synthetic.main.trip_details_fragment.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 class TripDetailsFragment : BaseFragment() {
 
@@ -26,7 +23,7 @@ class TripDetailsFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {
-            it.getParcelable<FullTrip>(STATE_TRIP)?.let { trip ->
+            it.getParcelable<FullTrip>(STATE_TRIP).let { trip ->
                 fullTrip = trip
             }
         }
@@ -48,7 +45,7 @@ class TripDetailsFragment : BaseFragment() {
         val routesAdapter = GroupAdapter<ViewHolder>()
         val routesLayoutManager = LinearLayoutManager(context)
 
-        fullTrip.routes?.forEachIndexed { index, route ->
+        fullTrip.routes.forEachIndexed { index, route ->
             if (index == 0) {
                 routesAdapter.add(OrderDestinationFirstItem(route.destination))
             } else {
