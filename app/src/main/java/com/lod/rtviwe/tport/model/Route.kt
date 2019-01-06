@@ -1,31 +1,16 @@
 package com.lod.rtviwe.tport.model
 
 import android.os.Parcelable
-import androidx.room.*
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
-@Entity(tableName = "Route")
 @Parcelize
 data class Route(
-    @PrimaryKey(autoGenerate = true)
-    var id: Long,
-    @ColumnInfo(name = "id_to_trip")
-    var tripId: Long,
-    var vehicleName: String,
-    var type: RouteType,
-    var cost: Int = 0,
-    @Embedded
-    var destination: Destination,
+    val id: String,
+    val transport: Transport,
+    val cost: Double,
+    val destination: Destination,
+    val departureDate: Date,
+    val arrivalDate: Date,
     var isPaid: Boolean = false
-) : Parcelable {
-
-    @Ignore
-    constructor(
-        tripId: Long,
-        vehicleName: String,
-        type: RouteType,
-        cost: Int,
-        destination: Destination,
-        isPaid: Boolean
-    ) : this(0, tripId, vehicleName, type, cost, destination, isPaid)
-}
+) : Parcelable

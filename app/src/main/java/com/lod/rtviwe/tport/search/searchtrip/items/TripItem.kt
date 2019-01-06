@@ -4,7 +4,7 @@ import android.view.MotionEvent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.model.FullTrip
+import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripClickedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.search_trip_card.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class TripItem(private val fullTrip: FullTrip) : Item() {
+class TripItem(private val trip: Trip) : Item() {
 
     private lateinit var searchTripClickedListener: SearchTripClickedListener
 
@@ -27,20 +27,18 @@ class TripItem(private val fullTrip: FullTrip) : Item() {
             else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
         }
 
-        with(fullTrip.trip) {
-            viewHolder.text_view_route_time.text =
-                    SimpleDateFormat("hh:mm", Locale.getDefault()).format(timeTravel)
-            viewHolder.text_view_search_route_cost.text =
-                    String.format(viewHolder.containerView.context.getString(R.string.money), cost)
-        }
+        viewHolder.text_view_route_time.text =
+                SimpleDateFormat("hh:mm", Locale.getDefault()).format(trip.duration)
+        viewHolder.text_view_search_route_cost.text =
+                String.format(viewHolder.containerView.context.getString(R.string.money), trip.cost)
 
         val searchRouteItemAdapter = GroupAdapter<ViewHolder>()
         val searchRoutesLayoutManager =
             LinearLayoutManager(viewHolder.containerView.context, RecyclerView.HORIZONTAL, false)
 
-        fullTrip.routes?.forEachIndexed { index, route ->
+        trip.routes.forEachIndexed { index, route ->
             val isFirst = index == 0
-            val isLast = index == fullTrip.routes!!.size - 1
+            val isLast = index == trip.routes.size - 1
             searchRouteItemAdapter.add(Section(RouteItem(route, isFirst, isLast)))
         }
 
@@ -50,12 +48,12 @@ class TripItem(private val fullTrip: FullTrip) : Item() {
         }
 
         viewHolder.card_trip_item.setOnClickListener {
-            searchTripClickedListener.openTripDetailsFragmentFromSearch(fullTrip)
+            searchTripClickedListener.openTripDetailsFragmentFromSearch(trip)
         }
 
         viewHolder.recycler_view_routes_in_item.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_UP) {
-                searchTripClickedListener.openTripDetailsFragmentFromSearch(fullTrip)
+                searchTripClickedListener.openTripDetailsFragmentFromSearch(trip)
             }
             true
         }

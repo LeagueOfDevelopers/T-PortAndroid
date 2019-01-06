@@ -13,7 +13,7 @@ class RouteItem(private val route: Route, private val isFirst: Boolean, private 
     override fun getLayout() = R.layout.search_trip_route_item
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        val imageResourceToSet = RouteIcons.getImageResource(route.type)
+        val imageResourceToSet = RouteIcons.getImageResource(route.transport.type)
         viewHolder.image_view_route_item.setImageResource(imageResourceToSet)
 
         if (!isFirst) {
@@ -30,7 +30,7 @@ class RouteItem(private val route: Route, private val isFirst: Boolean, private 
             viewHolder.image_view_connection_end.visibility = View.GONE
         }
 
-        viewHolder.text_view_route_type.text = route.vehicleName
+        viewHolder.text_view_route_type.text = route.transport.name
         viewHolder.text_view_route_cost.text =
                 String.format(viewHolder.containerView.context.getString(R.string.money), route.cost)
     }

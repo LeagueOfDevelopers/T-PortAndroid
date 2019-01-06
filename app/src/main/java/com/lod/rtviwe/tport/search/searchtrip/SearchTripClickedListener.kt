@@ -1,8 +1,8 @@
 package com.lod.rtviwe.tport.search.searchtrip
 
-import com.lod.rtviwe.tport.model.FullTrip
+import com.lod.rtviwe.tport.model.Trip
 
 interface SearchTripClickedListener {
 
-    fun openTripDetailsFragmentFromSearch(fullTrip: FullTrip)
+    fun openTripDetailsFragmentFromSearch(trip: Trip)
 }

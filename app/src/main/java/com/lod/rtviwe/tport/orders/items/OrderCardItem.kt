@@ -2,14 +2,14 @@ package com.lod.rtviwe.tport.orders.items
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.model.FullTrip
+import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.orders.OrderTripClickedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.order_item.view.*
 
-class OrderCardItem(private val fullTrip: FullTrip) : Item() {
+class OrderCardItem(private val trip: Trip) : Item() {
 
     private lateinit var orderTripClickedListener: OrderTripClickedListener
 
@@ -25,17 +25,17 @@ class OrderCardItem(private val fullTrip: FullTrip) : Item() {
         val routesAdapter = GroupAdapter<ViewHolder>()
         val routesLayoutManager = LinearLayoutManager(viewHolder.containerView.context)
 
-        fullTrip.routes?.forEachIndexed { index, route ->
+        trip.routes.forEachIndexed { index, route ->
             if (index == 0) {
-                routesAdapter.add(OrderDestinationFirstItem(route.destination))
+                routesAdapter.add(OrderDestinationFirstItem(route.destination.fromPlace))
             } else {
-                routesAdapter.add(OrderDestinationItem(route.destination, false))
+                routesAdapter.add(OrderDestinationItem(route, false))
             }
 
             routesAdapter.add(OrderRouteItem(route))
 
-            if (index == fullTrip.routes!!.size - 1) {
-                routesAdapter.add(OrderDestinationItem(route.destination, true))
+            if (index == trip.routes.size - 1) {
+                routesAdapter.add(OrderDestinationItem(route, true))
             }
         }
 

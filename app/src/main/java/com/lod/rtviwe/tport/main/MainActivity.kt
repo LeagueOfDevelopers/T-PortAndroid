@@ -5,7 +5,7 @@ import androidx.fragment.app.transaction
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseActivity
 import com.lod.rtviwe.tport.bonuses.BonusesFragment
-import com.lod.rtviwe.tport.model.FullTrip
+import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.orders.OrderTripClickedListener
 import com.lod.rtviwe.tport.orders.OrdersFragment
 import com.lod.rtviwe.tport.profile.ProfileFragment
@@ -30,8 +30,8 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
     private var fromPlaceSearchBox = ""
     private var toPlaceSearchBox = ""
     private var travelTimeSearchBox = ""
-    private var tripInSearchFragment: FullTrip? = null
-    private var tripInOrdersFragment: FullTrip? = null
+    private var tripInSearchFragment: Trip? = null
+    private var tripInOrdersFragment: Trip? = null
 
     override fun getLayout() = R.layout.activity_main
 
@@ -147,15 +147,15 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
         setUpCurrentFragment()
     }
 
-    override fun openTripDetailsFragmentFromSearch(fullTrip: FullTrip) {
+    override fun openTripDetailsFragmentFromSearch(trip: Trip) {
         fragmentSearchTabId = R.layout.trip_details_fragment
-        tripInSearchFragment = fullTrip
+        tripInSearchFragment = trip
         setUpCurrentFragment()
     }
 
-    override fun openTripDetailFragmentFromOrder(fullTrip: FullTrip) {
+    override fun openTripDetailFragmentFromOrder(trip: Trip) {
         fragmentOrdersTabId = R.layout.trip_details_fragment
-        tripInOrdersFragment = fullTrip
+        tripInOrdersFragment = trip
         setUpCurrentFragment()
     }
 

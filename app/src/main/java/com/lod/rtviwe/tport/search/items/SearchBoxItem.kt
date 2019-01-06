@@ -38,7 +38,11 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
 
             override fun autocomplete(words: List<String>) {
                 viewHolder.edit_text_from_place.setAdapter(
-                    ArrayAdapter(viewHolder.containerView.context, android.R.layout.simple_dropdown_item_1line, words)
+                    ArrayAdapter(
+                        viewHolder.containerView.context,
+                        android.R.layout.simple_dropdown_item_1line,
+                        words
+                    )
                 )
             }
         }
@@ -47,7 +51,11 @@ class SearchBoxItem(private val searchBox: SearchBox) : Item(), KoinComponent {
 
             override fun autocomplete(words: List<String>) {
                 viewHolder.edit_text_to_place.setAdapter(
-                    ArrayAdapter(viewHolder.containerView.context, android.R.layout.simple_dropdown_item_1line, words)
+                    ArrayAdapter(
+                        viewHolder.containerView.context,
+                        android.R.layout.simple_dropdown_item_1line,
+                        words
+                    )
                 )
             }
         }

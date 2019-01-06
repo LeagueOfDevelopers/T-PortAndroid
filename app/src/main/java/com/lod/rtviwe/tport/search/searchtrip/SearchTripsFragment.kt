@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
+import com.lod.rtviwe.tport.network.searchTrips.TripsRequest
 import com.lod.rtviwe.tport.search.SearchListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
@@ -50,7 +51,7 @@ class SearchTripsFragment : BaseFragment() {
         arguments?.also {
             it.getString(STATE_FROM_PLACE)?.let { place -> fromPlace = place }
             it.getString(STATE_TO_PLACE)?.let { place -> toPlace = place }
-            it.getString(STATE_TRAVEL_TIME)?.let { place -> travelTime = place }
+            it.getString(STATE_TRAVEL_TIME)?.let { time -> travelTime = time }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -67,7 +68,8 @@ class SearchTripsFragment : BaseFragment() {
 
         searchRoutesLayoutManager = LinearLayoutManager(context)
 
-        searchRoutesViewModel.observeAdapter(this, searchRouteCardsAdapter)
+        val tripsRequest = TripsRequest(fromPlace, toPlace, travelTime)
+        searchRoutesViewModel.observeAdapter(this, searchRouteCardsAdapter, tripsRequest)
 
         searchRoutesRecyclerView = recycler_view_search_routes.apply {
             adapter = searchRouteCardsAdapter
