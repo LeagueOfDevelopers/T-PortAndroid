@@ -1,5 +1,6 @@
 package com.lod.rtviwe.tport.di
 
+import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.bonuses.BonusesViewModel
@@ -13,6 +14,7 @@ import com.lod.rtviwe.tport.search.SearchViewModel
 import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
 import com.redmadrobot.inputmask.helper.Mask
+import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
@@ -36,10 +38,25 @@ val mainModule = module {
             .create(RegistrationApi::class.java)
     }
     single {
+        GsonBuilder().setLenient().create()
+    }
+    single {
+        OkHttpClient.Builder().apply {
+            addInterceptor { chain ->
+                val request = chain.request().newBuilder().apply {
+                    // TODO hide it
+                    addHeader("Authorization", "Token 1cf94e840097454101fdbb0a52ce1ec7ee7ce6ea")
+                }.build()
+                chain.proceed(request)
+            }
+        }.build()
+    }
+    single {
         Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(get()))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .baseUrl(TPortApplication.AUTOCOMPLETE_URL)
+            .client(get())
             .build()
             .create(AutocompleteApi::class.java)
     }

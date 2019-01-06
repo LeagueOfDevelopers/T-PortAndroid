@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-            android:id="@+id/edit_text_from_place"
+            android:id="@+id/autocomplete_text_from_place"
             style="@style/EditTextOnSearchItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -69,10 +69,10 @@
             android:layout_marginBottom="8dp"
             android:text="@string/search_item_to_place"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_from_place" />
+            app:layout_constraintTop_toBottomOf="@+id/autocomplete_text_from_place" />
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-            android:id="@+id/edit_text_to_place"
+            android:id="@+id/autocomplete_text_to_place"
             style="@style/EditTextOnSearchItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/search_item_travel_data"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_to_place" />
+            app:layout_constraintTop_toBottomOf="@+id/autocomplete_text_to_place" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_data_travel"
