@@ -7,12 +7,12 @@ import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
+import com.lod.rtviwe.tport.network.autocomplete.DadataRequest
 import com.lod.rtviwe.tport.search.items.Logo
 import com.lod.rtviwe.tport.search.items.PopularTrip
 import com.lod.rtviwe.tport.search.items.SearchBoxItem
 import com.lod.rtviwe.tport.search.items.Title
 import com.lod.rtviwe.tport.search.searchbox.AutocompleteCallback
-import com.lod.rtviwe.tport.search.searchbox.DestinationWord
 import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
@@ -21,7 +21,6 @@ import kotlinx.coroutines.*
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.get
 import timber.log.Timber
-import java.util.*
 
 class SearchViewModel(private val app: Application) : AndroidViewModel(app), KoinComponent {
 
@@ -53,20 +52,19 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
 
     fun findAutocomplete(text: String, callback: AutocompleteCallback) {
         scopeAutocomplete.launch(handlerAutocomplete) {
-            val request = autocompleteApi.getAutocomplete(text, Locale.getDefault().language).await()
+            val request = autocompleteApi.getAutocomplete(DadataRequest(text, 10)).await()
             val requestCode = request.code()
 
             when (requestCode) {
                 200 -> {
-                    request.body()?.let { array ->
-                        callback.autocomplete(
-                            array.map { DestinationWord(it.name, it.code) }.take(
-                                AMOUNT_AUTOCOMPLETE_WORDS
-                            )
-                        )
+                    request.body()?.also { array ->
+                        Timber.v(array.toString())
+//                        callback.autocomplete(
+//                            array.map { DestinationWord("", "") }.take(AMOUNT_AUTOCOMPLETE_WORDS)
+//                        )
                     }
                 }
-                else -> Timber.e("Unknown error happened on travelpayouts.com")
+                else -> Timber.e("Unknown error happened on dadata.ru")
             }
         }
     }
