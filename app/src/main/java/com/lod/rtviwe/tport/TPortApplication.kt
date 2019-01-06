@@ -8,12 +8,22 @@ import timber.log.Timber
 
 class TPortApplication : Application() {
 
+    override fun onCreate() {
+        super.onCreate()
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+
+        startKoin(this, listOf(mainModule))
+    }
+
     companion object {
 
         private const val TOKEN_PREFS = "user token"
         private const val TOKEN = "token"
 
-        const val TPORT_URL = "http://tport-AutocompleteSuggestions.lod-misis.ru/"
+        const val TPORT_URL = "http://tport-test.lod-misis.ru/"
         const val AUTOCOMPLETE_URL = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/"
 
         fun putToken(context: Context, token: String) {
@@ -25,15 +35,5 @@ class TPortApplication : Application() {
 
         fun getToken(context: Context) =
             context.getSharedPreferences(TOKEN_PREFS, Context.MODE_PRIVATE).getString(TOKEN, "")
-    }
-
-    override fun onCreate() {
-        super.onCreate()
-
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        }
-
-        startKoin(this, listOf(mainModule))
     }
 }

@@ -1,13 +1,13 @@
 package com.lod.rtviwe.tport.orders.items
 
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.model.Destination
+import com.lod.rtviwe.tport.model.Place
 import com.lod.rtviwe.tport.orders.OrderTripClickedListener
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.order_place_item.*
 
-class OrderDestinationFirstItem(private val destination: Destination) : Item() {
+class OrderDestinationFirstItem(private val place: Place) : Item() {
 
     private lateinit var orderTripClickedListener: OrderTripClickedListener
 
@@ -22,6 +22,6 @@ class OrderDestinationFirstItem(private val destination: Destination) : Item() {
 
         viewHolder.image_view_connection_bottom.background =
                 viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
-        viewHolder.text_view_location.text = destination.placeFrom.name
+        viewHolder.text_view_location.text = place.name
     }
 }

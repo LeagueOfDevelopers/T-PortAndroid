@@ -9,6 +9,7 @@ import retrofit2.http.POST
 interface AutocompleteApi {
 
     @POST("/suggest/address")
+    // TODO remove
     @Headers("Authorization: Token 1cf94e840097454101fdbb0a52ce1ec7ee7ce6ea")
     fun getAutocomplete(
         @Body body: DadataRequest

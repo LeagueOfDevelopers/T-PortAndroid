@@ -2,5 +2,5 @@ package com.lod.rtviwe.tport.search.searchbox
 
 interface AutocompleteCallback {
 
-    fun autocomplete(destinationWords: List<DestinationWord>)
+    fun autocomplete(words: List<String>)
 }

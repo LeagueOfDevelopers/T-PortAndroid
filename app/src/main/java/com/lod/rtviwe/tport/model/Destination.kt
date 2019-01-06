@@ -6,8 +6,7 @@ import java.util.*
 
 @Parcelize
 data class Destination(
-    var id: Long,
-    var placeFrom: Place,
-    var placeTo: Place,
-    var arrivalDate: Date
+    val fromPlace: Place,
+    val toPlace: Place,
+    val duration: /*Duration*/ Date
 ) : Parcelable

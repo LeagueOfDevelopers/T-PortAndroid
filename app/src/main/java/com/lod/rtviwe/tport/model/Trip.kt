@@ -6,9 +6,9 @@ import java.util.*
 
 @Parcelize
 data class Trip(
-    var id: Long,
-    var placeFrom: Place,
-    var placeTo: Place,
-    var cost: Int,
-    var timeTravel: Date
+    val id: String,
+    val destination: Destination,
+    val routes: List<Route>,
+    val cost: Double,
+    val duration: Date
 ) : Parcelable

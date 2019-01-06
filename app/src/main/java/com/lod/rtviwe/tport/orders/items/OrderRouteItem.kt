@@ -10,6 +10,7 @@ import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.order_route_item.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.roundToInt
 
 class OrderRouteItem(private val route: Route) : Item() {
 
@@ -24,16 +25,16 @@ class OrderRouteItem(private val route: Route) : Item() {
             else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
         }
 
-        val imageResourceToSet = RouteIcons.getImageResource(route.type)
+        val imageResourceToSet = RouteIcons.getImageResource(route.transport.type)
         viewHolder.image_view_route_type.setImageResource(imageResourceToSet)
 
-        viewHolder.text_view_route_name.text = route.vehicleName
+        viewHolder.text_view_route_name.text = route.transport.name
         viewHolder.text_view_route_cost.text =
-                String.format(viewHolder.containerView.context.getString(R.string.money), route.cost)
+                String.format(viewHolder.containerView.context.getString(R.string.money), route.cost.roundToInt())
 
         viewHolder.text_view_route_time_in_trip.text = String.format(
             viewHolder.containerView.context.getString(R.string.time_in_travel),
-            SimpleDateFormat("hh:mm", Locale.getDefault()).format(route.destination.arrivalDate)
+            SimpleDateFormat("hh:mm", Locale.getDefault()).format(route.arrivalDate)
         )
 
         viewHolder.text_view_is_route_paid.text =

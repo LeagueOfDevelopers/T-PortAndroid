@@ -4,6 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-enum class RouteType : Parcelable {
-    TAXI, AIRPLANE, TRAIN, SHIP, FOOT
-}
+data class Transport(
+    val name: String,
+    val type: TransportationType
+) : Parcelable

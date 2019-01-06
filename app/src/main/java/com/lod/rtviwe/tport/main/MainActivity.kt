@@ -5,13 +5,13 @@ import androidx.fragment.app.transaction
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseActivity
 import com.lod.rtviwe.tport.bonuses.BonusesFragment
+import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.orders.OrderTripClickedListener
 import com.lod.rtviwe.tport.orders.OrdersFragment
 import com.lod.rtviwe.tport.profile.ProfileFragment
 import com.lod.rtviwe.tport.profile.registration.*
 import com.lod.rtviwe.tport.search.SearchFragment
 import com.lod.rtviwe.tport.search.SearchListener
-import com.lod.rtviwe.tport.search.searchbox.DestinationWord
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripClickedListener
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
 import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
@@ -27,11 +27,11 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
     private var fragmentProfileTabId = R.layout.register_step_one_fragment
     private var registerPhoneNumber = ""
     private var registerCode = ""
-    private var fromPlaceSearchBox = DestinationWord()
-    private var toPlaceSearchBox = DestinationWord()
+    private var fromPlaceSearchBox = ""
+    private var toPlaceSearchBox = ""
     private var travelTimeSearchBox = ""
-    private var tripInSearchFragment: FullTrip? = null
-    private var tripInOrdersFragment: FullTrip? = null
+    private var tripInSearchFragment: Trip? = null
+    private var tripInOrdersFragment: Trip? = null
 
     override fun getLayout() = R.layout.activity_main
 
@@ -67,8 +67,8 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
             putInt(STATE_BONUSES_LAYOUT_ID, fragmentBonusesTabId)
             putInt(STATE_PROFILE_LAYOUT_ID, fragmentProfileTabId)
             putString(STATE_REGISTER_PHONE_NUMBER, registerPhoneNumber)
-            putParcelable(STATE_FROM_PLACE, fromPlaceSearchBox)
-            putParcelable(STATE_TO_PLACE, toPlaceSearchBox)
+            putString(STATE_FROM_PLACE, fromPlaceSearchBox)
+            putString(STATE_TO_PLACE, toPlaceSearchBox)
             putString(STATE_TRAVEL_TIME, travelTimeSearchBox)
             putString(STATE_CODE, registerCode)
         }
@@ -85,8 +85,8 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
             fragmentBonusesTabId = savedInstanceState.getInt(STATE_BONUSES_LAYOUT_ID)
             fragmentProfileTabId = savedInstanceState.getInt(STATE_PROFILE_LAYOUT_ID)
             registerPhoneNumber = savedInstanceState.getString(STATE_REGISTER_PHONE_NUMBER)
-            fromPlaceSearchBox = savedInstanceState.getParcelable(STATE_FROM_PLACE)
-            toPlaceSearchBox = savedInstanceState.getParcelable(STATE_TO_PLACE)
+            fromPlaceSearchBox = savedInstanceState.getString(STATE_FROM_PLACE)
+            toPlaceSearchBox = savedInstanceState.getString(STATE_TO_PLACE)
             travelTimeSearchBox = savedInstanceState.getString(STATE_TRAVEL_TIME)
             registerCode = savedInstanceState.getString(STATE_CODE)
 
@@ -147,15 +147,15 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
         setUpCurrentFragment()
     }
 
-    override fun openTripDetailsFragmentFromSearch(fullTrip: FullTrip) {
+    override fun openTripDetailsFragmentFromSearch(trip: Trip) {
         fragmentSearchTabId = R.layout.trip_details_fragment
-        tripInSearchFragment = fullTrip
+        tripInSearchFragment = trip
         setUpCurrentFragment()
     }
 
-    override fun openTripDetailFragmentFromOrder(fullTrip: FullTrip) {
+    override fun openTripDetailFragmentFromOrder(trip: Trip) {
         fragmentOrdersTabId = R.layout.trip_details_fragment
-        tripInOrdersFragment = fullTrip
+        tripInOrdersFragment = trip
         setUpCurrentFragment()
     }
 
@@ -167,7 +167,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
         registerCode = code
     }
 
-    override fun onPickUpButton(fromPlace: DestinationWord, toPlace: DestinationWord, travelTime: String) {
+    override fun onPickUpButton(fromPlace: String, toPlace: String, travelTime: String) {
         fragmentSearchTabId = R.layout.search_trips_fragment
         fromPlaceSearchBox = fromPlace
         toPlaceSearchBox = toPlace

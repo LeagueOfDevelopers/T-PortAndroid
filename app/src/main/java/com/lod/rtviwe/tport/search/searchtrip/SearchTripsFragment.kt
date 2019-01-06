@@ -11,7 +11,6 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.network.searchTrips.TripsRequest
 import com.lod.rtviwe.tport.search.SearchListener
-import com.lod.rtviwe.tport.search.searchbox.DestinationWord
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_routes_toolbar.*
@@ -30,8 +29,8 @@ class SearchTripsFragment : BaseFragment() {
     private lateinit var searchRoutesLayoutManager: LinearLayoutManager
     private lateinit var searchRoutesRecyclerView: RecyclerView
 
-    private var fromPlace = DestinationWord()
-    private var toPlace = DestinationWord()
+    private var fromPlace = ""
+    private var toPlace = ""
     private var travelTime = ""
 
     override fun onAttach(context: Context?) {
@@ -50,8 +49,8 @@ class SearchTripsFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {
-            it.getParcelable<DestinationWord>(STATE_FROM_PLACE)?.let { place -> fromPlace = place }
-            it.getParcelable<DestinationWord>(STATE_TO_PLACE)?.let { place -> toPlace = place }
+            it.getString(STATE_FROM_PLACE)?.let { place -> fromPlace = place }
+            it.getString(STATE_TO_PLACE)?.let { place -> toPlace = place }
             it.getString(STATE_TRAVEL_TIME)?.let { time -> travelTime = time }
         }
 
@@ -63,13 +62,13 @@ class SearchTripsFragment : BaseFragment() {
 
         text_view_search_routes_toolbar_label.text = getString(R.string.search_routes_toolbar_title)
 
-        edit_text_toolbar_from_place.setText(fromPlace.name)
-        edit_text_toolbar_to_place.setText(toPlace.name)
+        edit_text_toolbar_from_place.setText(fromPlace)
+        edit_text_toolbar_to_place.setText(toPlace)
         edit_text_toolbar_when.setText(travelTime)
 
         searchRoutesLayoutManager = LinearLayoutManager(context)
 
-        val tripsRequest = TripsRequest(fromPlace.code, toPlace.code, travelTime)
+        val tripsRequest = TripsRequest(fromPlace, toPlace, travelTime)
         searchRoutesViewModel.observeAdapter(this, searchRouteCardsAdapter, tripsRequest)
 
         searchRoutesRecyclerView = recycler_view_search_routes.apply {
@@ -90,10 +89,10 @@ class SearchTripsFragment : BaseFragment() {
 
     companion object {
 
-        fun newInstance(fromPlace: DestinationWord, toPlace: DestinationWord, travelTime: String): SearchTripsFragment {
+        fun newInstance(fromPlace: String, toPlace: String, travelTime: String): SearchTripsFragment {
             val newArguments = Bundle().apply {
-                putParcelable(STATE_FROM_PLACE, fromPlace)
-                putParcelable(STATE_TO_PLACE, toPlace)
+                putString(STATE_FROM_PLACE, fromPlace)
+                putString(STATE_TO_PLACE, toPlace)
                 putString(STATE_TRAVEL_TIME, travelTime)
             }
 

@@ -4,9 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class Place(
-    val name: String,
-    val region: String,
-    val iataCode: String?,
-    val coordinates: Coordinates?
+data class Coordinates(
+    val latitude: Double,
+    val longitude: Double
 ) : Parcelable
