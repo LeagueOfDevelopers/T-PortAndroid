@@ -2,7 +2,7 @@ package com.lod.rtviwe.tport.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import java.util.*
+import org.joda.time.DateTime
 
 @Parcelize
 data class Route(
@@ -10,7 +10,7 @@ data class Route(
     val transport: Transport,
     val cost: Double,
     val destination: Destination,
-    val departureDate: Date,
-    val arrivalDate: Date,
+    val departureDate: DateTime,
+    val arrivalDate: DateTime,
     var isPaid: Boolean = false
 ) : Parcelable

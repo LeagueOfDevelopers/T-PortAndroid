@@ -2,8 +2,7 @@ package com.lod.rtviwe.tport.data
 
 import androidx.lifecycle.MutableLiveData
 import com.lod.rtviwe.tport.model.*
-import org.joda.time.Duration
-import java.util.*
+import org.joda.time.DateTime
 
 object MockTrips : TripsProvider {
 
@@ -32,8 +31,7 @@ object MockTrips : TripsProvider {
                                 5.6445,
                                 0.9
                             )
-                        ),
-                        Duration.standardHours(5)
+                        )
                     ),
                     listOf(
                         Route(
@@ -61,17 +59,16 @@ object MockTrips : TripsProvider {
                                         69.69,
                                         14.88
                                     )
-                                ),
-                                Duration.standardHours(1)
+                                )
                             ),
-                            Calendar.getInstance().time,
-                            Calendar.getInstance().time,
+                            DateTime(),
+                            DateTime().plusHours(1),
                             true
                         ),
                         Route(
                             "stub id",
                             Transport(
-                                "Aeroflot",
+                                "Аэрофлот",
                                 TransportationType.AIRPLANE
                             ),
                             3500.0,
@@ -93,11 +90,40 @@ object MockTrips : TripsProvider {
                                         45.12,
                                         45.54
                                     )
-                                ),
-                                Duration.standardHours(4)
+                                )
                             ),
-                            Calendar.getInstance().time,
-                            Calendar.getInstance().time
+                            DateTime().plusHours(1),
+                            DateTime().plusHours(2)
+                        ),
+                        Route(
+                            "stub id",
+                            Transport(
+                                "РЖД",
+                                TransportationType.TRAIN
+                            ),
+                            1200.0,
+                            Destination(
+                                Place(
+                                    "Платов",
+                                    "Rostov",
+                                    "ROS",
+                                    Coordinates(
+                                        45.12,
+                                        45.54
+                                    )
+                                ),
+                                Place(
+                                    "Ростов-на-Дону",
+                                    "Rostov",
+                                    "ROS",
+                                    Coordinates(
+                                        45.12,
+                                        45.54
+                                    )
+                                )
+                            ),
+                            DateTime().plusHours(2),
+                            DateTime().plusHours(3)
                         )
                     ),
                     700.0
