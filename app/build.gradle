@@ -26,9 +26,16 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
+        debug {
+            buildConfigField 'String', "DaDataApi", dadata_api
+            resValue 'string', "api_key", dadata_api
+            signingConfig signingConfigs.config
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', "DaDataApi", dadata_api
+            resValue 'string', "api_key", dadata_api
             signingConfig signingConfigs.config
         }
     }
