@@ -2,7 +2,7 @@ package com.lod.rtviwe.tport.data
 
 import androidx.lifecycle.MutableLiveData
 import com.lod.rtviwe.tport.model.*
-import org.joda.time.DateTime
+import java.util.*
 
 object MockTrips : TripsProvider {
 
@@ -61,8 +61,8 @@ object MockTrips : TripsProvider {
                                     )
                                 )
                             ),
-                            DateTime(),
-                            DateTime().plusHours(1),
+                            Date(),
+                            Date(),
                             true
                         ),
                         Route(
@@ -92,8 +92,8 @@ object MockTrips : TripsProvider {
                                     )
                                 )
                             ),
-                            DateTime().plusHours(1),
-                            DateTime().plusHours(2)
+                            Date(),
+                            Date()
                         ),
                         Route(
                             "stub id",
@@ -122,8 +122,8 @@ object MockTrips : TripsProvider {
                                     )
                                 )
                             ),
-                            DateTime().plusHours(2),
-                            DateTime().plusHours(3)
+                            Date(),
+                            Date()
                         )
                     ),
                     700.0
