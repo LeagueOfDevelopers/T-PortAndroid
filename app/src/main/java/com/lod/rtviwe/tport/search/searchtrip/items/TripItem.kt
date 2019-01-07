@@ -28,7 +28,7 @@ class TripItem(private val trip: Trip) : Item() {
         }
 
         viewHolder.text_view_route_time.text =
-                SimpleDateFormat("hh:mm", Locale.getDefault()).format(trip.duration)
+                SimpleDateFormat("hh:mm", Locale.getDefault()).format(trip.destination.duration)
         viewHolder.text_view_search_route_cost.text =
                 String.format(viewHolder.containerView.context.getString(R.string.money), trip.cost)
 

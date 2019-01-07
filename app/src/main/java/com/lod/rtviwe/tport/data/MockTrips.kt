@@ -2,6 +2,7 @@ package com.lod.rtviwe.tport.data
 
 import androidx.lifecycle.MutableLiveData
 import com.lod.rtviwe.tport.model.*
+import org.joda.time.Duration
 import java.util.*
 
 object MockTrips : TripsProvider {
@@ -24,15 +25,15 @@ object MockTrips : TripsProvider {
                             )
                         ),
                         Place(
-                            "Краснодар",
-                            "Krasnodar",
-                            "KRD",
+                            "Ростов-на-Дону",
+                            "Rostov",
+                            "ROS",
                             Coordinates(
                                 5.6445,
                                 0.9
                             )
                         ),
-                        Calendar.getInstance().time
+                        Duration.standardHours(5)
                     ),
                     listOf(
                         Route(
@@ -61,10 +62,11 @@ object MockTrips : TripsProvider {
                                         14.88
                                     )
                                 ),
-                                Calendar.getInstance().time
+                                Duration.standardHours(1)
                             ),
                             Calendar.getInstance().time,
-                            Calendar.getInstance().time
+                            Calendar.getInstance().time,
+                            true
                         ),
                         Route(
                             "stub id",
@@ -84,22 +86,21 @@ object MockTrips : TripsProvider {
                                     )
                                 ),
                                 Place(
-                                    "Moscow region",
-                                    "Domodedovo",
-                                    "DOM",
+                                    "Платов",
+                                    "Rostov",
+                                    "ROS",
                                     Coordinates(
                                         45.12,
                                         45.54
                                     )
                                 ),
-                                Calendar.getInstance().time
+                                Duration.standardHours(4)
                             ),
                             Calendar.getInstance().time,
                             Calendar.getInstance().time
                         )
                     ),
-                    700.0,
-                    Calendar.getInstance().time
+                    700.0
                 )
             )
         )
