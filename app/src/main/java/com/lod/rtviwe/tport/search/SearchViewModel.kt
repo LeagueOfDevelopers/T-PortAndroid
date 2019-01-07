@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
-import com.lod.rtviwe.tport.network.autocomplete.DadataRequest
+import com.lod.rtviwe.tport.network.autocomplete.AutocompleteRequest
 import com.lod.rtviwe.tport.search.items.Logo
 import com.lod.rtviwe.tport.search.items.PopularTrip
 import com.lod.rtviwe.tport.search.items.SearchBoxItem
@@ -52,16 +52,16 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
 
     fun findAutocomplete(text: String, callback: AutocompleteCallback) {
         scopeAutocomplete.launch(handlerAutocomplete) {
-            val request = autocompleteApi.getAutocomplete(DadataRequest(text, 10)).await()
+            val request = autocompleteApi.getAutocomplete(AutocompleteRequest(text, AMOUNT_AUTOCOMPLETE_WORDS)).await()
             val requestCode = request.code()
 
             when (requestCode) {
                 200 -> {
                     request.body()?.also { array ->
                         Timber.v(array.toString())
-//                        callback.autocomplete(
-//                            array.map { DestinationWord("", "") }.take(AMOUNT_AUTOCOMPLETE_WORDS)
-//                        )
+                        callback.autocomplete(
+                            array.suggestions.map { it.value }
+                        )
                     }
                 }
                 else -> Timber.e("Unknown error happened on dadata.ru")

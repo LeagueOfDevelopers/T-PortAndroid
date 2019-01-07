@@ -1,6 +1,6 @@
 package com.lod.rtviwe.tport.network.autocomplete
 
-data class DadataRequest(
+data class AutocompleteRequest(
     val query: String,
     val count: Int
 )
