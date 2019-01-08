@@ -45,7 +45,7 @@ val mainModule = module {
         OkHttpClient.Builder().apply {
             addInterceptor { chain ->
                 val request = chain.request().newBuilder().apply {
-                    addHeader("Authorization", BuildConfig.DaDataApi)
+                    addHeader("Authorization", BuildConfig.DADATA_API)
                 }.build()
                 chain.proceed(request)
             }
