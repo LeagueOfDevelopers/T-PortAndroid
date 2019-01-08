@@ -10,9 +10,9 @@ android {
     signingConfigs {
         config {
             keyAlias 'key0'
-            keyPassword 'placeholder'
+            keyPassword 'placeholderKeyPassword'
             storeFile file('/home/rtviwe/tport.jks')
-            storePassword 'placeholder'
+            storePassword 'placeholderStorePassword'
         }
     }
     compileSdkVersion 28
