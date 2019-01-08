@@ -10,9 +10,9 @@ android {
     signingConfigs {
         config {
             keyAlias 'key0'
-            keyPassword 'NDjRcZz9LkyR7G37DkuYKbSvfs7tSpWPDcGBaWPdLzSzHGJv8mMKpet95jqrBksE'
+            keyPassword 'placeholderKeyPassword'
             storeFile file('/home/rtviwe/tport.jks')
-            storePassword 'nABv4QQP9DBZYBjSmjWddUKWGpGP4tzRLwUJKR4XH7ggMQNQ3sN4XuzY7qJx5cVd'
+            storePassword 'placeholderStorePassword'
         }
     }
     compileSdkVersion 28
@@ -27,15 +27,13 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField 'String', "DaDataApi", dadata_api
-            resValue 'string', "api_key", dadata_api
+            buildConfigField "String", "DADATA_API", "\"Token 1cf94e840097454101fdbb0a52ce1ec7ee7ce6ea\""
             signingConfig signingConfigs.config
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField 'String', "DaDataApi", dadata_api
-            resValue 'string', "api_key", dadata_api
+            buildConfigField "String", "DADATA_API", "\"Token 1cf94e840097454101fdbb0a52ce1ec7ee7ce6ea\""
             signingConfig signingConfigs.config
         }
     }

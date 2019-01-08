@@ -60,7 +60,7 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
                     request.body()?.also { array ->
                         Timber.v(array.toString())
                         callback.autocomplete(
-                            array.suggestions.map { it.value }.filter { !it.contains("ул") }
+                            array.suggestions.map { it.value }.filter { it.length <= 32 }
                         )
                     }
                 }
