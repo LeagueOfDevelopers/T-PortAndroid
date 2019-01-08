@@ -7,8 +7,7 @@ import com.lod.rtviwe.tport.orders.OrderTripClickedListener
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.order_place_item.*
-import java.text.SimpleDateFormat
-import java.util.*
+import java.text.DateFormat
 
 class OrderDestinationItem(private val route: Route, private val isLast: Boolean) : Item() {
 
@@ -23,9 +22,10 @@ class OrderDestinationItem(private val route: Route, private val isLast: Boolean
             else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
         }
 
+        val date = if (isLast) route.arrivalDate else route.departureDate
         viewHolder.text_view_arrival_date.text = String.format(
             viewHolder.containerView.context.getString(R.string.arrival_time),
-            SimpleDateFormat("hh:mm", Locale.getDefault()).format(route.arrivalDate)
+            DateFormat.getTimeInstance().format(date)
         )
 
         viewHolder.image_view_connection_top.background =

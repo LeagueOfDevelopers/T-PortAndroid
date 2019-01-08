@@ -2,6 +2,7 @@ package com.lod.rtviwe.tport.di
 
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.lod.rtviwe.tport.BuildConfig
 import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.bonuses.BonusesViewModel
 import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
@@ -44,8 +45,7 @@ val mainModule = module {
         OkHttpClient.Builder().apply {
             addInterceptor { chain ->
                 val request = chain.request().newBuilder().apply {
-                    // TODO hide it
-                    addHeader("Authorization", "Token 1cf94e840097454101fdbb0a52ce1ec7ee7ce6ea")
+                    addHeader("Authorization", BuildConfig.DaDataApi)
                 }.build()
                 chain.proceed(request)
             }

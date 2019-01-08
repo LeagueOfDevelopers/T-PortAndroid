@@ -39,12 +39,11 @@ class TripDetailsFragment : BaseFragment() {
 
         text_view_search_routes_toolbar_label.text = getString(R.string.trip_details_toolbar_title)
 
-        with(trip.destination) {
-            edit_text_toolbar_from_place.setText(fromPlace.name)
-            edit_text_toolbar_to_place.setText(fromPlace.name)
-            edit_text_toolbar_when.setText(SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(duration))
-        }
-
+        edit_text_toolbar_from_place.setText(trip.destination.fromPlace.name)
+        edit_text_toolbar_to_place.setText(trip.destination.fromPlace.name)
+        edit_text_toolbar_when.setText(
+            SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(trip.routes[0].departureDate)
+        )
 
         val routesAdapter = GroupAdapter<ViewHolder>()
         val routesLayoutManager = LinearLayoutManager(context)

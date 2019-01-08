@@ -24,15 +24,14 @@ object MockTrips : TripsProvider {
                             )
                         ),
                         Place(
-                            "Краснодар",
-                            "Krasnodar",
-                            "KRD",
+                            "Ростов-на-Дону",
+                            "Rostov",
+                            "ROS",
                             Coordinates(
                                 5.6445,
                                 0.9
                             )
-                        ),
-                        Calendar.getInstance().time
+                        )
                     ),
                     listOf(
                         Route(
@@ -60,16 +59,16 @@ object MockTrips : TripsProvider {
                                         69.69,
                                         14.88
                                     )
-                                ),
-                                Calendar.getInstance().time
+                                )
                             ),
-                            Calendar.getInstance().time,
-                            Calendar.getInstance().time
+                            Date(),
+                            Date(),
+                            true
                         ),
                         Route(
                             "stub id",
                             Transport(
-                                "Aeroflot",
+                                "Аэрофлот",
                                 TransportationType.AIRPLANE
                             ),
                             3500.0,
@@ -84,22 +83,50 @@ object MockTrips : TripsProvider {
                                     )
                                 ),
                                 Place(
-                                    "Moscow region",
-                                    "Domodedovo",
-                                    "DOM",
+                                    "Платов",
+                                    "Rostov",
+                                    "ROS",
+                                    Coordinates(
+                                        45.12,
+                                        45.54
+                                    )
+                                )
+                            ),
+                            Date(),
+                            Date()
+                        ),
+                        Route(
+                            "stub id",
+                            Transport(
+                                "РЖД",
+                                TransportationType.TRAIN
+                            ),
+                            1200.0,
+                            Destination(
+                                Place(
+                                    "Платов",
+                                    "Rostov",
+                                    "ROS",
                                     Coordinates(
                                         45.12,
                                         45.54
                                     )
                                 ),
-                                Calendar.getInstance().time
+                                Place(
+                                    "Ростов-на-Дону",
+                                    "Rostov",
+                                    "ROS",
+                                    Coordinates(
+                                        45.12,
+                                        45.54
+                                    )
+                                )
                             ),
-                            Calendar.getInstance().time,
-                            Calendar.getInstance().time
+                            Date(),
+                            Date()
                         )
                     ),
-                    700.0,
-                    Calendar.getInstance().time
+                    700.0
                 )
             )
         )
