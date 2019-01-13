@@ -40,7 +40,7 @@ class TripDetailsFragment : BaseFragment() {
         text_view_search_routes_toolbar_label.text = getString(R.string.trip_details_toolbar_title)
 
         edit_text_toolbar_from_place.setText(trip.destination.fromPlace.name)
-        edit_text_toolbar_to_place.setText(trip.destination.fromPlace.name)
+        edit_text_toolbar_to_place.setText(trip.destination.toPlace.name)
         edit_text_toolbar_when.setText(
             SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(trip.routes[0].departureDate)
         )

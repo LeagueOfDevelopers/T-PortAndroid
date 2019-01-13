@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.network.register.LoginConfirmationRequest
+import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.lod.rtviwe.tport.utils.toPhone
 import com.redmadrobot.inputmask.MaskedTextChangedListener
@@ -26,12 +26,13 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
     private val phoneNumberMask by inject<Mask>()
+    private val authService by inject<AuthService>()
 
     private val onCodePassedListener = object : CheckCodeCallback {
 
         override fun pass(token: String) {
             if (activity != null) {
-                TPortApplication.putToken(activity!!, token)
+                authService.putToken(token)
             } else {
                 Timber.e("Fragment has been closed")
             }
@@ -43,6 +44,7 @@ class RegisterStepTwoFragment : BaseFragment() {
             Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
         }
     }
+    // eventbus?
 
     private lateinit var listenerStepTwo: RegisterStepTwoListener
 

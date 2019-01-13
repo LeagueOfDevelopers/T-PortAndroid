@@ -14,6 +14,7 @@ import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
 import com.lod.rtviwe.tport.search.SearchViewModel
 import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
+import com.lod.rtviwe.tport.utils.AuthService
 import com.redmadrobot.inputmask.helper.Mask
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
@@ -68,4 +69,5 @@ val mainModule = module {
             .build()
             .create(SearchTripsApi::class.java)
     }
+    single { AuthService(get()) }
 }

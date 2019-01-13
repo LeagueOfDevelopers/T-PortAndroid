@@ -15,7 +15,9 @@ import com.lod.rtviwe.tport.search.SearchListener
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripClickedListener
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
 import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
+import com.lod.rtviwe.tport.utils.AuthService
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 
 class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoListener, RegisterStepThreeListener,
     SearchListener, SearchTripClickedListener, OrderTripClickedListener {
@@ -32,6 +34,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
     private var travelTimeSearchBox = ""
     private var tripInSearchFragment: Trip? = null
     private var tripInOrdersFragment: Trip? = null
+    private val authService by inject<AuthService>()
 
     override fun getLayout() = R.layout.activity_main
 
@@ -217,19 +220,22 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
             }
             else -> throw RuntimeException("Not permitted fragment on action Search")
         }
-        R.id.action_profile -> when (fragmentProfileTabId) {
-            R.layout.profile_fragment -> ProfileFragment.newInstance()
-            R.layout.register_step_one_fragment -> RegisterStepOneFragment.newInstance(registerPhoneNumber)
-            R.layout.register_step_two_fragment ->
-                RegisterStepTwoFragment.newInstance(registerPhoneNumber, registerCode)
-            R.layout.register_step_three_fragment -> RegisterStepThreeFragment.newInstance()
-            else -> throw RuntimeException("Not permitted fragment on action Profile")
-        }
+        R.id.action_profile ->
+            if (isUserLogged()) {
+                ProfileFragment.newInstance()
+            } else {
+                when (fragmentProfileTabId) {
+                    R.layout.register_step_one_fragment -> RegisterStepOneFragment.newInstance(registerPhoneNumber)
+                    R.layout.register_step_two_fragment ->
+                        RegisterStepTwoFragment.newInstance(registerPhoneNumber, registerCode)
+                    R.layout.register_step_three_fragment -> RegisterStepThreeFragment.newInstance()
+                    else -> throw RuntimeException("Not permitted fragment on action Profile")
+                }
+            }
         else -> throw RuntimeException("Unknown fragment id")
     }
 
-    // TODO get from prefs
-    private fun isUserLogged() = false
+    private fun isUserLogged() = authService.getToken(baseContext) != null
 
     companion object {
 

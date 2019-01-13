@@ -7,6 +7,7 @@ import com.lod.rtviwe.tport.utils.RouteIcons
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_trip_route_item.*
+import kotlin.math.roundToInt
 
 class RouteItem(private val route: Route, private val isFirst: Boolean, private val isLast: Boolean) : Item() {
 
@@ -32,6 +33,6 @@ class RouteItem(private val route: Route, private val isFirst: Boolean, private 
 
         viewHolder.text_view_route_type.text = route.transport.name
         viewHolder.text_view_route_cost.text =
-                String.format(viewHolder.containerView.context.getString(R.string.money), route.cost)
+                String.format(viewHolder.containerView.context.getString(R.string.money), route.cost.roundToInt())
     }
 }
