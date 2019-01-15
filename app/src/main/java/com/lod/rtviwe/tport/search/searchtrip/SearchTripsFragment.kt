@@ -5,16 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.network.searchTrips.TripsRequest
 import com.lod.rtviwe.tport.search.SearchListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.search_routes_toolbar.*
+import kotlinx.android.synthetic.main.filter_bottom_sheet.*
 import kotlinx.android.synthetic.main.search_trips_fragment.*
+import kotlinx.android.synthetic.main.search_trips_toolbar_filter.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchTripsFragment : BaseFragment() {
@@ -28,6 +31,7 @@ class SearchTripsFragment : BaseFragment() {
     private lateinit var searchListener: SearchListener
     private lateinit var searchRoutesLayoutManager: LinearLayoutManager
     private lateinit var searchRoutesRecyclerView: RecyclerView
+    private lateinit var filterBottomSheet: BottomSheetBehavior<LinearLayout>
 
     private var fromPlace = ""
     private var toPlace = ""
@@ -76,8 +80,15 @@ class SearchTripsFragment : BaseFragment() {
             layoutManager = searchRoutesLayoutManager
         }
 
+        filterBottomSheet = BottomSheetBehavior.from(filter_bottom_sheet)
+        filterBottomSheet.state = BottomSheetBehavior.STATE_HIDDEN
+
         image_button_change.setOnClickListener {
             swapDestinations()
+        }
+
+        button_filter.setOnClickListener {
+            openFilterSheet()
         }
     }
 
@@ -85,6 +96,10 @@ class SearchTripsFragment : BaseFragment() {
         val temp = edit_text_toolbar_from_place.text
         edit_text_toolbar_from_place.text = edit_text_toolbar_to_place.text
         edit_text_toolbar_to_place.text = temp
+    }
+
+    private fun openFilterSheet() {
+        filterBottomSheet.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
     companion object {
