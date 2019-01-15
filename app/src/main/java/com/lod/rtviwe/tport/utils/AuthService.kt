@@ -11,11 +11,8 @@ class AuthService(private val context: Context) {
         }
     }
 
-    fun getToken(context: Context) =
-        context.getSharedPreferences(
-            TOKEN_PREFS,
-            Context.MODE_PRIVATE
-        ).getString(TOKEN, null)
+    fun getToken(context: Context): String? =
+        context.getSharedPreferences(TOKEN_PREFS, Context.MODE_PRIVATE).getString(TOKEN, null)
 
     companion object {
 
