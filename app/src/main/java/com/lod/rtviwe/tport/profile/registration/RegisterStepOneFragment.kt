@@ -68,7 +68,7 @@ class RegisterStepOneFragment : BaseFragment() {
                 override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
                     if (extractedValue.isNotEmpty()) {
                         phoneNumber = extractedValue
-                        listenerStepOne.savePhoneNumber(phoneNumber)
+//                        listenerStepOne.savePhoneNumber(phoneNumber) send phonenumber via action(?)
                     }
                 }
             }).placeholder()

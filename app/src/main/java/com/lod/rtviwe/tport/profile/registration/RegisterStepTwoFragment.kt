@@ -127,7 +127,6 @@ class RegisterStepTwoFragment : BaseFragment() {
     private fun updateCodeImages(text: String) {
         try {
             code = text
-            listenerStepTwo.saveCode(text)
 
             text.forEachIndexed { index, char ->
                 val numberImageResource = RouteIcons.getNumberDrawable(char)
