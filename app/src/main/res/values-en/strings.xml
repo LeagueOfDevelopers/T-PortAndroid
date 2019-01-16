@@ -47,4 +47,5 @@
     <string name="is_paid">Paid</string>
     <string name="not_paid">Not paid!</string>
     <string name="money">%1$s ₽</string>
+    <string name="hint_name">Name</string>
 </resources>

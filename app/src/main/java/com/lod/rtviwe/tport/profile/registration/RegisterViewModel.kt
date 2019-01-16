@@ -65,6 +65,12 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app), KoinComponent
         }
     }
 
+    fun sendName(phoneNumber: String, name: String) {
+        scopeSendName.launch(handlerSendName) {
+            // TODO send name to David
+        }
+    }
+
     private suspend fun checkCode(loginConfirmationRequest: LoginConfirmationRequest): ResponseToken? {
         val request = registrationApi.sendPhoneNumberWithCode(loginConfirmationRequest).await()
         val requestCode = request.code()

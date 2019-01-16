@@ -46,7 +46,14 @@
         android:label="RegisterStepTwoFragment">
         <action
             android:id="@+id/action_registerStepTwoFragment_to_registerStepThreeFragment"
-            app:destination="@id/registerStepThreeFragment" />
+            app:destination="@id/registerStepThreeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/main_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/registerStepThreeFragment"
@@ -54,7 +61,14 @@
         android:label="RegisterStepThreeFragment">
         <action
             android:id="@+id/action_registerStepThreeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/main_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/searchTripsFragment"

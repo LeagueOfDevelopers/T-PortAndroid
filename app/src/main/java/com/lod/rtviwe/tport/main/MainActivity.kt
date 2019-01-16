@@ -8,10 +8,7 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseActivity
 import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.orders.OrderTripClickedListener
-import com.lod.rtviwe.tport.profile.registration.RegisterStepOneFragment
-import com.lod.rtviwe.tport.profile.registration.RegisterStepOneListener
-import com.lod.rtviwe.tport.profile.registration.RegisterStepThreeListener
-import com.lod.rtviwe.tport.profile.registration.RegisterStepTwoListener
+import com.lod.rtviwe.tport.profile.registration.*
 import com.lod.rtviwe.tport.search.SearchListener
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripClickedListener
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
@@ -42,6 +39,8 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
         bottom_navigation.setOnNavigationItemReselectedListener {
             scrollFragmentToTop()
         }
+
+        bottom_navigation.itemIconTintList = null
     }
 
     override fun onRegisterStepOneContinue(phoneNumber: String) {
@@ -49,7 +48,8 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
         navController.navigate(R.id.action_registerStepOneFragment_to_registerStepTwoFragment, bundle)
     }
 
-    override fun onRegisterStepTwoContinue() {
+    override fun onRegisterStepTwoContinue(phoneNumber: String) {
+        val bundle = Bundle().apply { putString(RegisterStepTwoFragment.ARGUMENT_PHONE_NUMBER, phoneNumber) }
         navController.navigate(R.id.action_registerStepTwoFragment_to_registerStepThreeFragment)
     }
 
@@ -88,5 +88,6 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
         // TODO
     }
 
-    private fun isUserLogged() = authService.getToken(baseContext) != null
+    // TODO replace it back
+    private fun isUserLogged() = false /*authService.getToken(baseContext) != null*/
 }

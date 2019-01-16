@@ -120,7 +120,7 @@ class RegisterStepTwoFragment : BaseFragment() {
     private fun checkCodeLength(code: String) = (code.length == CODE_LENGTH)
 
     private fun setupNextStep() {
-        listenerStepTwo.onRegisterStepTwoContinue()
+        listenerStepTwo.onRegisterStepTwoContinue(phoneNumber)
     }
 
     private fun updateCodeImages(text: String) {
@@ -160,5 +160,6 @@ class RegisterStepTwoFragment : BaseFragment() {
     companion object {
 
         const val CODE_LENGTH = 4
+        const val ARGUMENT_PHONE_NUMBER = "PHONE_NUMBER_ARGUMENT"
     }
 }

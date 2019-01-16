@@ -7,7 +7,7 @@ interface RegisterStepOneListener {
 
 interface RegisterStepTwoListener {
 
-    fun onRegisterStepTwoContinue()
+    fun onRegisterStepTwoContinue(phoneNumber: String)
 }
 
 interface RegisterStepThreeListener {

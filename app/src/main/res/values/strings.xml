@@ -48,4 +48,5 @@
     <string name="is_paid">Оплачено</string>
     <string name="not_paid">Не оплачено!</string>
     <string name="money" translatable="false">%1$d ₽</string>
+    <string name="hint_name">Имя</string>
 </resources>
