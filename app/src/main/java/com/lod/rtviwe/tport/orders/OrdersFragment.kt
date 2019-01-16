@@ -13,13 +13,6 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class OrdersFragment : BaseFragment() {
 
-    companion object {
-
-        fun newInstance(): OrdersFragment {
-            return OrdersFragment()
-        }
-    }
-
     private val ordersViewModel: OrdersViewModel by sharedViewModel()
 
     private lateinit var ordersAdapter: GroupAdapter<ViewHolder>

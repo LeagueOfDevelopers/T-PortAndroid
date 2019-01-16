@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.network.register.LoginConfirmationRequest
+import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.lod.rtviwe.tport.utils.toPhone
 import com.redmadrobot.inputmask.MaskedTextChangedListener
@@ -26,12 +26,13 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
     private val phoneNumberMask by inject<Mask>()
+    private val authService by inject<AuthService>()
 
     private val onCodePassedListener = object : CheckCodeCallback {
 
         override fun pass(token: String) {
             if (activity != null) {
-                TPortApplication.putToken(activity!!, token)
+                authService.putToken(token)
             } else {
                 Timber.e("Fragment has been closed")
             }
@@ -43,6 +44,7 @@ class RegisterStepTwoFragment : BaseFragment() {
             Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
         }
     }
+    // eventbus?
 
     private lateinit var listenerStepTwo: RegisterStepTwoListener
 
@@ -62,8 +64,7 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {
-            it.getString(STATE_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
-            it.getString(STATE_CODE)?.let { code -> this.code = code }
+            it.getString(RegisterStepOneFragment.ARGUMENT_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -125,7 +126,6 @@ class RegisterStepTwoFragment : BaseFragment() {
     private fun updateCodeImages(text: String) {
         try {
             code = text
-            listenerStepTwo.saveCode(text)
 
             text.forEachIndexed { index, char ->
                 val numberImageResource = RouteIcons.getNumberDrawable(char)
@@ -158,20 +158,6 @@ class RegisterStepTwoFragment : BaseFragment() {
     }
 
     companion object {
-
-        fun newInstance(phoneNumber: String, code: String): RegisterStepTwoFragment {
-            val newArguments = Bundle().apply {
-                putString(STATE_PHONE_NUMBER, phoneNumber)
-                putString(STATE_CODE, code)
-            }
-
-            return RegisterStepTwoFragment().apply {
-                arguments = newArguments
-            }
-        }
-
-        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STEP_TWO_STATE"
-        private const val STATE_CODE = "CODE_STEP_TWO_STATE"
 
         const val CODE_LENGTH = 4
     }

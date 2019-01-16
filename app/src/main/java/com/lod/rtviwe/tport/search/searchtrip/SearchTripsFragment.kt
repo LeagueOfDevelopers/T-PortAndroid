@@ -5,16 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.network.searchTrips.TripsRequest
 import com.lod.rtviwe.tport.search.SearchListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.search_routes_toolbar.*
+import kotlinx.android.synthetic.main.filter_bottom_sheet.*
 import kotlinx.android.synthetic.main.search_trips_fragment.*
+import kotlinx.android.synthetic.main.search_trips_toolbar_filter.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchTripsFragment : BaseFragment() {
@@ -28,6 +31,7 @@ class SearchTripsFragment : BaseFragment() {
     private lateinit var searchListener: SearchListener
     private lateinit var searchRoutesLayoutManager: LinearLayoutManager
     private lateinit var searchRoutesRecyclerView: RecyclerView
+    private lateinit var filterBottomSheet: BottomSheetBehavior<LinearLayout>
 
     private var fromPlace = ""
     private var toPlace = ""
@@ -49,9 +53,9 @@ class SearchTripsFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {
-            it.getString(STATE_FROM_PLACE)?.let { place -> fromPlace = place }
-            it.getString(STATE_TO_PLACE)?.let { place -> toPlace = place }
-            it.getString(STATE_TRAVEL_TIME)?.let { time -> travelTime = time }
+            it.getString(ARGUMENT_FROM_PLACE)?.let { place -> fromPlace = place }
+            it.getString(ARGUMENT_TO_PLACE)?.let { place -> toPlace = place }
+            it.getString(ARGUMENT_TRAVEL_TIME)?.let { time -> travelTime = time }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -76,8 +80,15 @@ class SearchTripsFragment : BaseFragment() {
             layoutManager = searchRoutesLayoutManager
         }
 
+        filterBottomSheet = BottomSheetBehavior.from(filter_bottom_sheet)
+        filterBottomSheet.state = BottomSheetBehavior.STATE_HIDDEN
+
         image_button_change.setOnClickListener {
             swapDestinations()
+        }
+
+        button_filter.setOnClickListener {
+            openFilterSheet()
         }
     }
 
@@ -87,22 +98,14 @@ class SearchTripsFragment : BaseFragment() {
         edit_text_toolbar_to_place.text = temp
     }
 
+    private fun openFilterSheet() {
+        filterBottomSheet.state = BottomSheetBehavior.STATE_EXPANDED
+    }
+
     companion object {
 
-        fun newInstance(fromPlace: String, toPlace: String, travelTime: String): SearchTripsFragment {
-            val newArguments = Bundle().apply {
-                putString(STATE_FROM_PLACE, fromPlace)
-                putString(STATE_TO_PLACE, toPlace)
-                putString(STATE_TRAVEL_TIME, travelTime)
-            }
-
-            return SearchTripsFragment().apply {
-                arguments = newArguments
-            }
-        }
-
-        private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
-        private const val STATE_TO_PLACE = "FROM_TO_STATE"
-        private const val STATE_TRAVEL_TIME = "TRAVEL_TIME_STATE"
+        const val ARGUMENT_FROM_PLACE = "from place argument"
+        const val ARGUMENT_TO_PLACE = "to place argument"
+        const val ARGUMENT_TRAVEL_TIME = "travel time argument"
     }
 }

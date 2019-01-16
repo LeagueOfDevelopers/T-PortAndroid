@@ -36,11 +36,4 @@ class SearchFragment : BaseFragment() {
             layoutManager = searchLayoutManager
         }
     }
-
-    companion object {
-
-        fun newInstance(): SearchFragment {
-            return SearchFragment()
-        }
-    }
 }

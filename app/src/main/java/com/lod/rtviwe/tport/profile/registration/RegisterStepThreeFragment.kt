@@ -35,11 +35,4 @@ class RegisterStepThreeFragment : BaseFragment() {
     private fun setupNextStep() {
         listenerStepThree.onRegisterStepThreeContinue()
     }
-
-    companion object {
-
-        fun newInstance(): RegisterStepThreeFragment {
-            return RegisterStepThreeFragment()
-        }
-    }
 }

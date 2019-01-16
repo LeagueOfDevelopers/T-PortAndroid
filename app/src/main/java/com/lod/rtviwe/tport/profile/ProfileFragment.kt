@@ -21,11 +21,4 @@ class ProfileFragment : BaseFragment() {
 
     // TODO get from prefs
     private fun getUserName() = "Сергей Иванов"
-
-    companion object {
-
-        fun newInstance(): ProfileFragment {
-            return ProfileFragment()
-        }
-    }
 }

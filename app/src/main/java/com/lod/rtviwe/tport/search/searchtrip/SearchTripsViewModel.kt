@@ -38,15 +38,20 @@ class SearchTripsViewModel(app: Application) : AndroidViewModel(app), KoinCompon
         tripsRequest: TripsRequest
     ) {
         scopeGetTrips.launch(handlerGetTrips) {
-            val request = searchTripsApi.search(tripsRequest).await()
-            val code = request.code()
+            // TODO wait for David
+//            val request = searchTripsApi.search(tripsRequest).await()
+//            val code = request.code()
+//
+//            when (code) {
+//                200 -> MockTrips.getItems().observe(owner, Observer {
+//                    searchTripsAdapter.addAll(it.map(::TripItem))
+//                })
+//                else -> Timber.e("Unknown error happened on David $code")
+//            }
 
-            when (code) {
-                200 -> MockTrips.getItems().observe(owner, Observer {
-                    searchTripsAdapter.addAll(it.map(::TripItem))
-                })
-                else -> Timber.e("Unknown error happened on David $code")
-            }
+            MockTrips.getItems().observe(owner, Observer {
+                searchTripsAdapter.addAll(it.map(::TripItem))
+            })
         }
     }
 }

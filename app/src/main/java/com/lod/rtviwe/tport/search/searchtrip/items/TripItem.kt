@@ -13,6 +13,7 @@ import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_trip_card.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.roundToInt
 
 class TripItem(private val trip: Trip) : Item() {
 
@@ -30,7 +31,7 @@ class TripItem(private val trip: Trip) : Item() {
         viewHolder.text_view_route_time.text =
                 SimpleDateFormat("hh:mm", Locale.getDefault()).format(trip.routes[0].departureDate)
         viewHolder.text_view_search_route_cost.text =
-                String.format(viewHolder.containerView.context.getString(R.string.money), trip.cost)
+                String.format(viewHolder.containerView.context.getString(R.string.money), trip.cost.roundToInt())
 
         val searchRouteItemAdapter = GroupAdapter<ViewHolder>()
         val searchRoutesLayoutManager =
