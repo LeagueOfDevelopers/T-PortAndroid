@@ -3,9 +3,7 @@ package com.lod.rtviwe.tport.profile.registration
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.network.register.LoginRequest
@@ -32,22 +30,10 @@ class RegisterStepOneFragment : BaseFragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        arguments?.also {
-            it.getString(STATE_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
-        }
-
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
     // TODO remove
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if (!phoneNumber.isEmpty()) {
-            edit_text_phone_number.setText(phoneNumber)
-        }
 
         button_register_step_one_continue.setOnClickListener {
             if (checkPhoneNumber(phoneNumber)) {
@@ -87,17 +73,7 @@ class RegisterStepOneFragment : BaseFragment() {
 
     companion object {
 
-        fun newInstance(phoneNumber: String): RegisterStepOneFragment {
-            val newArguments = Bundle().apply {
-                putString(STATE_PHONE_NUMBER, phoneNumber)
-            }
-
-            return RegisterStepOneFragment().apply {
-                arguments = newArguments
-            }
-        }
-
-        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STEP_ONE_STATE"
+        const val ARGUMENT_PHONE_NUMBER = "REGISTER_PHONE_NUMBER_ARGUMENT"
         const val PHONE_NUMBER_LENGTH = 10
     }
 }

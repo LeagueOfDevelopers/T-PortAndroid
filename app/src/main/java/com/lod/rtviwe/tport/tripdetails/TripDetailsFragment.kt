@@ -26,9 +26,7 @@ class TripDetailsFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {
-            it.getParcelable<Trip>(STATE_TRIP)?.let { trip ->
-                this.trip = trip
-            }
+            it.getParcelable<Trip>(ARGUMENT_TRIP)?.let { trip -> this.trip = trip }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -72,24 +70,9 @@ class TripDetailsFragment : BaseFragment() {
         }
     }
 
-    private fun swapDestinations() {
-        val temp = edit_text_toolbar_from_place.text
-        edit_text_toolbar_from_place.text = edit_text_toolbar_to_place.text
-        edit_text_toolbar_to_place.text = temp
-    }
-
     companion object {
 
-        fun newInstance(trip: Trip): TripDetailsFragment {
-            val newArguments = Bundle().apply {
-                putParcelable(STATE_TRIP, trip)
-            }
-
-            return TripDetailsFragment().apply {
-                arguments = newArguments
-            }
-        }
-
         private const val STATE_TRIP = "TRIP_STATE"
+        const val ARGUMENT_TRIP = "TRIP_ARGUMENT"
     }
 }

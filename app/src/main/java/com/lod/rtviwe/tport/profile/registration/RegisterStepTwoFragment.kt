@@ -64,8 +64,7 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {
-            it.getString(STATE_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
-            it.getString(STATE_CODE)?.let { code -> this.code = code }
+            it.getString(RegisterStepOneFragment.ARGUMENT_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -159,20 +158,6 @@ class RegisterStepTwoFragment : BaseFragment() {
     }
 
     companion object {
-
-        fun newInstance(phoneNumber: String, code: String): RegisterStepTwoFragment {
-            val newArguments = Bundle().apply {
-                putString(STATE_PHONE_NUMBER, phoneNumber)
-                putString(STATE_CODE, code)
-            }
-
-            return RegisterStepTwoFragment().apply {
-                arguments = newArguments
-            }
-        }
-
-        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STEP_TWO_STATE"
-        private const val STATE_CODE = "CODE_STEP_TWO_STATE"
 
         const val CODE_LENGTH = 4
     }

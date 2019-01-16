@@ -53,9 +53,9 @@ class SearchTripsFragment : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {
-            it.getString(STATE_FROM_PLACE)?.let { place -> fromPlace = place }
-            it.getString(STATE_TO_PLACE)?.let { place -> toPlace = place }
-            it.getString(STATE_TRAVEL_TIME)?.let { time -> travelTime = time }
+            it.getString(ARGUMENT_FROM_PLACE)?.let { place -> fromPlace = place }
+            it.getString(ARGUMENT_TO_PLACE)?.let { place -> toPlace = place }
+            it.getString(ARGUMENT_TRAVEL_TIME)?.let { time -> travelTime = time }
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)
@@ -104,20 +104,8 @@ class SearchTripsFragment : BaseFragment() {
 
     companion object {
 
-        fun newInstance(fromPlace: String, toPlace: String, travelTime: String): SearchTripsFragment {
-            val newArguments = Bundle().apply {
-                putString(STATE_FROM_PLACE, fromPlace)
-                putString(STATE_TO_PLACE, toPlace)
-                putString(STATE_TRAVEL_TIME, travelTime)
-            }
-
-            return SearchTripsFragment().apply {
-                arguments = newArguments
-            }
-        }
-
-        private const val STATE_FROM_PLACE = "FROM_PLACE_STATE"
-        private const val STATE_TO_PLACE = "FROM_TO_STATE"
-        private const val STATE_TRAVEL_TIME = "TRAVEL_TIME_STATE"
+        const val ARGUMENT_FROM_PLACE = "from place argument"
+        const val ARGUMENT_TO_PLACE = "to place argument"
+        const val ARGUMENT_TRAVEL_TIME = "travel time argument"
     }
 }

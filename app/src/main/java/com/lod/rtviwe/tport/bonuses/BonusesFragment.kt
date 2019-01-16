@@ -9,11 +9,4 @@ class BonusesFragment : BaseFragment() {
     private val bonusesViewModel: BonusesViewModel by viewModel()
 
     override fun getLayout() = R.layout.bonuses_fragment
-
-    companion object {
-
-        fun newInstance(): BonusesFragment {
-            return BonusesFragment()
-        }
-    }
 }

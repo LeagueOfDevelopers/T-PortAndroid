@@ -16,7 +16,7 @@ class AuthService(private val context: Context) {
 
     companion object {
 
-        const val TOKEN_PREFS = "user token"
-        const val TOKEN = "token"
+        private const val TOKEN_PREFS = "user token"
+        private const val TOKEN = "token"
     }
 }

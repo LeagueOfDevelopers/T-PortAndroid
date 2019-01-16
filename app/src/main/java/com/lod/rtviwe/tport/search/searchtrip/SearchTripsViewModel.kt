@@ -38,7 +38,8 @@ class SearchTripsViewModel(app: Application) : AndroidViewModel(app), KoinCompon
         tripsRequest: TripsRequest
     ) {
         scopeGetTrips.launch(handlerGetTrips) {
-            //            val request = searchTripsApi.search(tripsRequest).await()
+            // TODO wait for David
+//            val request = searchTripsApi.search(tripsRequest).await()
 //            val code = request.code()
 //
 //            when (code) {

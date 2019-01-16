@@ -27,18 +27,18 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.lod.rtviwe.tport.profile.ProfileFragment"
-        android:label="ProfileFragment">
-        <action
-            android:id="@+id/action_profileFragment_to_registerStepOneFragment"
-            app:destination="@id/registerStepOneFragment" />
-    </fragment>
+        android:label="ProfileFragment" />
     <fragment
         android:id="@+id/registerStepOneFragment"
         android:name="com.lod.rtviwe.tport.profile.registration.RegisterStepOneFragment"
         android:label="RegisterStepOneFragment">
         <action
             android:id="@+id/action_registerStepOneFragment_to_registerStepTwoFragment"
-            app:destination="@id/registerStepTwoFragment" />
+            app:destination="@id/registerStepTwoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/registerStepTwoFragment"
