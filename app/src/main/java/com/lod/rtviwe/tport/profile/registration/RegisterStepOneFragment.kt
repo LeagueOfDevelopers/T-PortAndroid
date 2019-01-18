@@ -1,6 +1,5 @@
 package com.lod.rtviwe.tport.profile.registration
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -21,6 +20,10 @@ class RegisterStepOneFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.register_step_one_fragment
 
+    override fun scrollToTop() {
+        // TODO if needed
+    }
+
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
@@ -30,8 +33,6 @@ class RegisterStepOneFragment : BaseFragment() {
         }
     }
 
-    // TODO remove
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -44,9 +45,6 @@ class RegisterStepOneFragment : BaseFragment() {
             }
         }
 
-        // TODO remove
-        edit_text_phone_number.setText("8005553535")
-
         edit_text_phone_number.hint = MaskedTextChangedListener.installOn(
             edit_text_phone_number,
             "+7 ([000]) [000]-[00]-[00]",
@@ -54,11 +52,27 @@ class RegisterStepOneFragment : BaseFragment() {
                 override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
                     if (extractedValue.isNotEmpty()) {
                         phoneNumber = extractedValue
-//                        listenerStepOne.savePhoneNumber(phoneNumber) send phonenumber via action(?)
                     }
                 }
             }).placeholder()
         edit_text_phone_number.requestFocus()
+    }
+
+    // this shit doesnt work
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        savedInstanceState?.let {
+            it.getString(STATE_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.apply {
+            putString(STATE_PHONE_NUMBER, phoneNumber)
+        }
     }
 
     private fun setupNextStep() {
@@ -75,5 +89,7 @@ class RegisterStepOneFragment : BaseFragment() {
 
         const val ARGUMENT_PHONE_NUMBER = "REGISTER_PHONE_NUMBER_ARGUMENT"
         const val PHONE_NUMBER_LENGTH = 10
+
+        private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STATE"
     }
 }

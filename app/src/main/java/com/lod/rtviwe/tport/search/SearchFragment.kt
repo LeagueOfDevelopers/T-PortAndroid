@@ -24,6 +24,10 @@ class SearchFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.search_fragment
 
+    override fun scrollToTop() {
+        searchLayoutManager.smoothScrollToPosition(searchRecyclerView, RecyclerView.State(), 0)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

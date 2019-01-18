@@ -22,8 +22,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchTripsFragment : BaseFragment() {
 
-    override fun getLayout() = R.layout.search_trips_fragment
-
     private val searchRoutesViewModel by viewModel<SearchTripsViewModel>()
     private var searchRouteCardsAdapter = GroupAdapter<ViewHolder>()
 
@@ -36,6 +34,12 @@ class SearchTripsFragment : BaseFragment() {
     private var fromPlace = ""
     private var toPlace = ""
     private var travelTime = ""
+
+    override fun getLayout() = R.layout.search_trips_fragment
+
+    override fun scrollToTop() {
+        searchRoutesLayoutManager.smoothScrollToPosition(searchRoutesRecyclerView, RecyclerView.State(), 0)
+    }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)

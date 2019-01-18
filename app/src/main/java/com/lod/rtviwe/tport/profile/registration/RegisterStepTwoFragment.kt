@@ -53,6 +53,10 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.register_step_two_fragment
 
+    override fun scrollToTop() {
+        // TODO if needed
+    }
+
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 

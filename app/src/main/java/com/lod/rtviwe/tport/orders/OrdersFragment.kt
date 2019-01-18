@@ -21,6 +21,10 @@ class OrdersFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.orders_fragment
 
+    override fun scrollToTop() {
+        ordersLayoutManager.smoothScrollToPosition(ordersRecyclerView, RecyclerView.State(), 0)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

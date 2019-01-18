@@ -6,6 +6,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseActivity
+import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.orders.OrderTripClickedListener
 import com.lod.rtviwe.tport.profile.registration.*
@@ -50,7 +51,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
 
     override fun onRegisterStepTwoContinue(phoneNumber: String) {
         val bundle = Bundle().apply { putString(RegisterStepTwoFragment.ARGUMENT_PHONE_NUMBER, phoneNumber) }
-        navController.navigate(R.id.action_registerStepTwoFragment_to_registerStepThreeFragment)
+        navController.navigate(R.id.action_registerStepTwoFragment_to_registerStepThreeFragment, bundle)
     }
 
     override fun onRegisterStepThreeContinue() {
@@ -85,7 +86,12 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
     }
 
     private fun scrollFragmentToTop() {
-        // TODO
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+        val currentFragment = navHostFragment?.childFragmentManager?.let { it.fragments[0] }
+        when (currentFragment) {
+            is BaseFragment -> currentFragment.scrollToTop()
+            else -> throw ClassCastException("$currentFragment does not extend BaseFragment")
+        }
     }
 
     // TODO replace it back
