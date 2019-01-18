@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -29,7 +30,7 @@ class SearchTripsFragment : BaseFragment() {
     private lateinit var searchListener: SearchListener
     private lateinit var searchRoutesLayoutManager: LinearLayoutManager
     private lateinit var searchRoutesRecyclerView: RecyclerView
-    private lateinit var filterBottomSheet: BottomSheetBehavior<LinearLayout>
+    private lateinit var filterBottomSheet: BottomSheetBehavior<ConstraintLayout>
 
     private var fromPlace = ""
     private var toPlace = ""

@@ -48,4 +48,14 @@
     <string name="not_paid">Not paid!</string>
     <string name="money">%1$s ₽</string>
     <string name="hint_name">Name</string>
+    <string name="one_direction">One direction</string>
+    <string name="both_directions">Both directions</string>
+    <string name="type_of_transports_prefer">Preferred transports:</string>
+    <string name="avia">Avia</string>
+    <string name="taxi">Taxi</string>
+    <string name="trains">Trains</string>
+    <string name="baggage">Baggage</string>
+    <string name="cost">Cost</string>
+    <string name="сomfort">Comfort</string>
+    <string name="duration_trip">Duration</string>
 </resources>
