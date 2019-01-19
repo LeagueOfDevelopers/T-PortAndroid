@@ -4,16 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
 import com.lod.rtviwe.tport.network.autocomplete.AutocompleteRequest
-import com.lod.rtviwe.tport.search.items.Logo
 import com.lod.rtviwe.tport.search.items.PopularTrip
-import com.lod.rtviwe.tport.search.items.SearchBoxItem
-import com.lod.rtviwe.tport.search.items.Title
-import com.lod.rtviwe.tport.search.searchbox.AutocompleteCallback
-import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
@@ -39,18 +33,14 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
         jobAutocomplete.cancel()
     }
 
-    fun populateAdapter(lifecycleOwner: LifecycleOwner, adapter: GroupAdapter<ViewHolder>, searchBox: SearchBox) {
-        adapter.apply {
-            add(Logo())
-            add(SearchBoxItem(searchBox))
-            add(Title(app.getString(R.string.popular_title_item)))
-            MockTrips.getItems().observe(lifecycleOwner, Observer { it ->
-                addAll(it.map { Section(PopularTrip(it)) })
-            })
-        }
+    fun populateAdapter(lifecycleOwner: LifecycleOwner, adapter: GroupAdapter<ViewHolder>) {
+        adapter.clear()
+        MockTrips.getItems().observe(lifecycleOwner, Observer { it ->
+            adapter.addAll(it.map { Section(PopularTrip(it)) })
+        })
     }
 
-    fun findAutocomplete(text: String, callback: AutocompleteCallback) {
+    fun findAutocomplete(text: String, callback: (List<String>) -> Unit?) {
         scopeAutocomplete.launch(handlerAutocomplete) {
             val request = autocompleteApi.getAutocomplete(AutocompleteRequest(text, AMOUNT_AUTOCOMPLETE_WORDS)).await()
             val requestCode = request.code()
@@ -59,9 +49,7 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
                 200 -> {
                     request.body()?.also { array ->
                         Timber.v(array.toString())
-                        callback.autocomplete(
-                            array.suggestions.map { it.value }.filter { it.length <= 32 }
-                        )
+                        callback(array.suggestions.map { it.value }.filter { it.length <= MAX_AUTOCOMPLETE_LENGTH })
                     }
                 }
                 else -> Timber.e("Unknown error happened on dadata.ru")
@@ -72,5 +60,6 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
     companion object {
 
         private const val AMOUNT_AUTOCOMPLETE_WORDS = 10
+        private const val MAX_AUTOCOMPLETE_LENGTH = 32
     }
 }

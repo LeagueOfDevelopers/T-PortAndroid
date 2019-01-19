@@ -12,7 +12,6 @@ import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
 import com.lod.rtviwe.tport.search.SearchViewModel
-import com.lod.rtviwe.tport.search.searchbox.SearchBox
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
 import com.lod.rtviwe.tport.utils.AuthService
 import com.redmadrobot.inputmask.helper.Mask
@@ -29,7 +28,6 @@ val mainModule = module {
     viewModel<ProfileViewModel>()
     viewModel<RegisterViewModel>()
     viewModel<SearchTripsViewModel>()
-    single { SearchBox("", "", "") }
     single { Mask("+7 ([000]) [000]-[00]-[00]") }
     single {
         Retrofit.Builder()

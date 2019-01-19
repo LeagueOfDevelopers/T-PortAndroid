@@ -68,7 +68,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
         navController.navigate(R.id.action_ordersFragment_to_tripDetailsFragment, bundle)
     }
 
-    override fun onPickUpButton(fromPlace: String, toPlace: String, travelTime: String) {
+    override fun openSearchTrips(fromPlace: String, toPlace: String, travelTime: String) {
         val bundle = Bundle().apply {
             putString(SearchTripsFragment.ARGUMENT_FROM_PLACE, fromPlace)
             putString(SearchTripsFragment.ARGUMENT_TO_PLACE, toPlace)
@@ -90,7 +90,7 @@ class MainActivity : BaseActivity(), RegisterStepOneListener, RegisterStepTwoLis
         val currentFragment = navHostFragment?.childFragmentManager?.let { it.fragments[0] }
         when (currentFragment) {
             is BaseFragment -> currentFragment.scrollToTop()
-            else -> throw ClassCastException("$currentFragment does not extend BaseFragment")
+            else -> throw ClassCastException("$currentFragment does not implement ScrollableFragment")
         }
     }
 

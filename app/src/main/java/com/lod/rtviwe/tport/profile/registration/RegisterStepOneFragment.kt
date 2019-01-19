@@ -58,21 +58,21 @@ class RegisterStepOneFragment : BaseFragment() {
         edit_text_phone_number.requestFocus()
     }
 
-    // this shit doesnt work
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-
-        savedInstanceState?.let {
-            it.getString(STATE_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
-        }
-    }
-
+    // does not work
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
         outState.apply {
             putString(STATE_PHONE_NUMBER, phoneNumber)
         }
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        savedInstanceState?.let {
+            it.getString(STATE_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
+        }
+
+        super.onViewStateRestored(savedInstanceState)
     }
 
     private fun setupNextStep() {
