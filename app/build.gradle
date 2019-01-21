@@ -31,7 +31,7 @@ android {
             signingConfig signingConfigs.config
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "DADATA_API", "\"Token 1cf94e840097454101fdbb0a52ce1ec7ee7ce6ea\""
             signingConfig signingConfigs.config

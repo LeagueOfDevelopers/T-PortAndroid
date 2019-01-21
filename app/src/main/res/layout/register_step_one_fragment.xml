@@ -40,17 +40,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_welcome_message" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.lod.rtviwe.tport.view.PhoneNumberEditText
             android:id="@+id/edit_text_phone_number"
             style="@style/EditTextPhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:digits="1234567890+-() "
             android:inputType="number"
-            android:paddingStart="32dp"
-            android:paddingEnd="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_please_enter_phone"

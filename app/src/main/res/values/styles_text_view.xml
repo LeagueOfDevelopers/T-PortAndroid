@@ -22,12 +22,12 @@
     </style>
 
     <style name="TextViewWelcomeMessage" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="TextViewInformation" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">19sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/colorSecondTest</item>
     </style>
 
@@ -99,6 +99,10 @@
     <style name="TextViewComingOrder" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorLightHeader</item>
+    </style>
+
+    <style name="TextViewExtendedFab" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

@@ -1,7 +1,6 @@
 package com.lod.rtviwe.tport.profile.registration
 
 import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,14 +40,6 @@ class RegisterStepTwoFragment : BaseFragment() {
         scroll_view_step_two.smoothScrollTo(0, 0)
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-
-        activity?.let {
-            navController = Navigation.findNavController(it, R.id.nav_host_fragment)
-        }
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {
             it.getString(RegisterStepOneFragment.ARGUMENT_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
@@ -59,6 +50,10 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.let {
+            navController = Navigation.findNavController(it, R.id.nav_host_fragment)
+        }
 
         val maskResult = phoneNumberMask.apply(
             CaretString(phoneNumber, phoneNumber.length),

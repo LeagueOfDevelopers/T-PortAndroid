@@ -1,6 +1,5 @@
 package com.lod.rtviwe.tport.profile.registration
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.NavController
@@ -29,8 +28,8 @@ class RegisterStepOneFragment : BaseFragment() {
         scroll_view_step_one.smoothScrollTo(0, 0)
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         activity?.let {
             navController = Navigation.findNavController(it, R.id.nav_host_fragment)
@@ -39,10 +38,6 @@ class RegisterStepOneFragment : BaseFragment() {
         if (isUserLogged()) {
             navController.navigate(R.id.action_global_profileFragment)
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         fab_register_step_one_next.setOnClickListener {
             if (checkPhoneNumber(phoneNumber)) {
@@ -55,7 +50,7 @@ class RegisterStepOneFragment : BaseFragment() {
 
         edit_text_phone_number.hint = MaskedTextChangedListener.installOn(
             edit_text_phone_number,
-            "+7 ([000]) [000]-[00]-[00]",
+            "+7 ([000]) [000] [00] [00]",
             object : MaskedTextChangedListener.ValueListener {
                 override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
                     if (extractedValue.isNotEmpty()) {

@@ -1,7 +1,6 @@
 package com.lod.rtviwe.tport.profile.registration
 
 import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,14 +22,6 @@ class RegisterStepThreeFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.register_step_three_fragment
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-
-        activity?.let {
-            navController = Navigation.findNavController(it, R.id.nav_host_fragment)
-        }
-    }
-
     override fun scrollToTop() {
         scroll_view_step_three.smoothScrollTo(0, 0)
     }
@@ -45,6 +36,10 @@ class RegisterStepThreeFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        activity?.let {
+            navController = Navigation.findNavController(it, R.id.nav_host_fragment)
+        }
 
         button_register_step_three_continue.setOnClickListener {
             setupNextStep()

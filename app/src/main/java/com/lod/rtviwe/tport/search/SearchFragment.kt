@@ -2,7 +2,6 @@ package com.lod.rtviwe.tport.search
 
 import android.app.Activity
 import android.app.DatePickerDialog
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -40,16 +39,12 @@ class SearchFragment : BaseFragment() {
         scroll_view_search_fragment.smoothScrollTo(0, 0)
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         activity?.let {
             navController = Navigation.findNavController(it, R.id.nav_host_fragment)
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
         searchViewModel.populateAdapter(this, searchAdapter)
 
