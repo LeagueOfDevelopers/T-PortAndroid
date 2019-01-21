@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_trip_item"
+    android:id="@+id/card_current_order_Item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
@@ -16,7 +16,7 @@
     app:cardCornerRadius="8dp">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_order_routes"
+        android:id="@+id/recycler_view_routes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

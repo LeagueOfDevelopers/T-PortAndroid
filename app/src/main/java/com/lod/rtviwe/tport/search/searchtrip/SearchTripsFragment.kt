@@ -50,11 +50,11 @@ class SearchTripsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        text_view_search_routes_toolbar_label.text = getString(R.string.search_routes_toolbar_title)
+        text_view_search_routes.text = getString(R.string.search_routes_toolbar_title)
 
-        edit_text_toolbar_from_place.setText(fromPlace)
-        edit_text_toolbar_to_place.setText(toPlace)
-        edit_text_toolbar_when.setText(travelTime)
+        edit_text_from_place.setText(fromPlace)
+        edit_text_to_place.setText(toPlace)
+        edit_text_travel_time.setText(travelTime)
 
         searchRoutesLayoutManager = LinearLayoutManager(context)
 
@@ -66,7 +66,7 @@ class SearchTripsFragment : BaseFragment() {
             layoutManager = searchRoutesLayoutManager
         }
 
-        filterBottomSheet = BottomSheetBehavior.from(filter_bottom_sheet)
+        filterBottomSheet = BottomSheetBehavior.from(filter_search_trips_bottom_sheet)
         filterBottomSheet.state = BottomSheetBehavior.STATE_HIDDEN
 
         image_button_change.setOnClickListener {
@@ -79,9 +79,9 @@ class SearchTripsFragment : BaseFragment() {
     }
 
     private fun swapDestinations() {
-        val temp = edit_text_toolbar_from_place.text
-        edit_text_toolbar_from_place.text = edit_text_toolbar_to_place.text
-        edit_text_toolbar_to_place.text = temp
+        val temp = edit_text_from_place.text
+        edit_text_from_place.text = edit_text_to_place.text
+        edit_text_to_place.text = temp
     }
 
     private fun openFilterSheet() {

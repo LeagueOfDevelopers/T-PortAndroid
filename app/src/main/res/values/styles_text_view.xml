@@ -42,12 +42,12 @@
     </style>
 
     <style name="TextViewSmallHeader" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">21sp</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="TextViewOrderSmallHeader" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">19sp</item>
         <item name="android:textColor">@android:color/black</item>
     </style>
 
@@ -57,7 +57,7 @@
     </style>
 
     <style name="TextViewTime" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/colorLightHeader</item>
     </style>
 
@@ -82,7 +82,7 @@
     </style>
 
     <style name="TextViewMoneyOnSearchRoute" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">21sp</item>
         <item name="android:textColor">@android:color/holo_orange_dark</item>
     </style>
 
@@ -97,6 +97,11 @@
     </style>
 
     <style name="TextViewComingOrder" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextViewHistoryOrder" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorLightHeader</item>
     </style>

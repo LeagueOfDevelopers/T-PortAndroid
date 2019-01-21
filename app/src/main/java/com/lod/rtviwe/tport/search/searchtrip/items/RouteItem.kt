@@ -19,17 +19,17 @@ class RouteItem(private val route: Route, private val isFirst: Boolean, private 
         viewHolder.image_view_route_item.setImageResource(imageResourceToSet)
 
         if (!isFirst) {
-            viewHolder.image_view_connection_start.background =
+            viewHolder.image_view_connection_end.background =
                     viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_horizontal_start)
         } else {
-            viewHolder.image_view_connection_start.visibility = View.INVISIBLE
+            viewHolder.image_view_connection_end.visibility = View.INVISIBLE
         }
 
         if (!isLast) {
-            viewHolder.image_view_connection_end.background =
+            viewHolder.image_view_connection_start.background =
                     viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_horizontal_end)
         } else {
-            viewHolder.image_view_connection_end.visibility = View.GONE
+            viewHolder.image_view_connection_start.visibility = View.GONE
             val imageViewRoute = viewHolder.image_view_route_item
             val params = imageViewRoute.layoutParams as ViewGroup.MarginLayoutParams
             params.marginEnd = 64

@@ -43,11 +43,11 @@ class TripDetailsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        text_view_search_routes_toolbar_label.text = getString(R.string.trip_details_toolbar_title)
+        text_view_search_routes.text = getString(R.string.trip_details_toolbar_title)
 
-        edit_text_toolbar_from_place.setText(trip.destination.fromPlace.name)
-        edit_text_toolbar_to_place.setText(trip.destination.toPlace.name)
-        edit_text_toolbar_when.setText(
+        edit_text_from_place.setText(trip.destination.fromPlace.name)
+        edit_text_to_place.setText(trip.destination.toPlace.name)
+        edit_text_travel_time.setText(
             SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(trip.routes[0].departureDate)
         )
 
@@ -67,7 +67,7 @@ class TripDetailsFragment : BaseFragment() {
             }
         }
 
-        recycler_view_order_routes.apply {
+        recycler_view_routes.apply {
             layoutManager = routesLayoutManager
             adapter = routesAdapter
         }

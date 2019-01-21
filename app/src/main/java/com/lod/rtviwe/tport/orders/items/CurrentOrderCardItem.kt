@@ -30,7 +30,7 @@ class CurrentOrderCardItem(private val trip: Trip) : Item() {
             }
         }
 
-        viewHolder.containerView.recycler_view_order_routes.apply {
+        viewHolder.containerView.recycler_view_routes.apply {
             layoutManager = routesLayoutManager
             adapter = routesAdapter
         }

@@ -27,7 +27,7 @@ class OrderRouteItem(private val route: Route) : Item() {
         val hours = TimeUnit.MILLISECONDS.toHours(diff)
         val minutes = TimeUnit.MILLISECONDS.toMinutes(diff) - hours * 60
 
-        viewHolder.text_view_coming_order_is_paid.text = String.format(
+        viewHolder.text_view_travel_time.text = String.format(
             viewHolder.containerView.context.getString(R.string.time_in_travel),
 //            DateFormat.getTimeInstance().format(route.departureDate/*, route.arrivalDate*/)
             "${hours}ч ${minutes}мин"
@@ -42,7 +42,7 @@ class OrderRouteItem(private val route: Route) : Item() {
                     viewHolder.containerView.context.getString(R.string.not_paid)
                 }
 
-        viewHolder.image_view_arrow.setOnClickListener {
+        viewHolder.image_view_expand_arrow.setOnClickListener {
 
         }
     }

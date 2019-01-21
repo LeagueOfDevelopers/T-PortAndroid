@@ -11,8 +11,6 @@ class OrderDestinationFirstItem(private val place: Place) : Item() {
     override fun getLayout() = R.layout.order_place_first_item
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.image_view_connection_bottom.background =
-                viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
         viewHolder.text_view_location.text = place.name
     }
 }

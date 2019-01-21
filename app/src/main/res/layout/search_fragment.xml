@@ -37,7 +37,7 @@
 
         <include
             android:id="@+id/include_popular_title"
-            layout="@layout/popular_title_item"
+            layout="@layout/header_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

@@ -28,11 +28,11 @@ class ComingOrderCardItem(private val trip: Trip) : Item() {
         navController =
                 Navigation.findNavController(viewHolder.containerView.context as Activity, R.id.nav_host_fragment)
 
-        viewHolder.text_view_coming_order_is_paid.text = if (trip.isPaid()) {
-            TextViewCompat.setTextAppearance(viewHolder.text_view_coming_order_is_paid, R.style.TextViewIsPaid)
+        viewHolder.text_view_travel_time.text = if (trip.isPaid()) {
+            TextViewCompat.setTextAppearance(viewHolder.text_view_travel_time, R.style.TextViewIsPaid)
             viewHolder.containerView.context.getString(R.string.is_paid)
         } else {
-            TextViewCompat.setTextAppearance(viewHolder.text_view_coming_order_is_paid, R.style.TextViewIsNotPaid)
+            TextViewCompat.setTextAppearance(viewHolder.text_view_travel_time, R.style.TextViewIsNotPaid)
             viewHolder.containerView.context.getString(R.string.not_paid)
         }
 
@@ -41,7 +41,7 @@ class ComingOrderCardItem(private val trip: Trip) : Item() {
             viewHolder.text_view_to_place.text = toPlace.name
         }
 
-        viewHolder.text_view_search_route_cost.text =
+        viewHolder.text_view_cost.text =
                 String.format(viewHolder.containerView.context.getString(R.string.money), trip.cost.roundToInt())
 
         val searchRouteItemAdapter = GroupAdapter<ViewHolder>()
@@ -54,12 +54,12 @@ class ComingOrderCardItem(private val trip: Trip) : Item() {
             searchRouteItemAdapter.add(Section(RouteItem(route, isFirst, isLast)))
         }
 
-        viewHolder.recycler_view_routes_in_item.apply {
+        viewHolder.recycler_view_routes.apply {
             adapter = searchRouteItemAdapter
             layoutManager = searchRoutesLayoutManager
         }
 
-        viewHolder.card_trip_item.setOnClickListener {
+        viewHolder.card_current_order_Item.setOnClickListener {
             val bundle = Bundle().apply { putParcelable(TripDetailsFragment.ARGUMENT_TRIP, trip) }
             navController.navigate(R.id.action_ordersFragment_to_tripDetailsFragment, bundle)
         }

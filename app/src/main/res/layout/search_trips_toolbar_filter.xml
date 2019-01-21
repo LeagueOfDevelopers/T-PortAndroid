@@ -21,7 +21,7 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <TextView
-                android:id="@+id/text_view_search_routes_toolbar_label"
+                android:id="@+id/text_view_search_routes"
                 style="@style/TextViewSmallHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         </androidx.appcompat.widget.Toolbar>
 
         <TextView
-            android:id="@+id/text_view_toolbar_from_place"
+            android:id="@+id/text_view_from_place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -51,17 +51,17 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar_search_routes" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_text_toolbar_from_place"
+            android:id="@+id/edit_text_from_place"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:enabled="false"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_toolbar_from_place"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_from_place"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/text_view_toolbar_from_place"
-            app:layout_constraintTop_toTopOf="@+id/text_view_toolbar_from_place"
+            app:layout_constraintStart_toEndOf="@+id/text_view_from_place"
+            app:layout_constraintTop_toTopOf="@+id/text_view_from_place"
             tools:text="@tools:sample/cities" />
 
         <ImageButton
@@ -73,53 +73,53 @@
             android:contentDescription="@string/image_button_change_destination"
             android:rotation="90"
             android:text=""
-            app:layout_constraintBottom_toTopOf="@+id/edit_text_toolbar_to_place"
+            app:layout_constraintBottom_toTopOf="@+id/edit_text_to_place"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_toolbar_from_place"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_from_place"
             app:srcCompat="@drawable/ic_change_arrows_black_24dp" />
 
         <TextView
-            android:id="@+id/text_view_toolbar_to_place"
+            android:id="@+id/text_view_to_place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/search_routes_toolbar_end_label"
-            app:layout_constraintStart_toStartOf="@+id/text_view_toolbar_from_place"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_toolbar_from_place" />
+            app:layout_constraintStart_toStartOf="@+id/text_view_from_place"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_from_place" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_text_toolbar_to_place"
+            android:id="@+id/edit_text_to_place"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:enabled="false"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_toolbar_to_place"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_to_place"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/edit_text_toolbar_from_place"
-            app:layout_constraintTop_toTopOf="@+id/text_view_toolbar_to_place"
+            app:layout_constraintStart_toStartOf="@+id/edit_text_from_place"
+            app:layout_constraintTop_toTopOf="@+id/text_view_to_place"
             tools:text="@tools:sample/cities" />
 
         <TextView
-            android:id="@+id/text_view_toolbar_when"
+            android:id="@+id/text_view_travel_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/search_routes_toolbar_when_label"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/text_view_toolbar_to_place"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_toolbar_to_place"
+            app:layout_constraintStart_toStartOf="@+id/text_view_to_place"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_to_place"
             app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edit_text_toolbar_when"
+            android:id="@+id/edit_text_travel_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:enabled="false"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_toolbar_when"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_travel_time"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/edit_text_toolbar_to_place"
-            app:layout_constraintTop_toTopOf="@+id/text_view_toolbar_when"
+            app:layout_constraintStart_toStartOf="@+id/edit_text_to_place"
+            app:layout_constraintTop_toTopOf="@+id/text_view_travel_time"
             tools:text="@tools:sample/date/ddmmyy" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

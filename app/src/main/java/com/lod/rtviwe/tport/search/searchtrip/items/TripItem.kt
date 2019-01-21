@@ -30,7 +30,7 @@ class TripItem(private val trip: Trip) : Item() {
 
         viewHolder.text_view_route_time.text =
                 SimpleDateFormat("hh:mm", Locale.getDefault()).format(trip.routes[0].departureDate)
-        viewHolder.text_view_search_route_cost.text =
+        viewHolder.text_view_cost.text =
                 String.format(viewHolder.containerView.context.getString(R.string.money), trip.cost.roundToInt())
 
         val searchRouteItemAdapter = GroupAdapter<ViewHolder>()
@@ -43,12 +43,12 @@ class TripItem(private val trip: Trip) : Item() {
             searchRouteItemAdapter.add(Section(RouteItem(route, isFirst, isLast)))
         }
 
-        viewHolder.recycler_view_routes_in_item.apply {
+        viewHolder.recycler_view_routes.apply {
             adapter = searchRouteItemAdapter
             layoutManager = searchRoutesLayoutManager
         }
 
-        viewHolder.card_trip_item.setOnClickListener {
+        viewHolder.card_search_trip_item.setOnClickListener {
             val bundle = Bundle().apply { putParcelable(TripDetailsFragment.ARGUMENT_TRIP, trip) }
             navController.navigate(R.id.action_searchTripsFragment_to_tripDetailsFragment, bundle)
         }

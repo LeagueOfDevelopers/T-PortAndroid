@@ -10,10 +10,10 @@
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:contentDescription="@string/image_view_route_type_description"
-        app:layout_constraintBottom_toBottomOf="@+id/image_view_connection_start"
-        app:layout_constraintEnd_toStartOf="@+id/image_view_connection_end"
-        app:layout_constraintStart_toEndOf="@+id/image_view_connection_start"
-        app:layout_constraintTop_toTopOf="@+id/image_view_connection_start"
+        app:layout_constraintBottom_toBottomOf="@+id/image_view_connection_end"
+        app:layout_constraintEnd_toStartOf="@+id/image_view_connection_start"
+        app:layout_constraintStart_toEndOf="@+id/image_view_connection_end"
+        app:layout_constraintTop_toTopOf="@+id/image_view_connection_end"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -41,17 +41,17 @@
         tools:text="@tools:sample/us_zipcodes" />
 
     <ImageView
-        android:id="@+id/image_view_connection_start"
+        android:id="@+id/image_view_connection_end"
         android:layout_width="24dp"
         android:layout_height="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="@+id/image_view_connection_end"
-        android:layout_width="80dp"
+        android:id="@+id/image_view_connection_start"
+        android:layout_width="64dp"
         android:layout_height="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/image_view_route_item"
         app:layout_constraintEnd_toEndOf="parent"

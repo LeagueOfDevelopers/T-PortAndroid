@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_view_from_place"
             tools:text="@tools:sample/cities" />
 
-        <!--<ImageButton
+        <ImageButton
             android:id="@+id/image_button_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,9 +54,9 @@
             android:text=""
             app:layout_constraintBottom_toTopOf="@+id/text_view_to_place"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_from_place"
+            app:layout_constraintTop_toBottomOf="@+id/autocomplete_text_from_place"
             app:layout_constraintVertical_bias="0.75"
-            app:srcCompat="@drawable/ic_change_arrows_black_24dp" /> -->
+            app:srcCompat="@drawable/ic_change_arrows_black_24dp" />
 
         <TextView
             android:id="@+id/text_view_to_place"

@@ -19,14 +19,11 @@ class OrderDestinationItem(private val route: Route, private val isLast: Boolean
             DateFormat.getTimeInstance().format(date)
         )
 
-        viewHolder.image_view_connection_top.background =
-                viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_end)
-
         if (isLast) {
             viewHolder.text_view_location.text = route.destination.toPlace.name
-            viewHolder.divider_bottom.visibility = View.GONE
+            viewHolder.divider.visibility = View.GONE
         } else {
-            viewHolder.image_view_connection_bottom.background =
+            viewHolder.image_view_connection_end.background =
                     viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_vertical_start)
             viewHolder.text_view_location.text = route.destination.fromPlace.name
         }

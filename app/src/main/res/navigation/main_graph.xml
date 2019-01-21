@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
     app:startDestination="@id/searchFragment">
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.lod.rtviwe.tport.search.SearchFragment"
-        android:label="SearchFragment">
+        android:label="SearchFragment"
+        tools:layout="@layout/search_fragment">
         <action
             android:id="@+id/action_searchFragment_to_searchTripsFragment"
             app:destination="@id/searchTripsFragment" />
@@ -14,11 +16,13 @@
     <fragment
         android:id="@+id/bonusesFragment"
         android:name="com.lod.rtviwe.tport.bonuses.BonusesFragment"
-        android:label="BonusesFragment" />
+        android:label="BonusesFragment"
+        tools:layout="@layout/bonuses_fragment" />
     <fragment
         android:id="@+id/ordersFragment"
         android:name="com.lod.rtviwe.tport.orders.OrdersFragment"
-        android:label="OrdersFragment">
+        android:label="OrdersFragment"
+        tools:layout="@layout/orders_fragment">
         <action
             android:id="@+id/action_ordersFragment_to_tripDetailsFragment"
             app:destination="@id/tripDetailsFragment" />
@@ -26,7 +30,8 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.lod.rtviwe.tport.profile.ProfileFragment"
-        android:label="ProfileFragment">
+        android:label="ProfileFragment"
+        tools:layout="@layout/profile_fragment">
         <action
             android:id="@+id/action_profileFragment_to_registration"
             app:destination="@id/navigationRegistration" />
@@ -34,7 +39,8 @@
     <fragment
         android:id="@+id/searchTripsFragment"
         android:name="com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment"
-        android:label="SearchTripsFragment">
+        android:label="SearchTripsFragment"
+        tools:layout="@layout/search_trips_fragment">
         <action
             android:id="@+id/action_searchTripsFragment_to_tripDetailsFragment"
             app:destination="@id/tripDetailsFragment" />
@@ -42,14 +48,25 @@
     <fragment
         android:id="@+id/tripDetailsFragment"
         android:name="com.lod.rtviwe.tport.tripdetails.TripDetailsFragment"
-        android:label="TripDetailsFragment" />
+        android:label="TripDetailsFragment"
+        tools:layout="@layout/trip_details_fragment" />
     <navigation
         android:id="@+id/navigationRegistration"
         app:startDestination="@id/registerStepOneFragment">
         <fragment
+            android:id="@+id/registerStepOneFragment"
+            android:name="com.lod.rtviwe.tport.profile.registration.RegisterStepOneFragment"
+            android:label="RegisterStepOneFragment"
+            tools:layout="@layout/register_step_one_fragment">
+            <action
+                android:id="@+id/action_registerStepOneFragment_to_registerStepTwoFragment"
+                app:destination="@+id/registerStepTwoFragment" />
+        </fragment>
+        <fragment
             android:id="@+id/registerStepTwoFragment"
             android:name="com.lod.rtviwe.tport.profile.registration.RegisterStepTwoFragment"
-            android:label="RegisterStepTwoFragment">
+            android:label="RegisterStepTwoFragment"
+            tools:layout="@layout/register_step_two_fragment">
             <action
                 android:id="@+id/action_registerStepTwoFragment_to_registerStepThreeFragment"
                 app:destination="@id/registerStepThreeFragment"
@@ -58,19 +75,12 @@
         <fragment
             android:id="@+id/registerStepThreeFragment"
             android:name="com.lod.rtviwe.tport.profile.registration.RegisterStepThreeFragment"
-            android:label="RegisterStepThreeFragment">
+            android:label="RegisterStepThreeFragment"
+            tools:layout="@layout/register_step_three_fragment">
             <action
                 android:id="@+id/action_registerStepThreeFragment_to_profileFragment"
                 app:destination="@id/profileFragment"
                 app:popUpTo="@+id/main_graph" />
-        </fragment>
-        <fragment
-            android:id="@+id/registerStepOneFragment"
-            android:name="com.lod.rtviwe.tport.profile.registration.RegisterStepOneFragment"
-            android:label="RegisterStepOneFragment">
-            <action
-                android:id="@+id/action_registerStepOneFragment_to_registerStepTwoFragment"
-                app:destination="@+id/registerStepTwoFragment" />
         </fragment>
         <action
             android:id="@+id/action_global_profileFragment"

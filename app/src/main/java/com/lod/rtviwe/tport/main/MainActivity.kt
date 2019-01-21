@@ -20,16 +20,16 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        NavigationUI.setupWithNavController(bottom_navigation, navController)
+        NavigationUI.setupWithNavController(main_bottom_navigation, navController)
 
-        bottom_navigation.setOnNavigationItemReselectedListener {
+        main_bottom_navigation.setOnNavigationItemReselectedListener {
             scrollFragmentToTop()
         }
 
-        bottom_navigation.itemIconTintList = null
+        main_bottom_navigation.itemIconTintList = null
     }
 
-    override fun onSupportNavigateUp() = navController.navigateUp() || super.onSupportNavigateUp()
+    override fun onSupportNavigateUp() = navController.navigateUp()
 
     private fun scrollFragmentToTop() {
         val currentFragment = nav_host_fragment.childFragmentManager.fragments[0]

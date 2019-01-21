@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/filter_bottom_sheet"
+    android:id="@+id/filter_search_trips_bottom_sheet"
     android:layout_width="match_parent"
     android:layout_height="340dp"
     android:background="@android:color/white"
@@ -11,7 +11,7 @@
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <LinearLayout
-        android:id="@+id/frame_layout_switch_buttons"
+        android:id="@+id/group_switch_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -45,14 +45,14 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/text_view_baggage_label"
+        android:id="@+id/text_view_baggage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/baggage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frame_layout_switch_buttons" />
+        app:layout_constraintTop_toBottomOf="@+id/group_switch_buttons" />
 
     <Switch
         android:id="@+id/switch_baggage"
@@ -61,7 +61,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frame_layout_switch_buttons" />
+        app:layout_constraintTop_toBottomOf="@+id/group_switch_buttons" />
 
     <TextView
         android:id="@+id/text_view_preferred_transports"
@@ -71,7 +71,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/type_of_transports_prefer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_baggage_label" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_baggage" />
 
     <TextView
         android:id="@+id/text_view_avia"

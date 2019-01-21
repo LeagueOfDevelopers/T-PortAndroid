@@ -59,7 +59,7 @@ class RegisterStepTwoFragment : BaseFragment() {
             CaretString(phoneNumber, phoneNumber.length),
             true
         )
-        text_view_register_step_two_phone_number.text = maskResult.formattedText.string
+        text_view_phone_number.text = maskResult.formattedText.string
 
         edit_text_input_code.setText(code)
 

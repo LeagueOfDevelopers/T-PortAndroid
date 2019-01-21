@@ -17,9 +17,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/image_view_connection_bottom"
+        android:id="@+id/image_view_connection_end"
         android:layout_width="8dp"
         android:layout_height="24dp"
+        android:src="@drawable/connection_rectangle_vertical_start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/image_view_location_point"
         app:layout_constraintStart_toStartOf="@+id/image_view_location_point"
@@ -34,13 +35,13 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/image_view_connection_bottom"
+        app:layout_constraintBottom_toTopOf="@+id/image_view_connection_end"
         app:layout_constraintStart_toEndOf="@+id/image_view_location_point"
         app:layout_constraintTop_toTopOf="@+id/image_view_location_point"
         tools:text="@tools:sample/cities" />
 
     <View
-        android:id="@+id/divider_bottom"
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="40dp"

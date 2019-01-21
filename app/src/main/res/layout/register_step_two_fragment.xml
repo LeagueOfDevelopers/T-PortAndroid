@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_view_register_step_two_phone_number"
+            android:id="@+id/text_view_phone_number"
             style="@style/TextViewHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number">
+            app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number">
 
             <ImageView
                 android:id="@+id/image_view_code_first"
@@ -70,7 +70,7 @@
                 android:contentDescription="@string/image_view_code_first"
                 android:src="@drawable/code_placeholder"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
 
             <ImageView
                 android:id="@+id/image_view_code_second"
@@ -81,7 +81,7 @@
                 android:contentDescription="@string/image_view_code_second"
                 android:src="@drawable/code_placeholder"
                 app:layout_constraintStart_toEndOf="@+id/image_view_code_first"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
 
             <ImageView
                 android:id="@+id/image_view_code_third"
@@ -92,7 +92,7 @@
                 android:contentDescription="@string/image_view_code_third"
                 android:src="@drawable/code_placeholder"
                 app:layout_constraintStart_toEndOf="@+id/image_view_code_second"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
 
             <ImageView
                 android:id="@+id/image_view_code_fourth"
@@ -103,7 +103,7 @@
                 android:contentDescription="@string/image_view_code_fourth"
                 android:src="@drawable/code_placeholder"
                 app:layout_constraintStart_toEndOf="@+id/image_view_code_third"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number" />
+                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
 
         </LinearLayout>
 
