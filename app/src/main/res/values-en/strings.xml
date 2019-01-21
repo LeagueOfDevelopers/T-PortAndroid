@@ -58,4 +58,8 @@
     <string name="cost">Cost</string>
     <string name="сomfort">Comfort</string>
     <string name="duration_trip">Duration</string>
+    <string name="extended_fab_confirm">Confirm</string>
+    <string name="current_order">Current order:</string>
+    <string name="coming_order">Coming order:</string>
+    <string name="history">History:</string>
 </resources>

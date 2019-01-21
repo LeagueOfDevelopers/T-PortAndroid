@@ -5,6 +5,7 @@
     android:id="@+id/scroll_view_step_two"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="160dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="48dp"
             android:text="@string/text_did_send_code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -30,11 +31,9 @@
             style="@style/TextViewHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="@+id/text_view_did_send_code"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/text_view_did_send_code"
             app:layout_constraintTop_toBottomOf="@+id/text_view_did_send_code"
             tools:text="@tools:sample/us_phones" />
 
@@ -57,7 +56,9 @@
             android:id="@+id/group_code_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_register_step_two_phone_number">
 
@@ -113,8 +114,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:text="@string/did_get_code_question"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/group_code_input" />
 

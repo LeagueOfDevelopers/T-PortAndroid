@@ -4,16 +4,18 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.search.searchbox.SearchBox
+import com.lod.rtviwe.tport.search.items.SearchBox
+import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
+import com.lod.rtviwe.tport.utils.setTextChangedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_box_item.*
@@ -28,7 +30,7 @@ class SearchFragment : BaseFragment() {
     private val searchAdapter = GroupAdapter<ViewHolder>()
     private val searchBox = SearchBox("", "", "")
 
-    private lateinit var searchListener: SearchListener
+    private lateinit var navController: NavController
     private lateinit var searchLayoutManager: LinearLayoutManager
     private lateinit var searchRecyclerView: RecyclerView
 
@@ -41,9 +43,8 @@ class SearchFragment : BaseFragment() {
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
-        when (context) {
-            is SearchListener -> searchListener = context
-            else -> throw ClassCastException("$context does not implement SearchListener")
+        activity?.let {
+            navController = Navigation.findNavController(it, R.id.nav_host_fragment)
         }
     }
 
@@ -59,62 +60,40 @@ class SearchFragment : BaseFragment() {
             layoutManager = searchLayoutManager
         }
 
-        val autocompleteFromPlaceCallback = { words: List<String> ->
-            context?.let {
-                autocomplete_text_from_place.setAdapter(
-                    ArrayAdapter(it, android.R.layout.simple_dropdown_item_1line, words)
-                )
-            }
-        }
-
-        val autocompleteToPlaceCallback = { words: List<String> ->
-            context?.let {
-                autocomplete_text_to_place.setAdapter(
-                    ArrayAdapter(it, android.R.layout.simple_dropdown_item_1line, words)
-                )
-            }
-        }
-
         autocomplete_text_from_place.setText(searchBox.fromPlace)
         autocomplete_text_to_place.setText(searchBox.toPlace)
         edit_text_data_travel.setText(searchBox.travelTime)
 
-        autocomplete_text_from_place.addTextChangedListener(object : TextWatcher {
-
-            override fun onTextChanged(newText: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                val text = newText.toString()
-                searchBox.fromPlace = text
-                searchViewModel.findAutocomplete(text, autocompleteFromPlaceCallback)
+        autocomplete_text_from_place.setTextChangedListener { text ->
+            searchBox.fromPlace = text
+            searchViewModel.findAutocomplete(text) { words ->
+                context?.let {
+                    autocomplete_text_from_place.setAdapter(
+                        ArrayAdapter(it, android.R.layout.simple_dropdown_item_1line, words)
+                    )
+                }
             }
+        }
 
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun afterTextChanged(p0: Editable?) {}
-        })
-
-        autocomplete_text_to_place.addTextChangedListener(object : TextWatcher {
-
-            override fun onTextChanged(newText: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                val text = newText.toString()
-                searchBox.toPlace = text
-                searchViewModel.findAutocomplete(text, autocompleteToPlaceCallback)
+        autocomplete_text_to_place.setTextChangedListener { text ->
+            searchBox.toPlace = text
+            searchViewModel.findAutocomplete(text) { words ->
+                context?.let {
+                    autocomplete_text_to_place.setAdapter(
+                        ArrayAdapter(it, android.R.layout.simple_dropdown_item_1line, words)
+                    )
+                }
             }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun afterTextChanged(p0: Editable?) {}
-        })
+        }
 
         edit_text_data_travel.setOnClickListener {
             callDateTimePicker()
         }
 
         button_pick_up.setOnClickListener {
-            searchListener.openSearchTrips(
-                autocomplete_text_from_place.text.toString(),
-                autocomplete_text_to_place.text.toString(),
-                edit_text_data_travel.text.toString()
-            )
+            activity?.let {
+                navigateToSearchTrip()
+            }
         }
 
         autocomplete_text_from_place.setOnFocusChangeListener { textView, hasFocus ->
@@ -152,5 +131,14 @@ class SearchFragment : BaseFragment() {
         val inputMethodManager =
             context?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    private fun navigateToSearchTrip() {
+        val bundle = Bundle().apply {
+            putString(SearchTripsFragment.ARGUMENT_FROM_PLACE, autocomplete_text_from_place.text.toString())
+            putString(SearchTripsFragment.ARGUMENT_TO_PLACE, autocomplete_text_to_place.text.toString())
+            putString(SearchTripsFragment.ARGUMENT_TRAVEL_TIME, edit_text_data_travel.text.toString())
+        }
+        navController.navigate(R.id.action_searchFragment_to_searchTripsFragment, bundle)
     }
 }

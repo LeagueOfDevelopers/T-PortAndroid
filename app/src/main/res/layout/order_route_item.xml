@@ -10,7 +10,7 @@
         android:id="@+id/image_view_connection_top"
         android:layout_width="8dp"
         android:layout_height="24dp"
-        android:layout_marginStart="18dp"
+        android:layout_marginStart="22dp"
         android:background="@drawable/connection_rectangle_vertical_end"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
 
     <TextView
         android:id="@+id/text_view_route_name"
-        style="@style/TextViewSmallHeader"
+        style="@style/TextViewOrderSmallHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -46,7 +46,7 @@
         tools:text="@tools:sample/lorem" />
 
     <TextView
-        android:id="@+id/text_view_route_time_in_trip"
+        android:id="@+id/text_view_coming_order_is_paid"
         style="@style/TextViewTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,8 +59,8 @@
         style="@style/TextViewMoneyOnSearchRoute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/text_view_route_time_in_trip"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_route_time_in_trip"
+        app:layout_constraintStart_toStartOf="@+id/text_view_coming_order_is_paid"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_coming_order_is_paid"
         tools:text="@tools:sample/us_zipcodes" />
 
     <TextView
@@ -73,12 +73,11 @@
         app:layout_constraintTop_toTopOf="@+id/text_view_route_cost"
         tools:text="@tools:sample/lorem" />
 
-    <!-- TODO Find out what this arrow does -->
     <ImageView
         android:id="@+id/image_view_arrow"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="4dp"
         android:rotation="90"
         android:src="@drawable/ic_expand_less_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"

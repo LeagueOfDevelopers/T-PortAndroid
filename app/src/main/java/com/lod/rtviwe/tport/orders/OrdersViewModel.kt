@@ -4,16 +4,19 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.data.MockTrips
-import com.lod.rtviwe.tport.orders.items.OrderCardItem
+import com.lod.rtviwe.tport.orders.items.ComingOrderCardItem
+import com.lod.rtviwe.tport.orders.items.CurrentOrderCardItem
+import com.lod.rtviwe.tport.orders.items.HeaderItem
+import com.lod.rtviwe.tport.orders.items.HistoryOrderCardItem
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.Section
 import com.xwray.groupie.ViewHolder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 
-class OrdersViewModel(app: Application) : AndroidViewModel(app) {
+class OrdersViewModel(private val app: Application) : AndroidViewModel(app) {
 
     private val job = Job()
 
@@ -26,7 +29,15 @@ class OrdersViewModel(app: Application) : AndroidViewModel(app) {
 
     fun observeAdapter(owner: LifecycleOwner, ordersAdapter: GroupAdapter<ViewHolder>) {
         MockTrips.getItems().observe(owner, Observer { it ->
-            ordersAdapter.addAll(it.map { Section(OrderCardItem(it)) })
+            ordersAdapter.apply {
+                add(CurrentOrderCardItem(it[0]).apply {
+                    add(HeaderItem(app.getString(R.string.current_order)))
+                })
+                add(HeaderItem(app.getString(R.string.coming_order)))
+                addAll(it.map { ComingOrderCardItem(it) })
+                add(HeaderItem(app.getString(R.string.history)))
+                addAll(it.map { HistoryOrderCardItem(it) })
+            }
         })
     }
 }

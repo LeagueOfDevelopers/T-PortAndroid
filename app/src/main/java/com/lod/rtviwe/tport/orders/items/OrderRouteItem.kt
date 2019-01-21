@@ -3,7 +3,6 @@ package com.lod.rtviwe.tport.orders.items
 import androidx.core.widget.TextViewCompat
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Route
-import com.lod.rtviwe.tport.orders.OrderTripClickedListener
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
@@ -13,17 +12,9 @@ import kotlin.math.roundToInt
 
 class OrderRouteItem(private val route: Route) : Item() {
 
-    private lateinit var orderTripClickedListener: OrderTripClickedListener
-
     override fun getLayout() = R.layout.order_route_item
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        when (viewHolder.containerView.context) {
-            is OrderTripClickedListener -> orderTripClickedListener =
-                    viewHolder.containerView.context as OrderTripClickedListener
-            else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
-        }
-
         val imageResourceToSet = RouteIcons.getImageResource(route.transport.type)
         viewHolder.image_view_route_type.setImageResource(imageResourceToSet)
 
@@ -31,12 +22,12 @@ class OrderRouteItem(private val route: Route) : Item() {
         viewHolder.text_view_route_cost.text =
                 String.format(viewHolder.containerView.context.getString(R.string.money), route.cost.roundToInt())
 
-        // TODO make cool extension function
+        // TODO make cool extension function if needed
         val diff = route.arrivalDate.time - route.departureDate.time
         val hours = TimeUnit.MILLISECONDS.toHours(diff)
         val minutes = TimeUnit.MILLISECONDS.toMinutes(diff) - hours * 60
 
-        viewHolder.text_view_route_time_in_trip.text = String.format(
+        viewHolder.text_view_coming_order_is_paid.text = String.format(
             viewHolder.containerView.context.getString(R.string.time_in_travel),
 //            DateFormat.getTimeInstance().format(route.departureDate/*, route.arrivalDate*/)
             "${hours}ч ${minutes}мин"
@@ -50,5 +41,9 @@ class OrderRouteItem(private val route: Route) : Item() {
                     TextViewCompat.setTextAppearance(viewHolder.text_view_is_route_paid, R.style.TextViewIsNotPaid)
                     viewHolder.containerView.context.getString(R.string.not_paid)
                 }
+
+        viewHolder.image_view_arrow.setOnClickListener {
+
+        }
     }
 }

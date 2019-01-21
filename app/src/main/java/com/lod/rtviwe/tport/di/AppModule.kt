@@ -21,14 +21,20 @@ import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-val mainModule = module {
+val viewModelModule = module {
     viewModel<BonusesViewModel>()
     viewModel<OrdersViewModel>()
     viewModel<SearchViewModel>()
     viewModel<ProfileViewModel>()
     viewModel<RegisterViewModel>()
     viewModel<SearchTripsViewModel>()
-    single { Mask("+7 ([000]) [000]-[00]-[00]") }
+}
+
+val uiModule = module {
+    single { Mask("+7 ([000]) [000] [00] [00]") }
+}
+
+val networkModule = module {
     single {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())

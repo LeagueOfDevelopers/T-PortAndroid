@@ -13,7 +13,7 @@ import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.coroutines.*
 import org.koin.standalone.KoinComponent
-import org.koin.standalone.get
+import org.koin.standalone.inject
 import timber.log.Timber
 
 class SearchViewModel(private val app: Application) : AndroidViewModel(app), KoinComponent {
@@ -26,7 +26,7 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
         Timber.e("Error while getting autocomplete: $exception")
     }
 
-    private val autocompleteApi: AutocompleteApi = get()
+    private val autocompleteApi: AutocompleteApi by inject()
 
     override fun onCleared() {
         super.onCleared()
@@ -47,7 +47,7 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
 
             when (requestCode) {
                 200 -> {
-                    request.body()?.also { array ->
+                    request.body()?.let { array ->
                         Timber.v(array.toString())
                         callback(array.suggestions.map { it.value }.filter { it.length <= MAX_AUTOCOMPLETE_LENGTH })
                     }

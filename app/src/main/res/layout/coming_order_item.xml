@@ -9,10 +9,7 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="16dp"
     android:layout_marginBottom="8dp"
-    android:clickable="true"
-    android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:orientation="vertical"
     android:translationZ="2dp"
     app:cardCornerRadius="8dp">
 
@@ -33,15 +30,22 @@
             tools:text="@tools:sample/lorem" />
 
         <TextView
-            android:id="@+id/text_view_route_time"
-            style="@style/TextViewSmallHeader"
+            android:id="@+id/text_view_from_place"
+            style="@style/TextViewComingOrder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/text_view_coming_order_is_paid"
-            app:layout_constraintStart_toEndOf="@+id/text_view_coming_order_is_paid"
-            app:layout_constraintTop_toTopOf="@+id/text_view_coming_order_is_paid"
-            tools:text="@tools:sample/date/hhmm" />
+            app:layout_constraintStart_toStartOf="@+id/text_view_coming_order_is_paid"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_coming_order_is_paid"
+            tools:text="@tools:sample/lorem" />
+
+        <TextView
+            android:id="@+id/text_view_to_place"
+            style="@style/TextViewComingOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/text_view_coming_order_is_paid"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_from_place"
+            tools:text="@tools:sample/lorem" />
 
         <View
             android:id="@+id/divider_search_route_card"
@@ -54,7 +58,7 @@
             app:layout_constraintBottom_toTopOf="@+id/recycler_view_routes_in_item"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_coming_order_is_paid" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_to_place" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_routes_in_item"
@@ -62,10 +66,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:orientation="horizontal"
             android:fadingEdge="horizontal"
             android:fadingEdgeLength="30dp"
             android:fillViewport="false"
+            android:orientation="horizontal"
             android:requiresFadingEdge="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

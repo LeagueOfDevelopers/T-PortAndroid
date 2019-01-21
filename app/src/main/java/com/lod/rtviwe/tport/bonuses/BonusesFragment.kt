@@ -11,6 +11,6 @@ class BonusesFragment : BaseFragment() {
     override fun getLayout() = R.layout.bonuses_fragment
 
     override fun scrollToTop() {
-        // TODO
+
     }
 }

@@ -1,11 +1,9 @@
 package com.lod.rtviwe.tport.search.searchtrip
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +11,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.network.searchTrips.TripsRequest
-import com.lod.rtviwe.tport.search.SearchListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.filter_bottom_sheet.*
@@ -26,8 +23,6 @@ class SearchTripsFragment : BaseFragment() {
     private val searchRoutesViewModel by viewModel<SearchTripsViewModel>()
     private var searchRouteCardsAdapter = GroupAdapter<ViewHolder>()
 
-    private lateinit var searchTripClickedListener: SearchTripClickedListener
-    private lateinit var searchListener: SearchListener
     private lateinit var searchRoutesLayoutManager: LinearLayoutManager
     private lateinit var searchRoutesRecyclerView: RecyclerView
     private lateinit var filterBottomSheet: BottomSheetBehavior<ConstraintLayout>
@@ -40,20 +35,6 @@ class SearchTripsFragment : BaseFragment() {
 
     override fun scrollToTop() {
         searchRoutesLayoutManager.smoothScrollToPosition(searchRoutesRecyclerView, RecyclerView.State(), 0)
-    }
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-
-        when (context) {
-            is SearchListener -> searchListener = context
-            else -> throw ClassCastException("$context does not implement SearchListener")
-        }
-
-        when (context) {
-            is SearchTripClickedListener -> searchTripClickedListener = context
-            else -> throw ClassCastException("$context does not implement SearchTripClickedListener")
-        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

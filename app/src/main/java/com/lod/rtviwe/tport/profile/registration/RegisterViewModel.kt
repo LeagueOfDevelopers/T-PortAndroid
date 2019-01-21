@@ -8,7 +8,7 @@ import com.lod.rtviwe.tport.network.register.RegistrationApi
 import com.lod.rtviwe.tport.network.register.ResponseToken
 import kotlinx.coroutines.*
 import org.koin.standalone.KoinComponent
-import org.koin.standalone.get
+import org.koin.standalone.inject
 import timber.log.Timber
 
 class RegisterViewModel(app: Application) : AndroidViewModel(app), KoinComponent {
@@ -33,7 +33,7 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app), KoinComponent
         Timber.e("Error while sending name: $exception")
     }
 
-    private val registrationApi: RegistrationApi = get()
+    private val registrationApi: RegistrationApi by inject()
 
     override fun onCleared() {
         super.onCleared()
@@ -42,13 +42,13 @@ class RegisterViewModel(app: Application) : AndroidViewModel(app), KoinComponent
         jobSendName.cancel()
     }
 
-    fun login(onCodeCheckListener: CheckCodeCallback, loginConfirmationRequest: LoginConfirmationRequest) {
+    fun login(loginConfirmationRequest: LoginConfirmationRequest, success: (token: String) -> Unit, fail: () -> Unit) {
         scopeSendCode.launch(handlerSendCode) {
             val responseToken = checkCode(loginConfirmationRequest)
             if (responseToken != null) {
-                onCodeCheckListener.pass(responseToken.token)
+                success(responseToken.token)
             } else {
-                onCodeCheckListener.fail()
+                fail()
             }
         }
     }

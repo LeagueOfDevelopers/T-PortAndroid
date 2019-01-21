@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import kotlinx.android.synthetic.main.register_step_three_fragment.*
@@ -15,23 +17,22 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class RegisterStepThreeFragment : BaseFragment() {
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
-    private lateinit var listenerStepThree: RegisterStepThreeListener
 
+    private lateinit var navController: NavController
     private var phoneNumber: String? = null
 
     override fun getLayout() = R.layout.register_step_three_fragment
 
-    override fun scrollToTop() {
-        // TODO if needed
-    }
-
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
-        when (context) {
-            is RegisterStepThreeListener -> listenerStepThree = context
-            else -> throw ClassCastException("$context does not implement RegisterStepThreeListener")
+        activity?.let {
+            navController = Navigation.findNavController(it, R.id.nav_host_fragment)
         }
+    }
+
+    override fun scrollToTop() {
+        scroll_view_step_three.smoothScrollTo(0, 0)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -56,8 +57,8 @@ class RegisterStepThreeFragment : BaseFragment() {
     private fun setupNextStep() {
         phoneNumber?.let {
             registerViewModel.sendName(it, edit_text_enter_name.text.toString())
+            navController.navigate(R.id.action_registerStepThreeFragment_to_profileFragment)
         }
-        listenerStepThree.onRegisterStepThreeContinue()
     }
 
     private fun showKeyboard() {

@@ -1,6 +1,7 @@
 package com.lod.rtviwe.tport.search.searchtrip.items
 
 import android.view.View
+import android.view.ViewGroup
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Route
 import com.lod.rtviwe.tport.utils.RouteIcons
@@ -21,7 +22,7 @@ class RouteItem(private val route: Route, private val isFirst: Boolean, private 
             viewHolder.image_view_connection_start.background =
                     viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_horizontal_start)
         } else {
-            viewHolder.image_view_connection_start.visibility = View.GONE
+            viewHolder.image_view_connection_start.visibility = View.INVISIBLE
         }
 
         if (!isLast) {
@@ -29,6 +30,10 @@ class RouteItem(private val route: Route, private val isFirst: Boolean, private 
                     viewHolder.containerView.context.getDrawable(R.drawable.connection_rectangle_horizontal_end)
         } else {
             viewHolder.image_view_connection_end.visibility = View.GONE
+            val imageViewRoute = viewHolder.image_view_route_item
+            val params = imageViewRoute.layoutParams as ViewGroup.MarginLayoutParams
+            params.marginEnd = 64
+            imageViewRoute.requestLayout()
         }
 
         viewHolder.text_view_route_type.text = route.transport.name

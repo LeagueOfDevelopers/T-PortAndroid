@@ -59,4 +59,8 @@
     <string name="cost">Стоимость</string>
     <string name="сomfort">Комфорт</string>
     <string name="duration_trip">Длительность поездки</string>
+    <string name="extended_fab_confirm">Подтвердить</string>
+    <string name="current_order">Текущий заказ:</string>
+    <string name="coming_order">Предстоящие поездки:</string>
+    <string name="history">История:</string>
 </resources>

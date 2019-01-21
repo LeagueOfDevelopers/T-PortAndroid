@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.network.register.LoginConfirmationRequest
@@ -28,25 +30,7 @@ class RegisterStepTwoFragment : BaseFragment() {
     private val phoneNumberMask by inject<Mask>()
     private val authService by inject<AuthService>()
 
-    private val onCodePassedListener = object : CheckCodeCallback {
-
-        override fun pass(token: String) {
-            if (activity != null) {
-                authService.putToken(token)
-            } else {
-                Timber.e("Fragment has been closed")
-            }
-
-            setupNextStep()
-        }
-
-        override fun fail() {
-            Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
-        }
-    }
-    // eventbus?
-
-    private lateinit var listenerStepTwo: RegisterStepTwoListener
+    private lateinit var navController: NavController
 
     private var phoneNumber = ""
     private var code = ""
@@ -54,15 +38,14 @@ class RegisterStepTwoFragment : BaseFragment() {
     override fun getLayout() = R.layout.register_step_two_fragment
 
     override fun scrollToTop() {
-        // TODO if needed
+        scroll_view_step_two.smoothScrollTo(0, 0)
     }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
-        when (context) {
-            is RegisterStepTwoListener -> listenerStepTwo = context
-            else -> throw ClassCastException("$context does not implement RegisterStepTwoListener")
+        activity?.let {
+            navController = Navigation.findNavController(it, R.id.nav_host_fragment)
         }
     }
 
@@ -111,9 +94,17 @@ class RegisterStepTwoFragment : BaseFragment() {
 
         if (checkCodeLength(code)) {
             registerViewModel.login(
-                onCodePassedListener,
-                LoginConfirmationRequest(phoneNumber.toPhone(), code)
-            )
+                LoginConfirmationRequest(phoneNumber.toPhone(), code), { token ->
+                    if (activity != null) {
+                        authService.putToken(token)
+                    } else {
+                        Timber.e("Fragment has been closed")
+                    }
+
+                    setupNextStep()
+                }, {
+                    Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
+                })
         }
     }
 
@@ -124,7 +115,10 @@ class RegisterStepTwoFragment : BaseFragment() {
     private fun checkCodeLength(code: String) = (code.length == CODE_LENGTH)
 
     private fun setupNextStep() {
-        listenerStepTwo.onRegisterStepTwoContinue(phoneNumber)
+        activity?.let {
+            val bundle = Bundle().apply { putString(RegisterStepTwoFragment.ARGUMENT_PHONE_NUMBER, phoneNumber) }
+            navController.navigate(R.id.action_registerStepTwoFragment_to_registerStepThreeFragment, bundle)
+        }
     }
 
     private fun updateCodeImages(text: String) {

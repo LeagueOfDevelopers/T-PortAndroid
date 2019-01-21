@@ -30,4 +30,8 @@
         <item name="android:typeface">sans</item>
     </style>
 
+    <style name="ToggleButtonFilter" parent="Theme.MaterialComponents.Light">
+        <!-- TODO -->
+    </style>
+
 </resources>
