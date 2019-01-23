@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 interface AutocompleteApi {
 
-    @POST("/autocompleteSuggestions/api/4_1/rs/suggest/address/")
+    @POST("/suggestions/api/4_1/rs/suggest/address/")
     fun getAutocomplete(
         @Body body: AutocompleteRequest
     ): Deferred<Response<AutocompleteResponse>>

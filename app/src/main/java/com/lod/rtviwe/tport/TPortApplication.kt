@@ -23,6 +23,6 @@ class TPortApplication : Application() {
     companion object {
 
         const val TPORT_URL = "http://tport-test.lod-misis.ru/"
-        const val AUTOCOMPLETE_URL = "https://autocompleteSuggestions.dadata.ru/"
+        const val AUTOCOMPLETE_URL = "https://suggestions.dadata.ru/"
     }
 }

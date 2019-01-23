@@ -52,7 +52,7 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
                 200 -> {
                     request.body()?.let { array ->
                         Timber.v(array.toString())
-                        callback(array.autocompleteSuggestions.map { it.value }.filter { it.length <= MAX_AUTOCOMPLETE_LENGTH })
+                        callback(array.suggestions.map { it.value }.filter { it.length <= MAX_AUTOCOMPLETE_LENGTH })
                     }
                 }
                 else -> Timber.e("Unknown error happened on dadata.ru")
