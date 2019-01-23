@@ -5,9 +5,11 @@
     android:id="@+id/scroll_view_step_one"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -21,7 +23,6 @@
             android:layout_marginEnd="16dp"
             android:text="@string/welcome_message"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,25 +35,25 @@
             android:layout_marginTop="40dp"
             android:layout_marginEnd="16dp"
             android:text="@string/enter_phone_number"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_welcome_message" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <com.lod.rtviwe.tport.profile.registration.PhoneNumberEditText
             android:id="@+id/edit_text_phone_number"
             style="@style/EditTextPhoneNumber"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:digits="1234567890+-() "
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_please_enter_phone"
-            tools:text="@tools:sample/us_phones" />
+            tools:text="+7 (800) 555-35-35" />
 
         <TextView
             android:id="@+id/text_view_send_code"
@@ -63,25 +64,32 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="@string/text_send_code"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_phone_number" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_register_step_one_continue"
-            style="@style/ButtonContinue"
-            android:layout_width="wrap_content"
+            android:id="@+id/fab_register_step_one_next"
+            style="@style/ExtendedFab"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/button_continue"
+            android:background="@drawable/extended_fab_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/extended_fab_confirm"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_send_code" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_send_code"
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,16 +5,16 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.lod.rtviwe.tport.BuildConfig
 import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.bonuses.BonusesViewModel
-import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
-import com.lod.rtviwe.tport.network.register.RegistrationApi
-import com.lod.rtviwe.tport.network.searchTrips.SearchTripsApi
 import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
+import com.lod.rtviwe.tport.profile.registration.RegistrationApi
+import com.lod.rtviwe.tport.search.AutocompleteApi
 import com.lod.rtviwe.tport.search.SearchViewModel
-import com.lod.rtviwe.tport.search.searchbox.SearchBox
+import com.lod.rtviwe.tport.search.searchtrip.SearchTripsApi
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
 import com.lod.rtviwe.tport.utils.AuthService
+import com.lod.rtviwe.tport.utils.CountryUtils
 import com.redmadrobot.inputmask.helper.Mask
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
@@ -22,15 +22,20 @@ import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-val mainModule = module {
+val viewModelModule = module {
     viewModel<BonusesViewModel>()
     viewModel<OrdersViewModel>()
     viewModel<SearchViewModel>()
     viewModel<ProfileViewModel>()
     viewModel<RegisterViewModel>()
     viewModel<SearchTripsViewModel>()
-    single { SearchBox("", "", "") }
-    single { Mask("+7 ([000]) [000]-[00]-[00]") }
+}
+
+val uiModule = module {
+    single { Mask("+7 ([000]) [000] [00] [00]") }
+}
+
+val networkModule = module {
     single {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -69,5 +74,9 @@ val mainModule = module {
             .build()
             .create(SearchTripsApi::class.java)
     }
+}
+
+val utilModule = module {
     single { AuthService(get()) }
+    single { CountryUtils(get()) }
 }

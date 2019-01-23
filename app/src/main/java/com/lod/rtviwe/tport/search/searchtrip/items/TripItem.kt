@@ -1,11 +1,14 @@
 package com.lod.rtviwe.tport.search.searchtrip.items
 
-import android.view.MotionEvent
+import android.app.Activity
+import android.os.Bundle
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Trip
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripClickedListener
+import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
@@ -17,20 +20,17 @@ import kotlin.math.roundToInt
 
 class TripItem(private val trip: Trip) : Item() {
 
-    private lateinit var searchTripClickedListener: SearchTripClickedListener
+    private lateinit var navController: NavController
 
     override fun getLayout() = R.layout.search_trip_card
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        when (viewHolder.containerView.context) {
-            is SearchTripClickedListener -> searchTripClickedListener =
-                    viewHolder.containerView.context as SearchTripClickedListener
-            else -> throw ClassCastException("${viewHolder.containerView.context} does not implement SearchListener")
-        }
+        navController =
+                Navigation.findNavController(viewHolder.containerView.context as Activity, R.id.nav_host_fragment)
 
         viewHolder.text_view_route_time.text =
                 SimpleDateFormat("hh:mm", Locale.getDefault()).format(trip.routes[0].departureDate)
-        viewHolder.text_view_search_route_cost.text =
+        viewHolder.text_view_cost.text =
                 String.format(viewHolder.containerView.context.getString(R.string.money), trip.cost.roundToInt())
 
         val searchRouteItemAdapter = GroupAdapter<ViewHolder>()
@@ -43,20 +43,14 @@ class TripItem(private val trip: Trip) : Item() {
             searchRouteItemAdapter.add(Section(RouteItem(route, isFirst, isLast)))
         }
 
-        viewHolder.recycler_view_routes_in_item.apply {
+        viewHolder.recycler_view_routes.apply {
             adapter = searchRouteItemAdapter
             layoutManager = searchRoutesLayoutManager
         }
 
-        viewHolder.card_trip_item.setOnClickListener {
-            searchTripClickedListener.openTripDetailsFragmentFromSearch(trip)
-        }
-
-        viewHolder.recycler_view_routes_in_item.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                searchTripClickedListener.openTripDetailsFragmentFromSearch(trip)
-            }
-            true
+        viewHolder.card_search_trip_item.setOnClickListener {
+            val bundle = Bundle().apply { putParcelable(TripDetailsFragment.ARGUMENT_TRIP, trip) }
+            navController.navigate(R.id.action_searchTripsFragment_to_tripDetailsFragment, bundle)
         }
     }
 }

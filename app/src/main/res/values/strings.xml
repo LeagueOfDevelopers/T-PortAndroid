@@ -48,4 +48,19 @@
     <string name="is_paid">Оплачено</string>
     <string name="not_paid">Не оплачено!</string>
     <string name="money" translatable="false">%1$d ₽</string>
+    <string name="hint_name">Имя</string>
+    <string name="one_direction">В одну сторону</string>
+    <string name="both_directions">Туда-обратно</string>
+    <string name="type_of_transports_prefer">Предпочитаемые виды транспорта:</string>
+    <string name="avia">Авиа</string>
+    <string name="taxi">Такси</string>
+    <string name="trains">Поезда</string>
+    <string name="baggage">Багаж</string>
+    <string name="cost">Стоимость</string>
+    <string name="сomfort">Комфорт</string>
+    <string name="duration_trip">Длительность поездки</string>
+    <string name="extended_fab_confirm">Подтвердить</string>
+    <string name="current_order">Текущий заказ:</string>
+    <string name="coming_order">Предстоящие поездки:</string>
+    <string name="history">История:</string>
 </resources>

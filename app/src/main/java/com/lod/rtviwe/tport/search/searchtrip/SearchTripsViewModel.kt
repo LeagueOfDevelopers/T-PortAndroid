@@ -5,14 +5,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.data.MockTrips
-import com.lod.rtviwe.tport.network.searchTrips.SearchTripsApi
-import com.lod.rtviwe.tport.network.searchTrips.TripsRequest
 import com.lod.rtviwe.tport.search.searchtrip.items.TripItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.coroutines.*
 import org.koin.standalone.KoinComponent
-import org.koin.standalone.get
+import org.koin.standalone.inject
 import timber.log.Timber
 
 class SearchTripsViewModel(app: Application) : AndroidViewModel(app), KoinComponent {
@@ -25,7 +23,7 @@ class SearchTripsViewModel(app: Application) : AndroidViewModel(app), KoinCompon
         Timber.e("Error while getting trips: $exception")
     }
 
-    private val searchTripsApi: SearchTripsApi = get()
+    private val searchTripsApi: SearchTripsApi by inject()
 
     override fun onCleared() {
         super.onCleared()

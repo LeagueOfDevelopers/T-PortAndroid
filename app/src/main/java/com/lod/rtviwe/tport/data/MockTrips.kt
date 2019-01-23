@@ -130,6 +130,37 @@ object MockTrips : TripsProvider {
                             ),
                             getDatePlus(2, 30),
                             getDatePlus(4, 55)
+                        ),
+                        Route(
+                            "stub id",
+                            Transport(
+                                "UberX",
+                                TransportationType.TAXI
+                            ),
+                            350.0,
+                            Destination(
+                                Place(
+                                    "Отель \"Галерея\"",
+                                    "Moscow",
+                                    "MOW",
+                                    Coordinates(
+                                        52.0,
+                                        69.69
+                                    )
+                                ),
+                                Place(
+                                    "Домодедово",
+                                    "MOW",
+                                    "DOM",
+                                    Coordinates(
+                                        69.69,
+                                        14.88
+                                    )
+                                )
+                            ),
+                            Date(),
+                            getDatePlus(1, 10),
+                            true
                         )
                     ),
                     700.0
@@ -216,7 +247,8 @@ object MockTrips : TripsProvider {
                                 )
                             ),
                             Date(),
-                            Date()
+                            Date(),
+                            true
                         ),
                         Route(
                             "stub id",
@@ -246,7 +278,8 @@ object MockTrips : TripsProvider {
                                 )
                             ),
                             Date(),
-                            Date()
+                            Date(),
+                            true
                         )
                     ),
                     700.0

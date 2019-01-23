@@ -4,120 +4,110 @@
     <style name="TextViewOnSearchItem" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewOnPopularItem" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewTitleItem" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">24sp</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TextViewOrderItemTitle" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="TextViewWelcomeMessage" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewInformation" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/colorSecondTest</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewAdditionalInformation" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorSecondTest</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewHeader" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">28sp</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewSmallHeader" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">21sp</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TextViewOrderSmallHeader" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="TextViewLightHeader" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/colorLightHeader</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewTime" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/colorLightHeader</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewOnProfileSetting" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewAddNew" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewIsPaid" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewIsNotPaid" parent="Theme.MaterialComponents.Light">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@android:color/holo_orange_dark</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewMoneyOnSearchRoute" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">21sp</item>
         <item name="android:textColor">@android:color/holo_orange_dark</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewRouteItem" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">11sp</item>
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
     </style>
 
     <style name="TextViewRouteItemCost" parent="Theme.MaterialComponents.Light">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorLightHeader</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TextViewComingOrder" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextViewHistoryOrder" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorLightHeader</item>
+    </style>
+
+    <style name="TextViewExtendedFab" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

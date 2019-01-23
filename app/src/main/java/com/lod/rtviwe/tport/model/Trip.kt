@@ -9,4 +9,7 @@ data class Trip(
     val destination: Destination,
     val routes: List<Route>,
     val cost: Double
-) : Parcelable
+) : Parcelable {
+
+    fun isPaid() = routes.all { it.isPaid }
+}
