@@ -1,6 +1,6 @@
 package com.lod.rtviwe.tport.search
 
-data class AutoCompleteData(
+data class Data(
     val area: Any,
     val area_fias_id: Any,
     val area_kladr_id: Any,
