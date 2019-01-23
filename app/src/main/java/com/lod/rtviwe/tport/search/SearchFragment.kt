@@ -17,6 +17,7 @@ import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
 import com.lod.rtviwe.tport.utils.setTextChangedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
+import kotlinx.android.synthetic.main.header_item.*
 import kotlinx.android.synthetic.main.search_box_item.*
 import kotlinx.android.synthetic.main.search_fragment.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -58,7 +59,8 @@ class SearchFragment : BaseFragment() {
         autocomplete_text_from_place.setText(searchBox.fromPlace)
         autocomplete_text_to_place.setText(searchBox.toPlace)
         edit_text_data_travel.setText(searchBox.travelTime)
-
+        text_view_header.text = getString(R.string.popular_title_item)
+        
         autocomplete_text_from_place.setTextChangedListener { text ->
             searchBox.fromPlace = text
             searchViewModel.findAutocomplete(text) { words ->

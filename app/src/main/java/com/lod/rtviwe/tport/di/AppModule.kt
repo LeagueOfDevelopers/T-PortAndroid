@@ -10,6 +10,7 @@ import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
 import com.lod.rtviwe.tport.profile.registration.RegistrationApi
 import com.lod.rtviwe.tport.search.AutocompleteApi
+import com.lod.rtviwe.tport.search.AutocompleteRepository
 import com.lod.rtviwe.tport.search.SearchViewModel
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsApi
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
@@ -74,6 +75,10 @@ val networkModule = module {
             .build()
             .create(SearchTripsApi::class.java)
     }
+}
+
+val repositoryModule = module {
+    factory { AutocompleteRepository() }
 }
 
 val utilModule = module {

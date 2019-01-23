@@ -1,7 +1,7 @@
 package com.lod.rtviwe.tport.search
 
 data class AutocompleteResponse(
-    val suggestions: Array<Suggestion>
+    val suggestions: Array<AutocompleteSuggestion>
 ) {
 
     override fun equals(other: Any?): Boolean {
