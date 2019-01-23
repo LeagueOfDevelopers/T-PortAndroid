@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.view
+package com.lod.rtviwe.tport.profile.registration
 
 import android.content.Context
 import android.text.Editable
@@ -8,6 +8,7 @@ import androidx.core.content.res.ResourcesCompat
 import com.google.android.material.textfield.TextInputEditText
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.utils.CountryUtils
+import com.redmadrobot.inputmask.MaskedTextChangedListener
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 
@@ -47,5 +48,14 @@ class PhoneNumberEditText : TextInputEditText, KoinComponent {
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         })
+
+        hint = MaskedTextChangedListener.installOn(
+            this,
+            "+7 ([000]) [000] [00] [00]",
+            object : MaskedTextChangedListener.ValueListener {
+                override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
+
+                }
+            }).placeholder()
     }
 }

@@ -2,10 +2,6 @@ package com.lod.rtviwe.tport.profile.registration
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.lod.rtviwe.tport.network.register.LoginConfirmationRequest
-import com.lod.rtviwe.tport.network.register.LoginRequest
-import com.lod.rtviwe.tport.network.register.RegistrationApi
-import com.lod.rtviwe.tport.network.register.ResponseToken
 import kotlinx.coroutines.*
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject

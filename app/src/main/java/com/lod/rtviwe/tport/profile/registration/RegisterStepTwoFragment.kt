@@ -11,7 +11,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.network.register.LoginConfirmationRequest
 import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.lod.rtviwe.tport.utils.toPhone
@@ -99,7 +98,8 @@ class RegisterStepTwoFragment : BaseFragment() {
                     setupNextStep()
                 }, {
                     Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
-                })
+                }
+            )
         }
     }
 

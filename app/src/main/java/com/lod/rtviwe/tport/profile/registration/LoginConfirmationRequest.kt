@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.network.register
+package com.lod.rtviwe.tport.profile.registration
 
 data class LoginConfirmationRequest(
     val phone: String,

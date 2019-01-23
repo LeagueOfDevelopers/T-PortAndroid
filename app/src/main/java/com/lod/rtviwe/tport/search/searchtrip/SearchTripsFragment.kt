@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.network.searchTrips.TripsRequest
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.filter_bottom_sheet.*
@@ -66,6 +65,7 @@ class SearchTripsFragment : BaseFragment() {
             layoutManager = searchRoutesLayoutManager
         }
 
+        //Try bottom sheet dialog
         filterBottomSheet = BottomSheetBehavior.from(filter_search_trips_bottom_sheet)
         filterBottomSheet.state = BottomSheetBehavior.STATE_HIDDEN
 

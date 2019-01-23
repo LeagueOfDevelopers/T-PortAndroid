@@ -1,7 +1,7 @@
-package com.lod.rtviwe.tport.network.autocomplete
+package com.lod.rtviwe.tport.search
 
 data class AutocompleteResponse(
-    val suggestions: Array<Suggestion>
+    val autocompleteSuggestions: Array<AutocompleteSuggestion>
 ) {
 
     override fun equals(other: Any?): Boolean {
@@ -10,12 +10,12 @@ data class AutocompleteResponse(
 
         other as AutocompleteResponse
 
-        if (!suggestions.contentEquals(other.suggestions)) return false
+        if (!autocompleteSuggestions.contentEquals(other.autocompleteSuggestions)) return false
 
         return true
     }
 
     override fun hashCode(): Int {
-        return suggestions.contentHashCode()
+        return autocompleteSuggestions.contentHashCode()
     }
 }

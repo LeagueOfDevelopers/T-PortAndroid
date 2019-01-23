@@ -40,7 +40,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_welcome_message" />
 
-        <com.lod.rtviwe.tport.view.PhoneNumberEditText
+        <com.lod.rtviwe.tport.profile.registration.PhoneNumberEditText
             android:id="@+id/edit_text_phone_number"
             style="@style/EditTextPhoneNumber"
             android:layout_width="match_parent"

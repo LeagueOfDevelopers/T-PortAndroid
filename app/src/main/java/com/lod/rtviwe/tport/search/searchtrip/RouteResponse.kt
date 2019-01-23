@@ -1,6 +1,6 @@
-package com.lod.rtviwe.tport.network.searchTrips
+package com.lod.rtviwe.tport.search.searchtrip
 
-data class Route(
+data class RouteResponse(
     val arrivalDate: String,
     val cost: Int,
     val departureDate: String,

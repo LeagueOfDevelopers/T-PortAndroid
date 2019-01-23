@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.network.autocomplete
+package com.lod.rtviwe.tport.search
 
 data class AutocompleteRequest(
     val query: String,

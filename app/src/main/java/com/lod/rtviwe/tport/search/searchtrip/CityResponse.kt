@@ -1,6 +1,6 @@
-package com.lod.rtviwe.tport.network.searchTrips
+package com.lod.rtviwe.tport.search.searchtrip
 
-data class City(
+data class CityResponse(
     val region: String,
     val name: String,
     val iataCode: String

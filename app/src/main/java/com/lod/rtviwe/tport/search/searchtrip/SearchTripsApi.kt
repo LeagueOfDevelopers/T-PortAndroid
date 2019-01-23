@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.network.searchTrips
+package com.lod.rtviwe.tport.search.searchtrip
 
 import kotlinx.coroutines.Deferred
 import retrofit2.Response

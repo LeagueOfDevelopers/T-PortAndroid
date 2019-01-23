@@ -5,13 +5,13 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.lod.rtviwe.tport.BuildConfig
 import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.bonuses.BonusesViewModel
-import com.lod.rtviwe.tport.network.autocomplete.AutocompleteApi
-import com.lod.rtviwe.tport.network.register.RegistrationApi
-import com.lod.rtviwe.tport.network.searchTrips.SearchTripsApi
 import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
+import com.lod.rtviwe.tport.profile.registration.RegistrationApi
+import com.lod.rtviwe.tport.search.AutocompleteApi
 import com.lod.rtviwe.tport.search.SearchViewModel
+import com.lod.rtviwe.tport.search.searchtrip.SearchTripsApi
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
 import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.CountryUtils

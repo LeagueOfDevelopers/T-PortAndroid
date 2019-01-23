@@ -6,13 +6,17 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+def keystorePropertiesFile = rootProject.file("secret.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     signingConfigs {
         config {
             keyAlias 'key0'
-            keyPassword 'NDjRcZz9LkyR7G37DkuYKbSvfs7tSpWPDcGBaWPdLzSzHGJv8mMKpet95jqrBksE'
-            storeFile file('/home/rtviwe/tport.jks')
-            storePassword 'nABv4QQP9DBZYBjSmjWddUKWGpGP4tzRLwUJKR4XH7ggMQNQ3sN4XuzY7qJx5cVd'
+            keyPassword keystoreProperties['PASSWORD_ONE']
+            storeFile file(keystoreProperties['SIGN_DIR'])
+            storePassword keystoreProperties['PASSWORD_TWO']
         }
     }
     compileSdkVersion 28
@@ -27,13 +31,14 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "DADATA_API", "\"Token 1cf94e840097454101fdbb0a52ce1ec7ee7ce6ea\""
+            minifyEnabled false
+            buildConfigField "String", "DADATA_API", keystoreProperties['DADATA_API']
             signingConfig signingConfigs.config
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "DADATA_API", "\"Token 1cf94e840097454101fdbb0a52ce1ec7ee7ce6ea\""
+            buildConfigField "String", "DADATA_API", keystoreProperties['DADATA_API']
             signingConfig signingConfigs.config
         }
     }

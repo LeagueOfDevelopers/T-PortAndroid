@@ -6,10 +6,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.network.register.LoginRequest
 import com.lod.rtviwe.tport.utils.AuthService
+import com.lod.rtviwe.tport.utils.setTextChangedListener
 import com.lod.rtviwe.tport.utils.toPhone
-import com.redmadrobot.inputmask.MaskedTextChangedListener
 import kotlinx.android.synthetic.main.register_step_one_fragment.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -48,16 +47,11 @@ class RegisterStepOneFragment : BaseFragment() {
             }
         }
 
-        edit_text_phone_number.hint = MaskedTextChangedListener.installOn(
-            edit_text_phone_number,
-            "+7 ([000]) [000] [00] [00]",
-            object : MaskedTextChangedListener.ValueListener {
-                override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
-                    if (extractedValue.isNotEmpty()) {
-                        phoneNumber = extractedValue
-                    }
-                }
-            }).placeholder()
+        edit_text_phone_number.setTextChangedListener {
+            if (it.isNotEmpty()) {
+                phoneNumber = it
+            }
+        }
         edit_text_phone_number.requestFocus()
     }
 
@@ -95,7 +89,7 @@ class RegisterStepOneFragment : BaseFragment() {
     companion object {
 
         const val ARGUMENT_PHONE_NUMBER = "REGISTER_PHONE_NUMBER_ARGUMENT"
-        const val PHONE_NUMBER_LENGTH = 10
+        const val PHONE_NUMBER_LENGTH = 18
 
         private const val STATE_PHONE_NUMBER = "PHONE_NUMBER_STATE"
     }
