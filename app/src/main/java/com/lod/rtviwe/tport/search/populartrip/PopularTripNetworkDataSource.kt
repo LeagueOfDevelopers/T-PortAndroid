@@ -1,26 +1,34 @@
 package com.lod.rtviwe.tport.search.populartrip
 
 import com.lod.rtviwe.tport.data.MockTrips
-import kotlinx.coroutines.*
-import timber.log.Timber
+import com.lod.rtviwe.tport.utils.CollectionJob
+import kotlinx.coroutines.launch
 
 class PopularTripNetworkDataSource : PopularTripDataSource {
 
-    private val jobPopularTrips = Job()
+    private val collectionJob = CollectionJob()
 
-    private val scopePopularTrips = CoroutineScope(Dispatchers.Main + jobPopularTrips)
+    init {
 
-    private val handlerPopularTrips = CoroutineExceptionHandler { _, exception ->
-        Timber.e("Error while getting popular trips: $exception")
+        collectionJob.putJobs(JOB_POPULAR_TRIPS)
     }
 
     override fun setPopularTrips(callback: PopularTripDataSource.PopularTripCallback) {
-        scopePopularTrips.launch(handlerPopularTrips) {
-            callback.getPopularTrips(MockTrips.getItems())
+        val job = collectionJob.getJob(JOB_POPULAR_TRIPS)
+
+        job?.let {
+            it.scope.launch(it.handler) {
+                callback.getPopularTrips(MockTrips.getItems())
+            }
         }
     }
 
     override fun clear() {
-        jobPopularTrips.cancel()
+        collectionJob.clear()
+    }
+
+    companion object {
+
+        private const val JOB_POPULAR_TRIPS = "POPULAR_TRIPS_JOB"
     }
 }

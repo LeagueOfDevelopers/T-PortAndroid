@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.profile.registration
+package com.lod.rtviwe.tport.profile.registration.stepone
 
 import android.content.Context
 import android.text.Editable

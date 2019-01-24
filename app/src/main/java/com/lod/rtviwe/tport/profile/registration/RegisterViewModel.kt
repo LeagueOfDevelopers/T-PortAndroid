@@ -1,85 +1,80 @@
 package com.lod.rtviwe.tport.profile.registration
 
 import android.app.Application
+import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
-import kotlinx.coroutines.*
+import androidx.navigation.NavController
+import com.lod.rtviwe.tport.R
+import com.lod.rtviwe.tport.profile.registration.stepone.RegisterStepOneFragment
+import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneNetworkDataSource
+import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneRequest
+import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameNetworkDataSource
+import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameRequest
+import com.lod.rtviwe.tport.profile.registration.steptwo.RegisterStepTwoFragment
+import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeDataSource
+import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeNetworkDataSource
+import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeRequest
+import com.lod.rtviwe.tport.utils.AuthService
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
-import timber.log.Timber
 
-class RegisterViewModel(app: Application) : AndroidViewModel(app), KoinComponent {
+class RegisterViewModel(private val app: Application) : AndroidViewModel(app), KoinComponent {
 
-    private val jobSendCode = Job()
-    private val jobSendPhone = Job()
-    private val jobSendName = Job()
-
-    private val scopeSendCode = CoroutineScope(Dispatchers.Main + jobSendCode)
-    private val scopeSendPhone = CoroutineScope(Dispatchers.Main + jobSendPhone)
-    private val scopeSendName = CoroutineScope(Dispatchers.Main + jobSendName)
-
-    private val handlerSendCode = CoroutineExceptionHandler { _, exception ->
-        Timber.e("Error while sending phone and code: $exception")
-    }
-
-    private val handlerSendPhone = CoroutineExceptionHandler { _, exception ->
-        Timber.e("Error while sending phone: $exception")
-    }
-
-    private val handlerSendName = CoroutineExceptionHandler { _, exception ->
-        Timber.e("Error while sending name: $exception")
-    }
-
-    private val registrationApi: RegistrationApi by inject()
+    private val authService by inject<AuthService>()
+    private val sendPhoneNetworkDataSource by inject<SendPhoneNetworkDataSource>()
+    private val sendNameNetworkDataSource by inject<SendNameNetworkDataSource>()
+    private val sendCodeNetworkDataSource by inject<SendCodeNetworkDataSource>()
 
     override fun onCleared() {
         super.onCleared()
-        jobSendCode.cancel()
-        jobSendPhone.cancel()
-        jobSendName.cancel()
+        sendPhoneNetworkDataSource.clear()
     }
 
-    fun login(loginConfirmationRequest: LoginConfirmationRequest, success: (token: String) -> Unit, fail: () -> Unit) {
-        scopeSendCode.launch(handlerSendCode) {
-            val responseToken = checkCode(loginConfirmationRequest)
-            if (responseToken != null) {
-                success(responseToken.token)
-            } else {
-                fail()
+    fun sendCode(codeRequest: SendCodeRequest, onSuccess: () -> Unit) {
+        sendCodeNetworkDataSource.sendCode(codeRequest, object : SendCodeDataSource.SendCodeCallback {
+            override fun success(token: String) {
+                authService.putToken(token)
+                onSuccess()
             }
-        }
+
+            override fun fail() {
+                Toast.makeText(app.baseContext, app.getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
-    fun sendPhone(loginRequest: LoginRequest) {
-        scopeSendPhone.launch(handlerSendPhone) {
-            val request = registrationApi.sendPhoneNumber(loginRequest).await()
-            val requestCode = request.code()
-
-            when (requestCode) {
-                200 -> Timber.v("Phone number has been send successfully")
-                else -> Timber.e("Unknown error happened on David")
-            }
-        }
+    fun sendPhone(phone: String) {
+        sendPhoneNetworkDataSource.sendPhone(SendPhoneRequest(phone))
     }
 
     fun sendName(phoneNumber: String, name: String) {
-        scopeSendName.launch(handlerSendName) {
-            // TODO send name to David
-        }
+        sendNameNetworkDataSource.sendName(SendNameRequest(name, phoneNumber))
     }
 
-    private suspend fun checkCode(loginConfirmationRequest: LoginConfirmationRequest): ResponseToken? {
-        val request = registrationApi.sendPhoneNumberWithCode(loginConfirmationRequest).await()
-        val requestCode = request.code()
+    fun navigateToSecondStep(navController: NavController, phoneNumber: String) {
+        val bundle = Bundle().apply { putString(RegisterStepOneFragment.ARGUMENT_PHONE_NUMBER, phoneNumber) }
+        navController.navigate(R.id.action_registerStepOneFragment_to_registerStepTwoFragment, bundle)
+    }
 
-        when (requestCode) {
-            200 -> {
-                Timber.v("Right code")
-                return request.body()
-            }
-            400 -> Timber.e("Wrong code")
-            else -> Timber.e("Unknown error happened on David")
-        }
+    fun navigateToThirdStep(navController: NavController, phoneNumber: String) {
+        val bundle = Bundle().apply { putString(RegisterStepTwoFragment.ARGUMENT_PHONE_NUMBER, phoneNumber) }
+        navController.navigate(R.id.action_registerStepTwoFragment_to_registerStepThreeFragment, bundle)
+    }
 
-        return null
+    fun navigateToProfileFragment(navController: NavController) {
+        navController.navigate(R.id.action_global_profileFragment)
+    }
+
+    fun checkPhoneNumber(phoneNumber: String) = phoneNumber.length == PHONE_NUMBER_LENGTH
+
+    fun checkCodeLength(code: String) = (code.length == RegisterStepTwoFragment.CODE_LENGTH)
+
+    // TODO replace it back
+    fun isUserLogged() = false /*authService.getToken(context!!) != null*/
+
+    companion object {
+
+        private const val PHONE_NUMBER_LENGTH = 18
     }
 }

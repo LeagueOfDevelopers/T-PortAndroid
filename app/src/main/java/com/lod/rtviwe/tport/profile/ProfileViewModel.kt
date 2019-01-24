@@ -2,18 +2,14 @@ package com.lod.rtviwe.tport.profile
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
+import com.lod.rtviwe.tport.utils.CollectionJob
 
 class ProfileViewModel(app: Application) : AndroidViewModel(app) {
 
-    private val job = Job()
-
-    private val viewModelScope = CoroutineScope(Dispatchers.IO + job)
+    private val compositeJob = CollectionJob()
 
     override fun onCleared() {
         super.onCleared()
-        job.cancel()
+        compositeJob.clear()
     }
 }

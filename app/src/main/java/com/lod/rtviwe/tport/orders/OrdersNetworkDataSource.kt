@@ -1,52 +1,58 @@
 package com.lod.rtviwe.tport.orders
 
 import com.lod.rtviwe.tport.data.MockTrips
-import kotlinx.coroutines.*
-import timber.log.Timber
+import com.lod.rtviwe.tport.utils.CollectionJob
+import kotlinx.coroutines.launch
+import org.koin.standalone.KoinComponent
 
-class OrdersNetworkDataSource : OrdersDataSource {
+class OrdersNetworkDataSource : OrdersDataSource, KoinComponent {
 
-    private val jobCurrentOrder = Job()
-    private val jobComingOrders = Job()
-    private val jobHistoryOrders = Job()
+    private val collectionJob = CollectionJob()
 
-    private val scopeCurrentOrder = CoroutineScope(Dispatchers.Main + jobCurrentOrder)
-    private val scopeComingOrders = CoroutineScope(Dispatchers.Main + jobComingOrders)
-    private val scopeHistoryOrders = CoroutineScope(Dispatchers.Main + jobHistoryOrders)
+    init {
 
-    private val handlerCurrentOrder = CoroutineExceptionHandler { _, exception ->
-        Timber.e("Error while getting current order: $exception")
-    }
-
-    private val handlerComingOrders = CoroutineExceptionHandler { _, exception ->
-        Timber.e("Error while getting coming orders: $exception")
-    }
-
-    private val handlerHistoryOrders = CoroutineExceptionHandler { _, exception ->
-        Timber.e("Error while getting history orders: $exception")
+        collectionJob.putJobs(JOB_CURRENT_ORDER, JOB_COMING_ORDERS, JOB_HISTORY_ORDERS)
     }
 
     override fun setCurrentOrder(callback: OrdersDataSource.OrderDataSourceCallback) {
-        scopeCurrentOrder.launch(handlerCurrentOrder) {
-            callback.getOrders(MockTrips.getItems())
+        val job = collectionJob.getJob(JOB_CURRENT_ORDER)
+
+        job?.let {
+            it.scope.launch(job.handler) {
+                callback.getOrders(MockTrips.getItems())
+            }
         }
     }
 
     override fun setComingOrders(callback: OrdersDataSource.OrderDataSourceCallback) {
-        scopeComingOrders.launch(handlerComingOrders) {
-            callback.getOrders(MockTrips.getItems())
+        val job = collectionJob.getJob(JOB_COMING_ORDERS)
+
+        job?.let {
+            it.scope.launch(job.handler) {
+                callback.getOrders(MockTrips.getItems())
+            }
         }
     }
 
     override fun setHistoryOrders(callback: OrdersDataSource.OrderDataSourceCallback) {
-        scopeHistoryOrders.launch(handlerHistoryOrders) {
-            callback.getOrders(MockTrips.getItems())
+        val job = collectionJob.getJob(JOB_HISTORY_ORDERS)
+
+        job?.let {
+            it.scope.launch(job.handler) {
+                callback.getOrders(MockTrips.getItems())
+            }
         }
     }
 
     override fun clear() {
-        jobCurrentOrder.cancel()
-        jobComingOrders.cancel()
-        jobHistoryOrders.cancel()
+        collectionJob.clear()
+    }
+
+    companion object {
+
+        private const val JOB_CURRENT_ORDER = "CURRENT_ORDER_JOB"
+        private const val JOB_COMING_ORDERS = "COMING_ORDERS_JOB"
+        private const val JOB_HISTORY_ORDERS = "HISTORY_ORDERS_JOB"
+
     }
 }

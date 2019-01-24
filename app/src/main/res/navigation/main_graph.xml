@@ -54,29 +54,29 @@
         android:id="@+id/navigationRegistration"
         app:startDestination="@id/registerStepOneFragment">
         <fragment
-            android:id="@+id/registerStepOneFragment"
-            android:name="com.lod.rtviwe.tport.profile.registration.RegisterStepOneFragment"
-            android:label="RegisterStepOneFragment"
-            tools:layout="@layout/register_step_one_fragment">
+                android:id="@+id/registerStepOneFragment"
+                android:name="com.lod.rtviwe.tport.profile.registration.stepone.RegisterStepOneFragment"
+                android:label="RegisterStepOneFragment"
+                tools:layout="@layout/register_step_one_fragment">
             <action
                 android:id="@+id/action_registerStepOneFragment_to_registerStepTwoFragment"
                 app:destination="@+id/registerStepTwoFragment" />
         </fragment>
         <fragment
-            android:id="@+id/registerStepTwoFragment"
-            android:name="com.lod.rtviwe.tport.profile.registration.RegisterStepTwoFragment"
-            android:label="RegisterStepTwoFragment"
-            tools:layout="@layout/register_step_two_fragment">
+                android:id="@+id/registerStepTwoFragment"
+                android:name="com.lod.rtviwe.tport.profile.registration.steptwo.RegisterStepTwoFragment"
+                android:label="RegisterStepTwoFragment"
+                tools:layout="@layout/register_step_two_fragment">
             <action
                 android:id="@+id/action_registerStepTwoFragment_to_registerStepThreeFragment"
                 app:destination="@id/registerStepThreeFragment"
                 app:popUpTo="@+id/main_graph" />
         </fragment>
         <fragment
-            android:id="@+id/registerStepThreeFragment"
-            android:name="com.lod.rtviwe.tport.profile.registration.RegisterStepThreeFragment"
-            android:label="RegisterStepThreeFragment"
-            tools:layout="@layout/register_step_three_fragment">
+                android:id="@+id/registerStepThreeFragment"
+                android:name="com.lod.rtviwe.tport.profile.registration.stepthree.RegisterStepThreeFragment"
+                android:label="RegisterStepThreeFragment"
+                tools:layout="@layout/register_step_three_fragment">
             <action
                 android:id="@+id/action_registerStepThreeFragment_to_profileFragment"
                 app:destination="@id/profileFragment"
