@@ -1,5 +1,6 @@
 package com.lod.rtviwe.tport.search.searchtrip
 
+// TODO wait for new version from David
 data class RouteResponse(
     val arrivalDate: String,
     val cost: Int,

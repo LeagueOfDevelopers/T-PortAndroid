@@ -1,7 +1,5 @@
 package com.lod.rtviwe.tport.search.populartrip
 
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.data.MockTrips
 import kotlinx.coroutines.*
 import timber.log.Timber
@@ -16,11 +14,9 @@ class PopularTripNetworkDataSource : PopularTripDataSource {
         Timber.e("Error while getting popular trips: $exception")
     }
 
-    override fun setPopularTrips(lifecycleOwner: LifecycleOwner, callback: PopularTripDataSource.PopularTripCallback) {
+    override fun setPopularTrips(callback: PopularTripDataSource.PopularTripCallback) {
         scopePopularTrips.launch(handlerPopularTrips) {
-            MockTrips.getItems().observe(lifecycleOwner, Observer {
-                callback.getPopularTrips(it.toList())
-            })
+            callback.getPopularTrips(MockTrips.getItems())
         }
     }
 

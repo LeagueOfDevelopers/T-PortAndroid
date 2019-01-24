@@ -45,7 +45,7 @@ class SearchFragment : BaseFragment() {
             navController = Navigation.findNavController(it, R.id.nav_host_fragment)
         }
 
-        searchViewModel.populateAdapter(this, searchAdapter)
+        searchViewModel.populateAdapter(searchAdapter)
 
         searchLayoutManager = LinearLayoutManager(context)
 

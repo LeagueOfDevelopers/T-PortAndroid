@@ -1,6 +1,7 @@
 package com.lod.rtviwe.tport.search.searchtrip
 
-data class TripsResponse(
+// TODO wait for new version from David
+data class SearchTripsResponse(
     val id: String,
     val departureCity: CityResponse,
     val destinationCity: CityResponse,

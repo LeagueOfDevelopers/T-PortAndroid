@@ -5,6 +5,7 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.lod.rtviwe.tport.BuildConfig
 import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.bonuses.BonusesViewModel
+import com.lod.rtviwe.tport.orders.OrdersNetworkDataSource
 import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
@@ -15,6 +16,7 @@ import com.lod.rtviwe.tport.search.autocomplete.AutocompleteNetworkDataSource
 import com.lod.rtviwe.tport.search.populartrip.PopularTripNetworkDataSource
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsApi
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
+import com.lod.rtviwe.tport.tripdetails.TripDetailsViewModel
 import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.CountryUtils
 import okhttp3.OkHttpClient
@@ -30,6 +32,7 @@ val viewModelModule = module {
     viewModel<ProfileViewModel>()
     viewModel<RegisterViewModel>()
     viewModel<SearchTripsViewModel>()
+    viewModel<TripDetailsViewModel>()
 }
 
 val networkModule = module {
@@ -73,9 +76,10 @@ val networkModule = module {
     }
 }
 
-val repositoryModule = module {
+val dataSourceModule = module {
     factory { AutocompleteNetworkDataSource() }
     factory { PopularTripNetworkDataSource() }
+    factory { OrdersNetworkDataSource() }
 }
 
 val utilModule = module {

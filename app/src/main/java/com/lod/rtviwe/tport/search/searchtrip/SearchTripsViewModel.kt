@@ -2,8 +2,6 @@ package com.lod.rtviwe.tport.search.searchtrip
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
 import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.search.searchtrip.items.TripItem
 import com.xwray.groupie.GroupAdapter
@@ -31,9 +29,8 @@ class SearchTripsViewModel(app: Application) : AndroidViewModel(app), KoinCompon
     }
 
     fun observeAdapter(
-        owner: LifecycleOwner,
         searchTripsAdapter: GroupAdapter<ViewHolder>,
-        tripsRequest: TripsRequest
+        tripsRequest: SearchTripsRequest
     ) {
         scopeGetTrips.launch(handlerGetTrips) {
             // TODO wait for David
@@ -47,9 +44,7 @@ class SearchTripsViewModel(app: Application) : AndroidViewModel(app), KoinCompon
 //                else -> Timber.e("Unknown error happened on David $code")
 //            }
 
-            MockTrips.getItems().observe(owner, Observer {
-                searchTripsAdapter.addAll(it.map(::TripItem))
-            })
+            searchTripsAdapter.addAll(MockTrips.getItems().map(::TripItem))
         }
     }
 }

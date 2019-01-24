@@ -31,7 +31,7 @@ class OrdersFragment : BaseFragment() {
         ordersAdapter = GroupAdapter()
         ordersLayoutManager = LinearLayoutManager(context)
 
-        ordersViewModel.observeAdapter(this, ordersAdapter)
+        ordersViewModel.observeAdapter(ordersAdapter)
 
         ordersRecyclerView = recycler_view_orders.apply {
             layoutManager = ordersLayoutManager

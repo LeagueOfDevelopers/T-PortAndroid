@@ -61,8 +61,8 @@ class SearchTripsFragment : BaseFragment() {
 
         searchRoutesLayoutManager = LinearLayoutManager(context)
 
-        val tripsRequest = TripsRequest(fromPlace, toPlace, travelTime)
-        searchRoutesViewModel.observeAdapter(this, searchRouteCardsAdapter, tripsRequest)
+        val tripsRequest = SearchTripsRequest(fromPlace, toPlace, travelTime)
+        searchRoutesViewModel.observeAdapter(searchRouteCardsAdapter, tripsRequest)
 
         searchRoutesRecyclerView = recycler_view_search_routes.apply {
             adapter = searchRouteCardsAdapter

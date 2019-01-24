@@ -4,7 +4,6 @@ import android.app.Application
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LifecycleOwner
 import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.search.autocomplete.AutocompleteDataSource
 import com.lod.rtviwe.tport.search.autocomplete.AutocompleteNetworkDataSource
@@ -27,8 +26,8 @@ class SearchViewModel(private val app: Application) : AndroidViewModel(app), Koi
         popularTripRepository.clear()
     }
 
-    fun populateAdapter(lifecycleOwner: LifecycleOwner, adapter: GroupAdapter<ViewHolder>) {
-        popularTripRepository.setPopularTrips(lifecycleOwner, object : PopularTripDataSource.PopularTripCallback {
+    fun populateAdapter(adapter: GroupAdapter<ViewHolder>) {
+        popularTripRepository.setPopularTrips(object : PopularTripDataSource.PopularTripCallback {
             override fun getPopularTrips(trips: List<Trip>) {
                 adapter.clear()
                 trips.forEach {
