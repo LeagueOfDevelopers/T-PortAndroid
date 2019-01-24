@@ -62,48 +62,52 @@
             app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number">
 
             <ImageView
-                android:id="@+id/image_view_code_first"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/image_view_code_first"
-                android:src="@drawable/code_placeholder"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
+                    android:id="@+id/image_view_code_first"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/image_view_code_first"
+                    android:src="@drawable/code_placeholder"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
 
             <ImageView
-                android:id="@+id/image_view_code_second"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/image_view_code_second"
-                android:src="@drawable/code_placeholder"
-                app:layout_constraintStart_toEndOf="@+id/image_view_code_first"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
+                    android:id="@+id/image_view_code_second"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/image_view_code_second"
+                    android:src="@drawable/code_placeholder"
+                    app:layout_constraintStart_toEndOf="@+id/image_view_code_first"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
 
             <ImageView
-                android:id="@+id/image_view_code_third"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/image_view_code_third"
-                android:src="@drawable/code_placeholder"
-                app:layout_constraintStart_toEndOf="@+id/image_view_code_second"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
+                    android:id="@+id/image_view_code_third"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/image_view_code_third"
+                    android:src="@drawable/code_placeholder"
+                    app:layout_constraintStart_toEndOf="@+id/image_view_code_second"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
 
             <ImageView
-                android:id="@+id/image_view_code_fourth"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:contentDescription="@string/image_view_code_fourth"
-                android:src="@drawable/code_placeholder"
-                app:layout_constraintStart_toEndOf="@+id/image_view_code_third"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
+                    android:id="@+id/image_view_code_fourth"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/image_view_code_fourth"
+                    android:src="@drawable/code_placeholder"
+                    app:layout_constraintStart_toEndOf="@+id/image_view_code_third"
+                    app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />
 
         </LinearLayout>
 

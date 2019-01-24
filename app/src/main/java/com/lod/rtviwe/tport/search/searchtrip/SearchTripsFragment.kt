@@ -1,18 +1,16 @@
 package com.lod.rtviwe.tport.search.searchtrip
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.filter_bottom_sheet.*
 import kotlinx.android.synthetic.main.search_trips_fragment.*
 import kotlinx.android.synthetic.main.search_trips_toolbar_filter.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,7 +22,7 @@ class SearchTripsFragment : BaseFragment() {
 
     private lateinit var searchRoutesLayoutManager: LinearLayoutManager
     private lateinit var searchRoutesRecyclerView: RecyclerView
-    private lateinit var filterBottomSheet: BottomSheetBehavior<ConstraintLayout>
+    private lateinit var filterBottomSheetDialog: FilterBottomSheetDialog
 
     private var fromPlace = ""
     private var toPlace = ""
@@ -34,6 +32,12 @@ class SearchTripsFragment : BaseFragment() {
 
     override fun scrollToTop() {
         searchRoutesLayoutManager.smoothScrollToPosition(searchRoutesRecyclerView, RecyclerView.State(), 0)
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+
+        filterBottomSheetDialog = FilterBottomSheetDialog()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -65,10 +69,6 @@ class SearchTripsFragment : BaseFragment() {
             layoutManager = searchRoutesLayoutManager
         }
 
-        //Try bottom sheet dialog
-        filterBottomSheet = BottomSheetBehavior.from(filter_search_trips_bottom_sheet)
-        filterBottomSheet.state = BottomSheetBehavior.STATE_HIDDEN
-
         image_button_change.setOnClickListener {
             swapDestinations()
         }
@@ -85,7 +85,7 @@ class SearchTripsFragment : BaseFragment() {
     }
 
     private fun openFilterSheet() {
-        filterBottomSheet.state = BottomSheetBehavior.STATE_EXPANDED
+        filterBottomSheetDialog.show(activity?.supportFragmentManager, FilterBottomSheetDialog.TAG)
     }
 
     companion object {

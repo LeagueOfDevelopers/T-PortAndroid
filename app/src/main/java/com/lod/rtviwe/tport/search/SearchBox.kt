@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.items
+package com.lod.rtviwe.tport.search
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

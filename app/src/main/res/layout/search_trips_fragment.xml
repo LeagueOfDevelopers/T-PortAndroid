@@ -28,6 +28,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <include layout="@layout/filter_bottom_sheet" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

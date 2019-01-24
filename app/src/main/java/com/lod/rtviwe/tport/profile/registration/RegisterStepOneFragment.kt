@@ -8,7 +8,6 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.setTextChangedListener
-import com.lod.rtviwe.tport.utils.toPhone
 import kotlinx.android.synthetic.main.register_step_one_fragment.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -40,7 +39,7 @@ class RegisterStepOneFragment : BaseFragment() {
 
         fab_register_step_one_next.setOnClickListener {
             if (checkPhoneNumber(phoneNumber)) {
-                registerViewModel.sendPhone(LoginRequest(phoneNumber.toPhone()))
+                registerViewModel.sendPhone(LoginRequest(phoneNumber))
                 setupNextStep()
             } else {
                 showErrorPhoneNumber()

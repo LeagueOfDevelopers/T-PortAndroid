@@ -1,7 +1,10 @@
 package com.lod.rtviwe.tport
 
 import android.app.Application
-import com.lod.rtviwe.tport.di.*
+import com.lod.rtviwe.tport.di.networkModule
+import com.lod.rtviwe.tport.di.repositoryModule
+import com.lod.rtviwe.tport.di.utilModule
+import com.lod.rtviwe.tport.di.viewModelModule
 import org.koin.android.ext.android.startKoin
 import timber.log.Timber
 
@@ -14,7 +17,7 @@ class TPortApplication : Application() {
             Timber.plant(Timber.DebugTree())
         }
 
-        startKoin(this, listOf(viewModelModule, uiModule, networkModule, repositoryModule, utilModule))
+        startKoin(this, listOf(viewModelModule, networkModule, repositoryModule, utilModule))
     }
 
     companion object {

@@ -13,10 +13,7 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.RouteIcons
-import com.lod.rtviwe.tport.utils.toPhone
 import com.redmadrobot.inputmask.MaskedTextChangedListener
-import com.redmadrobot.inputmask.helper.Mask
-import com.redmadrobot.inputmask.model.CaretString
 import kotlinx.android.synthetic.main.register_step_two_fragment.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -25,7 +22,6 @@ import timber.log.Timber
 class RegisterStepTwoFragment : BaseFragment() {
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
-    private val phoneNumberMask by inject<Mask>()
     private val authService by inject<AuthService>()
 
     private lateinit var navController: NavController
@@ -54,11 +50,7 @@ class RegisterStepTwoFragment : BaseFragment() {
             navController = Navigation.findNavController(it, R.id.nav_host_fragment)
         }
 
-        val maskResult = phoneNumberMask.apply(
-            CaretString(phoneNumber, phoneNumber.length),
-            true
-        )
-        text_view_phone_number.text = maskResult.formattedText.string
+        text_view_phone_number.text = phoneNumber//maskResult.formattedText.string
 
         edit_text_input_code.setText(code)
 
@@ -88,7 +80,7 @@ class RegisterStepTwoFragment : BaseFragment() {
 
         if (checkCodeLength(code)) {
             registerViewModel.login(
-                LoginConfirmationRequest(phoneNumber.toPhone(), code), { token ->
+                LoginConfirmationRequest(phoneNumber, code), { token ->
                     if (activity != null) {
                         authService.putToken(token)
                     } else {
