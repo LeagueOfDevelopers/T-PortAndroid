@@ -5,18 +5,17 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.ArrayAdapter
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.search.items.SearchBox
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
 import com.lod.rtviwe.tport.utils.setTextChangedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
+import kotlinx.android.synthetic.main.header_item.*
 import kotlinx.android.synthetic.main.search_box_item.*
 import kotlinx.android.synthetic.main.search_fragment.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -46,7 +45,7 @@ class SearchFragment : BaseFragment() {
             navController = Navigation.findNavController(it, R.id.nav_host_fragment)
         }
 
-        searchViewModel.populateAdapter(this, searchAdapter)
+        searchViewModel.populateAdapter(searchAdapter)
 
         searchLayoutManager = LinearLayoutManager(context)
 
@@ -58,27 +57,16 @@ class SearchFragment : BaseFragment() {
         autocomplete_text_from_place.setText(searchBox.fromPlace)
         autocomplete_text_to_place.setText(searchBox.toPlace)
         edit_text_data_travel.setText(searchBox.travelTime)
+        text_view_header.text = getString(R.string.popular_title_item)
 
         autocomplete_text_from_place.setTextChangedListener { text ->
             searchBox.fromPlace = text
-            searchViewModel.findAutocomplete(text) { words ->
-                context?.let {
-                    autocomplete_text_from_place.setAdapter(
-                        ArrayAdapter(it, android.R.layout.simple_dropdown_item_1line, words)
-                    )
-                }
-            }
+            searchViewModel.findAutocomplete(text, autocomplete_text_from_place)
         }
 
         autocomplete_text_to_place.setTextChangedListener { text ->
             searchBox.toPlace = text
-            searchViewModel.findAutocomplete(text) { words ->
-                context?.let {
-                    autocomplete_text_to_place.setAdapter(
-                        ArrayAdapter(it, android.R.layout.simple_dropdown_item_1line, words)
-                    )
-                }
-            }
+            searchViewModel.findAutocomplete(text, autocomplete_text_to_place)
         }
 
         edit_text_data_travel.setOnClickListener {

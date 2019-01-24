@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.profile.registration
+package com.lod.rtviwe.tport.profile.registration.stepthree
 
 import android.app.Activity
 import android.os.Bundle
@@ -10,6 +10,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
+import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
+import com.lod.rtviwe.tport.profile.registration.steptwo.RegisterStepTwoFragment
 import kotlinx.android.synthetic.main.register_step_three_fragment.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -18,7 +20,7 @@ class RegisterStepThreeFragment : BaseFragment() {
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
 
     private lateinit var navController: NavController
-    private var phoneNumber: String? = null
+    private var phoneNumber: String = ""
 
     override fun getLayout() = R.layout.register_step_three_fragment
 
@@ -42,6 +44,7 @@ class RegisterStepThreeFragment : BaseFragment() {
         }
 
         button_register_step_three_continue.setOnClickListener {
+            registerViewModel.sendName(phoneNumber, edit_text_enter_name.text.toString())
             setupNextStep()
         }
 
@@ -50,10 +53,7 @@ class RegisterStepThreeFragment : BaseFragment() {
     }
 
     private fun setupNextStep() {
-        phoneNumber?.let {
-            registerViewModel.sendName(it, edit_text_enter_name.text.toString())
-            navController.navigate(R.id.action_registerStepThreeFragment_to_profileFragment)
-        }
+        registerViewModel.navigateToProfileFragment(navController)
     }
 
     private fun showKeyboard() {

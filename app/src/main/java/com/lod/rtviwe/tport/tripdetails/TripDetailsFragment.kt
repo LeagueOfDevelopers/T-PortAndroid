@@ -16,6 +16,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_trips_toolbar_filter.*
 import kotlinx.android.synthetic.main.trip_details_fragment.*
+import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,6 +26,8 @@ class TripDetailsFragment : BaseFragment() {
     private val routesAdapter = GroupAdapter<ViewHolder>()
     private lateinit var routesLayoutManager: LinearLayoutManager
     private lateinit var routesRecyclerView: RecyclerView
+
+    private val tripDetailsViewModel: TripDetailsViewModel by inject()
 
     override fun getLayout() = R.layout.trip_details_fragment
 
@@ -79,7 +82,6 @@ class TripDetailsFragment : BaseFragment() {
 
     companion object {
 
-        private const val STATE_TRIP = "TRIP_STATE"
         const val ARGUMENT_TRIP = "TRIP_ARGUMENT"
     }
 }

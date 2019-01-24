@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.profile.registration
+package com.lod.rtviwe.tport.profile.registration.stepone
 
 import android.content.Context
 import android.text.Editable
@@ -51,7 +51,7 @@ class PhoneNumberEditText : TextInputEditText, KoinComponent {
 
         hint = MaskedTextChangedListener.installOn(
             this,
-            "+7 ([000]) [000] [00] [00]",
+            "+[0] ([000]) [000] [00] [00]",
             object : MaskedTextChangedListener.ValueListener {
                 override fun onTextChanged(maskFilled: Boolean, extractedValue: String) {
 

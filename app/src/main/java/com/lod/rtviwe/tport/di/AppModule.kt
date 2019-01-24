@@ -5,17 +5,23 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.lod.rtviwe.tport.BuildConfig
 import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.bonuses.BonusesViewModel
+import com.lod.rtviwe.tport.orders.OrdersNetworkDataSource
 import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
 import com.lod.rtviwe.tport.profile.registration.RegistrationApi
-import com.lod.rtviwe.tport.search.AutocompleteApi
+import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneNetworkDataSource
+import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameNetworkDataSource
+import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeNetworkDataSource
 import com.lod.rtviwe.tport.search.SearchViewModel
+import com.lod.rtviwe.tport.search.autocomplete.AutocompleteApi
+import com.lod.rtviwe.tport.search.autocomplete.AutocompleteNetworkDataSource
+import com.lod.rtviwe.tport.search.populartrip.PopularTripNetworkDataSource
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsApi
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
+import com.lod.rtviwe.tport.tripdetails.TripDetailsViewModel
 import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.CountryUtils
-import com.redmadrobot.inputmask.helper.Mask
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
 import org.koin.dsl.module.module
@@ -29,10 +35,7 @@ val viewModelModule = module {
     viewModel<ProfileViewModel>()
     viewModel<RegisterViewModel>()
     viewModel<SearchTripsViewModel>()
-}
-
-val uiModule = module {
-    single { Mask("+7 ([000]) [000] [00] [00]") }
+    viewModel<TripDetailsViewModel>()
 }
 
 val networkModule = module {
@@ -74,6 +77,15 @@ val networkModule = module {
             .build()
             .create(SearchTripsApi::class.java)
     }
+}
+
+val dataSourceModule = module {
+    factory { AutocompleteNetworkDataSource() }
+    factory { PopularTripNetworkDataSource() }
+    factory { OrdersNetworkDataSource() }
+    factory { SendPhoneNetworkDataSource() }
+    factory { SendCodeNetworkDataSource() }
+    factory { SendNameNetworkDataSource() }
 }
 
 val utilModule = module {

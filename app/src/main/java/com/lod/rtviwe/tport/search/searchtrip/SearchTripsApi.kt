@@ -9,6 +9,6 @@ interface SearchTripsApi {
 
     @POST("/search")
     fun search(
-        @Body tripsRequest: TripsRequest
-    ): Deferred<Response<TripsResponse>>
+        @Body tripsRequest: SearchTripsRequest
+    ): Deferred<Response<SearchTripsResponse>>
 }

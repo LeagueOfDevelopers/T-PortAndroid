@@ -5,8 +5,6 @@ import android.text.TextWatcher
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import com.google.android.material.textfield.TextInputEditText
 
-fun String.toPhone() = "+7$this"
-
 fun AppCompatAutoCompleteTextView.setTextChangedListener(function: (String) -> Unit) {
     addTextChangedListener(object : TextWatcher {
 

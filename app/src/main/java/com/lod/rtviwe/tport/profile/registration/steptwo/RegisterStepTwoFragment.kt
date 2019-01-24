@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.profile.registration
+package com.lod.rtviwe.tport.profile.registration.steptwo
 
 import android.app.Activity
 import android.os.Bundle
@@ -11,22 +11,16 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.utils.AuthService
+import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
+import com.lod.rtviwe.tport.profile.registration.stepone.RegisterStepOneFragment
 import com.lod.rtviwe.tport.utils.RouteIcons
-import com.lod.rtviwe.tport.utils.toPhone
 import com.redmadrobot.inputmask.MaskedTextChangedListener
-import com.redmadrobot.inputmask.helper.Mask
-import com.redmadrobot.inputmask.model.CaretString
 import kotlinx.android.synthetic.main.register_step_two_fragment.*
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import timber.log.Timber
 
 class RegisterStepTwoFragment : BaseFragment() {
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
-    private val phoneNumberMask by inject<Mask>()
-    private val authService by inject<AuthService>()
 
     private lateinit var navController: NavController
 
@@ -54,11 +48,7 @@ class RegisterStepTwoFragment : BaseFragment() {
             navController = Navigation.findNavController(it, R.id.nav_host_fragment)
         }
 
-        val maskResult = phoneNumberMask.apply(
-            CaretString(phoneNumber, phoneNumber.length),
-            true
-        )
-        text_view_phone_number.text = maskResult.formattedText.string
+        text_view_phone_number.text = phoneNumber//maskResult.formattedText.string
 
         edit_text_input_code.setText(code)
 
@@ -86,34 +76,17 @@ class RegisterStepTwoFragment : BaseFragment() {
     private fun handleCodeChange(newText: String) {
         updateCodeImages(newText)
 
-        if (checkCodeLength(code)) {
-            registerViewModel.login(
-                LoginConfirmationRequest(phoneNumber.toPhone(), code), { token ->
-                    if (activity != null) {
-                        authService.putToken(token)
-                    } else {
-                        Timber.e("Fragment has been closed")
-                    }
-
-                    setupNextStep()
-                }, {
-                    Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
+        if (registerViewModel.checkCodeLength(code)) {
+            registerViewModel.sendCode(SendCodeRequest(phoneNumber, code)) {
+                context?.let {
+                    registerViewModel.navigateToThirdStep(navController, phoneNumber)
                 }
-            )
+            }
         }
     }
 
     private fun showError() {
         Toast.makeText(context, getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
-    }
-
-    private fun checkCodeLength(code: String) = (code.length == CODE_LENGTH)
-
-    private fun setupNextStep() {
-        activity?.let {
-            val bundle = Bundle().apply { putString(RegisterStepTwoFragment.ARGUMENT_PHONE_NUMBER, phoneNumber) }
-            navController.navigate(R.id.action_registerStepTwoFragment_to_registerStepThreeFragment, bundle)
-        }
     }
 
     private fun updateCodeImages(text: String) {
