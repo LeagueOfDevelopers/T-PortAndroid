@@ -16,6 +16,7 @@ import com.lod.rtviwe.tport.search.autocomplete.AutocompleteApi
 import com.lod.rtviwe.tport.search.autocomplete.AutocompleteNetworkDataSource
 import com.lod.rtviwe.tport.search.populartrip.PopularTripNetworkDataSource
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsApi
+import com.lod.rtviwe.tport.search.searchtrip.SearchTripsNetworkDataSource
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
 import com.lod.rtviwe.tport.tripdetails.TripDetailsViewModel
 import com.lod.rtviwe.tport.utils.AuthService
@@ -30,10 +31,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 val viewModelModule = module {
     viewModel { SearchViewModel(get(), AutocompleteNetworkDataSource(), PopularTripNetworkDataSource()) }
     viewModel<BonusesViewModel>()
-    viewModel<OrdersViewModel>()
+    viewModel { OrdersViewModel(get(), OrdersNetworkDataSource()) }
     viewModel { RegisterViewModel(get(), RegistrationNetworkDataSource()) }
     viewModel<ProfileViewModel>()
-    viewModel<SearchTripsViewModel>()
+    viewModel { SearchTripsViewModel(get(), SearchTripsNetworkDataSource()) }
     viewModel<TripDetailsViewModel>()
 }
 
@@ -76,12 +77,6 @@ val networkModule = module {
             .build()
             .create(SearchTripsApi::class.java)
     }
-}
-
-val dataSourceModule = module {
-    factory { AutocompleteNetworkDataSource() }
-    factory { PopularTripNetworkDataSource() }
-    factory { OrdersNetworkDataSource() }
 }
 
 val utilModule = module {

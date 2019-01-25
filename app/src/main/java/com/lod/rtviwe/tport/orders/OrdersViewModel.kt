@@ -11,11 +11,11 @@ import com.lod.rtviwe.tport.orders.items.HistoryOrderCardItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import org.koin.standalone.KoinComponent
-import org.koin.standalone.inject
 
-class OrdersViewModel(private val app: Application) : AndroidViewModel(app), KoinComponent {
-
-    private val ordersDataSource: OrdersNetworkDataSource by inject()
+class OrdersViewModel(
+    private val app: Application,
+    private val ordersDataSource: OrdersDataSource
+) : AndroidViewModel(app), KoinComponent {
 
     override fun onCleared() {
         super.onCleared()
