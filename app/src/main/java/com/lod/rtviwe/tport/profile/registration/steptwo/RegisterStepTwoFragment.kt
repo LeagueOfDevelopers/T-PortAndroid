@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
+import com.lod.rtviwe.tport.profile.registration.RegisterViewModel.Companion.CODE_LENGTH
 import com.lod.rtviwe.tport.profile.registration.stepone.RegisterStepOneFragment
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.redmadrobot.inputmask.MaskedTextChangedListener
@@ -125,7 +126,6 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     companion object {
 
-        const val CODE_LENGTH = 4
         const val ARGUMENT_PHONE_NUMBER = "PHONE_NUMBER_ARGUMENT"
     }
 }

@@ -7,32 +7,28 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.navigation.NavController
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.profile.registration.stepone.RegisterStepOneFragment
-import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneNetworkDataSource
 import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneRequest
-import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameNetworkDataSource
 import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameRequest
 import com.lod.rtviwe.tport.profile.registration.steptwo.RegisterStepTwoFragment
-import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeDataSource
-import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeNetworkDataSource
 import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeRequest
 import com.lod.rtviwe.tport.utils.AuthService
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 
-class RegisterViewModel(private val app: Application) : AndroidViewModel(app), KoinComponent {
+class RegisterViewModel(
+    private val app: Application,
+    private val registrationDataSource: RegistrationDataSource
+) : AndroidViewModel(app), KoinComponent {
 
     private val authService by inject<AuthService>()
-    private val sendPhoneNetworkDataSource by inject<SendPhoneNetworkDataSource>()
-    private val sendNameNetworkDataSource by inject<SendNameNetworkDataSource>()
-    private val sendCodeNetworkDataSource by inject<SendCodeNetworkDataSource>()
 
     override fun onCleared() {
         super.onCleared()
-        sendPhoneNetworkDataSource.clear()
+        registrationDataSource.clear()
     }
 
     fun sendCode(codeRequest: SendCodeRequest, onSuccess: () -> Unit) {
-        sendCodeNetworkDataSource.sendCode(codeRequest, object : SendCodeDataSource.SendCodeCallback {
+        registrationDataSource.sendCode(codeRequest, object : RegistrationDataSource.SendCodeCallback {
             override fun success(token: String) {
                 authService.putToken(token)
                 onSuccess()
@@ -45,11 +41,11 @@ class RegisterViewModel(private val app: Application) : AndroidViewModel(app), K
     }
 
     fun sendPhone(phone: String) {
-        sendPhoneNetworkDataSource.sendPhone(SendPhoneRequest(phone))
+        registrationDataSource.sendPhone(SendPhoneRequest(phone))
     }
 
     fun sendName(phoneNumber: String, name: String) {
-        sendNameNetworkDataSource.sendName(SendNameRequest(name, phoneNumber))
+        registrationDataSource.sendName(SendNameRequest(name, phoneNumber))
     }
 
     fun navigateToSecondStep(navController: NavController, phoneNumber: String) {
@@ -68,13 +64,14 @@ class RegisterViewModel(private val app: Application) : AndroidViewModel(app), K
 
     fun checkPhoneNumber(phoneNumber: String) = phoneNumber.length == PHONE_NUMBER_LENGTH
 
-    fun checkCodeLength(code: String) = (code.length == RegisterStepTwoFragment.CODE_LENGTH)
+    fun checkCodeLength(code: String) = (code.length == CODE_LENGTH)
 
     // TODO replace it back
     fun isUserLogged() = false /*authService.getToken(context!!) != null*/
 
     companion object {
 
+        const val CODE_LENGTH = 4
         private const val PHONE_NUMBER_LENGTH = 18
     }
 }

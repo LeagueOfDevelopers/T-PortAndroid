@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
 import com.lod.rtviwe.tport.utils.setTextChangedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
@@ -117,11 +116,13 @@ class SearchFragment : BaseFragment() {
     }
 
     private fun navigateToSearchTrip() {
-        val bundle = Bundle().apply {
-            putString(SearchTripsFragment.ARGUMENT_FROM_PLACE, autocomplete_text_from_place.text.toString())
-            putString(SearchTripsFragment.ARGUMENT_TO_PLACE, autocomplete_text_to_place.text.toString())
-            putString(SearchTripsFragment.ARGUMENT_TRAVEL_TIME, edit_text_data_travel.text.toString())
-        }
-        navController.navigate(R.id.action_searchFragment_to_searchTripsFragment, bundle)
+        searchViewModel.navigateToSearchTrip(
+            navController,
+            SearchBox(
+                autocomplete_text_from_place.text.toString(),
+                autocomplete_text_to_place.text.toString(),
+                edit_text_data_travel.text.toString()
+            )
+        )
     }
 }
