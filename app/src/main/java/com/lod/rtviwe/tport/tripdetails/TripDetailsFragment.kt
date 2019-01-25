@@ -9,9 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.model.Trip
-import com.lod.rtviwe.tport.orders.items.OrderDestinationFirstItem
-import com.lod.rtviwe.tport.orders.items.OrderDestinationItem
-import com.lod.rtviwe.tport.orders.items.OrderRouteItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_trips_toolbar_filter.*
@@ -22,12 +19,12 @@ import java.util.*
 
 class TripDetailsFragment : BaseFragment() {
 
-    private lateinit var trip: Trip
     private val routesAdapter = GroupAdapter<ViewHolder>()
+    private lateinit var trip: Trip
     private lateinit var routesLayoutManager: LinearLayoutManager
     private lateinit var routesRecyclerView: RecyclerView
 
-    private val tripDetailsViewModel: TripDetailsViewModel by inject()
+    private val tripDetailsViewModel by inject<TripDetailsViewModel>()
 
     override fun getLayout() = R.layout.trip_details_fragment
 
@@ -56,19 +53,7 @@ class TripDetailsFragment : BaseFragment() {
 
         routesLayoutManager = LinearLayoutManager(context)
 
-        trip.routes.forEachIndexed { index, route ->
-            if (index == 0) {
-                routesAdapter.add(OrderDestinationFirstItem(route.destination.fromPlace))
-            } else {
-                routesAdapter.add(OrderDestinationItem(route, false))
-            }
-
-            routesAdapter.add(OrderRouteItem(route))
-
-            if (index == trip.routes.size - 1) {
-                routesAdapter.add(OrderDestinationItem(route, true))
-            }
-        }
+        tripDetailsViewModel.populateAdapter(routesAdapter, trip)
 
         recycler_view_routes.apply {
             layoutManager = routesLayoutManager

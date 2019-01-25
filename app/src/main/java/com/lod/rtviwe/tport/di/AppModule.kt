@@ -10,6 +10,7 @@ import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
 import com.lod.rtviwe.tport.profile.registration.RegistrationApi
+import com.lod.rtviwe.tport.profile.registration.RegistrationNetworkDataSource
 import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneNetworkDataSource
 import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameNetworkDataSource
 import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeNetworkDataSource
@@ -24,6 +25,7 @@ import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.CountryUtils
 import okhttp3.OkHttpClient
 import org.koin.androidx.viewmodel.experimental.builder.viewModel
+import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -33,7 +35,7 @@ val viewModelModule = module {
     viewModel<OrdersViewModel>()
     viewModel<SearchViewModel>()
     viewModel<ProfileViewModel>()
-    viewModel<RegisterViewModel>()
+    viewModel { RegisterViewModel(get(), RegistrationNetworkDataSource(get(), get(), get())) }
     viewModel<SearchTripsViewModel>()
     viewModel<TripDetailsViewModel>()
 }
