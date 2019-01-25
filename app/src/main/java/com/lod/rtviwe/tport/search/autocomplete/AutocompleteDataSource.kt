@@ -9,5 +9,7 @@ interface AutocompleteDataSource {
 
     fun autocomplete(text: String, callback: AutocompleteCallback)
 
+    fun saveAutocomplete(value: Pair<String, List<String>>)
+
     fun clear()
 }

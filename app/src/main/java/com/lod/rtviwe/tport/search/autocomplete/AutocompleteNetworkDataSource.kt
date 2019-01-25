@@ -43,6 +43,10 @@ class AutocompleteNetworkDataSource : AutocompleteDataSource, KoinComponent {
         }
     }
 
+    override fun saveAutocomplete(value: Pair<String, List<String>>) {
+        // TODO save in persistent
+    }
+
     override fun clear() {
         collectionJob.clear()
     }
