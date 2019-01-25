@@ -1,24 +1,91 @@
 package com.lod.rtviwe.tport.profile.registration
 
-import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneNetworkDataSource
-import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameNetworkDataSource
-import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeNetworkDataSource
+import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneRequest
+import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameRequest
+import com.lod.rtviwe.tport.profile.registration.steptwo.ResponseToken
+import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeRequest
+import com.lod.rtviwe.tport.utils.CollectionJob
+import kotlinx.coroutines.launch
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
+import timber.log.Timber
 
-class RegistrationNetworkDataSource(
-    private val sendPhoneDataSource: SendPhoneNetworkDataSource,
-    private val sendNameDataSource: SendNameNetworkDataSource,
-    private val sendCodeDataSource: SendCodeNetworkDataSource
-) : RegistrationDataSource {
+class RegistrationNetworkDataSource : RegistrationDataSource, KoinComponent {
 
-    override fun getSendPhoneDataSource() = sendPhoneDataSource
+    private val collectionJob = CollectionJob()
 
-    override fun getNameDataSource() = sendNameDataSource
+    private val registrationApi by inject<RegistrationApi>()
 
-    override fun getCodeDataSource() = sendCodeDataSource
+    init {
+
+        collectionJob.putJobs(JOB_SEND_PHONE, JOB_SEND_CODE, JOB_SEND_NAME)
+    }
+
+    override fun sendPhone(loginRequest: SendPhoneRequest) {
+        val job = collectionJob.getJob(JOB_SEND_PHONE)
+
+        job?.let {
+            it.scope.launch(it.handler) {
+                val request = registrationApi.sendPhoneNumberAsync(loginRequest).await()
+                val requestCode = request.code()
+
+                when (requestCode) {
+                    200 -> Timber.v("Phone number has been send successfully")
+                    else -> Timber.e("Unknown error happened on David")
+                }
+            }
+        }
+    }
+
+    override fun sendName(nameRequest: SendNameRequest) {
+        val job = collectionJob.getJob(JOB_SEND_NAME)
+
+        job?.let {
+            it.scope.launch(it.handler) {
+                // TODO send name to David
+            }
+        }
+    }
+
+    override fun sendCode(sendCodeRequest: SendCodeRequest, callback: RegistrationDataSource.SendCodeCallback) {
+        val job = collectionJob.getJob(JOB_SEND_CODE)
+
+        job?.let {
+            it.scope.launch(it.handler) {
+                val responseToken = checkCode(sendCodeRequest)
+                if (responseToken != null) {
+                    callback.success(responseToken.token)
+                } else {
+                    callback.fail()
+                }
+            }
+        }
+    }
 
     override fun clear() {
-        sendPhoneDataSource.clear()
-        sendNameDataSource.clear()
-        sendCodeDataSource.clear()
+        collectionJob.clear()
+    }
+
+    private suspend fun checkCode(loginConfirmationRequest: SendCodeRequest): ResponseToken? {
+        val request = registrationApi.sendPhoneNumberWithCodeAsync(loginConfirmationRequest).await()
+        val requestCode = request.code()
+
+        when (requestCode) {
+            200 -> {
+                Timber.v("Right code")
+                return request.body()
+            }
+            400 -> Timber.e("Wrong code")
+            else -> Timber.e("Unknown error happened on David")
+        }
+
+        return null
+    }
+
+    companion object {
+
+        private const val JOB_SEND_PHONE = "SEND_CODE_JOB"
+        private const val JOB_SEND_CODE = "SEND_CODE_JOB"
+        private const val JOB_SEND_NAME = "SEND_NAME_JOB"
     }
 }

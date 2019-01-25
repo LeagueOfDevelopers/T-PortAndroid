@@ -11,9 +11,6 @@ import com.lod.rtviwe.tport.profile.ProfileViewModel
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
 import com.lod.rtviwe.tport.profile.registration.RegistrationApi
 import com.lod.rtviwe.tport.profile.registration.RegistrationNetworkDataSource
-import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneNetworkDataSource
-import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameNetworkDataSource
-import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeNetworkDataSource
 import com.lod.rtviwe.tport.search.SearchViewModel
 import com.lod.rtviwe.tport.search.autocomplete.AutocompleteApi
 import com.lod.rtviwe.tport.search.autocomplete.AutocompleteNetworkDataSource
@@ -31,11 +28,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val viewModelModule = module {
+    viewModel { SearchViewModel(get(), AutocompleteNetworkDataSource(), PopularTripNetworkDataSource()) }
     viewModel<BonusesViewModel>()
     viewModel<OrdersViewModel>()
-    viewModel<SearchViewModel>()
+    viewModel { RegisterViewModel(get(), RegistrationNetworkDataSource()) }
     viewModel<ProfileViewModel>()
-    viewModel { RegisterViewModel(get(), RegistrationNetworkDataSource(get(), get(), get())) }
     viewModel<SearchTripsViewModel>()
     viewModel<TripDetailsViewModel>()
 }
@@ -85,9 +82,6 @@ val dataSourceModule = module {
     factory { AutocompleteNetworkDataSource() }
     factory { PopularTripNetworkDataSource() }
     factory { OrdersNetworkDataSource() }
-    factory { SendPhoneNetworkDataSource() }
-    factory { SendCodeNetworkDataSource() }
-    factory { SendNameNetworkDataSource() }
 }
 
 val utilModule = module {

@@ -9,20 +9,18 @@ import androidx.navigation.NavController
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.search.autocomplete.AutocompleteDataSource
-import com.lod.rtviwe.tport.search.autocomplete.AutocompleteNetworkDataSource
 import com.lod.rtviwe.tport.search.populartrip.PopularTrip
 import com.lod.rtviwe.tport.search.populartrip.PopularTripDataSource
-import com.lod.rtviwe.tport.search.populartrip.PopularTripNetworkDataSource
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import org.koin.standalone.KoinComponent
-import org.koin.standalone.inject
 
-class SearchViewModel(private val app: Application) : AndroidViewModel(app), KoinComponent {
-
-    private val autocompleteRepository: AutocompleteNetworkDataSource by inject()
-    private val popularTripRepository: PopularTripNetworkDataSource by inject()
+class SearchViewModel(
+    private val app: Application,
+    private val autocompleteRepository: AutocompleteDataSource,
+    private val popularTripRepository: PopularTripDataSource
+) : AndroidViewModel(app), KoinComponent {
 
     override fun onCleared() {
         super.onCleared()

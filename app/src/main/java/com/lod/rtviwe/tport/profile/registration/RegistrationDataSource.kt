@@ -1,16 +1,23 @@
 package com.lod.rtviwe.tport.profile.registration
 
-import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneDataSource
-import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameDataSource
-import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeDataSource
+import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneRequest
+import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameRequest
+import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeRequest
 
 interface RegistrationDataSource {
 
-    fun getSendPhoneDataSource(): SendPhoneDataSource
+    interface SendCodeCallback {
 
-    fun getNameDataSource(): SendNameDataSource
+        fun success(token: String)
 
-    fun getCodeDataSource(): SendCodeDataSource
+        fun fail()
+    }
+
+    fun sendPhone(loginRequest: SendPhoneRequest)
+
+    fun sendName(nameRequest: SendNameRequest)
+
+    fun sendCode(sendCodeRequest: SendCodeRequest, callback: SendCodeCallback)
 
     fun clear()
 }

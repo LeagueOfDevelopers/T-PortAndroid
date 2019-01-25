@@ -10,7 +10,6 @@ import com.lod.rtviwe.tport.profile.registration.stepone.RegisterStepOneFragment
 import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneRequest
 import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameRequest
 import com.lod.rtviwe.tport.profile.registration.steptwo.RegisterStepTwoFragment
-import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeDataSource
 import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeRequest
 import com.lod.rtviwe.tport.utils.AuthService
 import org.koin.standalone.KoinComponent
@@ -29,26 +28,24 @@ class RegisterViewModel(
     }
 
     fun sendCode(codeRequest: SendCodeRequest, onSuccess: () -> Unit) {
-        registrationDataSource.getCodeDataSource().sendCode(
-            codeRequest,
-            object : SendCodeDataSource.SendCodeCallback {
-                override fun success(token: String) {
-                    authService.putToken(token)
-                    onSuccess()
-                }
+        registrationDataSource.sendCode(codeRequest, object : RegistrationDataSource.SendCodeCallback {
+            override fun success(token: String) {
+                authService.putToken(token)
+                onSuccess()
+            }
 
-                override fun fail() {
-                    Toast.makeText(app.baseContext, app.getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
-                }
-            })
+            override fun fail() {
+                Toast.makeText(app.baseContext, app.getString(R.string.error_wrong_code), Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     fun sendPhone(phone: String) {
-        registrationDataSource.getSendPhoneDataSource().sendPhone(SendPhoneRequest(phone))
+        registrationDataSource.sendPhone(SendPhoneRequest(phone))
     }
 
     fun sendName(phoneNumber: String, name: String) {
-        registrationDataSource.getNameDataSource().sendName(SendNameRequest(name, phoneNumber))
+        registrationDataSource.sendName(SendNameRequest(name, phoneNumber))
     }
 
     fun navigateToSecondStep(navController: NavController, phoneNumber: String) {
