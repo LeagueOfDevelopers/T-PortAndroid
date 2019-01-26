@@ -8,7 +8,7 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
 import com.lod.rtviwe.tport.utils.setTextChangedListener
-import kotlinx.android.synthetic.main.register_step_one_fragment.*
+import kotlinx.android.synthetic.main.fragment_register_step_one.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class RegisterStepOneFragment : BaseFragment() {
@@ -18,7 +18,7 @@ class RegisterStepOneFragment : BaseFragment() {
 
     private var phoneNumber = ""
 
-    override fun getLayout() = R.layout.register_step_one_fragment
+    override fun getLayout() = R.layout.fragment_register_step_one
 
     override fun scrollToTop() {
         scroll_view_step_one.smoothScrollTo(0, 0)

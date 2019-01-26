@@ -11,8 +11,8 @@ import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.model.Trip
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
+import kotlinx.android.synthetic.main.fragment_trip_details.*
 import kotlinx.android.synthetic.main.search_trips_toolbar_filter.*
-import kotlinx.android.synthetic.main.trip_details_fragment.*
 import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
 import java.util.*
@@ -26,7 +26,7 @@ class TripDetailsFragment : BaseFragment() {
 
     private val tripDetailsViewModel by inject<TripDetailsViewModel>()
 
-    override fun getLayout() = R.layout.trip_details_fragment
+    override fun getLayout() = R.layout.fragment_trip_details
 
     override fun scrollToTop() {
         routesLayoutManager.smoothScrollToPosition(routesRecyclerView, RecyclerView.State(), 0)

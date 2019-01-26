@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/searchFragment"
+        android:id="@+id/navigation_search"
         android:icon="@drawable/ic_search_selector"
         android:title="@string/bottom_item_search" />
     <item
-        android:id="@+id/ordersFragment"
+        android:id="@+id/navigation_orders"
         android:icon="@drawable/ic_orders_selector"
         android:title="@string/bottom_item_orders" />
     <item
-        android:id="@+id/bonusesFragment"
+        android:id="@+id/navigation_bonuses"
         android:icon="@drawable/ic_bonuses_selector"
         android:title="@string/bottom_item_bonuses" />
     <item
-        android:id="@+id/navigationRegistration"
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_profile_selector"
         android:title="@string/bottom_item_profile" />
 </menu>

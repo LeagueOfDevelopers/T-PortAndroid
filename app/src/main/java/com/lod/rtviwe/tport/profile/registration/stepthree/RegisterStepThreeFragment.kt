@@ -12,7 +12,7 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
 import com.lod.rtviwe.tport.profile.registration.steptwo.RegisterStepTwoFragment
-import kotlinx.android.synthetic.main.register_step_three_fragment.*
+import kotlinx.android.synthetic.main.fragment_register_step_three.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class RegisterStepThreeFragment : BaseFragment() {
@@ -22,7 +22,7 @@ class RegisterStepThreeFragment : BaseFragment() {
     private lateinit var navController: NavController
     private var phoneNumber: String = ""
 
-    override fun getLayout() = R.layout.register_step_three_fragment
+    override fun getLayout() = R.layout.fragment_register_step_three
 
     override fun scrollToTop() {
         scroll_view_step_three.smoothScrollTo(0, 0)

@@ -16,7 +16,7 @@ import com.lod.rtviwe.tport.profile.registration.RegisterViewModel.Companion.COD
 import com.lod.rtviwe.tport.profile.registration.stepone.RegisterStepOneFragment
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.redmadrobot.inputmask.MaskedTextChangedListener
-import kotlinx.android.synthetic.main.register_step_two_fragment.*
+import kotlinx.android.synthetic.main.fragment_register_step_two.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class RegisterStepTwoFragment : BaseFragment() {
@@ -28,7 +28,7 @@ class RegisterStepTwoFragment : BaseFragment() {
     private var phoneNumber = ""
     private var code = ""
 
-    override fun getLayout() = R.layout.register_step_two_fragment
+    override fun getLayout() = R.layout.fragment_register_step_two
 
     override fun scrollToTop() {
         scroll_view_step_two.smoothScrollTo(0, 0)

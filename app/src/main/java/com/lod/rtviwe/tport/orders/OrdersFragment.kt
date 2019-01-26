@@ -8,7 +8,7 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.orders_fragment.*
+import kotlinx.android.synthetic.main.fragment_orders.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class OrdersFragment : BaseFragment() {
@@ -19,7 +19,7 @@ class OrdersFragment : BaseFragment() {
     private lateinit var ordersLayoutManager: LinearLayoutManager
     private lateinit var ordersRecyclerView: RecyclerView
 
-    override fun getLayout() = R.layout.orders_fragment
+    override fun getLayout() = R.layout.fragment_orders
 
     override fun scrollToTop() {
         ordersLayoutManager.smoothScrollToPosition(ordersRecyclerView, RecyclerView.State(), 0)
