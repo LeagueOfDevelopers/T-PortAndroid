@@ -1,10 +1,10 @@
 package com.lod.rtviwe.tport.search.searchtrip
 
-import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.utils.CollectionJob
 import kotlinx.coroutines.launch
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
+import timber.log.Timber
 
 class SearchTripsNetworkDataSource : SearchTripsDataSource, KoinComponent {
 
@@ -21,17 +21,19 @@ class SearchTripsNetworkDataSource : SearchTripsDataSource, KoinComponent {
 
         job?.let {
             it.scope.launch(it.handler) {
-                // TODO wait for David
-//                val request = searchTripsApi.search(tripsRequest).await()
-//                val code = request.code()
-//
-//                when (code) {
-//                    200 -> MockTrips.getItems().observe(owner, Observer {
-//                        searchTripsAdapter.addAll(it.map(::TripItem))
-//                    })
-//                    else -> Timber.e("Unknown error happened on David $code")
-//                }
-                callback.getTrips(MockTrips.getItems())
+                // TODO replace it back
+                val request = searchTripsApi.searchAsync(
+                    /*tripsRequest.departureCityName*/"Москва",
+                    /*tripsRequest.destinationCityName*/"Краснодар",
+                    /*tripsRequest.departDate*/ "1.1.2019"
+                ).await()
+                val code = request.code()
+
+                when (code) {
+                    200 -> callback.getTrips(request.body()!!)
+                    else -> Timber.e("Unknown error happened on David $code")
+                }
+//                callback.getTrips(MockTrips.getItems())
             }
         }
     }

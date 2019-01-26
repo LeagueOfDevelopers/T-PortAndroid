@@ -1,14 +1,17 @@
 package com.lod.rtviwe.tport.search.searchtrip
 
+import com.lod.rtviwe.tport.model.Trip
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface SearchTripsApi {
 
-    @POST("/search")
-    fun search(
-        @Body tripsRequest: SearchTripsRequest
-    ): Deferred<Response<SearchTripsResponse>>
+    @GET("/trips")
+    fun searchAsync(
+        @Query("DepartureCityName") departure: String,
+        @Query("DestinationCityName") destination: String,
+        @Query("DepartDate") date: String
+    ): Deferred<Response<List<Trip>>>
 }
