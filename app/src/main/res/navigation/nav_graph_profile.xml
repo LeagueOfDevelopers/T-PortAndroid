@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_profile"
+    app:startDestination="@+id/navigationRegistration">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.lod.rtviwe.tport.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/profile_fragment">
+        <action
+            android:id="@+id/action_profileFragment_to_registration"
+            app:destination="@id/navigationRegistration" />
+    </fragment>
+
+    <navigation
+        android:id="@+id/navigationRegistration"
+        app:startDestination="@id/registerStepOneFragment">
+        <fragment
+            android:id="@+id/registerStepOneFragment"
+            android:name="com.lod.rtviwe.tport.profile.registration.stepone.RegisterStepOneFragment"
+            android:label="RegisterStepOneFragment"
+            tools:layout="@layout/fragment_register_step_one">
+            <action
+                android:id="@+id/action_registerStepOneFragment_to_registerStepTwoFragment"
+                app:destination="@+id/registerStepTwoFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/registerStepTwoFragment"
+            android:name="com.lod.rtviwe.tport.profile.registration.steptwo.RegisterStepTwoFragment"
+            android:label="RegisterStepTwoFragment"
+            tools:layout="@layout/fragment_register_step_two">
+            <action
+                android:id="@+id/action_registerStepTwoFragment_to_registerStepThreeFragment"
+                app:destination="@id/registerStepThreeFragment"
+                app:popUpTo="@+id/nav_graph" />
+        </fragment>
+        <fragment
+            android:id="@+id/registerStepThreeFragment"
+            android:name="com.lod.rtviwe.tport.profile.registration.stepthree.RegisterStepThreeFragment"
+            android:label="RegisterStepThreeFragment"
+            tools:layout="@layout/fragment_register_step_three">
+            <action
+                android:id="@+id/action_registerStepThreeFragment_to_profileFragment"
+                app:destination="@id/profileFragment"
+                app:popUpTo="@+id/nav_graph" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_profileFragment"
+            app:destination="@id/profileFragment" />
+    </navigation>
+
+    <action
+        android:id="@+id/action_global_navigation"
+        app:destination="@id/navigationRegistration" />
+
+</navigation>

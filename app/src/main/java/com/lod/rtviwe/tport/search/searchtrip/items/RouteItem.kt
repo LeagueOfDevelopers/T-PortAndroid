@@ -7,12 +7,12 @@ import com.lod.rtviwe.tport.model.Route
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.search_trip_route_item.*
+import kotlinx.android.synthetic.main.trip_route_item.*
 import kotlin.math.roundToInt
 
 class RouteItem(private val route: Route, private val isFirst: Boolean, private val isLast: Boolean) : Item() {
 
-    override fun getLayout() = R.layout.search_trip_route_item
+    override fun getLayout() = R.layout.trip_route_item
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         val imageResourceToSet = RouteIcons.getImageResource(route.transport.type)
@@ -32,7 +32,7 @@ class RouteItem(private val route: Route, private val isFirst: Boolean, private 
             viewHolder.image_view_connection_start.visibility = View.GONE
             val imageViewRoute = viewHolder.image_view_route_item
             val params = imageViewRoute.layoutParams as ViewGroup.MarginLayoutParams
-            params.marginEnd = 64
+            params.marginEnd = 80
             imageViewRoute.requestLayout()
         }
 

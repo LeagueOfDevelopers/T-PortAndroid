@@ -5,8 +5,7 @@ import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
@@ -14,9 +13,9 @@ import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.utils.setTextChangedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
+import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.header_item.*
 import kotlinx.android.synthetic.main.search_box_item.*
-import kotlinx.android.synthetic.main.search_fragment.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.util.*
 
@@ -27,11 +26,10 @@ class SearchFragment : BaseFragment() {
     private val searchAdapter = GroupAdapter<ViewHolder>()
     private val searchBox = SearchBox("", "", "")
 
-    private lateinit var navController: NavController
     private lateinit var searchLayoutManager: LinearLayoutManager
     private lateinit var searchRecyclerView: RecyclerView
 
-    override fun getLayout() = R.layout.search_fragment
+    override fun getLayout() = R.layout.fragment_search
 
     override fun scrollToTop() {
         scroll_view_search_fragment.smoothScrollTo(0, 0)
@@ -39,10 +37,6 @@ class SearchFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        activity?.let {
-            navController = Navigation.findNavController(it, R.id.nav_host_fragment)
-        }
 
         searchViewModel.populateAdapter(searchAdapter)
 
@@ -73,9 +67,7 @@ class SearchFragment : BaseFragment() {
         }
 
         button_pick_up.setOnClickListener {
-            activity?.let {
-                navigateToSearchTrip()
-            }
+            navigateToSearchTrips()
         }
 
         autocomplete_text_from_place.setOnFocusChangeListener { textView, hasFocus ->
@@ -89,6 +81,17 @@ class SearchFragment : BaseFragment() {
                 hideKeyboard(textView)
             }
         }
+    }
+
+    private fun navigateToSearchTrips() {
+        searchViewModel.navigateToSearchTrip(
+            findNavController(),
+            SearchBox(
+                autocomplete_text_from_place.text.toString(),
+                autocomplete_text_to_place.text.toString(),
+                edit_text_data_travel.text.toString()
+            )
+        )
     }
 
     private fun callDateTimePicker() {
@@ -113,16 +116,5 @@ class SearchFragment : BaseFragment() {
         val inputMethodManager =
             context?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-    }
-
-    private fun navigateToSearchTrip() {
-        searchViewModel.navigateToSearchTrip(
-            navController,
-            SearchBox(
-                autocomplete_text_from_place.text.toString(),
-                autocomplete_text_to_place.text.toString(),
-                edit_text_data_travel.text.toString()
-            )
-        )
     }
 }

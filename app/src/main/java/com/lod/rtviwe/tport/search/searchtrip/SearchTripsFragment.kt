@@ -11,7 +11,7 @@ import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.search_trips_fragment.*
+import kotlinx.android.synthetic.main.fragment_search_trips.*
 import kotlinx.android.synthetic.main.search_trips_toolbar_filter.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,7 +28,7 @@ class SearchTripsFragment : BaseFragment() {
     private var toPlace = ""
     private var travelTime = ""
 
-    override fun getLayout() = R.layout.search_trips_fragment
+    override fun getLayout() = R.layout.fragment_search_trips
 
     override fun scrollToTop() {
         searchRoutesLayoutManager.smoothScrollToPosition(searchRoutesRecyclerView, RecyclerView.State(), 0)

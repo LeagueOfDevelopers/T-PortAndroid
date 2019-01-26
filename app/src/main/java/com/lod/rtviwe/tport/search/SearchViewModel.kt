@@ -9,6 +9,7 @@ import androidx.navigation.NavController
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.search.autocomplete.AutocompleteDataSource
+import com.lod.rtviwe.tport.search.autocomplete.AutocompleteRepository
 import com.lod.rtviwe.tport.search.populartrip.PopularTrip
 import com.lod.rtviwe.tport.search.populartrip.PopularTripDataSource
 import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
@@ -18,18 +19,18 @@ import org.koin.standalone.KoinComponent
 
 class SearchViewModel(
     private val app: Application,
-    private val autocompleteRepository: AutocompleteDataSource,
-    private val popularTripRepository: PopularTripDataSource
+    private val autocompleteRepository: AutocompleteRepository,
+    private val popularTripDataSource: PopularTripDataSource
 ) : AndroidViewModel(app), KoinComponent {
 
     override fun onCleared() {
         super.onCleared()
         autocompleteRepository.clear()
-        popularTripRepository.clear()
+        popularTripDataSource.clear()
     }
 
     fun populateAdapter(adapter: GroupAdapter<ViewHolder>) {
-        popularTripRepository.setPopularTrips(object : PopularTripDataSource.PopularTripCallback {
+        popularTripDataSource.setPopularTrips(object : PopularTripDataSource.PopularTripCallback {
             override fun getPopularTrips(trips: List<Trip>) {
                 adapter.clear()
                 trips.forEach {
@@ -43,6 +44,7 @@ class SearchViewModel(
         autocompleteRepository.autocomplete(text, object : AutocompleteDataSource.AutocompleteCallback {
             override fun getAutocomplete(words: List<String>) {
                 textView.setAdapter(ArrayAdapter(app, android.R.layout.simple_dropdown_item_1line, words))
+                autocompleteRepository.saveAutocomplete(Pair(text, words))
             }
         })
     }

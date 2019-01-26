@@ -31,4 +31,8 @@
         <!-- TODO -->
     </style>
 
+    <style name="SwitchButtonFilter" parent="Theme.MaterialComponents.Light">
+        <!-- TODO -->
+    </style>
+
 </resources>

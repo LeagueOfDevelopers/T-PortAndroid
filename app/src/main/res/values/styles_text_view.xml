@@ -110,4 +110,9 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="TextViewFilterAction" parent="Theme.MaterialComponents.Light">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 </resources>
