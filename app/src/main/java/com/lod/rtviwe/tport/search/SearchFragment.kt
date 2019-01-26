@@ -3,16 +3,13 @@ package com.lod.rtviwe.tport.search
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
-import com.lod.rtviwe.tport.databinding.FragmentSearchBinding
 import com.lod.rtviwe.tport.utils.setTextChangedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
@@ -26,7 +23,6 @@ class SearchFragment : BaseFragment() {
 
     private val searchViewModel by sharedViewModel<SearchViewModel>()
 
-    private lateinit var binding: FragmentSearchBinding
     private val searchAdapter = GroupAdapter<ViewHolder>()
     private val searchBox = SearchBox("", "", "")
 
@@ -37,12 +33,6 @@ class SearchFragment : BaseFragment() {
 
     override fun scrollToTop() {
         scroll_view_search_fragment.smoothScrollTo(0, 0)
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentSearchBinding.inflate(inflater, container, false)
-        binding.handler = this
-        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
