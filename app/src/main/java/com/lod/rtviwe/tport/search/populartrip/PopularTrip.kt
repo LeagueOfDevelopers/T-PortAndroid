@@ -1,16 +1,22 @@
 package com.lod.rtviwe.tport.search.populartrip
 
 import android.app.Activity
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Trip
+import com.lod.rtviwe.tport.search.SearchBox
+import com.lod.rtviwe.tport.search.SearchViewModel
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.popular_trip_item.*
 import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
 import java.util.*
 
 class PopularTrip(private val trip: Trip) : Item(), KoinComponent {
+
+    private val searchViewModel by inject<SearchViewModel>()
 
     override fun getLayout() = R.layout.popular_trip_item
 
@@ -29,13 +35,13 @@ class PopularTrip(private val trip: Trip) : Item(), KoinComponent {
                 val date = with(Calendar.getInstance()) {
                     "${get(Calendar.YEAR)}.${get(Calendar.MONTH + 1)}.${get(Calendar.DAY_OF_MONTH)}"
                 }
-//                searchViewModel.navigateToSearchTrip(
-//                    findNavController(), SearchBox(
-//                        fromPlace.name,
-//                        toPlace.name,
-//                        date
-//                    )
-//                )
+                searchViewModel.navigateToSearchTrip(
+                    it.findNavController(), SearchBox(
+                        fromPlace.name,
+                        toPlace.name,
+                        date
+                    )
+                )
             }
         }
     }

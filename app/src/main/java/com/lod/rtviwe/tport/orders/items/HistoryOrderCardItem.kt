@@ -1,19 +1,23 @@
 package com.lod.rtviwe.tport.orders.items
 
-import android.os.Bundle
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Trip
+import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.search.searchtrip.items.RouteItem
-import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.history_order_item.*
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
 
-class HistoryOrderCardItem(private val trip: Trip) : Item() {
+class HistoryOrderCardItem(private val trip: Trip) : Item(), KoinComponent {
+
+    private val ordersViewModel by inject<OrdersViewModel>()
 
     override fun getLayout() = R.layout.history_order_item
 
@@ -39,8 +43,7 @@ class HistoryOrderCardItem(private val trip: Trip) : Item() {
         }
 
         viewHolder.card_history_item.setOnClickListener {
-            val bundle = Bundle().apply { putParcelable(TripDetailsFragment.ARGUMENT_TRIP, trip) }
-//            navController.navigate(R.id.action_ordersFragment_to_tripDetailsFragment, bundle)
+            ordersViewModel.navigateToTripDetails(it.findNavController(), trip)
         }
     }
 }

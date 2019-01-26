@@ -1,13 +1,16 @@
 package com.lod.rtviwe.tport.orders
 
 import android.app.Application
+import android.os.Bundle
 import androidx.lifecycle.AndroidViewModel
+import androidx.navigation.NavController
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.orders.items.ComingOrderCardItem
 import com.lod.rtviwe.tport.orders.items.CurrentOrderCardItem
 import com.lod.rtviwe.tport.orders.items.HeaderItem
 import com.lod.rtviwe.tport.orders.items.HistoryOrderCardItem
+import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import org.koin.standalone.KoinComponent
@@ -49,5 +52,10 @@ class OrdersViewModel(
                 }
             }
         })
+    }
+
+    fun navigateToTripDetails(navController: NavController, trip: Trip) {
+        val bundle = Bundle().apply { putParcelable(TripDetailsFragment.ARGUMENT_TRIP, trip) }
+        navController.navigate(R.id.action_ordersFragment_to_tripDetailsFragment, bundle)
     }
 }
