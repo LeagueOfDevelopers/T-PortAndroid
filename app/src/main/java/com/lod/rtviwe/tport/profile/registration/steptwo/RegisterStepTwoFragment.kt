@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
@@ -22,8 +21,6 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class RegisterStepTwoFragment : BaseFragment() {
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
-
-    private lateinit var navController: NavController
 
     private var phoneNumber = ""
     private var code = ""
@@ -44,10 +41,6 @@ class RegisterStepTwoFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        activity?.let {
-            navController = Navigation.findNavController(it, R.id.nav_host_fragment)
-        }
 
         text_view_phone_number.text = phoneNumber//maskResult.formattedText.string
 
@@ -80,7 +73,7 @@ class RegisterStepTwoFragment : BaseFragment() {
         if (registerViewModel.checkCodeLength(code)) {
             registerViewModel.sendCode(SendCodeRequest(phoneNumber, code)) {
                 context?.let {
-                    registerViewModel.navigateToThirdStep(navController, phoneNumber)
+                    registerViewModel.navigateToThirdStep(findNavController(), phoneNumber)
                 }
             }
         }

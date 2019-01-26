@@ -10,14 +10,14 @@
         android:label="SearchContainerFragment" />
     <keep_state_fragment
         android:id="@+id/navigation_orders"
-        android:name="com.lod.rtviwe.tport.orders.OrdersFragment"
-        android:label="OrdersFragment" />
+        android:name="com.lod.rtviwe.tport.orders.OrdersContainerFragment"
+        android:label="OrdersContainerFragment" />
     <keep_state_fragment
         android:id="@+id/navigation_bonuses"
-        android:name="com.lod.rtviwe.tport.bonuses.BonusesFragment"
-        android:label="BonusesFragment" />
+        android:name="com.lod.rtviwe.tport.bonuses.BonusesContainerFragment"
+        android:label="BonusesContainerFragment" />
     <keep_state_fragment
         android:id="@+id/navigation_profile"
-        android:name="com.lod.rtviwe.tport.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:name="com.lod.rtviwe.tport.profile.ProfileContainerFragment"
+        android:label="ProfileContainerFragment" />
 </navigation>

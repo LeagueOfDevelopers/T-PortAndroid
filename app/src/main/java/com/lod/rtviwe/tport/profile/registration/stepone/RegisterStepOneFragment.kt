@@ -2,8 +2,7 @@ package com.lod.rtviwe.tport.profile.registration.stepone
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
@@ -14,7 +13,6 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 class RegisterStepOneFragment : BaseFragment() {
 
     private val registerViewModel by sharedViewModel<RegisterViewModel>()
-    private lateinit var navController: NavController
 
     private var phoneNumber = ""
 
@@ -27,12 +25,8 @@ class RegisterStepOneFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        activity?.let {
-            navController = Navigation.findNavController(it, R.id.nav_host_fragment)
-        }
-
         if (registerViewModel.isUserLogged()) {
-            registerViewModel.navigateToProfileFragment(navController)
+            registerViewModel.navigateToProfileFragment(findNavController())
         }
 
         fab_register_step_one_next.setOnClickListener {
@@ -53,7 +47,7 @@ class RegisterStepOneFragment : BaseFragment() {
     }
 
     private fun setupNextStep() {
-        registerViewModel.navigateToSecondStep(navController, phoneNumber)
+        registerViewModel.navigateToSecondStep(findNavController(), phoneNumber)
     }
 
     private fun showErrorPhoneNumber() {

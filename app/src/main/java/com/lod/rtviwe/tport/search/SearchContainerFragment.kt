@@ -8,6 +8,6 @@ class SearchContainerFragment : BaseFragment() {
     override fun getLayout() = R.layout.fragment_search_container
 
     override fun scrollToTop() {
-        // TODO
+        // TODO remove it
     }
 }
