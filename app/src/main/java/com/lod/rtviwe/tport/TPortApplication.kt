@@ -1,6 +1,7 @@
 package com.lod.rtviwe.tport
 
 import android.app.Application
+import com.lod.rtviwe.tport.di.dataSourceModule
 import com.lod.rtviwe.tport.di.networkModule
 import com.lod.rtviwe.tport.di.utilModule
 import com.lod.rtviwe.tport.di.viewModelModule
@@ -16,7 +17,7 @@ class TPortApplication : Application() {
             Timber.plant(Timber.DebugTree())
         }
 
-        startKoin(this, listOf(viewModelModule, networkModule, utilModule))
+        startKoin(this, listOf(viewModelModule, networkModule, dataSourceModule, utilModule))
     }
 
     companion object {
