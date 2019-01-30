@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
-import com.lod.rtviwe.tport.profile.registration.RegisterViewModel.Companion.CODE_LENGTH
 import com.lod.rtviwe.tport.profile.registration.stepone.RegisterStepOneFragment
+import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.RouteIcons
 import com.redmadrobot.inputmask.MaskedTextChangedListener
 import kotlinx.android.synthetic.main.fragment_register_step_two.*
@@ -88,7 +88,7 @@ class RegisterStepTwoFragment : BaseFragment() {
                 getImageViewCode(index).setImageResource(numberImageResource)
             }
 
-            (text.length until CODE_LENGTH).forEach { index ->
+            (text.length until AuthService.CODE_LENGTH).forEach { index ->
                 getImageViewCode(index).setImageResource(R.drawable.code_placeholder)
             }
         } catch (error: NumberFormatException) {

@@ -4,6 +4,7 @@ import com.lod.rtviwe.tport.profile.registration.stepone.SendPhoneRequest
 import com.lod.rtviwe.tport.profile.registration.stepthree.SendNameRequest
 import com.lod.rtviwe.tport.profile.registration.steptwo.ResponseToken
 import com.lod.rtviwe.tport.profile.registration.steptwo.SendCodeRequest
+import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.CollectionJob
 import kotlinx.coroutines.launch
 import org.koin.standalone.KoinComponent
@@ -11,6 +12,8 @@ import org.koin.standalone.inject
 import timber.log.Timber
 
 class RegistrationNetworkDataSource : RegistrationDataSource, KoinComponent {
+
+    private val authService by inject<AuthService>()
 
     private val collectionJob = CollectionJob()
 
@@ -43,6 +46,7 @@ class RegistrationNetworkDataSource : RegistrationDataSource, KoinComponent {
         job?.let {
             it.scope.launch(it.handler) {
                 // TODO send name to David
+                authService.putName(nameRequest.name) // TODO if success
             }
         }
     }
