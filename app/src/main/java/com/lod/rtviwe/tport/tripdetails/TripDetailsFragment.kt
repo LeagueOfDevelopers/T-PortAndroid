@@ -28,10 +28,6 @@ class TripDetailsFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.fragment_trip_details
 
-    override fun scrollToTop() {
-        routesLayoutManager.smoothScrollToPosition(routesRecyclerView, RecyclerView.State(), 0)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {
             it.getParcelable<Trip>(ARGUMENT_TRIP)?.let { trip -> this.trip = trip }

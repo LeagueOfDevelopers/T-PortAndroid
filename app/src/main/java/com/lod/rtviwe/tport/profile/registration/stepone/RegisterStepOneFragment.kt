@@ -18,10 +18,6 @@ class RegisterStepOneFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.fragment_register_step_one
 
-    override fun scrollToTop() {
-        scroll_view_step_one.smoothScrollTo(0, 0)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

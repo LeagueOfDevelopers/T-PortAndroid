@@ -30,10 +30,6 @@ class SearchTripsFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.fragment_search_trips
 
-    override fun scrollToTop() {
-        searchRoutesLayoutManager.smoothScrollToPosition(searchRoutesRecyclerView, RecyclerView.State(), 0)
-    }
-
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 

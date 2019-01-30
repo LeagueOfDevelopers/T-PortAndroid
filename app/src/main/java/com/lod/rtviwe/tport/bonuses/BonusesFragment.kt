@@ -9,8 +9,4 @@ class BonusesFragment : BaseFragment() {
     private val bonusesViewModel: BonusesViewModel by viewModel()
 
     override fun getLayout() = R.layout.fragment_bonuses
-
-    override fun scrollToTop() {
-
-    }
 }

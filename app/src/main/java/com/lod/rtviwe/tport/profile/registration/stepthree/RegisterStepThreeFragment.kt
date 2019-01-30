@@ -22,10 +22,6 @@ class RegisterStepThreeFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.fragment_register_step_three
 
-    override fun scrollToTop() {
-        scroll_view_step_three.smoothScrollTo(0, 0)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {
             it.getString(RegisterStepTwoFragment.ARGUMENT_PHONE_NUMBER)?.let { phone -> phoneNumber = phone }
