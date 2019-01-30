@@ -1,6 +1,5 @@
 package com.lod.rtviwe.tport.orders
 
-import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.utils.CollectionJob
 import kotlinx.coroutines.launch
 import org.koin.standalone.KoinComponent
@@ -19,7 +18,7 @@ class OrdersNetworkDataSource : OrdersDataSource, KoinComponent {
 
         job?.let {
             it.scope.launch(job.handler) {
-                callback.getOrders(MockTrips.getItems())
+                // TODO
             }
         }
     }
@@ -29,7 +28,7 @@ class OrdersNetworkDataSource : OrdersDataSource, KoinComponent {
 
         job?.let {
             it.scope.launch(job.handler) {
-                callback.getOrders(MockTrips.getItems())
+                // TODO
             }
         }
     }
@@ -39,7 +38,7 @@ class OrdersNetworkDataSource : OrdersDataSource, KoinComponent {
 
         job?.let {
             it.scope.launch(job.handler) {
-                callback.getOrders(MockTrips.getItems())
+                // TODO
             }
         }
     }

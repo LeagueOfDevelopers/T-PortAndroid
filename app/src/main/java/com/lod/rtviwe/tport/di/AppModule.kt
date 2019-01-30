@@ -6,24 +6,17 @@ import com.lod.rtviwe.tport.BuildConfig
 import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.bonuses.BonusesViewModel
 import com.lod.rtviwe.tport.orders.OrdersDataSource
+import com.lod.rtviwe.tport.orders.OrdersMockDataSource
 import com.lod.rtviwe.tport.orders.OrdersNetworkDataSource
 import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
-import com.lod.rtviwe.tport.profile.registration.RegisterViewModel
-import com.lod.rtviwe.tport.profile.registration.RegistrationApi
-import com.lod.rtviwe.tport.profile.registration.RegistrationDataSource
-import com.lod.rtviwe.tport.profile.registration.RegistrationNetworkDataSource
+import com.lod.rtviwe.tport.profile.registration.*
 import com.lod.rtviwe.tport.search.SearchViewModel
-import com.lod.rtviwe.tport.search.autocomplete.AutocompleteApi
-import com.lod.rtviwe.tport.search.autocomplete.AutocompleteDataSource
-import com.lod.rtviwe.tport.search.autocomplete.AutocompleteNetworkDataSource
-import com.lod.rtviwe.tport.search.autocomplete.AutocompleteRepository
+import com.lod.rtviwe.tport.search.autocomplete.*
 import com.lod.rtviwe.tport.search.populartrip.PopularTripDataSource
+import com.lod.rtviwe.tport.search.populartrip.PopularTripMockDataSource
 import com.lod.rtviwe.tport.search.populartrip.PopularTripNetworkDataSource
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsApi
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsDataSource
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsNetworkDataSource
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsViewModel
+import com.lod.rtviwe.tport.search.searchtrip.*
 import com.lod.rtviwe.tport.tripdetails.TripDetailsViewModel
 import com.lod.rtviwe.tport.utils.AuthService
 import com.lod.rtviwe.tport.utils.CountryUtils
@@ -35,12 +28,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val viewModelModule = module {
-    viewModel { SearchViewModel(get(), get(), get()) }
+    viewModel { SearchViewModel(get(), get(name = MOCK), get(name = MOCK)) }
     viewModel<BonusesViewModel>()
-    viewModel { OrdersViewModel(get(), get()) }
-    viewModel { RegisterViewModel(get(), get()) }
+    viewModel { OrdersViewModel(get(), get(name = MOCK)) }
+    viewModel { RegisterViewModel(get(), get(name = MOCK)) }
     viewModel<ProfileViewModel>()
-    viewModel { SearchTripsViewModel(get(), get()) }
+    viewModel { SearchTripsViewModel(get(), get(name = MOCK)) }
     viewModel<TripDetailsViewModel>()
 }
 
@@ -54,7 +47,7 @@ val networkModule = module {
             .create(RegistrationApi::class.java)
     }
     single {
-        GsonBuilder().setLenient()/*.setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")*/.create()
+        GsonBuilder().setLenient().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()
     }
     single {
         OkHttpClient.Builder().apply {
@@ -86,15 +79,27 @@ val networkModule = module {
 }
 
 val dataSourceModule = module {
-    factory<AutocompleteDataSource> { AutocompleteNetworkDataSource() }
-    factory { AutocompleteRepository(get()) }
-    factory<PopularTripDataSource> { PopularTripNetworkDataSource() }
-    factory<OrdersDataSource> { OrdersNetworkDataSource() }
-    factory<RegistrationDataSource> { RegistrationNetworkDataSource() }
-    factory<SearchTripsDataSource> { SearchTripsNetworkDataSource() }
+    factory<AutocompleteDataSource>(name = NETWORK) { AutocompleteNetworkDataSource() }
+    factory<AutocompleteDataSource>(name = MOCK) { AutocompleteMockDataSource() }
+    factory<PopularTripDataSource>(name = NETWORK) { PopularTripNetworkDataSource() }
+    factory<PopularTripDataSource>(name = MOCK) { PopularTripMockDataSource() }
+    factory<OrdersDataSource>(name = NETWORK) { OrdersNetworkDataSource() }
+    factory<OrdersDataSource>(name = MOCK) { OrdersMockDataSource() }
+    factory<RegistrationDataSource>(name = NETWORK) { RegistrationNetworkDataSource() }
+    factory<RegistrationDataSource>(name = MOCK) { RegistrationMockDataSource() }
+    factory<SearchTripsDataSource>(name = NETWORK) { SearchTripsNetworkDataSource() }
+    factory<SearchTripsDataSource>(name = MOCK) { SearchTripsMockDataSource() }
+}
+
+val repositoryModule = module {
+    single(name = MOCK) { AutocompleteRepository(get(name = MOCK)) }
+    single(name = NETWORK) { AutocompleteRepository(get(name = NETWORK)) }
 }
 
 val utilModule = module {
     single { AuthService(get()) }
     single { CountryUtils(get()) }
 }
+
+private const val MOCK = "MOCK"
+private const val NETWORK = "NETWORK"

@@ -9,7 +9,7 @@ import timber.log.Timber
 class SearchTripsNetworkDataSource : SearchTripsDataSource, KoinComponent {
 
     private val collectionJob = CollectionJob()
-    private val searchTripsApi: SearchTripsApi by inject()
+    private val searchTripsApi by inject<SearchTripsApi>()
 
     init {
 
@@ -23,9 +23,9 @@ class SearchTripsNetworkDataSource : SearchTripsDataSource, KoinComponent {
             it.scope.launch(it.handler) {
                 // TODO replace it back
                 val request = searchTripsApi.searchAsync(
-                    /*tripsRequest.departureCityName*/"Москва",
-                    /*tripsRequest.destinationCityName*/"Краснодар",
-                    /*tripsRequest.departDate*/ "1.1.2019"
+                    tripsRequest.departureCityName,
+                    tripsRequest.destinationCityName,
+                    tripsRequest.departDate
                 ).await()
                 val code = request.code()
 
@@ -33,7 +33,6 @@ class SearchTripsNetworkDataSource : SearchTripsDataSource, KoinComponent {
                     200 -> callback.getTrips(request.body()!!)
                     else -> Timber.e("Unknown error happened on David $code")
                 }
-//                callback.getTrips(MockTrips.getItems())
             }
         }
     }
