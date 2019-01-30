@@ -21,5 +21,7 @@ class TPortApplication : Application() {
 
         const val TPORT_URL = "http://tport-test.lod-misis.ru/"
         const val AUTOCOMPLETE_URL = "https://suggestions.dadata.ru/"
+        const val MOCK = "MOCK"
+        const val NETWORK = "NETWORK"
     }
 }
