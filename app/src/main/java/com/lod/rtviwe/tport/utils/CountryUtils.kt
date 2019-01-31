@@ -10,9 +10,9 @@ class CountryUtils(private val context: Context) {
     fun findCountry(phoneNumber: String): String? {
         val typeToken = object : TypeToken<CountriesJson>() {}.type
 
-        context.assets.open("countries.json").bufferedReader().use {
-            val countries = Gson().fromJson<CountriesJson>(it, typeToken)
-            return countries.countries.find { country -> phoneNumber.startsWith(country.code) }?.name
+        context.assets.open(COUNTRIES_FILE).bufferedReader().use {
+            val countriesJson = Gson().fromJson<CountriesJson>(it, typeToken)
+            return countriesJson.countries.find { country -> phoneNumber.startsWith(country.code) }?.name
         }
     }
 
@@ -30,4 +30,9 @@ class CountryUtils(private val context: Context) {
         val code: String,
         val name: String
     )
+
+    companion object {
+
+        private const val COUNTRIES_FILE = "countries.json"
+    }
 }

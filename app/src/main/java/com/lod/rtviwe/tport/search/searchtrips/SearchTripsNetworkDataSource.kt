@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip
+package com.lod.rtviwe.tport.search.searchtrips
 
 import com.lod.rtviwe.tport.utils.CollectionJob
 import kotlinx.coroutines.launch

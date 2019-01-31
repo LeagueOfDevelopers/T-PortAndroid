@@ -14,9 +14,9 @@ import com.lod.rtviwe.tport.search.autocomplete.AutocompleteNetworkDataSource
 import com.lod.rtviwe.tport.search.populartrip.PopularTripDataSource
 import com.lod.rtviwe.tport.search.populartrip.PopularTripMockDataSource
 import com.lod.rtviwe.tport.search.populartrip.PopularTripNetworkDataSource
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsDataSource
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsMockDataSource
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsNetworkDataSource
+import com.lod.rtviwe.tport.search.searchtrips.SearchTripsDataSource
+import com.lod.rtviwe.tport.search.searchtrips.SearchTripsMockDataSource
+import com.lod.rtviwe.tport.search.searchtrips.SearchTripsNetworkDataSource
 import org.koin.dsl.module.module
 
 val dataSourceModule = module {

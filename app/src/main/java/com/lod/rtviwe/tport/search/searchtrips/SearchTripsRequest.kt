@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip
+package com.lod.rtviwe.tport.search.searchtrips
 
 data class SearchTripsRequest(
     val departureCityName: String,

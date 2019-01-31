@@ -12,7 +12,7 @@ import com.lod.rtviwe.tport.search.autocomplete.AutocompleteDataSource
 import com.lod.rtviwe.tport.search.autocomplete.AutocompleteRepository
 import com.lod.rtviwe.tport.search.populartrip.PopularTrip
 import com.lod.rtviwe.tport.search.populartrip.PopularTripDataSource
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
+import com.lod.rtviwe.tport.search.searchtrips.SearchTripsFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import org.koin.standalone.KoinComponent

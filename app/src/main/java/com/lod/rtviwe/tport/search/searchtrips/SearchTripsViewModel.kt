@@ -1,9 +1,9 @@
-package com.lod.rtviwe.tport.search.searchtrip
+package com.lod.rtviwe.tport.search.searchtrips
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.lod.rtviwe.tport.model.Trip
-import com.lod.rtviwe.tport.search.searchtrip.items.TripItem
+import com.lod.rtviwe.tport.search.searchtrips.items.TripItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import org.koin.standalone.KoinComponent

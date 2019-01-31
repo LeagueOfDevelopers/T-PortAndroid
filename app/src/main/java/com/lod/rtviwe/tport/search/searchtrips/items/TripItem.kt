@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip.items
+package com.lod.rtviwe.tport.search.searchtrips.items
 
 import android.app.Activity
 import android.os.Bundle

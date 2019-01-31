@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip
+package com.lod.rtviwe.tport.search.searchtrips
 
 import com.lod.rtviwe.tport.model.Trip
 import kotlinx.coroutines.Deferred

@@ -6,7 +6,7 @@ import com.lod.rtviwe.tport.BuildConfig
 import com.lod.rtviwe.tport.TPortApplication
 import com.lod.rtviwe.tport.profile.registration.RegistrationApi
 import com.lod.rtviwe.tport.search.autocomplete.AutocompleteApi
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsApi
+import com.lod.rtviwe.tport.search.searchtrips.SearchTripsApi
 import okhttp3.OkHttpClient
 import org.koin.dsl.module.module
 import retrofit2.Retrofit

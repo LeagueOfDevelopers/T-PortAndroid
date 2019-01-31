@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import timber.log.Timber
 
+// TODO deprecated?
 data class CollectionJob(private val map: HashMap<String, CompositeJob> = hashMapOf()) {
 
     fun getJob(name: String): CompositeJob? = map[name]
