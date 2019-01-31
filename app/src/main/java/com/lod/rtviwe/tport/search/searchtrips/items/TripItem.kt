@@ -1,33 +1,29 @@
 package com.lod.rtviwe.tport.search.searchtrips.items
 
-import android.app.Activity
-import android.os.Bundle
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Trip
-import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
+import com.lod.rtviwe.tport.search.SearchViewModel
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.search_trip_card.*
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
-class TripItem(private val trip: Trip) : Item() {
+class TripItem(private val trip: Trip) : Item(), KoinComponent {
 
-    private lateinit var navController: NavController
+    private val searchViewModel by inject<SearchViewModel>()
 
     override fun getLayout() = R.layout.search_trip_card
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        navController =
-                Navigation.findNavController(viewHolder.containerView.context as Activity, R.id.nav_host_fragment)
-
         viewHolder.text_view_route_time.text =
                 SimpleDateFormat("hh:mm", Locale.getDefault()).format(trip.routes[0].departureDate)
         viewHolder.text_view_cost.text =
@@ -49,8 +45,7 @@ class TripItem(private val trip: Trip) : Item() {
         }
 
         viewHolder.card_search_trip_item.setOnClickListener {
-            val bundle = Bundle().apply { putParcelable(TripDetailsFragment.ARGUMENT_TRIP, trip) }
-            navController.navigate(R.id.action_searchTripsFragment_to_tripDetailsFragment, bundle)
+            searchViewModel.navigateToTripDetails(it.findNavController(), trip)
         }
     }
 }

@@ -32,7 +32,6 @@ class OrdersViewModel(
                     add(HeaderItem(app.getString(R.string.current_order)))
                     add(CurrentOrderCardItem(orders[0]))
                 }
-                ordersAdapter.notifyDataSetChanged()
             }
         })
 
@@ -42,7 +41,6 @@ class OrdersViewModel(
                     add(HeaderItem(app.getString(R.string.coming_order)))
                     addAll(orders.map { ComingOrderCardItem(it) })
                 }
-                ordersAdapter.notifyDataSetChanged()
             }
         })
 
@@ -52,7 +50,6 @@ class OrdersViewModel(
                     add(HeaderItem(app.getString(R.string.history)))
                     addAll(orders.map { HistoryOrderCardItem(it) })
                 }
-                ordersAdapter.notifyDataSetChanged()
             }
         })
     }
