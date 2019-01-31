@@ -1,6 +1,8 @@
-package com.lod.rtviwe.tport.search.searchtrip
+package com.lod.rtviwe.tport.search.searchtrips
 
+import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.utils.CollectionJob
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
@@ -9,7 +11,7 @@ import timber.log.Timber
 class SearchTripsNetworkDataSource : SearchTripsDataSource, KoinComponent {
 
     private val collectionJob = CollectionJob()
-    private val searchTripsApi: SearchTripsApi by inject()
+    private val searchTripsApi by inject<SearchTripsApi>()
 
     init {
 
@@ -21,21 +23,29 @@ class SearchTripsNetworkDataSource : SearchTripsDataSource, KoinComponent {
 
         job?.let {
             it.scope.launch(it.handler) {
-                // TODO replace it back
                 val request = searchTripsApi.searchAsync(
-                    /*tripsRequest.departureCityName*/"Москва",
-                    /*tripsRequest.destinationCityName*/"Краснодар",
-                    /*tripsRequest.departDate*/ "1.1.2019"
+                    tripsRequest.departureCityName,
+                    tripsRequest.destinationCityName,
+                    tripsRequest.departDate
                 ).await()
                 val code = request.code()
 
                 when (code) {
-                    200 -> callback.getTrips(request.body()!!)
+                    200 -> {
+                        if (request.body() != null) {
+                            callback.getTrips(request.body()!!)
+                        } else {
+                            Timber.e("Body is empty from David $code")
+                        }
+                    }
                     else -> Timber.e("Unknown error happened on David $code")
                 }
-//                callback.getTrips(MockTrips.getItems())
             }
         }
+    }
+
+    override fun saveTrips(value: Pair<SearchTripsRequest, List<Trip>>) {
+        // TODO save in persistent
     }
 
     override fun clear() {

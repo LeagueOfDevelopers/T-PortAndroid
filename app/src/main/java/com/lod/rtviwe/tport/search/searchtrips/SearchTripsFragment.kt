@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip
+package com.lod.rtviwe.tport.search.searchtrips
 
 import android.content.Context
 import android.os.Bundle
@@ -30,11 +30,7 @@ class SearchTripsFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.fragment_search_trips
 
-    override fun scrollToTop() {
-        searchRoutesLayoutManager.smoothScrollToPosition(searchRoutesRecyclerView, RecyclerView.State(), 0)
-    }
-
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
 
         filterBottomSheetDialog = FilterBottomSheetDialog()
@@ -85,7 +81,7 @@ class SearchTripsFragment : BaseFragment() {
     }
 
     private fun openFilterSheet() {
-        filterBottomSheetDialog.show(activity?.supportFragmentManager, FilterBottomSheetDialog.TAG)
+        filterBottomSheetDialog.show(activity!!.supportFragmentManager, FilterBottomSheetDialog.TAG)
     }
 
     companion object {

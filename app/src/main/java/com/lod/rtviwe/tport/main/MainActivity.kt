@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.plusAssign
 import androidx.navigation.ui.setupWithNavController
 import com.lod.rtviwe.tport.R
-import com.lod.rtviwe.tport.base.BaseFragment
+import com.lod.rtviwe.tport.base.ScrollableFragment
 import com.lod.rtviwe.tport.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
     private fun scrollFragmentToTop() {
         val currentFragment = nav_host_fragment.childFragmentManager.fragments[0]
         when (currentFragment) {
-            is BaseFragment -> currentFragment.scrollToTop()
+            is ScrollableFragment -> currentFragment.scrollToTop()
             else -> Timber.e("$currentFragment does not implement ScrollableFragment")
         }
     }

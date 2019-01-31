@@ -58,20 +58,14 @@ class RegisterViewModel(
         navController.navigate(R.id.action_registerStepTwoFragment_to_registerStepThreeFragment, bundle)
     }
 
+    fun checkPhoneNumber(phoneNumber: String) = authService.checkPhoneNumber(phoneNumber)
+
+    fun checkCodeLength(code: String) = authService.checkCodeLength(code)
+
     fun navigateToProfileFragment(navController: NavController) {
         navController.navigate(R.id.action_global_profileFragment)
     }
 
-    fun checkPhoneNumber(phoneNumber: String) = phoneNumber.length == PHONE_NUMBER_LENGTH
-
-    fun checkCodeLength(code: String) = (code.length == CODE_LENGTH)
-
     // TODO replace it back
     fun isUserLogged() = false /*authService.getToken(context!!) != null*/
-
-    companion object {
-
-        const val CODE_LENGTH = 4
-        private const val PHONE_NUMBER_LENGTH = 18
-    }
 }

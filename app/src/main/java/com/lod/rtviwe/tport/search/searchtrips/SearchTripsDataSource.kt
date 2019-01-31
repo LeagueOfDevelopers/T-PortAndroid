@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip
+package com.lod.rtviwe.tport.search.searchtrips
 
 import com.lod.rtviwe.tport.model.Trip
 
@@ -10,6 +10,8 @@ interface SearchTripsDataSource {
     }
 
     fun findTrips(tripsRequest: SearchTripsRequest, callback: SearchTripsCallback)
+
+    fun saveTrips(value: Pair<SearchTripsRequest, List<Trip>>)
 
     fun clear()
 }

@@ -2,14 +2,13 @@ package com.lod.rtviwe.tport.profile
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.lod.rtviwe.tport.utils.CollectionJob
+import com.lod.rtviwe.tport.utils.AuthService
+import org.koin.standalone.KoinComponent
+import org.koin.standalone.inject
 
-class ProfileViewModel(app: Application) : AndroidViewModel(app) {
+class ProfileViewModel(app: Application) : AndroidViewModel(app), KoinComponent {
 
-    private val compositeJob = CollectionJob()
+    private val authService by inject<AuthService>()
 
-    override fun onCleared() {
-        super.onCleared()
-        compositeJob.clear()
-    }
+    fun getUserName() = authService.getName()
 }

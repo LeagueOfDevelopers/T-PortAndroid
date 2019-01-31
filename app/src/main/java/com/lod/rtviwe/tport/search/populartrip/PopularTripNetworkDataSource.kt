@@ -1,6 +1,5 @@
 package com.lod.rtviwe.tport.search.populartrip
 
-import com.lod.rtviwe.tport.data.MockTrips
 import com.lod.rtviwe.tport.utils.CollectionJob
 import kotlinx.coroutines.launch
 
@@ -18,7 +17,7 @@ class PopularTripNetworkDataSource : PopularTripDataSource {
 
         job?.let {
             it.scope.launch(it.handler) {
-                callback.getPopularTrips(MockTrips.getItems())
+                // TODO
             }
         }
     }

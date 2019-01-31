@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.lod.rtviwe.tport.model.Trip
@@ -22,15 +21,10 @@ class TripDetailsFragment : BaseFragment() {
     private val routesAdapter = GroupAdapter<ViewHolder>()
     private lateinit var trip: Trip
     private lateinit var routesLayoutManager: LinearLayoutManager
-    private lateinit var routesRecyclerView: RecyclerView
 
     private val tripDetailsViewModel by inject<TripDetailsViewModel>()
 
     override fun getLayout() = R.layout.fragment_trip_details
-
-    override fun scrollToTop() {
-        routesLayoutManager.smoothScrollToPosition(routesRecyclerView, RecyclerView.State(), 0)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         arguments?.also {

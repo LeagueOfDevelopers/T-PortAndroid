@@ -22,7 +22,7 @@ class OrderRouteItem(private val route: Route) : Item() {
         viewHolder.text_view_route_cost.text =
                 String.format(viewHolder.containerView.context.getString(R.string.money), route.cost.roundToInt())
 
-        // TODO make cool extension function if needed
+        // TODO date format
         val diff = route.arrivalDate.time - route.departureDate.time
         val hours = TimeUnit.MILLISECONDS.toHours(diff)
         val minutes = TimeUnit.MILLISECONDS.toMinutes(diff) - hours * 60

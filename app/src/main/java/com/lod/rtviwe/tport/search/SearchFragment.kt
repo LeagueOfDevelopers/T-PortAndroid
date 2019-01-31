@@ -31,10 +31,6 @@ class SearchFragment : BaseFragment() {
 
     override fun getLayout() = R.layout.fragment_search
 
-    override fun scrollToTop() {
-        scroll_view_search_fragment.smoothScrollTo(0, 0)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

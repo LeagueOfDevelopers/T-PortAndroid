@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.orders.OrdersViewModel
-import com.lod.rtviwe.tport.search.searchtrip.items.RouteItem
+import com.lod.rtviwe.tport.search.searchtrips.items.RouteItem
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Section
 import com.xwray.groupie.kotlinandroidextensions.Item

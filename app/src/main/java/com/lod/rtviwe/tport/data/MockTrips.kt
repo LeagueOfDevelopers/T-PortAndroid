@@ -3,9 +3,9 @@ package com.lod.rtviwe.tport.data
 import com.lod.rtviwe.tport.model.*
 import java.util.*
 
-object MockTrips : TripsProvider {
+object MockTrips {
 
-    override fun getItems() = data
+    fun getItems(): List<Trip> = data
 
     private fun getDatePlus(hours: Int, minutes: Int): Date =
         Calendar.getInstance().apply {

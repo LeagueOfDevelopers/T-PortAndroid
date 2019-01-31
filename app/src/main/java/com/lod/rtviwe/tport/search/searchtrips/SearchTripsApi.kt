@@ -1,4 +1,4 @@
-package com.lod.rtviwe.tport.search.searchtrip
+package com.lod.rtviwe.tport.search.searchtrips
 
 import com.lod.rtviwe.tport.model.Trip
 import kotlinx.coroutines.Deferred
@@ -8,6 +8,7 @@ import retrofit2.http.Query
 
 interface SearchTripsApi {
 
+    // TODO wait for pagination
     @GET("/trips")
     fun searchAsync(
         @Query("DepartureCityName") departure: String,

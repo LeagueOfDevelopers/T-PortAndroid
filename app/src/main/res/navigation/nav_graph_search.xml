@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/searchTripsFragment"
-        android:name="com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment"
+        android:name="com.lod.rtviwe.tport.search.searchtrips.SearchTripsFragment"
         android:label="SearchTripsFragment"
         tools:layout="@layout/fragment_search_trips">
         <action
@@ -36,7 +36,7 @@
 
     <fragment
         android:id="@+id/filterBottomSheetDialog"
-        android:name="com.lod.rtviwe.tport.search.searchtrip.FilterBottomSheetDialog"
+        android:name="com.lod.rtviwe.tport.search.searchtrips.FilterBottomSheetDialog"
         android:label="FilterBottomSheetDialog"
         tools:layout="@layout/filter_bottom_sheet" />
 

@@ -12,7 +12,8 @@ import com.lod.rtviwe.tport.search.autocomplete.AutocompleteDataSource
 import com.lod.rtviwe.tport.search.autocomplete.AutocompleteRepository
 import com.lod.rtviwe.tport.search.populartrip.PopularTrip
 import com.lod.rtviwe.tport.search.populartrip.PopularTripDataSource
-import com.lod.rtviwe.tport.search.searchtrip.SearchTripsFragment
+import com.lod.rtviwe.tport.search.searchtrips.SearchTripsFragment
+import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import org.koin.standalone.KoinComponent
@@ -56,5 +57,10 @@ class SearchViewModel(
             putString(SearchTripsFragment.ARGUMENT_TRAVEL_TIME, searchBox.travelTime)
         }
         navController.navigate(R.id.action_searchFragment_to_searchTripsFragment, bundle)
+    }
+
+    fun navigateToTripDetails(navController: NavController, trip: Trip) {
+        val bundle = Bundle().apply { putParcelable(TripDetailsFragment.ARGUMENT_TRIP, trip) }
+        navController.navigate(R.id.action_searchTripsFragment_to_tripDetailsFragment, bundle)
     }
 }

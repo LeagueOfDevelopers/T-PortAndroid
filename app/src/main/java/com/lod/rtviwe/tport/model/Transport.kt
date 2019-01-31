@@ -6,5 +6,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Transport(
     val name: String,
-    val type: TransportationType
+    val type: TransportationType?
 ) : Parcelable
