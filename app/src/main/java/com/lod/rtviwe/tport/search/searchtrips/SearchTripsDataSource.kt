@@ -11,5 +11,7 @@ interface SearchTripsDataSource {
 
     fun findTrips(tripsRequest: SearchTripsRequest, callback: SearchTripsCallback)
 
+    fun saveTrips(value: Pair<SearchTripsRequest, List<Trip>>)
+
     fun clear()
 }

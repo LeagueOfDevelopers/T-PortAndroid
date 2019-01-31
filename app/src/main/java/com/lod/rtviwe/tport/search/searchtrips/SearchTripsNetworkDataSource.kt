@@ -1,6 +1,8 @@
 package com.lod.rtviwe.tport.search.searchtrips
 
+import com.lod.rtviwe.tport.model.Trip
 import com.lod.rtviwe.tport.utils.CollectionJob
+import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
@@ -21,7 +23,6 @@ class SearchTripsNetworkDataSource : SearchTripsDataSource, KoinComponent {
 
         job?.let {
             it.scope.launch(it.handler) {
-                // TODO replace it back
                 val request = searchTripsApi.searchAsync(
                     tripsRequest.departureCityName,
                     tripsRequest.destinationCityName,
@@ -30,11 +31,21 @@ class SearchTripsNetworkDataSource : SearchTripsDataSource, KoinComponent {
                 val code = request.code()
 
                 when (code) {
-                    200 -> callback.getTrips(request.body()!!)
+                    200 -> {
+                        if (request.body() != null) {
+                            callback.getTrips(request.body()!!)
+                        } else {
+                            Timber.e("Body is empty from David $code")
+                        }
+                    }
                     else -> Timber.e("Unknown error happened on David $code")
                 }
             }
         }
+    }
+
+    override fun saveTrips(value: Pair<SearchTripsRequest, List<Trip>>) {
+        // TODO save in persistent
     }
 
     override fun clear() {

@@ -1,6 +1,7 @@
 package com.lod.rtviwe.tport.di
 
 import com.lod.rtviwe.tport.TPortApplication.Companion.MOCK
+import com.lod.rtviwe.tport.TPortApplication.Companion.NETWORK
 import com.lod.rtviwe.tport.bonuses.BonusesViewModel
 import com.lod.rtviwe.tport.orders.OrdersViewModel
 import com.lod.rtviwe.tport.profile.ProfileViewModel
@@ -18,6 +19,6 @@ val viewModelModule = module {
     viewModel { OrdersViewModel(get(), get(name = MOCK)) }
     viewModel { RegisterViewModel(get(), get(name = MOCK)) }
     viewModel<ProfileViewModel>()
-    viewModel { SearchTripsViewModel(get(), get(name = MOCK)) }
+    viewModel { SearchTripsViewModel(get(), get(name = NETWORK)) }
     viewModel<TripDetailsViewModel>()
 }

@@ -8,6 +8,7 @@ import retrofit2.http.Query
 
 interface SearchTripsApi {
 
+    // TODO wait for pagination
     @GET("/trips")
     fun searchAsync(
         @Query("DepartureCityName") departure: String,
