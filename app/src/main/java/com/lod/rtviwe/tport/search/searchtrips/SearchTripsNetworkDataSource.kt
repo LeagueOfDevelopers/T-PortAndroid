@@ -22,6 +22,7 @@ class SearchTripsNetworkDataSource : SearchTripsDataSource, KoinComponent {
         val job = collectionJob.getJob(JOB_SEARCH_TRIPS)
 
         job?.let {
+            it.job.cancelChildren()
             it.scope.launch(it.handler) {
                 val request = searchTripsApi.searchAsync(
                     tripsRequest.departureCityName,

@@ -28,6 +28,6 @@ val dataSourceModule = module {
     factory<OrdersDataSource>(name = MOCK) { OrdersMockDataSource() }
     factory<RegistrationDataSource>(name = NETWORK) { RegistrationNetworkDataSource() }
     factory<RegistrationDataSource>(name = MOCK) { RegistrationMockDataSource() }
-    factory<SearchTripsDataSource>(name = NETWORK) { SearchTripsNetworkDataSource() }
+    single<SearchTripsDataSource>(name = NETWORK) { SearchTripsNetworkDataSource() }
     factory<SearchTripsDataSource>(name = MOCK) { SearchTripsMockDataSource() }
 }

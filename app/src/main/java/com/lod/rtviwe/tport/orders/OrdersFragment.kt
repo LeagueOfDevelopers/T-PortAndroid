@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
+import com.lod.rtviwe.tport.orders.items.HeaderItem
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
+import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.fragment_orders.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
@@ -25,6 +26,7 @@ class OrdersFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         ordersAdapter = GroupAdapter()
+        ordersAdapter.add(HeaderItem("sample"))
         ordersLayoutManager = LinearLayoutManager(context)
 
         ordersViewModel.observeAdapter(ordersAdapter)

@@ -62,5 +62,5 @@
     <string name="extended_fab_confirm">Подтвердить</string>
     <string name="current_order">Текущий заказ:</string>
     <string name="coming_order">Предстоящие поездки:</string>
-    <string name="history">История:</string>
+    <string name="history_order">История:</string>
 </resources>

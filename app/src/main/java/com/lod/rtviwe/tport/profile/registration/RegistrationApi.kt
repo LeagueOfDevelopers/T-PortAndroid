@@ -11,12 +11,12 @@ import retrofit2.http.PUT
 
 interface RegistrationApi {
 
-    @POST("/sendCode")
+    @POST("/login")
     fun sendPhoneNumberAsync(
         @Body body: SendPhoneRequest
     ): Deferred<Response<Void>>
 
-    @PUT("/sendCode")
+    @PUT("/login")
     fun sendPhoneNumberWithCodeAsync(
         @Body body: SendCodeRequest
     ): Deferred<Response<ResponseToken>>
