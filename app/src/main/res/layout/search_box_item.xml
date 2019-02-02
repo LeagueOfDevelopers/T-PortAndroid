@@ -2,11 +2,8 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
     android:translationZ="2dp"
     app:cardCornerRadius="8dp">
 
@@ -19,11 +16,12 @@
             style="@style/TextViewOnSearchItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="11dp"
             android:text="@string/search_item_from_place"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,9 +30,8 @@
             style="@style/EditTextOnSearchItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="12dp"
             android:maxLength="64"
             android:maxLines="2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,16 +43,14 @@
             android:id="@+id/image_button_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:background="@color/colorTransparent"
             android:contentDescription="@string/image_button_change_destination"
             android:rotation="90"
             android:text=""
-            app:layout_constraintBottom_toTopOf="@+id/text_view_to_place"
+            app:layout_constraintBottom_toBottomOf="@+id/text_view_to_place"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/autocomplete_text_from_place"
-            app:layout_constraintVertical_bias="0.75"
+            app:layout_constraintTop_toTopOf="@+id/text_view_to_place"
             app:srcCompat="@drawable/ic_change_arrows_black_24dp" />
 
         <TextView
@@ -63,12 +58,10 @@
             style="@style/TextViewOnSearchItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
             android:text="@string/search_item_to_place"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/autocomplete_text_from_place"
             app:layout_constraintTop_toBottomOf="@+id/autocomplete_text_from_place" />
 
         <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -76,9 +69,8 @@
             style="@style/EditTextOnSearchItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="4dp"
             android:maxLength="64"
             android:maxLines="2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,12 +83,10 @@
             style="@style/TextViewOnSearchItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
             android:text="@string/search_item_travel_data"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/autocomplete_text_to_place"
             app:layout_constraintTop_toBottomOf="@+id/autocomplete_text_to_place" />
 
         <com.google.android.material.textfield.TextInputEditText
@@ -104,7 +94,7 @@
             style="@style/EditTextOnSearchItem"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
             android:layout_marginEnd="16dp"
             android:focusable="false"
             android:maxLength="32"
@@ -119,17 +109,16 @@
             style="@style/ButtonPickUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="21dp"
             android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="21dp"
             android:layout_marginBottom="16dp"
+            android:elevation="4dp"
             android:text="@string/button_text_pick_up"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_data_travel"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_data_travel" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

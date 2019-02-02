@@ -7,6 +7,7 @@
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="colorButtonBackground">#FFFFFF</color>
     <color name="colorSecondTest">#B2AFB3</color>
+    <color name="colorDefaultText">#9B9B9B</color>
     <color name="colorStroke">#000000</color>
     <color name="colorConnectionRectangle">#ADADAD</color>
     <color name="colorLightHeader">#797A79</color>

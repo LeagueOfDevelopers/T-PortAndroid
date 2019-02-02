@@ -2,6 +2,7 @@ package com.lod.rtviwe.tport.search
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -15,6 +16,7 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.header_item.*
+import kotlinx.android.synthetic.main.popular_trip_item.*
 import kotlinx.android.synthetic.main.search_box_item.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.util.*
@@ -33,6 +35,8 @@ class SearchFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        text_view_header.setTypeface(text_view_header.typeface, Typeface.BOLD)
 
         searchViewModel.populateAdapter(searchAdapter)
 

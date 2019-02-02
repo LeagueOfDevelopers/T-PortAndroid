@@ -1,6 +1,7 @@
 package com.lod.rtviwe.tport.search.populartrip
 
 import android.app.Activity
+import android.graphics.Typeface
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.lod.rtviwe.tport.R
@@ -25,6 +26,21 @@ class PopularTrip(private val trip: Trip) : Item(), KoinComponent {
             viewHolder.text_view_popular_item_place_from.text = fromPlace.name
             viewHolder.text_view_popular_item_place_to.text = toPlace.name
         }
+
+        viewHolder.text_view_popular_item_place_from.setTypeface(
+            viewHolder.text_view_popular_item_place_from.typeface,
+            Typeface.BOLD
+        )
+
+        viewHolder.text_view_minus.setTypeface(
+            viewHolder.text_view_popular_item_place_from.typeface,
+            Typeface.BOLD
+        )
+
+        viewHolder.text_view_popular_item_place_to.setTypeface(
+            viewHolder.text_view_popular_item_place_from.typeface,
+            Typeface.BOLD
+        )
 
         Glide.with(viewHolder.containerView.context as Activity)
             .load("https://i1.photocentra.ru/images/main78/781689_main.jpg")
