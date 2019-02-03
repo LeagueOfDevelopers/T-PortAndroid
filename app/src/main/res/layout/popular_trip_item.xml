@@ -9,10 +9,10 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="23dp"
     android:layout_marginBottom="8dp"
-    android:translationZ="1dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
+    android:translationZ="1dp"
     app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/text_view_popular_item_place_from"
-            style="@style/TextViewOnPopularItem"
+            style="@style/TextViewHeaderOnPopularItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/text_view_minus"
-            style="@style/TextViewOnPopularItem"
+            style="@style/TextViewHeaderOnPopularItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
@@ -46,7 +46,7 @@
 
         <TextView
             android:id="@+id/text_view_popular_item_place_to"
-            style="@style/TextViewOnPopularItem"
+            style="@style/TextViewHeaderOnPopularItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
@@ -73,6 +73,7 @@
 
         <TextView
             android:id="@+id/text_view_route_type"
+            style="@style/TextViewDescriptionOnPopularItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"

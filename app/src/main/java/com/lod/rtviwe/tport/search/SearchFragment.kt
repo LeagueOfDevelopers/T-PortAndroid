@@ -1,7 +1,6 @@
 package com.lod.rtviwe.tport.search
 
 import android.app.Activity
-import android.app.DatePickerDialog
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
@@ -11,15 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
+import com.lod.rtviwe.tport.search.DatePickerBottomSheetDialog.Companion.TAG
 import com.lod.rtviwe.tport.utils.setTextChangedListener
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.header_item.*
-import kotlinx.android.synthetic.main.popular_trip_item.*
 import kotlinx.android.synthetic.main.search_box_item.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import java.util.*
 
 class SearchFragment : BaseFragment() {
 
@@ -30,6 +28,7 @@ class SearchFragment : BaseFragment() {
 
     private lateinit var searchLayoutManager: LinearLayoutManager
     private lateinit var searchRecyclerView: RecyclerView
+    private lateinit var datePickerBottomSheetDialog: DatePickerBottomSheetDialog
 
     override fun getLayout() = R.layout.fragment_search
 
@@ -37,6 +36,7 @@ class SearchFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         text_view_header.setTypeface(text_view_header.typeface, Typeface.BOLD)
+        button_pick_up.typeface = Typeface.createFromAsset(context!!.assets, "lucidagrande.ttf")
 
         searchViewModel.populateAdapter(searchAdapter)
 
@@ -46,6 +46,8 @@ class SearchFragment : BaseFragment() {
             adapter = searchAdapter
             layoutManager = searchLayoutManager
         }
+
+        datePickerBottomSheetDialog = DatePickerBottomSheetDialog()
 
         autocomplete_text_from_place.setText(searchBox.fromPlace)
         autocomplete_text_to_place.setText(searchBox.toPlace)
@@ -68,6 +70,10 @@ class SearchFragment : BaseFragment() {
 
         button_pick_up.setOnClickListener {
             navigateToSearchTrips()
+        }
+
+        image_button_change.setOnClickListener {
+            swapDestinations()
         }
 
         autocomplete_text_from_place.setOnFocusChangeListener { textView, hasFocus ->
@@ -95,22 +101,15 @@ class SearchFragment : BaseFragment() {
     }
 
     private fun callDateTimePicker() {
-        val calendar = GregorianCalendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-        context?.let {
-            DatePickerDialog(
-                it,
-                DatePickerDialog.OnDateSetListener { _, selectedYear, selectedMonth, selectedDay ->
-                    val editTextDateParam = "$selectedDay.${selectedMonth + 1}.$selectedYear"
-                    edit_text_data_travel.setText(editTextDateParam)
-                    searchBox.travelTime = edit_text_data_travel.text.toString()
-                }, year, month, day
-            ).show()
-        }
+        datePickerBottomSheetDialog.show(activity!!.supportFragmentManager, TAG)
     }
+
+    private fun swapDestinations() {
+        val temp = autocomplete_text_from_place.text
+        autocomplete_text_from_place.text = autocomplete_text_to_place.text
+        autocomplete_text_to_place.text = temp
+    }
+
 
     private fun hideKeyboard(view: View) {
         val inputMethodManager =

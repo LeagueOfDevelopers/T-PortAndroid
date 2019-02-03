@@ -14,10 +14,9 @@ import timber.log.Timber
 class RegistrationNetworkDataSource : RegistrationDataSource, KoinComponent {
 
     private val authService by inject<AuthService>()
+    private val registrationApi by inject<RegistrationApi>()
 
     private val collectionJob = CollectionJob()
-
-    private val registrationApi by inject<RegistrationApi>()
 
     init {
 

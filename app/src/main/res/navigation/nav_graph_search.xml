@@ -38,7 +38,7 @@
         android:id="@+id/filterBottomSheetDialog"
         android:name="com.lod.rtviwe.tport.search.searchtrips.FilterBottomSheetDialog"
         android:label="FilterBottomSheetDialog"
-        tools:layout="@layout/filter_bottom_sheet" />
+        tools:layout="@layout/filter_bottom_sheet_dialog" />
 
     <action
         android:id="@+id/action_global_searchFragment"
