@@ -1,6 +1,10 @@
 package com.lod.rtviwe.tport
 
+import android.content.Context
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.view.KeyEvent
+import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -8,6 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.lod.rtviwe.tport.main.MainActivity
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,11 +21,15 @@ import org.junit.runner.RunWith
 class RegistrationTest {
 
     @get:Rule
-    val rule = ActivityTestRule(MainActivity::class.java)
+    val activityRule = ActivityTestRule(MainActivity::class.java)
+
+    @Before
+    fun navigateToRegistration() {
+        onView(withId(R.id.navigation_profile)).perform(click())
+    }
 
     @Test
     fun rightPhoneNumberInput_PhoneNumberWithMask() {
-        onView(withId(R.id.navigation_profile)).perform(click())
         onView(withId(R.id.edit_text_phone_number)).perform(typeText("79999999999"))
 
         onView(withId(R.id.edit_text_phone_number)).check(matches(withText("+7 (999) 999 99 99")))
@@ -28,7 +37,6 @@ class RegistrationTest {
 
     @Test
     fun rightPhoneNumberInput_SecondRegistrationStep() {
-        onView(withId(R.id.navigation_profile)).perform(click())
         onView(withId(R.id.edit_text_phone_number)).perform(typeText("79999999999"), closeSoftKeyboard())
         onView(withId(R.id.fab_register_step_one_next)).perform(click())
 
@@ -37,17 +45,14 @@ class RegistrationTest {
 
     @Test
     fun wrongPhoneNumberInput_Error() {
-        onView(withId(R.id.navigation_profile)).perform(click())
         onView(withId(R.id.edit_text_phone_number)).perform(typeText("799"), closeSoftKeyboard())
         onView(withId(R.id.fab_register_step_one_next)).perform(click())
 
         onView(withId(R.id.edit_text_phone_number)).check(matches(hasErrorText("Неправильный номер")))
     }
 
-    // TODO idling resource for checkCode
     @Test
     fun codeInput_ThirdRegistrationStep() {
-        onView(withId(R.id.navigation_profile)).perform(click())
         onView(withId(R.id.edit_text_phone_number)).perform(typeText("79999999999"), closeSoftKeyboard())
         onView(withId(R.id.fab_register_step_one_next)).perform(click())
         onView(withId(R.id.group_code_input)).perform(click())
@@ -59,6 +64,26 @@ class RegistrationTest {
             pressKey(KeyEvent.KEYCODE_1)
         )
 
+//         TODO idling resource for checkCode
 //        onView(withId(R.id.edit_text_enter_name)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun phoneNumberInput_SavePhoneOnRotate() {
+        onView(withId(R.id.edit_text_phone_number)).perform(typeText("79999999999"), closeSoftKeyboard())
+        onView(withId(R.id.edit_text_phone_number)).check(matches(withText("+7 (999) 999 99 99")))
+        rotateScreen()
+        onView(withId(R.id.edit_text_phone_number)).check(matches(withText("+7 (999) 999 99 99")))
+    }
+
+    private fun rotateScreen() {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val orientation = context.resources.configuration.orientation
+
+        val activity = activityRule.activity
+        activity.requestedOrientation = if (orientation == Configuration.ORIENTATION_PORTRAIT)
+            ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        else
+            ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 }

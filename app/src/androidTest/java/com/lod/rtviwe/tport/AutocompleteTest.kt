@@ -8,7 +8,7 @@
 //import androidx.test.espresso.matcher.ViewMatchers.withId
 //import androidx.test.espresso.matcher.ViewMatchers.withText
 //import androidx.test.ext.junit.runners.AndroidJUnit4
-//import androidx.test.rule.ActivityTestRule
+//import androidx.test.activityRule.ActivityTestRule
 //import com.lod.rtviwe.tport.main.MainActivity
 //import org.hamcrest.Matchers.`is`
 //import org.hamcrest.Matchers.not
@@ -21,12 +21,12 @@
 //class AutocompleteTest {
 //
 //    @get:Rule
-//    private val rule = ActivityTestRule(MainActivity::class.java)
+//    private val activityRule = ActivityTestRule(MainActivity::class.java)
 //
 //    // https://stackoverflow.com/questions/36382596/espresso-how-to-switch-typetext-to-english-or-other-languages-input-mode
 //    @Test
 //    fun testAutoComplete_Moscow() {
-//        rule.launchActivity(null)
+//        activityRule.launchActivity(null)
 //        onView(withId(R.id.autocomplete_text_from_place)).perform(click())
 //        onView(withId(R.id.autocomplete_text_from_place)).check(matches(withText("")))
 //
@@ -37,7 +37,7 @@
 //            pressKey(KeyEvent.KEYCODE_M)
 //        )
 //
-//        onView(withText("г Москва")).inRoot(withDecorView(not(`is`(rule.activity.window.decorView)))).perform(click())
+//        onView(withText("г Москва")).inRoot(withDecorView(not(`is`(activityRule.activity.window.decorView)))).perform(click())
 //        onView(withId(R.id.autocomplete_text_from_place)).check(matches(withText("г Москва")))
 //    }
 //}
