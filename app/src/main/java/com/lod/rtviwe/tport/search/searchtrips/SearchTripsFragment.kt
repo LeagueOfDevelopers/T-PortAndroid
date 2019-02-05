@@ -65,7 +65,7 @@ class SearchTripsFragment : BaseFragment() {
             layoutManager = searchRoutesLayoutManager
         }
 
-        image_button_change.setOnClickListener {
+        image_button_swap.setOnClickListener {
             swapDestinations()
         }
 

@@ -1,10 +1,6 @@
 package com.lod.rtviwe.tport
 
-import android.content.Context
-import android.content.pm.ActivityInfo
-import android.content.res.Configuration
 import android.view.KeyEvent
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -72,18 +68,7 @@ class RegistrationTest {
     fun phoneNumberInput_SavePhoneOnRotate() {
         onView(withId(R.id.edit_text_phone_number)).perform(typeText("79999999999"), closeSoftKeyboard())
         onView(withId(R.id.edit_text_phone_number)).check(matches(withText("+7 (999) 999 99 99")))
-        rotateScreen()
+        TestUtils.rotateScreen(activityRule)
         onView(withId(R.id.edit_text_phone_number)).check(matches(withText("+7 (999) 999 99 99")))
-    }
-
-    private fun rotateScreen() {
-        val context = ApplicationProvider.getApplicationContext<Context>()
-        val orientation = context.resources.configuration.orientation
-
-        val activity = activityRule.activity
-        activity.requestedOrientation = if (orientation == Configuration.ORIENTATION_PORTRAIT)
-            ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-        else
-            ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     }
 }

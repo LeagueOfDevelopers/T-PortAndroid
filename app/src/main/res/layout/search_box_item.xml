@@ -40,7 +40,7 @@
             tools:text="@tools:sample/cities" />
 
         <ImageButton
-            android:id="@+id/image_button_change"
+            android:id="@+id/image_button_swap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -104,7 +104,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_pick_up"
-            style="@style/ButtonPickUp"
+            style="@style/ExtendedFab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
