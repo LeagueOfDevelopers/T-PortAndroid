@@ -18,7 +18,6 @@ class TripDetailsViewModelTest {
     @MockK
     lateinit var application: Application
 
-    // Cannot create instance so have to mock
     @MockK
     lateinit var adapter: GroupAdapter<ViewHolder>
 

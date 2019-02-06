@@ -26,7 +26,7 @@ class RegistrationTest {
 
     @Test
     fun rightPhoneNumberInput_PhoneNumberWithMask() {
-        onView(withId(R.id.edit_text_phone_number)).perform(typeText("79999999999"))
+        onView(withId(R.id.edit_text_phone_number)).perform(typeText("9999999999"))
 
         onView(withId(R.id.edit_text_phone_number)).check(matches(withText("+7 (999) 999 99 99")))
     }
@@ -49,7 +49,7 @@ class RegistrationTest {
 
     @Test
     fun codeInput_ThirdRegistrationStep() {
-        onView(withId(R.id.edit_text_phone_number)).perform(typeText("79999999999"), closeSoftKeyboard())
+        onView(withId(R.id.edit_text_phone_number)).perform(typeText("9999999999"), closeSoftKeyboard())
         onView(withId(R.id.fab_register_step_one_next)).perform(click())
         onView(withId(R.id.group_code_input)).perform(click())
 
@@ -66,7 +66,7 @@ class RegistrationTest {
 
     @Test
     fun phoneNumberInput_SavePhoneOnRotate() {
-        onView(withId(R.id.edit_text_phone_number)).perform(typeText("79999999999"), closeSoftKeyboard())
+        onView(withId(R.id.edit_text_phone_number)).perform(typeText("9999999999"), closeSoftKeyboard())
         onView(withId(R.id.edit_text_phone_number)).check(matches(withText("+7 (999) 999 99 99")))
         TestUtils.rotateScreen(activityRule)
         onView(withId(R.id.edit_text_phone_number)).check(matches(withText("+7 (999) 999 99 99")))
