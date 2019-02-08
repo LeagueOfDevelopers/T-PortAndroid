@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lod.rtviwe.tport.R
 import com.lod.rtviwe.tport.base.BaseFragment
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
+import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.fragment_orders.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 

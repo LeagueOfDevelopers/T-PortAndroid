@@ -58,14 +58,14 @@ class SearchTripsFragment : BaseFragment() {
         searchRoutesLayoutManager = LinearLayoutManager(context)
 
         val tripsRequest = SearchTripsRequest(fromPlace, toPlace, travelTime)
-        searchRoutesViewModel.observeAdapter(searchRouteCardsAdapter, tripsRequest)
+        searchRoutesViewModel.observeAdapter(searchRouteCardsAdapter, tripsRequest, progress_bar_search_trips)
 
         searchRoutesRecyclerView = recycler_view_search_routes.apply {
             adapter = searchRouteCardsAdapter
             layoutManager = searchRoutesLayoutManager
         }
 
-        image_button_change.setOnClickListener {
+        image_button_swap.setOnClickListener {
             swapDestinations()
         }
 
@@ -86,8 +86,8 @@ class SearchTripsFragment : BaseFragment() {
 
     companion object {
 
-        const val ARGUMENT_FROM_PLACE = "from place argument"
-        const val ARGUMENT_TO_PLACE = "to place argument"
-        const val ARGUMENT_TRAVEL_TIME = "travel time argument"
+        const val ARGUMENT_FROM_PLACE = "FROM_PLACE_ARGUMENT"
+        const val ARGUMENT_TO_PLACE = "TO_PLACE_ARGUMENT"
+        const val ARGUMENT_TRAVEL_TIME = "TRAVEL_TIME_ARGUMENT"
     }
 }

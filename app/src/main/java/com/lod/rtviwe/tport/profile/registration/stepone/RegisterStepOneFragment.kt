@@ -1,5 +1,6 @@
 package com.lod.rtviwe.tport.profile.registration.stepone
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import androidx.navigation.fragment.findNavController
@@ -24,6 +25,8 @@ class RegisterStepOneFragment : BaseFragment() {
         if (registerViewModel.isUserLogged()) {
             registerViewModel.navigateToProfileFragment(findNavController())
         }
+
+        fab_register_step_one_next.typeface = Typeface.createFromAsset(context!!.assets, "lucidagrande.ttf")
 
         fab_register_step_one_next.setOnClickListener {
             if (registerViewModel.checkPhoneNumber(phoneNumber)) {

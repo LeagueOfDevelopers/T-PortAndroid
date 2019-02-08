@@ -2,13 +2,15 @@
 <resources>
     <color name="colorPrimary">#007AFF</color>
     <color name="colorPrimaryDark">#E0E0E0</color>
-    <color name="colorPrimaryRipple">#42004FCB</color>
+    <color name="colorPrimaryRipple">#42E0E0E0</color>
     <color name="colorAccent">#007AFF</color>
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="colorButtonBackground">#FFFFFF</color>
     <color name="colorSecondTest">#B2AFB3</color>
+    <color name="colorDefaultText">#9B9B9B</color>
     <color name="colorStroke">#000000</color>
     <color name="colorConnectionRectangle">#ADADAD</color>
     <color name="colorLightHeader">#797A79</color>
     <color name="colorFilterSeekbar">#F9A825</color>
+    <color name="searchBackgroundGradient">#00000000</color>
 </resources>

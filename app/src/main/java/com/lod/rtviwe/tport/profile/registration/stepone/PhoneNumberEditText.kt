@@ -29,6 +29,8 @@ class PhoneNumberEditText : TextInputEditText, KoinComponent {
     }
 
     private fun init() {
+        setText("7")
+
         addTextChangedListener(object : TextWatcher {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {

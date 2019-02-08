@@ -14,10 +14,10 @@ import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 val viewModelModule = module {
-    viewModel { SearchViewModel(get(), get(name = MOCK), get(name = MOCK)) }
+    viewModel { SearchViewModel(get(), get(name = NETWORK), get(name = MOCK)) }
     viewModel<BonusesViewModel>()
     viewModel { OrdersViewModel(get(), get(name = MOCK)) }
-    viewModel { RegisterViewModel(get(), get(name = MOCK)) }
+    viewModel { RegisterViewModel(get(), get(name = NETWORK)) }
     viewModel<ProfileViewModel>()
     viewModel { SearchTripsViewModel(get(), get(name = NETWORK)) }
     viewModel<TripDetailsViewModel>()

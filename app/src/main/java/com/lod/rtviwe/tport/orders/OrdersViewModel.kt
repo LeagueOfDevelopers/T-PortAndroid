@@ -12,13 +12,12 @@ import com.lod.rtviwe.tport.orders.items.HeaderItem
 import com.lod.rtviwe.tport.orders.items.HistoryOrderCardItem
 import com.lod.rtviwe.tport.tripdetails.TripDetailsFragment
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.ViewHolder
-import org.koin.standalone.KoinComponent
+import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 
 class OrdersViewModel(
     private val app: Application,
     private val ordersDataSource: OrdersDataSource
-) : AndroidViewModel(app), KoinComponent {
+) : AndroidViewModel(app) {
 
     override fun onCleared() {
         super.onCleared()
@@ -47,7 +46,7 @@ class OrdersViewModel(
         ordersDataSource.setHistoryOrders(object : OrdersDataSource.OrderDataSourceCallback {
             override fun getOrders(orders: List<Trip>) {
                 with(ordersAdapter) {
-                    add(HeaderItem(app.getString(R.string.history)))
+                    add(HeaderItem(app.getString(R.string.history_order)))
                     addAll(orders.map { HistoryOrderCardItem(it) })
                 }
             }
